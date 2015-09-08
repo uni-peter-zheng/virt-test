@@ -268,8 +268,11 @@ class QemuImg(storage.QemuImg):
         if rebase_mode == "unsafe":
             cmd += " -u"
         if self.base_tag:
-            cmd += " -b %s -F %s %s" % (self.base_image_filename,
-                                        self.base_format, self.image_filename)
+            if self.base_tag == "null":
+                cmd += " -b \"\" -F %s %s" % (self.base_format, self.image_filename)
+            else:
+                cmd += " -b %s -F %s %s" % (self.base_image_filename,
+                                            self.base_format, self.image_filename)
         else:
             raise error.TestError("Can not find the image parameters need"
                                   " for rebase.")
@@ -349,6 +352,23 @@ class QemuImg(storage.QemuImg):
         cmd += " snapshot -l %s" % self.image_filename
 
         return utils.system_output(cmd)
+
+    def snapshot_apply(self):
+        """
+        Apply a snapshot image.
+
+        :note: params should contain:
+               snapshot_image_name -- the name of snapshot image file
+        """
+        cmd = self.image_cmd
+        if self.snapshot_tag:
+            cmd += " snapshot -a %s %s" % (self.snapshot_image_filename,
+                                           self.image_filename)
+        else:
+            raise error.TestError("Can not find the snapshot image"
+                                  " parameters")
+
+        utils.system_output(cmd)
 
     def remove(self):
         """

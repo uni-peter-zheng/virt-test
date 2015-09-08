@@ -1149,6 +1149,24 @@ class VM(virt_vm.BaseVM):
                 dev.set_param("id", devid)
             devices.insert(dev)
 
+        def add_disable_legacy(devices, dev, dev_type):
+            """
+            This function is used to add disable_legacy option for virtio-pci
+            """
+            options = devices.execute_qemu("-device %s,?" % dev_type)
+            if "disable-legacy" in options:
+                value = params.get("disable_legacy", "off")
+                dev.set_param("disable-legacy", value)
+
+        def add_disable_modern(devices, dev, dev_type):
+            """
+            This function is used to add disable_modern option for virtio-pci
+            """
+            options = devices.execute_qemu("-device %s,?" % dev_type)
+            if "disable-modern" in options:
+                value = params.get("disable_modern", "on")
+                dev.set_param("disable-modern", value)
+
         # End of command line option wrappers
 
         # If nothing changed and devices exists, return imediatelly
@@ -1324,6 +1342,22 @@ class VM(virt_vm.BaseVM):
                 cmd = add_human_monitor(devices, monitor_name,
                                         monitor_filename)
                 devices.insert(StrDev('HMP-%s' % monitor_name, cmdline=cmd))
+
+        # Add pvpanic device
+        if params.get("enable_pvpanic") == "yes":
+            cmd = "%s -device pvpanic,help &>/dev/null" % self.qemu_binary
+            if utils.system(cmd, ignore_status=True, verbose=False) != 0:
+                logging.warn("pvpanic device is not supportted")
+            else:
+                pvpanic_params = {"backend": "pvpanic"}
+                ioport = params.get("ioport_pvpanic")
+                if ioport:
+                    pvpanic_params["ioport"] = ioport
+                pvpanic_dev = qdevices.QCustomDevice("device",
+                                                     params=pvpanic_params,
+                                                     backend="backend")
+                pvpanic_dev.set_param("id", utils_misc.generate_random_id())
+                devices.insert(pvpanic_dev)
 
         # Add serial console redirection
         for serial in params.objects("serials"):
@@ -1998,6 +2032,15 @@ class VM(virt_vm.BaseVM):
         if params.get("keyboard_layout"):
             attr_info = [None, params["keyboard_layout"], None]
             add_qemu_option(devices, "k", [attr_info])
+
+        for device in devices:
+            virtio_pci_devices = ["virtio-net-pci", "virtio-blk-pci",
+                                  "virtio-scsi-pci", "virtio-balloon-pci",
+                                  "virtio-serial-pci", "virtio-rng-pci"]
+            dev_type = device.get_param("driver")
+            if dev_type in virtio_pci_devices:
+                add_disable_legacy(devices, device, dev_type)
+                add_disable_modern(devices, device, dev_type)
 
         return devices
 
