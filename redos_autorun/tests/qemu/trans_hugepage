@@ -1,0 +1,6 @@
+io-github-autotest-qemu.trans_hugepage.base
+io-github-autotest-qemu.trans_hugepage.defrag
+io-github-autotest-qemu.trans_hugepage.swapping
+io-github-autotest-qemu.trans_hugepage.relocated
+io-github-autotest-qemu.trans_hugepage.migration
+io-github-autotest-qemu.trans_hugepage.memory_stress

@@ -1,0 +1,8 @@
+type_specific.io-github-autotest-qemu.numa_opts.nodes.0
+type_specific.io-github-autotest-qemu.numa_opts.nodes.1
+type_specific.io-github-autotest-qemu.numa_opts.nodes.2.defaults
+type_specific.io-github-autotest-qemu.numa_opts.nodes.2.custom_values.implicit_ids
+type_specific.io-github-autotest-qemu.numa_opts.nodes.2.custom_values.unordered_ids
+type_specific.io-github-autotest-qemu.numa_opts.nodes.3.defaults
+type_specific.io-github-autotest-qemu.numa_opts.nodes.3.custom_values.implicit_ids
+type_specific.io-github-autotest-qemu.numa_opts.nodes.3.custom_values.unordered_ids

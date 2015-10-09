@@ -1,0 +1,13 @@
+# Only put module name in here, 
+# You can use '#' to ignore some modules
+# Module name corresponding files in ./modules
+
+
+
+
+qemu:balloon_check.balloon_evict
+qemu:numa_opts
+libvirt:domuuid.normal_test
+qemu:cpuflags.interface
+libvirt:domblkerror
+qemu:qcow2perf

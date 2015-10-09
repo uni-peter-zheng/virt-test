@@ -1,0 +1,371 @@
+#!/bin/bash
+
+#
+# Program:
+# 	This program can autorun virt-test testcases
+#
+# 
+#
+
+
+CURRENT_DIR=$(pwd)
+DEFAULT_CONFIG=$CURRENT_DIR/cfg/base.cfg
+DEFAULT_LOG_DIR=$CURRENT_DIR/logs/
+DEFAULT_TESTS_DIR=$CURRENT_DIR/tests/
+DEFAULT_MODULE_LIST=$CURRENT_DIR/tests/modules_list
+DEFAULT_MODULE_FILE_DIR=$CURRENT_DIR/tests/
+DEFAULT_SCATTERED_LIST=$CURRENT_DIR/tests/scattered_list
+
+
+get_config_key()
+{    
+    section=$(echo $1 | cut -d '.' -f 1)    
+    key=$(echo $1 | cut -d '.' -f 2)    
+    sed -n "/\[$section\]/,/\[.*\]/{    
+     /^\[.*\]/d    
+     /^[ \t]*$/d    
+     /^$/d    
+     /^#.*$/d    
+     s/^[ \t]*$key[ \t]*=[ \t]*\(.*\)[ \t]*/\1/p    
+    }" $DEFAULT_CONFIG
+}   
+
+VIRTTEST_DIR=$(get_config_key "dir.virt-test")
+DEFAULT_RUN_COMMAND=$(get_config_key "command.default_run_cmd")" "
+DEFAULT_EXTRA_COMMAND=" "$(get_config_key "command.extra_cmd")
+LIBVIRT_EXTRA_COMMAND=" "$(get_config_key "libvirt.extra_cmd")
+QEMU_EXTRA_COMMAND=" "$(get_config_key "qemu.extra_cmd")
+CURRENT_LOG_PATH=""
+CURRENT_CASESLIST_FILE=""
+CURRENT_LOG_FILE=""
+CURRENT_DETAIL_LOG_FILE=""
+
+debug()
+{
+	echo "DEBUG:"
+
+	# print env params
+	echo -e "\tEnvironments:"
+	echo -e "\t\tCURRENT_DIR = $CURRENT_DIR"
+	echo -e "\t\tDEFAULT_LOG_DIR = $DEFAULT_LOG_DIR"
+	echo -e "\t\tDEFAULT_TESTS_DIR = $DEFAULT_TESTS_DIR"
+	echo -e "\t\tDEFAULT_MODULE_FILE_DIR = $DEFAULT_MODULE_FILE_DIR"
+	echo -e "\t\tCURRENT_LOG_PATH = $CURRENT_LOG_PATH"
+
+	echo -e "\t\tDEFAULT_CONFIG = $DEFAULT_CONFIG"
+	echo -e "\t\tDEFAULT_MODULE_LIST = $DEFAULT_MODULE_LIST"
+	echo -e "\t\tDEFAULT_SCATTERED_LIST = $DEFAULT_SCATTERED_LIST"
+	echo -e "\t\tCURRENT_CASESLIST_FILE = $CURRENT_CASESLIST_FILE"
+	echo -e "\t\tCURRENT_LOG_FILE = $CURRENT_LOG_FILE"
+	echo -e "\t\tCURRENT_RUN_FILE = $CURRENT_RUN_FILE"
+	echo -e "\t\tCURRENT_DETAIL_LOG_FILE = $CURRENT_RUN_FILE"
+
+	# print config data
+	echo -e "\tConfig:"
+	echo -e "\t\tVIRTEST_DIR = $VIRTTEST_DIR"
+	echo -e "\t\tDEFAULT_RUN_COMMAND = $DEFAULT_RUN_COMMAND"
+	echo -e "\t\tDEFAULT_EXTRA_COMMAND = $DEFAULT_EXTRA_COMMAND"
+	echo -e "\t\tQEMU_EXTRA_COMMAND = $QEMU_EXTRA_COMMAND"
+	echo -e "\t\tLIBVIRT_EXTRA_COMMAND = $LIBVIRT_EXTRA_COMMAND"
+	echo -e "\n"
+}
+
+#usage()
+#{
+#    cat <<-EOF >&2
+
+#    usage: ${0##*/} [ -a EMAIL_TO ] [ -c NUM_PROCS ] [ -C FAILCMDFILE ] [ -T TCONFCMDFILE ]
+#    [ -d TMPDIR ] [ -D NUM_PROCS,NUM_FILES,NUM_BYTES,CLEAN_FLAG ] -e [ -f CMDFILES(,...) ]
+#    [ -g HTMLFILE] [ -i NUM_PROCS ] [ -l LOGFILE ] [ -m NUM_PROCS,CHUNKS,BYTES,HANGUP_FLAG ]
+#    -N -n [ -o OUTPUTFILE ] -p -q [ -r LTPROOT ] [ -s PATTERN ] [ -t DURATION ]
+#    -v [ -w CMDFILEADDR ] [ -x INSTANCES ] [ -b DEVICE ] [-B LTP_DEV_FS_TYPE]
+#        [ -F LOOPS,PERCENTAGE ] [ -z BIG_DEVICE ] [-Z  LTP_BIG_DEV_FS_TYPE]
+#
+#    -a EMAIL_TO     EMAIL all your Reports to this E-mail Address
+#    -c NUM_PROCS    Run LTP under additional background CPU load
+#                    [NUM_PROCS = no. of processes creating the CPU Load by spinning over sqrt()
+#                                 (Defaults to 1 when value)]
+#    -C FAILCMDFILE  Command file with all failed test cases.
+#    -T TCONFCMDFILE Command file with all test cases that are not fully tested.
+#    -f CMDFILES     Execute user defined list of testcases (separate with ',')
+#    example: ${0##*/} -c 2 -i 2 -m 2,4,10240,1 -D 2,10,10240,1 -p -q  -l /tmp/result-log.$$ -o /tmp/result-output.$$ -C /tmp/result-failed.$$ -d ${PWD}
+#
+#
+#	exit 0
+#}
+
+merge_params()
+{
+	if [ -z "$1" ] && [ -z "$2" ]; then
+		echo "No params str"
+		echo ""
+	fi
+	
+	if [ -z "$1" ]; then
+		echo "Only one params str"
+		echo "$2"
+	fi
+
+	if [ -z "$2" ]; then
+		echo "Only one params str"
+		echo "$1"
+	fi
+
+	final_params="$1"
+#	echo "$2"	
+#	params_count=$(echo "$2" | awk -F' -' '{print NF}')
+#	echo "$2" | awk -F' -' '{print $1}'
+	params_strs="$2"
+	new_params=""
+
+#	for i in ${params_strs[@]}
+#	do
+#		if [ "${i:0:1}" = "-" ]; then
+#			`echo $1 | grep "$i"`
+#			#$1 have
+#			if [ $? -eq 0 ]; then
+#				new_params=""
+#				continue
+#			#$1 don`t have
+#			else
+#				new_params="$i"
+#			fi
+#		else
+#			if [ "$new_params" = "" ]; then
+#				continue
+#			else
+#				final_params="$final_params"" ""$new_params"" ""$i"
+#				new_params=""
+#			fi
+#		fi
+#			
+#	done	
+	#while((1==1))
+	#do
+	#	split=`echo $2 | cut -d ' -' -f$i`
+	#	if [ "$split" != "" ]; then
+	#		((i++))
+	#		echo "$split"
+	#	else
+	#		break
+	#	fi
+	#done
+	#for ((i=1;i<=$params_count;i++));
+	#do
+	#	params_strs[$i]=$(echo "$2" | awk -F' -' '{print ${$i}}')
+	#	echo 
+	#	echo "${params_strs[$i]}"
+	#done
+	#for i in params_count
+
+	#echo $strs
+	#for k in strs[@]
+	#do
+	#	echo "${strs[k]}"
+	#done
+}
+
+set_testcases_to_list()
+{
+	line_count=1
+	cat $1 | while read ts_line
+	do
+		ts_line=`echo $ts_line`
+		if [ -z "$ts_line" ]; then
+			continue
+		fi
+		
+		if [ "${ts_line:0:1}" = "#" ]; then
+			continue
+		fi
+		extra_params=""
+		testcase_name=`echo "$ts_line" | awk -F '[ {]' '{print $1}'`
+		if [[ "$ts_line" =~ "{" ]]; then
+			extra_params=`echo $ts_line | cut -d '{' -f2|cut -d '}' -f1`
+			extra_params=`echo $extra_params`
+		fi
+
+#This function is v0.1
+		extra_params="$extra_params"" ""$2"" "
+
+#This function is next version.
+#		if [ ! -z "$extra_params" ] || [ ! -z "$2" ]; then
+#			merge_params "$extra_params" "$2"
+#		fi
+		echo -e "\t\tcase $line_count: $testcase_name $extra_params"
+		line_count=$(($line_count+1))
+		if [ "$3" = "qemu" ] || [ "$3" = "QEMU" ]; then
+			echo -e "$3"":""$testcase_name"" {""$extra_params"" ""$DEFAULT_EXTRA_COMMAND"" ""$QEMU_EXTRA_COMMAND""}" >> $CURRENT_CASESLIST_FILE
+		fi
+
+		if [ "$3" = "libvirt" ] || [ "$3" = "LIBVIRT" ]; then
+			echo -e "$3"":""$testcase_name"" {""$extra_params"" ""$DEFAULT_EXTRA_COMMAND"" ""$LIBVIRT_EXTRA_COMMAND""}" >> $CURRENT_CASESLIST_FILE
+		fi	
+	done
+}
+
+init_file()
+{
+	if [ ! -d "$CURRENT_LOG_PATH" ]; then
+		mkdir $CURRENT_LOG_PATH
+	fi
+
+	if [ ! -f "$CURRENT_CASESLIST_FILE" ]; then
+		touch $CURRENT_CASESLIST_FILE
+	fi
+
+	if [ ! -f "$CURRENT_LOG_FILE" ]; then
+		touch $CURRENT_LOG_FILE
+	fi
+
+	if [ ! -f "$CURRENT_DETAIL_LOG_FILE" ]; then
+		touch $CURRENT_DETAIL_LOG_FILE
+	fi
+}
+
+
+init_testcase_list()
+{
+	module_count=1
+
+	cat $DEFAULT_MODULE_LIST | while read ml_line
+	do
+		ml_line=`echo $ml_line`
+		if [ -z "$ml_line" ]; then
+			continue
+		fi
+
+		if [ "${ml_line:0:1}" = "#" ]; then
+			continue
+		fi
+
+		module_extra_params=""
+		class=""
+		module_name=""
+		module_file=""
+		class=`echo $ml_line | cut -d ':' -f1`
+		module_name=`echo "$ml_line" | cut -d ':' -f2  | awk -F'[ {]' '{print $1}'`
+		module_file="$DEFAULT_MODULE_FILE_DIR$class"/"$module_name"
+		if [[ "$ml_line" =~ "{" ]]; then
+			module_extra_params=`echo $ml_line | cut -d '{' -f2 | cut -d '}' -f1`
+			module_extra_params=`echo $module_extra_params`
+		fi
+		echo -e "\tModule $module_count: $class:$module_name    module_params:$module_extra_params"
+		module_count=$(($module_count+1))
+
+		if [ -z "$module_name" ]; then
+			echo "ERROR: Modules name is not set($module_name)"
+			exit 1
+		fi
+					
+		if [ -z "$class" ]; then
+			echo "ERROR: Modules class is not set($module_name)"
+			exit 2
+		fi
+
+		if [ ! -f "$module_file" ]; then
+			echo "ERROR: Don\`t have testcases file($module_file)"
+			exit 3
+		else
+			set_testcases_to_list "$module_file" "$module_extra_params" "$class"
+		fi
+	done
+}
+
+generate_cmd()
+{
+	if [ -z "$1" ]; then
+		echo "1";
+	fi
+
+	if [ -z "$3" ]; then
+		echo "1";
+	fi
+	
+	cmd=""
+	
+	if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
+		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"" ""-v"
+	fi
+
+	if [ "$class" = "libvirt" ] || [ "$class" = "LIBVIRT" ]; then
+		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"" ""-v"
+	fi	
+	echo "$cmd"
+}
+
+run_test()
+{
+	testcase_count=1
+	cat $CURRENT_CASESLIST_FILE | while read tc_line
+	do
+		class=""
+		params=""
+		testcase_name=""
+		class=`echo $tc_line | cut -d ':' -f1`
+		testcase_name=`echo "$tc_line" | cut -d ':' -f2  | awk -F'[ {]' '{print $1}'`
+		if [[ "$tc_line" =~ "{" ]]; then
+			params=`echo $tc_line | cut -d '{' -f2 | cut -d '}' -f1`
+			params=`echo $params`
+		fi
+		echo -e "$testcase_count. $class:$testcase_name    \c"
+		run_cmd=`generate_cmd "$class" "$testcase_name" "$params"`
+		if [ "$?" = "1" ]; then
+			echo -e "\033[34m SKIP(autorun: Parameter error)  \033[0m"
+			echo -e "SKIP: $class:$testcase_name (autorun: Parameter error)" >> "CURRENT_LOG_FILE"
+		else
+			#${run_cmd} 2>>"$CURRENT_DETAIL_LOG_FILE" 1>>"$CURRENT_DETAIL_LOG_FILE"
+			result=`${run_cmd}  2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED"`
+			PASS=`echo "$result" | grep "PASSED: " | awk -F'PASSED: ' '{print $2}'`
+			FAIL=`echo "$result" | grep "FAILED: " | awk -F'FAILED: ' '{print $2}'`
+			SKIP=`echo "$result" | grep "SKIPPED: " | awk -F'SKIPPED: ' '{print $2}'`
+			if [ "$PASS" = "1" ]; then
+				echo -e "\033[32m PASS \033[0m"
+				echo -e "PASS: $class:$testcase_name" >> "$CURRENT_LOG_FILE"
+			fi
+
+			if [ "$FAIL" = "1" ]; then
+				echo -e "\033[31m  FAIL \033[0m"
+				echo -e "FAIL: $class:$testcase_name" >> "$CURRENT_LOG_FILE"
+			fi	
+			
+			if [ "$SKIP" = "1" ]; then
+				echo -e "\033[34m SKIP  \033[0m"
+				echo -e "SKIP: $class:$testcase_name" >> "$CURRENT_LOG_FILE"
+			fi	
+		fi
+		testcase_count=$(($testcase_count+1))
+	done
+}
+
+init_env_params()
+{
+	DATE=$(date +%Y-%m-%d-%R:%S)
+	CURRENT_LOG_PATH="$DEFAULT_LOG_DIR""$DATE""/"
+	CURRENT_CASESLIST_FILE="$CURRENT_LOG_PATH""testcases_list"
+	CURRENT_LOG_FILE="$CURRENT_LOG_PATH""log"
+	CURRENT_DETAIL_LOG_FILE="$CURRENT_LOG_PATH""detail_log"
+}
+
+init()
+{
+	init_env_params
+	init_file
+}
+
+main()
+{
+	init
+	debug
+	echo -e "Testcases List:"
+	init_testcase_list
+
+	echo ""
+	echo -e "Start:"
+	run_test
+}
+
+
+# Start in here
+main
+
