@@ -1,9 +1,6 @@
 # Only put module name in here, 
 # You can use '#' to ignore some modules
-# Module name corresponding files in ./modules
-
-
-
+# Module name corresponding files in ./libvirt or ./qemu
 
 qemu:balloon_check.balloon_evict
 qemu:numa_opts
