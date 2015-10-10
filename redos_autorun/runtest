@@ -98,7 +98,13 @@ merge_params()
 	for i in ${params_strs[@]}
 	do
 		if [ "${i:0:1}" = "-" ]; then
+			if [ "$new_params" != "" ]; then
+				final_params="$final_params"" ""$new_params"
+				new_params=""
+			fi
+
 			echo "$final_params" | grep "\\$i" >> /dev/null
+
 			#$1 have, ignore
 			if [ $? -eq 0 ]; then
 				new_params=""
@@ -113,9 +119,12 @@ merge_params()
 				final_params="$final_params"" ""$new_params"" ""$i"
 				new_params=""
 			fi
-		fi
-			
+		fi			
 	done	
+	if [ "$new_params" != "" ]; then
+		final_params="$final_params"" ""$new_params"
+		new_params=""
+	fi
 	echo -e "$final_params"
 }
 
@@ -193,11 +202,17 @@ init_testcase_list()
 					
 
 		if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
-			default_cmd=`merge_params "$QEMU_EXTRA_COMMAND" "DEFAULT_EXTRA_COMMAND"`
+			echo -e "DEFAULT_EXTRA_COMMAND: $DEFAULT_EXTRA_COMMAND"
+			default_cmd=`merge_params "$QEMU_EXTRA_COMMAND" "$DEFAULT_EXTRA_COMMAND"`
+			echo -e "default: $default_cmd"
 			default_cmd=`merge_params "$module_extra_params" "$default_cmd"`
+			echo -e "default: $default_cmd"
 		elif [ "$class" = "libvirt" ] || [ "$class" = "LIBVIRT" ]; then
-			default_cmd=`merge_params "$LIBVIRT_EXTRA_COMMAND" "DEFAULT_EXTRA_COMMAND"`
+			echo -e "DEFAULT_EXTRA_COMMAND: $DEFAULT_EXTRA_COMMAND"
+			default_cmd=`merge_params "$LIBVIRT_EXTRA_COMMAND" "$DEFAULT_EXTRA_COMMAND"`
+			echo -e "default: $default_cmd"
 			default_cmd=`merge_params "$module_extra_params" "$default_cmd"`
+			echo -e "default: $default_cmd"
 		else	
 			echo "ERROR: Modules class is not set($module_name)"
 			exit 2
