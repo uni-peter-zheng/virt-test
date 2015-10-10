@@ -70,76 +70,53 @@ debug()
 	echo -e "\n"
 }
 
-
+# Merge repeated parameters
+# Priority: testcase`s params > module`s params > default params
+# $1: The parameters of the high priority 
+# $2: The parameters of the low priority
 merge_params()
 {
 	if [ -z "$1" ] && [ -z "$2" ]; then
-		echo "No params str"
 		echo ""
+		return
 	fi
 	
-	if [ -z "$1" ]; then
-		echo "Only one params str"
+	if [ "$1" = "" ]; then
 		echo "$2"
+		return
 	fi
 
-	if [ -z "$2" ]; then
-		echo "Only one params str"
+	if [ "$2" = "" ]; then
 		echo "$1"
+		return
 	fi
 
 	final_params="$1"
-#	echo "$2"	
-#	params_count=$(echo "$2" | awk -F' -' '{print NF}')
-#	echo "$2" | awk -F' -' '{print $1}'
 	params_strs="$2"
 	new_params=""
 
-#	for i in ${params_strs[@]}
-#	do
-#		if [ "${i:0:1}" = "-" ]; then
-#			`echo $1 | grep "$i"`
-#			#$1 have
-#			if [ $? -eq 0 ]; then
-#				new_params=""
-#				continue
-#			#$1 don`t have
-#			else
-#				new_params="$i"
-#			fi
-#		else
-#			if [ "$new_params" = "" ]; then
-#				continue
-#			else
-#				final_params="$final_params"" ""$new_params"" ""$i"
-#				new_params=""
-#			fi
-#		fi
-#			
-#	done	
-	#while((1==1))
-	#do
-	#	split=`echo $2 | cut -d ' -' -f$i`
-	#	if [ "$split" != "" ]; then
-	#		((i++))
-	#		echo "$split"
-	#	else
-	#		break
-	#	fi
-	#done
-	#for ((i=1;i<=$params_count;i++));
-	#do
-	#	params_strs[$i]=$(echo "$2" | awk -F' -' '{print ${$i}}')
-	#	echo 
-	#	echo "${params_strs[$i]}"
-	#done
-	#for i in params_count
-
-	#echo $strs
-	#for k in strs[@]
-	#do
-	#	echo "${strs[k]}"
-	#done
+	for i in ${params_strs[@]}
+	do
+		if [ "${i:0:1}" = "-" ]; then
+			echo "$final_params" | grep "\\$i" >> /dev/null
+			#$1 have, ignore
+			if [ $? -eq 0 ]; then
+				new_params=""
+			#$1 don`t have, add in $1
+			else
+				new_params="$i"
+			fi
+		else
+			if [ "$new_params" = "" ]; then
+				continue
+			else
+				final_params="$final_params"" ""$new_params"" ""$i"
+				new_params=""
+			fi
+		fi
+			
+	done	
+	echo -e "$final_params"
 }
 
 set_testcases_to_list()
@@ -161,22 +138,22 @@ set_testcases_to_list()
 			extra_params=`echo $ts_line | cut -d '{' -f2|cut -d '}' -f1`
 			extra_params=`echo $extra_params`
 		fi
-
-#This function is v0.1
-		extra_params="$extra_params"" ""$2"" "
-
-#This function is next version. It can resolve repeated parameters
-#		if [ ! -z "$extra_params" ] || [ ! -z "$2" ]; then
-#			merge_params "$extra_params" "$2"
-#		fi
-		echo -e "\t\tcase $line_count: $testcase_name $extra_params"
+		
+		if [ "$extra_params" = "" ]; then
+			echo -e "\t\tcase $line_count: $testcase_name"
+		else
+			echo -e "\t\tcase $line_count: $testcase_name\tParams:$extra_params"
+		fi
+		if [ ! -z "$extra_params" ] || [ ! -z "$2" ]; then
+			extra_params=`merge_params "$extra_params" "$2"`
+		fi
 		line_count=$(($line_count+1))
 		if [ "$3" = "qemu" ] || [ "$3" = "QEMU" ]; then
-			echo -e "$3"":""$testcase_name"" {""$extra_params"" ""$DEFAULT_EXTRA_COMMAND"" ""$QEMU_EXTRA_COMMAND""}" >> $CURRENT_CASESLIST_FILE
+			echo -e "$3"":""$testcase_name"" { ""$extra_params"" } " >> $CURRENT_CASESLIST_FILE
 		fi
 
 		if [ "$3" = "libvirt" ] || [ "$3" = "LIBVIRT" ]; then
-			echo -e "$3"":""$testcase_name"" {""$extra_params"" ""$DEFAULT_EXTRA_COMMAND"" ""$LIBVIRT_EXTRA_COMMAND""}" >> $CURRENT_CASESLIST_FILE
+			echo -e "$3"":""$testcase_name"" { ""$extra_params"" } " >> $CURRENT_CASESLIST_FILE
 		fi	
 	done
 }
@@ -214,27 +191,29 @@ init_testcase_list()
 			exit 1
 		fi
 					
-		if [ -z "$class" ]; then
+
+		if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
+			default_cmd=`merge_params "$QEMU_EXTRA_COMMAND" "DEFAULT_EXTRA_COMMAND"`
+			default_cmd=`merge_params "$module_extra_params" "$default_cmd"`
+		elif [ "$class" = "libvirt" ] || [ "$class" = "LIBVIRT" ]; then
+			default_cmd=`merge_params "$LIBVIRT_EXTRA_COMMAND" "DEFAULT_EXTRA_COMMAND"`
+			default_cmd=`merge_params "$module_extra_params" "$default_cmd"`
+		else	
 			echo "ERROR: Modules class is not set($module_name)"
 			exit 2
 		fi
 
+
 		if [ "$MODE" = "DIRECT" ]; then
 			echo -e "\t\tcase $module_count: $module_name $module_extra_params"
-			if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
-				echo -e "$class"":""$module_name"" {""$module_extra_params"" ""$DEFAULT_EXTRA_COMMAND"" ""$QEMU_EXTRA_COMMAND""}" >> $CURRENT_CASESLIST_FILE
-			fi
-
-			if [ "$class" = "libvirt" ] || [ "$class" = "LIBVIRT" ]; then
-				echo -e "$class"":""$module_name"" {""$module_extra_params"" ""$DEFAULT_EXTRA_COMMAND"" ""$LIBVIRT_EXTRA_COMMAND""}" >> $CURRENT_CASESLIST_FILE
-			fi
+			echo -e "$class"":""$module_name"" { ""$module_extra_params"" } " >> $CURRENT_CASESLIST_FILE
 		else
 			printf "\tModule $module_count: %-40s\t%-60s\n" "$class:$module_name" "module_params:$module_extra_params"
 			if [ ! -f "$module_file" ]; then
 				echo "ERROR: Don\`t have testcases file($module_file)"
 				exit 3
 			else
-				set_testcases_to_list "$module_file" "$module_extra_params" "$class"
+				set_testcases_to_list "$module_file" "$default_cmd" "$class"
 			fi
 		fi
 		module_count=$(($module_count+1))
@@ -265,6 +244,8 @@ generate_cmd()
 
 run_test()
 {
+	testcase_count=1
+
 	cat $CURRENT_CASESLIST_FILE | while read tc_line
 	do
 		class=""
@@ -291,18 +272,18 @@ run_test()
 				printf "\033[32m %-20s \033[0m\n" "PASS"
 				echo -e "PASS\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
 				pass_count=$(($pass_count+1))
-			fi
-
-			if [ "$FAIL" = "1" ]; then
+			elif [ "$FAIL" = "1" ]; then
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
 				echo -e "FAIL\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
 				fail_count=$(($fail_count+1))
-			fi	
-			
-			if [ "$SKIP" = "1" ]; then
+			elif [ "$SKIP" = "1" ]; then
 				printf "\033[34m %-20s \033[0m\n" "SKIP"
 				echo -e "SKIP\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
 				skip_count=$(($skip_count+1))
+			else
+				printf "\033[31m %-20s \033[0m\n" "FAIL"
+				echo -e "FAIL\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
+				fail_count=$(($fail_count+1))	
 			fi	
 		fi
 		((testcase_count++))
@@ -353,7 +334,6 @@ init()
 
 main()
 {
-	init
 	debug
 	echo -e "Testcases List:"
 	init_testcase_list
@@ -372,14 +352,11 @@ usage()
 	printf "\t%-40s%-20s\n" "-h" "Show this help message and exit"
 	printf "\t%-40s%-20s\n" "-m <modules_list_file>" "Use custom modules_list.        Default: ./tests/modules_list"
 	printf "\t%-40s%-20s\n" "-t <testcases_list_file>" "Only run testcase in this file."
-#	echo -e "\t-h\t\t\tshow this help message and exit"
-#	echo -e "\t-m  <modules_list_file>\t\tUse custom modules_list.\tDefault: ./tests/modules_list"
-#	echo -e "\t-t  <testcases_list_file>\t\tOnly run testcases in this file.\tDefault: ./tests/modules_list"
 	exit 0
 }
 
 # Start in here
-
+init
 while getopts "hm:t:" arg 
 do
 	case $arg in
@@ -407,6 +384,5 @@ do
         		;;
         esac
 done
-
 main
 
