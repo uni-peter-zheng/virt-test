@@ -1,0 +1,14 @@
+
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.non_acl.no_option 
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.non_acl.inactive_option.active_status 
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.non_acl.inactive_option.inactive_status 
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.non_acl.all_option 
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.non_acl.transient_inactive_option 
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.acl_test.no_option 
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.acl_test.inactive_option.active_status 
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.acl_test.inactive_option.inactive_status 
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.acl_test.all_option 
+type_specific.io-github-autotest-libvirt.virsh.net_list.normal_test.acl_test.transient_inactive_option 
+type_specific.io-github-autotest-libvirt.virsh.net_list.error_test.extra_option 
+type_specific.io-github-autotest-libvirt.virsh.net_list.error_test.extra_args_option 
+

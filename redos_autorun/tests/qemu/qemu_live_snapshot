@@ -1,0 +1,6 @@
+
+io-github-autotest-qemu.live_snapshot.with_reboot
+io-github-autotest-qemu.live_snapshot.with_runtime
+io-github-autotest-qemu.live_snapshot.with_file_transfer
+io-github-autotest-qemu.live_snapshot.base
+

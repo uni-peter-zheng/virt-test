@@ -1,0 +1,8 @@
+
+type_specific.io-github-autotest-libvirt.vfio.nic_group 
+type_specific.io-github-autotest-libvirt.vfio.fibre_group 
+type_specific.io-github-autotest-libvirt.vfio.nic_and_fibre_group 
+type_specific.io-github-autotest-libvirt.vfio.nic_single_to_iommu_group 
+type_specific.io-github-autotest-libvirt.vfio.primary_boot.nic 
+type_specific.io-github-autotest-libvirt.vfio.primary_boot.fibre 
+

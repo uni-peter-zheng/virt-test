@@ -1,0 +1,6 @@
+
+io-github-autotest-qemu.cdrom_test.cdrom_default
+io-github-autotest-qemu.cdrom_test.cdrom_tray
+io-github-autotest-qemu.cdrom_test.cdrom_lock
+io-github-autotest-qemu.cdrom_test.cdrom_not_insert
+

@@ -1,0 +1,11 @@
+
+type_specific.io-github-autotest-libvirt.virsh.metadata.positive_test.config_option 
+type_specific.io-github-autotest-libvirt.virsh.metadata.positive_test.current_option 
+type_specific.io-github-autotest-libvirt.virsh.metadata.positive_test.live_option 
+type_specific.io-github-autotest-libvirt.virsh.metadata.positive_test.live_config_option 
+type_specific.io-github-autotest-libvirt.virsh.metadata.positive_test.edit_option 
+type_specific.io-github-autotest-libvirt.virsh.metadata.negative_test.config_current_option 
+type_specific.io-github-autotest-libvirt.virsh.metadata.negative_test.live_current_option 
+type_specific.io-github-autotest-libvirt.virsh.metadata.negative_test.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.metadata.negative_test.nonexist_uri 
+

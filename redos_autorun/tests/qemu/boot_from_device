@@ -1,0 +1,12 @@
+
+io-github-autotest-qemu.boot_from_device.boot_from_hard_drive
+io-github-autotest-qemu.boot_from_device.boot_from_usb_stg.with_new_device
+io-github-autotest-qemu.boot_from_device.boot_from_usb_stg.with_specify_device
+io-github-autotest-qemu.boot_from_device.boot_from_scsi_hd.with_local_device
+io-github-autotest-qemu.boot_from_device.boot_from_scsi_hd.with_new_device
+io-github-autotest-qemu.boot_from_device.boot_from_scsi_hd.with_specify_device
+io-github-autotest-qemu.boot_from_device.boot_from_scsi_cdrom.with_local_iso
+io-github-autotest-qemu.boot_from_device.boot_from_scsi_cdrom.with_specify_device
+io-github-autotest-qemu.boot_from_device.boot_from_iscsi_device.with_remote_stg
+io-github-autotest-qemu.boot_from_device.boot_from_iscsi_device.with_specify_device
+

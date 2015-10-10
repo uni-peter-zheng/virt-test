@@ -1,0 +1,16 @@
+
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.no_option 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.title_option 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.live_desc 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.current_desc 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.config_desc 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.live_config_desc 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.live_title 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.current_title 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.config_title 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.live_config_title 
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.transient_live 
+type_specific.io-github-autotest-libvirt.virsh.desc.negative_test.invalid_option1 
+type_specific.io-github-autotest-libvirt.virsh.desc.negative_test.invalid_option2 
+type_specific.io-github-autotest-libvirt.virsh.desc.negative_test.transient_config 
+

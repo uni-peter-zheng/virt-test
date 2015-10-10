@@ -1,0 +1,15 @@
+
+io-github-autotest-qemu.cgroup.blkio_bandwidth (requires root)
+io-github-autotest-qemu.cgroup.blkio_throttle (requires root)
+io-github-autotest-qemu.cgroup.blkio_throttle_multi (requires root)
+io-github-autotest-qemu.cgroup.cpu_cfs_util (requires root)
+io-github-autotest-qemu.cgroup.cpu_share (requires root)
+io-github-autotest-qemu.cgroup.cpuset_cpus (requires root)
+io-github-autotest-qemu.cgroup.cpuset_cpus_switching (requires root)
+io-github-autotest-qemu.cgroup.cpuset_mems_switching (requires root)
+io-github-autotest-qemu.cgroup.devices_access (requires root)
+io-github-autotest-qemu.cgroup.freezer (requires root)
+io-github-autotest-qemu.cgroup.memory_limit (requires root)
+io-github-autotest-qemu.cgroup.memory_memsw_limit (requires root)
+io-github-autotest-qemu.cgroup.memory_move (requires root)
+

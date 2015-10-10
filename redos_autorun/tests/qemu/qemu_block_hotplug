@@ -1,0 +1,6 @@
+
+io-github-autotest-qemu.block_hotplug.block_virtio.one_pci.fmt_qcow2
+io-github-autotest-qemu.block_hotplug.block_virtio.one_pci.fmt_raw
+io-github-autotest-qemu.block_hotplug.block_virtio.multi_pci.fmt_qcow2
+io-github-autotest-qemu.block_hotplug.block_virtio.multi_pci.fmt_raw
+

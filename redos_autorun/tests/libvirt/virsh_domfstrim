@@ -1,0 +1,12 @@
+
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.positive_tests.non_acl.full_fstrim 
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.positive_tests.non_acl.part_fstrim 
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.positive_tests.non_acl.full_fstrim_with_minimum 
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.positive_tests.acl_test.full_fstrim 
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.positive_tests.acl_test.part_fstrim 
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.positive_tests.acl_test.full_fstrim_with_minimum 
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.negtive_tests.invalid_options 
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.negtive_tests.acl_test 
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.negtive_tests.no_qemu_guest_agent 
+type_specific.io-github-autotest-libvirt.virsh.domfstrim.negtive_tests.no_start_qemu_guest_agent 
+

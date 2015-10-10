@@ -1,0 +1,11 @@
+io-github-autotest-qemu.cpuflags.interface.qemu_cpu_model
+io-github-autotest-qemu.cpuflags.interface.qemu_cpu_dump
+io-github-autotest-qemu.cpuflags.interface.qemu_cpu_cpuid
+io-github-autotest-qemu.cpuflags.boot_guest.qemu_boot_cpu_model
+io-github-autotest-qemu.cpuflags.boot_guest.qemu_boot_cpu_model_and_flags
+io-github-autotest-qemu.cpuflags.boot_guest.qemu_warn_boot_check_cpu_model
+io-github-autotest-qemu.cpuflags.boot_guest.qemu_boot_fail_cpu_model
+io-github-autotest-qemu.cpuflags.stress_guest.qemu_test_boot_guest_and_try_flags_under_load
+io-github-autotest-qemu.cpuflags.stress_guest.qemu_test_online_offline_guest_CPUs
+io-github-autotest-qemu.cpuflags.stress_guest.qemu_test_migration_with_additional_flags
+

@@ -1,0 +1,100 @@
+
+io-github-autotest-qemu.migrate.default.x-rdma
+io-github-autotest-qemu.migrate.default.rdma
+io-github-autotest-qemu.migrate.default.tcp
+io-github-autotest-qemu.migrate.default.unix
+io-github-autotest-qemu.migrate.default.exec.default_exec
+io-github-autotest-qemu.migrate.default.exec.gzip_exec
+io-github-autotest-qemu.migrate.default.fd
+io-github-autotest-qemu.migrate.default.mig_cancel
+io-github-autotest-qemu.migrate.default.mig_cancel_x_rdma
+io-github-autotest-qemu.migrate.default.mig_cancel_rdma
+io-github-autotest-qemu.migrate.with_speed_measurement.x-rdma
+io-github-autotest-qemu.migrate.with_speed_measurement.rdma
+io-github-autotest-qemu.migrate.with_speed_measurement.tcp
+io-github-autotest-qemu.migrate.with_speed_measurement.unix
+io-github-autotest-qemu.migrate.with_speed_measurement.exec.default_exec
+io-github-autotest-qemu.migrate.with_speed_measurement.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_speed_measurement.fd
+io-github-autotest-qemu.migrate.with_set_speed.x-rdma
+io-github-autotest-qemu.migrate.with_set_speed.rdma
+io-github-autotest-qemu.migrate.with_set_speed.tcp
+io-github-autotest-qemu.migrate.with_set_speed.unix
+io-github-autotest-qemu.migrate.with_set_speed.exec.default_exec
+io-github-autotest-qemu.migrate.with_set_speed.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_set_speed.fd
+io-github-autotest-qemu.migrate.with_reboot.x-rdma
+io-github-autotest-qemu.migrate.with_reboot.rdma
+io-github-autotest-qemu.migrate.with_reboot.tcp
+io-github-autotest-qemu.migrate.with_reboot.unix
+io-github-autotest-qemu.migrate.with_reboot.exec.default_exec
+io-github-autotest-qemu.migrate.with_reboot.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_reboot.fd
+io-github-autotest-qemu.migrate.with_file_transfer.x-rdma
+io-github-autotest-qemu.migrate.with_file_transfer.rdma
+io-github-autotest-qemu.migrate.with_file_transfer.tcp
+io-github-autotest-qemu.migrate.with_file_transfer.unix
+io-github-autotest-qemu.migrate.with_file_transfer.exec.default_exec
+io-github-autotest-qemu.migrate.with_file_transfer.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_file_transfer.fd
+io-github-autotest-qemu.migrate.mig_dest_problem.read_only_dest.exec.default_exec (requires root)
+io-github-autotest-qemu.migrate.mig_dest_problem.read_only_dest.exec.gzip_exec (requires root)
+io-github-autotest-qemu.migrate.mig_dest_problem.low_space_dest.exec.default_exec (requires root)
+io-github-autotest-qemu.migrate.mig_dest_problem.low_space_dest.exec.gzip_exec (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.nfs.x-rdma (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.nfs.rdma (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.nfs.tcp (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.nfs.unix (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.nfs.exec.default_exec (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.nfs.exec.gzip_exec (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.nfs.fd (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.iscsi.x-rdma (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.iscsi.rdma (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.iscsi.tcp (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.iscsi.unix (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.iscsi.exec.default_exec (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.iscsi.exec.gzip_exec (requires root)
+io-github-autotest-qemu.migrate.after_extensive_io.iscsi.fd (requires root)
+io-github-autotest-qemu.migrate.with_autotest.dbench.x-rdma
+io-github-autotest-qemu.migrate.with_autotest.dbench.rdma
+io-github-autotest-qemu.migrate.with_autotest.dbench.tcp
+io-github-autotest-qemu.migrate.with_autotest.dbench.unix
+io-github-autotest-qemu.migrate.with_autotest.dbench.exec.default_exec
+io-github-autotest-qemu.migrate.with_autotest.dbench.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_autotest.dbench.fd
+io-github-autotest-qemu.migrate.with_autotest.stress.x-rdma
+io-github-autotest-qemu.migrate.with_autotest.stress.rdma
+io-github-autotest-qemu.migrate.with_autotest.stress.tcp
+io-github-autotest-qemu.migrate.with_autotest.stress.unix
+io-github-autotest-qemu.migrate.with_autotest.stress.exec.default_exec
+io-github-autotest-qemu.migrate.with_autotest.stress.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_autotest.stress.fd
+io-github-autotest-qemu.migrate.with_autotest.monotonic_time.x-rdma
+io-github-autotest-qemu.migrate.with_autotest.monotonic_time.rdma
+io-github-autotest-qemu.migrate.with_autotest.monotonic_time.tcp
+io-github-autotest-qemu.migrate.with_autotest.monotonic_time.unix
+io-github-autotest-qemu.migrate.with_autotest.monotonic_time.exec.default_exec
+io-github-autotest-qemu.migrate.with_autotest.monotonic_time.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_autotest.monotonic_time.fd
+io-github-autotest-qemu.migrate.with_stress.io_stress.x-rdma
+io-github-autotest-qemu.migrate.with_stress.io_stress.rdma
+io-github-autotest-qemu.migrate.with_stress.io_stress.tcp
+io-github-autotest-qemu.migrate.with_stress.io_stress.unix
+io-github-autotest-qemu.migrate.with_stress.io_stress.exec.default_exec
+io-github-autotest-qemu.migrate.with_stress.io_stress.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_stress.io_stress.fd
+io-github-autotest-qemu.migrate.with_stress.mem_stress.x-rdma
+io-github-autotest-qemu.migrate.with_stress.mem_stress.rdma
+io-github-autotest-qemu.migrate.with_stress.mem_stress.tcp
+io-github-autotest-qemu.migrate.with_stress.mem_stress.unix
+io-github-autotest-qemu.migrate.with_stress.mem_stress.exec.default_exec
+io-github-autotest-qemu.migrate.with_stress.mem_stress.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_stress.mem_stress.fd
+io-github-autotest-qemu.migrate.with_netperf.x-rdma
+io-github-autotest-qemu.migrate.with_netperf.rdma
+io-github-autotest-qemu.migrate.with_netperf.tcp
+io-github-autotest-qemu.migrate.with_netperf.unix
+io-github-autotest-qemu.migrate.with_netperf.exec.default_exec
+io-github-autotest-qemu.migrate.with_netperf.exec.gzip_exec
+io-github-autotest-qemu.migrate.with_netperf.fd
+

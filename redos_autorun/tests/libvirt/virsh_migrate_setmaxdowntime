@@ -1,0 +1,11 @@
+
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.normal_test.valid_name 
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.normal_test.valid_uuid 
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.normal_test.valid_id 
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.error_test.invalid_uuid 
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.error_test.downtime_zero 
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.error_test.none_downtime 
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.error_test.extra_args 
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.error_test.do_not_migrate 
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.error_test.vm_shutdown 
+

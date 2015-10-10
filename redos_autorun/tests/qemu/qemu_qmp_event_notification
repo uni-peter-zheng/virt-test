@@ -1,0 +1,14 @@
+
+io-github-autotest-qemu.qmp_event_notification.qmp_quit
+io-github-autotest-qemu.qmp_event_notification.qmp_system_reset
+io-github-autotest-qemu.qmp_event_notification.qmp_system_powerdown
+io-github-autotest-qemu.qmp_event_notification.qmp_stop
+io-github-autotest-qemu.qmp_event_notification.qmp_resume
+io-github-autotest-qemu.qmp_event_notification.qmp_rtc_change
+io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_pause
+io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_reset
+io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_poweroff
+io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_shutdown
+io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_debug
+io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_none
+

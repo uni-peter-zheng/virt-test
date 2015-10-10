@@ -1,0 +1,7 @@
+
+io-github-autotest-qemu.multi_nics_hotplug.nic_8139
+io-github-autotest-qemu.multi_nics_hotplug.nic_virtio
+io-github-autotest-qemu.multi_nics_hotplug.nic_e1000
+io-github-autotest-qemu.multi_nics_hotplug.combination
+io-github-autotest-qemu.multi_nics_hotplug.sameid
+

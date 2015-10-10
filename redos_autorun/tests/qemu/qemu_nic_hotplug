@@ -1,0 +1,7 @@
+
+io-github-autotest-qemu.nic_hotplug.one_pci.nic_virtio
+io-github-autotest-qemu.nic_hotplug.multi_pci.nic_virtio
+io-github-autotest-qemu.nic_hotplug.additional.nic_virtio
+io-github-autotest-qemu.nic_hotplug.migration.nic_virtio (requires root)
+io-github-autotest-qemu.nic_hotplug.vhost_nic.nic_virtio
+

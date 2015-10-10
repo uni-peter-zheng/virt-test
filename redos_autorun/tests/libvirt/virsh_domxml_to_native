@@ -1,0 +1,8 @@
+
+type_specific.io-github-autotest-libvirt.virsh.domxml_to_native.no_option 
+type_specific.io-github-autotest-libvirt.virsh.domxml_to_native.expected_option 
+type_specific.io-github-autotest-libvirt.virsh.domxml_to_native.invalid_format_option 
+type_specific.io-github-autotest-libvirt.virsh.domxml_to_native.extra_option 
+type_specific.io-github-autotest-libvirt.virsh.domxml_to_native.no_file_extra_option 
+type_specific.io-github-autotest-libvirt.virsh.domxml_to_native.with_libvirtd_stop 
+

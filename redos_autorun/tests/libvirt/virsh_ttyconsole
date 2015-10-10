@@ -1,0 +1,14 @@
+
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.normal_test.vm_running.domname 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.normal_test.vm_running.domuuid 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.normal_test.vm_running.domid 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.normal_test.vm_paused.domname 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.normal_test.vm_paused.domuuid 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.normal_test.vm_paused.domid 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.error_test.invalid_option.none_domname 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.error_test.invalid_option.hex_domid 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.error_test.invalid_option.invalid_domid 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.error_test.invalid_option.invalid_domuuid 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.error_test.invalid_option.extra_parameter 
+type_specific.io-github-autotest-libvirt.virsh.ttyconsole.error_test.special_operation.vm_shutoff 
+

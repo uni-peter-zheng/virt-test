@@ -1,0 +1,12 @@
+
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.normal_test.non_acl.default_option 
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.normal_test.non_acl.uuid_option 
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.normal_test.acl_test.default_option 
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.normal_test.acl_test.uuid_option 
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.error_test.no_option 
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.error_test.no_net_extra_option 
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.error_test.extra_option1 
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.error_test.extra_option2 
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.error_test.inactive_status_option 
+type_specific.io-github-autotest-libvirt.virsh.net_destroy.error_test.acl_test 
+

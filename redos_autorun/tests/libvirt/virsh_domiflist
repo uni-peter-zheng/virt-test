@@ -1,0 +1,12 @@
+
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_valid_option.domid 
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_valid_option.uuid 
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_valid_option.name 
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_valid_option.iface_model.virtio_iface 
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_valid_option.iface_model.e1000_iface 
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_valid_option.iface_model.rtl8139_iface 
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_invalid_option.none 
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_invalid_option.invalid_domid 
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_invalid_option.invalid_uuid 
+type_specific.io-github-autotest-libvirt.virsh.domiflist.with_invalid_option.addition_invalid_param 
+

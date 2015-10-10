@@ -1,0 +1,5 @@
+
+type_specific.io-github-autotest-libvirt.virsh.nodeinfo.no_option 
+type_specific.io-github-autotest-libvirt.virsh.nodeinfo.unexpect_option 
+type_specific.io-github-autotest-libvirt.virsh.nodeinfo.with_libvirtd_stop 
+

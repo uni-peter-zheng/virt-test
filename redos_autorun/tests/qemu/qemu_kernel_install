@@ -1,0 +1,6 @@
+
+io-github-autotest-qemu.kernel_install.koji
+io-github-autotest-qemu.kernel_install.rpm
+io-github-autotest-qemu.kernel_install.git
+io-github-autotest-qemu.kernel_install.tar
+

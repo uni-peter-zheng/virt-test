@@ -1,0 +1,6 @@
+
+type_specific.io-github-autotest-libvirt.virsh.nodecpustats.no_option 
+type_specific.io-github-autotest-libvirt.virsh.nodecpustats.unexpect_option.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.nodecpustats.unexpect_option.invalid_cpuNum 
+type_specific.io-github-autotest-libvirt.virsh.nodecpustats.with_libvirtd_stop 
+

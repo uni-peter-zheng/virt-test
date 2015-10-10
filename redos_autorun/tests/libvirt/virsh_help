@@ -1,0 +1,7 @@
+
+type_specific.io-github-autotest-libvirt.virsh.help.normal_test.no_option 
+type_specific.io-github-autotest-libvirt.virsh.help.normal_test.all_command_option 
+type_specific.io-github-autotest-libvirt.virsh.help.normal_test.all_group_option 
+type_specific.io-github-autotest-libvirt.virsh.help.error_test.extra_command_option 
+type_specific.io-github-autotest-libvirt.virsh.help.error_test.no_exist_command_option 
+

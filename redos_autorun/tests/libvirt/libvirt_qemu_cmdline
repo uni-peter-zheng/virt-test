@@ -1,0 +1,7 @@
+
+type_specific.io-github-autotest-libvirt.libvirt_qemu_cmdline.hypervisor_features.pv_eoi.enable 
+type_specific.io-github-autotest-libvirt.libvirt_qemu_cmdline.hypervisor_features.pv_eoi.disable 
+type_specific.io-github-autotest-libvirt.libvirt_qemu_cmdline.memory_backing.disable_ksm 
+type_specific.io-github-autotest-libvirt.libvirt_qemu_cmdline.memory_backing.lock_page 
+type_specific.io-github-autotest-libvirt.libvirt_qemu_cmdline.memory_backing.disable_ksm_lock_page 
+

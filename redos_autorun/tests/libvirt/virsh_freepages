@@ -1,0 +1,13 @@
+
+type_specific.io-github-autotest-libvirt.virsh.freepages.positive_test.no_hugepage.all_freepages 
+type_specific.io-github-autotest-libvirt.virsh.freepages.positive_test.no_hugepage.all_cells_each_page 
+type_specific.io-github-autotest-libvirt.virsh.freepages.positive_test.no_hugepage.each_cell_page 
+type_specific.io-github-autotest-libvirt.virsh.freepages.positive_test.default_hugepage.all_freepages 
+type_specific.io-github-autotest-libvirt.virsh.freepages.positive_test.default_hugepage.all_cells_each_page 
+type_specific.io-github-autotest-libvirt.virsh.freepages.positive_test.default_hugepage.each_cell_page 
+type_specific.io-github-autotest-libvirt.virsh.freepages.negative_test.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.freepages.negative_test.mutually_exclusive_option 
+type_specific.io-github-autotest-libvirt.virsh.freepages.negative_test.out_of_range_cellno 
+type_specific.io-github-autotest-libvirt.virsh.freepages.negative_test.invalid_cellno 
+type_specific.io-github-autotest-libvirt.virsh.freepages.negative_test.invalid_page_size 
+

@@ -1,0 +1,9 @@
+
+type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.positve_test.non_acl.normal_test 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.positve_test.acl_test.normal_test 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.negative_test.nodedev_notfound 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.negative_test.nodedev_spacename 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.negative_test.nodedev_unknowopt 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.negative_test.nodedev_multi_dev 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.negative_test.acl_test 
+

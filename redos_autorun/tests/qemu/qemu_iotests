@@ -1,0 +1,6 @@
+
+io-github-autotest-qemu.qemu_iotests.qcow_format
+io-github-autotest-qemu.qemu_iotests.qcow2_format
+io-github-autotest-qemu.qemu_iotests.vdi_format
+io-github-autotest-qemu.qemu_iotests.vpc_format
+

@@ -1,0 +1,12 @@
+
+io-github-autotest-qemu.kdump.one_vm.basic.default
+io-github-autotest-qemu.kdump.one_vm.basic.nmi
+io-github-autotest-qemu.kdump.one_vm.with_stress.netperf_stress.default
+io-github-autotest-qemu.kdump.one_vm.with_stress.netperf_stress.nmi
+io-github-autotest-qemu.kdump.one_vm.with_stress.io_stress.default
+io-github-autotest-qemu.kdump.one_vm.with_stress.io_stress.nmi
+io-github-autotest-qemu.kdump.one_vm.with_ssh.default
+io-github-autotest-qemu.kdump.one_vm.with_ssh.nmi
+io-github-autotest-qemu.kdump.multi_vms.basic.default
+io-github-autotest-qemu.kdump.multi_vms.basic.nmi
+

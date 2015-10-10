@@ -1,0 +1,11 @@
+
+type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.positive_test.local_source.nfs_type 
+type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.positive_test.local_source.iscsi_type 
+type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.positive_test.local_source.logical_type 
+type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.negative_test.unsupport_type 
+type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.negative_test.invalid_type 
+type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.negative_test.invalid_host 
+type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.negative_test.invalid_port 
+type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.negative_test.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.negative_test.readonly_test 
+

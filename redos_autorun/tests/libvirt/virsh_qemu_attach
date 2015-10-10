@@ -1,0 +1,7 @@
+
+type_specific.io-github-autotest-libvirt.virsh.qemu_attach.normal_test 
+type_specific.io-github-autotest-libvirt.virsh.qemu_attach.error_test.invalid_pid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_attach.error_test.invalid_pid1 
+type_specific.io-github-autotest-libvirt.virsh.qemu_attach.error_test.none_pid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_attach.error_test.invalid_options 
+

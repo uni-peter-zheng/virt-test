@@ -1,0 +1,8 @@
+
+io-github-autotest-qemu.enforce_quit.intel_model
+io-github-autotest-qemu.enforce_quit.amd_model
+io-github-autotest-qemu.enforce_quit.svm_quit
+io-github-autotest-qemu.enforce_quit.unknow_flag
+io-github-autotest-qemu.enforce_quit.unsupport_flag
+io-github-autotest-qemu.enforce_quit.cpuid_7_0_ebx_feature
+

@@ -1,0 +1,6 @@
+
+type_specific.io-github-autotest-libvirt.virsh.sysinfo.normal_test.no_option 
+type_specific.io-github-autotest-libvirt.virsh.sysinfo.normal_test.readonly_option 
+type_specific.io-github-autotest-libvirt.virsh.sysinfo.error_test.without_readonly 
+type_specific.io-github-autotest-libvirt.virsh.sysinfo.error_test.with_readonly 
+

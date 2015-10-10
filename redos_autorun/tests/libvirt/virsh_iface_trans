@@ -1,0 +1,8 @@
+
+type_specific.io-github-autotest-libvirt.virsh.iface_trans.positive_testing.open_commit_transaction 
+type_specific.io-github-autotest-libvirt.virsh.iface_trans.positive_testing.open_rollback_transaction 
+type_specific.io-github-autotest-libvirt.virsh.iface_trans.negative_testing.no_pending_transaction 
+type_specific.io-github-autotest-libvirt.virsh.iface_trans.negative_testing.break_transaction.open_commit_transaction 
+type_specific.io-github-autotest-libvirt.virsh.iface_trans.negative_testing.break_transaction.open_rollback_transaction 
+type_specific.io-github-autotest-libvirt.virsh.iface_trans.negative_testing.exist_transaction (requires root
+

@@ -1,0 +1,8 @@
+
+type_specific.io-github-autotest-libvirt.virsh.domxml_from_native.unexpect_option.exist_file_guest_args 
+type_specific.io-github-autotest-libvirt.virsh.domxml_from_native.unexpect_option.no_file_guest_args 
+type_specific.io-github-autotest-libvirt.virsh.domxml_from_native.unexpect_option.invalid_guest_args 
+type_specific.io-github-autotest-libvirt.virsh.domxml_from_native.unexpect_option.with_libvirtd_stop 
+type_specific.io-github-autotest-libvirt.virsh.domxml_from_native.expect_option 
+type_specific.io-github-autotest-libvirt.virsh.domxml_from_native.no_option 
+

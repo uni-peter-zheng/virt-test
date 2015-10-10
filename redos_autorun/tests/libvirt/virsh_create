@@ -1,0 +1,11 @@
+
+type_specific.io-github-autotest-libvirt.virsh.create.none 
+type_specific.io-github-autotest-libvirt.virsh.create.console 
+type_specific.io-github-autotest-libvirt.virsh.create.console_autodestroy 
+type_specific.io-github-autotest-libvirt.virsh.create.console_paused 
+type_specific.io-github-autotest-libvirt.virsh.create.console_autodestroy_paused 
+type_specific.io-github-autotest-libvirt.virsh.create.autodestroy 
+type_specific.io-github-autotest-libvirt.virsh.create.autodestroy_paused 
+type_specific.io-github-autotest-libvirt.virsh.create.paused 
+type_specific.io-github-autotest-libvirt.virsh.create.negtive_readonly 
+

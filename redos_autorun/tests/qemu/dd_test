@@ -1,0 +1,6 @@
+
+io-github-autotest-qemu.dd_test.readwrite.zero2disk
+io-github-autotest-qemu.dd_test.readwrite.disk2null
+io-github-autotest-qemu.dd_test.readonly.zero2disk
+io-github-autotest-qemu.dd_test.readonly.disk2null
+
