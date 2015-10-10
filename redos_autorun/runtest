@@ -202,17 +202,11 @@ init_testcase_list()
 					
 
 		if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
-			echo -e "DEFAULT_EXTRA_COMMAND: $DEFAULT_EXTRA_COMMAND"
 			default_cmd=`merge_params "$QEMU_EXTRA_COMMAND" "$DEFAULT_EXTRA_COMMAND"`
-			echo -e "default: $default_cmd"
 			default_cmd=`merge_params "$module_extra_params" "$default_cmd"`
-			echo -e "default: $default_cmd"
 		elif [ "$class" = "libvirt" ] || [ "$class" = "LIBVIRT" ]; then
-			echo -e "DEFAULT_EXTRA_COMMAND: $DEFAULT_EXTRA_COMMAND"
 			default_cmd=`merge_params "$LIBVIRT_EXTRA_COMMAND" "$DEFAULT_EXTRA_COMMAND"`
-			echo -e "default: $default_cmd"
 			default_cmd=`merge_params "$module_extra_params" "$default_cmd"`
-			echo -e "default: $default_cmd"
 		else	
 			echo "ERROR: Modules class is not set($module_name)"
 			exit 2
