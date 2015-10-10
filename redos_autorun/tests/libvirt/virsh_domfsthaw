@@ -1,0 +1,10 @@
+
+type_specific.io-github-autotest-libvirt.virsh.domfsthaw.positive_tests.full_freeze 
+type_specific.io-github-autotest-libvirt.virsh.domfsthaw.positive_tests.no_freezed_fs 
+type_specific.io-github-autotest-libvirt.virsh.domfsthaw.negative_tests.no_qemu_guest_agent 
+type_specific.io-github-autotest-libvirt.virsh.domfsthaw.negative_tests.no_start_qemu_guest_agent 
+type_specific.io-github-autotest-libvirt.virsh.domfsthaw.negative_tests.not_active_domain 
+type_specific.io-github-autotest-libvirt.virsh.domfsthaw.negative_tests.no_domain_ref 
+type_specific.io-github-autotest-libvirt.virsh.domfsthaw.negative_tests.invalid_mountpoint 
+type_specific.io-github-autotest-libvirt.virsh.domfsthaw.negative_tests.invalid_option 
+

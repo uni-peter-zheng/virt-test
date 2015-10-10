@@ -1,0 +1,13 @@
+
+type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.no_option 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.min_bandwidth 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.max_bandwidth 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.abort_option 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.async_option 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.pivot_option 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.info_option 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.negative_test.invalid_disk 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.negative_test.invalid_bandwidth 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.negative_test.no_blockjob_pivot 
+type_specific.io-github-autotest-libvirt.virsh.blockjob.negative_test.no_blockjob_abort 
+

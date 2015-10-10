@@ -1,0 +1,14 @@
+
+io-github-autotest-qemu.unit_test_kvmctl.access
+io-github-autotest-qemu.unit_test_kvmctl.apic
+io-github-autotest-qemu.unit_test_kvmctl.emulator
+io-github-autotest-qemu.unit_test_kvmctl.hypercall
+io-github-autotest-qemu.unit_test_kvmctl.msr
+io-github-autotest-qemu.unit_test_kvmctl.port80
+io-github-autotest-qemu.unit_test_kvmctl.realmode
+io-github-autotest-qemu.unit_test_kvmctl.sieve
+io-github-autotest-qemu.unit_test_kvmctl.smptest
+io-github-autotest-qemu.unit_test_kvmctl.tsc
+io-github-autotest-qemu.unit_test_kvmctl.stringio
+io-github-autotest-qemu.unit_test_kvmctl.vmexit
+

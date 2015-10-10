@@ -1,0 +1,8 @@
+
+io-github-autotest-qemu.timedrift_no_net.guest_suspend.guest_s4_time_drift.clock_vm
+io-github-autotest-qemu.timedrift_no_net.guest_suspend.guest_s4_time_drift.clock_host
+io-github-autotest-qemu.timedrift_no_net.guest_suspend.guest_s3_time_drift.clock_vm
+io-github-autotest-qemu.timedrift_no_net.guest_suspend.guest_s3_time_drift.clock_host
+io-github-autotest-qemu.timedrift_no_net.guest_pause_resume.clock_vm
+io-github-autotest-qemu.timedrift_no_net.guest_pause_resume.clock_host
+

@@ -1,0 +1,11 @@
+
+type_specific.io-github-autotest-libvirt.virsh.reset.negative_test.readonly 
+type_specific.io-github-autotest-libvirt.virsh.reset.negative_test.shutdown_guest 
+type_specific.io-github-autotest-libvirt.virsh.reset.negative_test.acl_test 
+type_specific.io-github-autotest-libvirt.virsh.reset.positive_test.non_acl.id_options 
+type_specific.io-github-autotest-libvirt.virsh.reset.positive_test.non_acl.uuid_options 
+type_specific.io-github-autotest-libvirt.virsh.reset.positive_test.non_acl.name_options 
+type_specific.io-github-autotest-libvirt.virsh.reset.positive_test.acl_test.id_options 
+type_specific.io-github-autotest-libvirt.virsh.reset.positive_test.acl_test.uuid_options 
+type_specific.io-github-autotest-libvirt.virsh.reset.positive_test.acl_test.name_options 
+

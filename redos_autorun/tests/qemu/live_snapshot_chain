@@ -1,0 +1,7 @@
+
+io-github-autotest-qemu.live_snapshot_chain.pause
+io-github-autotest-qemu.live_snapshot_chain.update
+io-github-autotest-qemu.live_snapshot_chain.long_chain
+io-github-autotest-qemu.live_snapshot_chain.check
+io-github-autotest-qemu.live_snapshot_chain.oops
+

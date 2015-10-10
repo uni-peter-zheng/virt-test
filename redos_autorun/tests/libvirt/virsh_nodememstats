@@ -1,0 +1,9 @@
+
+type_specific.io-github-autotest-libvirt.virsh.nodememstats.no_option 
+type_specific.io-github-autotest-libvirt.virsh.nodememstats.with_libvirtd_stop 
+type_specific.io-github-autotest-libvirt.virsh.nodememstats.cell_test.zero
+type_specific.io-github-autotest-libvirt.virsh.nodememstats.cell_test.zero2
+type_specific.io-github-autotest-libvirt.virsh.nodememstats.cell_test.invalid
+type_specific.io-github-autotest-libvirt.virsh.nodememstats.cell_test.not_int
+type_specific.io-github-autotest-libvirt.virsh.nodememstats.cell_test.max_plus_one
+

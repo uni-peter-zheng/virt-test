@@ -1,0 +1,5 @@
+type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.NIC.Normal_passthrough 
+type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.NIC.SRIOV 
+type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.STORAGE.Normal_passthrough 
+type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.STORAGE.SRIOV 
+

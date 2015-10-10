@@ -1,3 +1,0 @@
-type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_model
-type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_dump
-type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_cpuid

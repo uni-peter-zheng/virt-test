@@ -1,0 +1,7 @@
+
+type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.positive_test.attach_interface_before_vm_start 
+type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.positive_test.attach_interface_after_vm_start 
+type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.negative_test.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.negative_test.invalid_net 
+type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.negative_test.invalid_mac 
+

@@ -1,0 +1,8 @@
+
+io-github-autotest-qemu.timedrift_adjust_time.guest_pause_resume.clock_vm.adjust_host_clock
+io-github-autotest-qemu.timedrift_adjust_time.guest_pause_resume.clock_host.adjust_host_clock
+io-github-autotest-qemu.timedrift_adjust_time.guest_reboot.clock_vm.adjust_host_clock
+io-github-autotest-qemu.timedrift_adjust_time.guest_reboot.clock_vm.adjust_guest_clock
+io-github-autotest-qemu.timedrift_adjust_time.guest_reboot.clock_host.adjust_host_clock
+io-github-autotest-qemu.timedrift_adjust_time.guest_reboot.clock_host.adjust_guest_clock
+

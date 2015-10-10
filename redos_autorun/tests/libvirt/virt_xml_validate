@@ -1,0 +1,12 @@
+
+type_specific.io-github-autotest-libvirt.virt_xml_validate.domain 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.domainsnapshot 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.network 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.storagepool 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.storagevol 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.nodedev 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.capability 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.nwfilter 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.secret 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.interface 
+

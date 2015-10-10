@@ -1,0 +1,13 @@
+
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.positive_test.min_time.target_mem 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.positive_test.min_time.target_disk 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.positive_test.min_time.target_hybrid 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.positive_test.double_time.target_mem 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.positive_test.double_time.target_disk 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.positive_test.double_time.target_hybrid 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.negative_test.invalid_target 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.negative_test.zero_time 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.negative_test.short_time 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.negative_test.negative_time 
+type_specific.io-github-autotest-libvirt.virsh.nodesuspend.negative_test.large_time 
+

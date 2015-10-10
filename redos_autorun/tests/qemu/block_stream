@@ -1,0 +1,12 @@
+
+io-github-autotest-qemu.block_stream.simple_test.start_stream
+io-github-autotest-qemu.block_stream.simple_test.set_speed
+io-github-autotest-qemu.block_stream.simple_test.reset_speed
+io-github-autotest-qemu.block_stream.simple_test.cancel_sync
+io-github-autotest-qemu.block_stream.simple_test.cancel_async
+io-github-autotest-qemu.block_stream.simple_test.query
+io-github-autotest-qemu.block_stream.when_reboot
+io-github-autotest-qemu.block_stream.drop_backingfile
+io-github-autotest-qemu.block_stream.check_backingfile
+io-github-autotest-qemu.block_stream.with_stress
+

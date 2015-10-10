@@ -1,0 +1,11 @@
+
+type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.positive_testing.non_acl.create_destroy_device 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.positive_testing.acl_test.create_destroy_device 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.negative_testing.create_node_device.noexist_parent_device 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.negative_testing.create_node_device.offline_port 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.negative_testing.create_node_device.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.negative_testing.create_node_device.acl_test 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.negative_testing.destroy_node_device.noexist_device 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.negative_testing.destroy_node_device.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.negative_testing.destroy_node_device.no_capable_of_vport_ops 
+

@@ -1,0 +1,16 @@
+
+io-github-autotest-qemu.netperf_stress_test.TCP_STREAM.guest2guest
+io-github-autotest-qemu.netperf_stress_test.TCP_STREAM.host2guest
+io-github-autotest-qemu.netperf_stress_test.TCP_RR.guest2guest
+io-github-autotest-qemu.netperf_stress_test.TCP_RR.host2guest
+io-github-autotest-qemu.netperf_stress_test.TCP_CRR.guest2guest
+io-github-autotest-qemu.netperf_stress_test.TCP_CRR.host2guest
+io-github-autotest-qemu.netperf_stress_test.TCP_MAERTS.guest2guest
+io-github-autotest-qemu.netperf_stress_test.TCP_MAERTS.host2guest
+io-github-autotest-qemu.netperf_stress_test.TCP_SENDFILE.guest2guest
+io-github-autotest-qemu.netperf_stress_test.TCP_SENDFILE.host2guest
+io-github-autotest-qemu.netperf_stress_test.UDP_STREAM.guest2guest
+io-github-autotest-qemu.netperf_stress_test.UDP_STREAM.host2guest
+io-github-autotest-qemu.netperf_stress_test.UDP_RR.guest2guest
+io-github-autotest-qemu.netperf_stress_test.UDP_RR.host2guest
+

@@ -1,0 +1,12 @@
+
+type_specific.io-github-autotest-libvirt.virsh.net_start.normal_test.non_acl.valid_netname 
+type_specific.io-github-autotest-libvirt.virsh.net_start.normal_test.non_acl.valid_netuuid 
+type_specific.io-github-autotest-libvirt.virsh.net_start.normal_test.acl_test.valid_netname 
+type_specific.io-github-autotest-libvirt.virsh.net_start.normal_test.acl_test.valid_netuuid 
+type_specific.io-github-autotest-libvirt.virsh.net_start.error_test.none 
+type_specific.io-github-autotest-libvirt.virsh.net_start.error_test.start_twice 
+type_specific.io-github-autotest-libvirt.virsh.net_start.error_test.invalid_netname 
+type_specific.io-github-autotest-libvirt.virsh.net_start.error_test.additional_args 
+type_specific.io-github-autotest-libvirt.virsh.net_start.error_test.additional_option 
+type_specific.io-github-autotest-libvirt.virsh.net_start.error_test.acl_test 
+

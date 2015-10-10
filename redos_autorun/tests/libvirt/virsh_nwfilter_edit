@@ -1,0 +1,6 @@
+
+type_specific.io-github-autotest-libvirt.virsh.nwfilter_edit.positive_test.use_name 
+type_specific.io-github-autotest-libvirt.virsh.nwfilter_edit.positive_test.use_uuid 
+type_specific.io-github-autotest-libvirt.virsh.nwfilter_edit.negative_test.invalid_name 
+type_specific.io-github-autotest-libvirt.virsh.nwfilter_edit.negative_test.invalid_extra_option 
+

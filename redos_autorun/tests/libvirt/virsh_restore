@@ -1,0 +1,15 @@
+
+type_specific.io-github-autotest-libvirt.virsh.restore.expected_option.non_acl.no_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.expected_option.non_acl.paused_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.expected_option.non_acl.running_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.expected_option.acl_test.no_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.expected_option.acl_test.paused_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.expected_option.acl_test.running_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.no_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.unexpected_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.new_file_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.start_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.extra_option 
+type_specific.io-github-autotest-libvirt.virsh.restore.with_libvirt_stop 
+type_specific.io-github-autotest-libvirt.virsh.restore.acl_test 
+

@@ -1,0 +1,5 @@
+
+type_specific.io-github-autotest-libvirt.virsh.create_lxc.with_passfds.with_none 
+type_specific.io-github-autotest-libvirt.virsh.create_lxc.with_passfds.with_console 
+type_specific.io-github-autotest-libvirt.virsh.create_lxc.with_passfds.with_autodestroy_console 
+

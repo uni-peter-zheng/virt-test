@@ -1,0 +1,6 @@
+
+io-github-autotest-qemu.smbios_table.type0 (requires root)
+io-github-autotest-qemu.smbios_table.type1 (requires root)
+io-github-autotest-qemu.smbios_table.type0and1 (requires root)
+io-github-autotest-qemu.smbios_table.machine_type (requires root)
+

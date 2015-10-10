@@ -1,0 +1,7 @@
+
+
+type_specific.io-github-autotest-libvirt.virsh.nwfilter_dumpxml.normal_test.non_acl 
+type_specific.io-github-autotest-libvirt.virsh.nwfilter_dumpxml.normal_test.acl_test 
+type_specific.io-github-autotest-libvirt.virsh.nwfilter_dumpxml.error_test.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.nwfilter_dumpxml.error_test.none_option 
+

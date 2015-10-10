@@ -1,0 +1,15 @@
+
+type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.default 
+type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.xen_uri 
+type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.qemu_system_uri 
+type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.qemu_session_uri 
+type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.lxc_uri 
+type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.readonly 
+type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.error_test.unrecognized_arg 
+type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.error_test.unrecognized_opt 
+type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.error_test.multi_arg 
+type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.ssh_transport 
+type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.tls_transport 
+type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.unix_transport 
+type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.tcp_transport 
+

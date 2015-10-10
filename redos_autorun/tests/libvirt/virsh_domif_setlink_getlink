@@ -1,0 +1,14 @@
+
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_net.no_config.running_guest.domif_setlink.setlink_up 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_net.no_config.running_guest.domif_setlink.setlink_down 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.no_config.running_guest.domif_setlink.setlink_up 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.no_config.running_guest.domif_setlink.setlink_down 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.no_config.shutoff_guest.domif_setlink.setlink_up 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.no_config.shutoff_guest.domif_setlink.setlink_down 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.with_config.running_guest.domif_setlink.setlink_up 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.with_config.running_guest.domif_setlink.setlink_down 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.multi_functional_test.check_update_device 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.multi_functional_test.check_options_config 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.negative_test.running_guest_invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.negative_test.shutoff_guest_with_vnet 
+

@@ -1,0 +1,13 @@
+
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option1 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option2 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option3 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option4 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option5 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option6 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.paused_option 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.negative_test.no_option 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.negative_test.unexpect_option 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.negative_test.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.negative_test.invalid_start_option 
+

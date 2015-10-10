@@ -1,0 +1,5 @@
+type_specific.io-github-autotest-libvirt.libvirt_scsi.disk_type_img 
+type_specific.io-github-autotest-libvirt.libvirt_scsi.disk_type_partition 
+type_specific.io-github-autotest-libvirt.libvirt_scsi.disk_type_cdrom 
+type_specific.io-github-autotest-libvirt.libvirt_scsi.multi_disk_type 
+

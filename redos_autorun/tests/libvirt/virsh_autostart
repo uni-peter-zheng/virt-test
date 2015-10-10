@@ -1,0 +1,9 @@
+
+type_specific.io-github-autotest-libvirt.virsh.autostart.positive_test.set_autostart 
+type_specific.io-github-autotest-libvirt.virsh.autostart.positive_test.set_disable 
+type_specific.io-github-autotest-libvirt.virsh.autostart.negative_test.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.autostart.negative_test.transient_autostart 
+type_specific.io-github-autotest-libvirt.virsh.autostart.negative_test.transient_disable 
+type_specific.io-github-autotest-libvirt.virsh.autostart.negative_test.readonly_autostart 
+type_specific.io-github-autotest-libvirt.virsh.autostart.negative_test.readonly_disable 
+

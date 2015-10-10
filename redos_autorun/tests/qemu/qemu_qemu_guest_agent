@@ -1,0 +1,10 @@
+
+io-github-autotest-qemu.qemu_guest_agent.virtio_serial.gagent_install
+io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_sync
+io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_powerdown
+io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_reboot
+io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_halt
+io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_fsfreeze
+io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_snapshot
+io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_suspend
+

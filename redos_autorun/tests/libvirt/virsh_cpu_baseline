@@ -1,0 +1,9 @@
+
+type_specific.io-github-autotest-libvirt.virsh.cpu_baseline.positive_test.default_test 
+type_specific.io-github-autotest-libvirt.virsh.cpu_baseline.positive_test.config_guest 
+type_specific.io-github-autotest-libvirt.virsh.cpu_baseline.negative_test.space_option 
+type_specific.io-github-autotest-libvirt.virsh.cpu_baseline.negative_test.no_option 
+type_specific.io-github-autotest-libvirt.virsh.cpu_baseline.negative_test.extra_option 
+type_specific.io-github-autotest-libvirt.virsh.cpu_baseline.negative_test.extra_option1 
+type_specific.io-github-autotest-libvirt.virsh.cpu_baseline.negative_test.extra_option2 
+

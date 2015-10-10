@@ -1,0 +1,10 @@
+
+type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.positive.normal_test 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.positive.acl_test 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.negative.no_arg 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.negative.name_unrecognized 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.negative.multi_detach 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.negative.not_pci_device 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.negative.nodedev_unknowopt 
+type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.negative.acl_test 
+

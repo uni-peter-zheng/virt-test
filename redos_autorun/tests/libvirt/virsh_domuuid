@@ -1,0 +1,12 @@
+
+type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_paused.valid_domid 
+type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_paused.valid_domname 
+type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_running.valid_domid 
+type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_running.valid_domname 
+type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_shutoff.valid_domname 
+type_specific.io-github-autotest-libvirt.virsh.domuuid.error_test.invalid_domid 
+type_specific.io-github-autotest-libvirt.virsh.domuuid.error_test.hex_domid 
+type_specific.io-github-autotest-libvirt.virsh.domuuid.error_test.additional_arg 
+type_specific.io-github-autotest-libvirt.virsh.domuuid.error_test.none 
+type_specific.io-github-autotest-libvirt.virsh.domuuid.error_test.libvirtd_off 
+

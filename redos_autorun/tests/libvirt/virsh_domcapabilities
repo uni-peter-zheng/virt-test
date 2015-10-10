@@ -1,0 +1,11 @@
+
+type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.local_host.default_option_values 
+type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.local_host.auto_option_values 
+type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.remote_host.default_option_values 
+type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.remote_host.auto_option_values 
+type_specific.io-github-autotest-libvirt.virsh.domcapabilities.negative_test.invalid_option 
+type_specific.io-github-autotest-libvirt.virsh.domcapabilities.negative_test.invalid_virttype 
+type_specific.io-github-autotest-libvirt.virsh.domcapabilities.negative_test.invalid_emulatorbin 
+type_specific.io-github-autotest-libvirt.virsh.domcapabilities.negative_test.invalid_arch 
+type_specific.io-github-autotest-libvirt.virsh.domcapabilities.negative_test.invalid_machine 
+

@@ -1,0 +1,8 @@
+
+io-github-autotest-qemu.set_link.reboot_shell.default (requires root)
+io-github-autotest-qemu.set_link.reboot_shell.status_on (requires root)
+io-github-autotest-qemu.set_link.reboot_shell.status_off (requires root)
+io-github-autotest-qemu.set_link.reboot_system_reset.default (requires root)
+io-github-autotest-qemu.set_link.reboot_system_reset.status_on (requires root)
+io-github-autotest-qemu.set_link.reboot_system_reset.status_off (requires root)
+

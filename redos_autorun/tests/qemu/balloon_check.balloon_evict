@@ -1,9 +1,0 @@
-type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-migrate
-type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-reboot
-#type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-shutdown
-#type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-stop_continue
-#type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-migrate
-type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-reboot
-type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-shutdown 
-type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-stop_continue
-type_specific.io-github-autotest-qemu.balloon_check.balloon_evict_and_enlarge.balloon_base

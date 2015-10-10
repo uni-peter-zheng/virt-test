@@ -1,0 +1,14 @@
+
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.single_disk.copy_storage_inc.file_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.single_disk.copy_storage_all.file_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_inc.file_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_inc.lvm_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_all.file_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_all.lvm_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.error_test.space_occupied.copy_storage_inc.file_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.error_test.space_occupied.copy_storage_all.file_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.error_test.nonexist_image.copy_storage_inc.file_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.error_test.nonexist_image.copy_storage_all.file_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.error_test.migration_interupted.copy_storage_inc.file_image 
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.error_test.migration_interupted.copy_storage_all.file_image 
+

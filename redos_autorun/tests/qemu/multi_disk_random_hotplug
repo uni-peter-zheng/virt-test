@@ -1,0 +1,6 @@
+
+io-github-autotest-qemu.multi_disk_random_hotplug.serial.all_types
+io-github-autotest-qemu.multi_disk_random_hotplug.serial.single_type
+io-github-autotest-qemu.multi_disk_random_hotplug.parallel.all_types
+io-github-autotest-qemu.multi_disk_random_hotplug.parallel.single_type
+

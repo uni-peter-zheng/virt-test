@@ -1,0 +1,4 @@
+type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.network 
+type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.interface 
+type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.portgroup 
+

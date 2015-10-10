@@ -1,0 +1,10 @@
+
+type_specific.io-github-autotest-libvirt.virsh.net_autostart.normal_test.set_autostart.netname 
+type_specific.io-github-autotest-libvirt.virsh.net_autostart.normal_test.set_autostart.netuuid 
+type_specific.io-github-autotest-libvirt.virsh.net_autostart.normal_test.set_disable.netname 
+type_specific.io-github-autotest-libvirt.virsh.net_autostart.normal_test.set_disable.netuuid 
+type_specific.io-github-autotest-libvirt.virsh.net_autostart.error_test.none_network 
+type_specific.io-github-autotest-libvirt.virsh.net_autostart.error_test.invalid_network 
+type_specific.io-github-autotest-libvirt.virsh.net_autostart.error_test.additional_arg 
+type_specific.io-github-autotest-libvirt.virsh.net_autostart.error_test.additional_option 
+

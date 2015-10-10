@@ -1,0 +1,14 @@
+
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirton.expected_options.no_option 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirton.expected_options.expected_option_all 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirton.expected_options.expected_args_0 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirton.error_test.unexpected_args_xyz 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirton.error_test.unexpected_args_12345 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirton.error_test.unexpected_option_xyz 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirtoff.expected_options.no_option 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirtoff.expected_options.expected_option_all 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirtoff.expected_options.expected_args_0 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirtoff.error_test.unexpected_args_xyz 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirtoff.error_test.unexpected_args_12345 
+type_specific.io-github-autotest-libvirt.virsh.freecell.libvirtoff.error_test.unexpected_option_xyz 
+

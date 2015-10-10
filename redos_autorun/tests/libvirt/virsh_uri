@@ -1,0 +1,6 @@
+
+type_specific.io-github-autotest-libvirt.virsh.uri.no_option.connect_to_local 
+type_specific.io-github-autotest-libvirt.virsh.uri.no_option.connect_to_remote 
+type_specific.io-github-autotest-libvirt.virsh.uri.unexpect_option 
+type_specific.io-github-autotest-libvirt.virsh.uri.with_libvirtd_stop 
+

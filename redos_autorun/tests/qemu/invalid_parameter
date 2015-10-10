@@ -1,0 +1,12 @@
+
+io-github-autotest-qemu.invalid_parameter.fd_vhostfds
+io-github-autotest-qemu.invalid_parameter.fd_queues
+io-github-autotest-qemu.invalid_parameter.fd_fds
+io-github-autotest-qemu.invalid_parameter.fds_vhostfd
+io-github-autotest-qemu.invalid_parameter.fds_queues
+io-github-autotest-qemu.invalid_parameter.helper_fd
+io-github-autotest-qemu.invalid_parameter.helper_fds
+io-github-autotest-qemu.invalid_parameter.helper_vhostfds
+io-github-autotest-qemu.invalid_parameter.helper_vhostfd
+io-github-autotest-qemu.invalid_parameter.helper_queues
+

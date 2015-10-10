@@ -1,0 +1,16 @@
+
+type_specific.io-github-autotest-libvirt.virsh.pool_create.positive_test.from_given_file 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.positive_test.from_pre_def_pool.dir_pool 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.positive_test.from_pre_def_pool.nfs_pool 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.positive_test.from_pre_def_pool.iscsi_pool 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.positive_test.from_pre_def_pool.gluster_pool 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.negative_test.invalid_extra_option 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.negative_test.no_xml_file 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.negative_test.invalid_xml_file 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.negative_test.invalid_source_format 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.negative_test.duplicate_pool_name 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.negative_test.duplicate_pool_uuid 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.negative_test.duplicate_pool_source 
+type_specific.io-github-autotest-libvirt.virsh.pool_create.negative_test.readonly_pool_create 
+type_specific.io-github-autotest-libvirt.virsh.pool_create_as 
+
