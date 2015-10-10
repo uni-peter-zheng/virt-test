@@ -1,5 +1,0 @@
-type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_paused.valid_domid
-type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_paused.valid_domname
-type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_running.valid_domid
-type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_running.valid_domname
-type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_shutoff.valid_domname
