@@ -15,20 +15,23 @@ DEFAULT_LOG_DIR=$CURRENT_DIR/logs/
 DEFAULT_TESTS_DIR=$CURRENT_DIR/tests/
 DEFAULT_MODULE_LIST=$CURRENT_DIR/tests/modules_list
 DEFAULT_MODULE_FILE_DIR=$CURRENT_DIR/tests/
+DEFAULT_QEMU_MODULE_FILE_DIR=$CURRENT_DIR/tests/qemu/
+DEFAULT_LIBVIRT_MODULE_FILE_DIR=$CURRENT_DIR/tests/libvirt/
 DEFAULT_SCATTERED_LIST=$CURRENT_DIR/tests/scattered_list
 MODE="ANALYSIS"
+CONTINUE="FALSE"
 
 get_config_key()
 {    
-    section=$(echo $1 | cut -d '.' -f 1)    
-    key=$(echo $1 | cut -d '.' -f 2)    
-    sed -n "/\[$section\]/,/\[.*\]/{    
-     /^\[.*\]/d    
-     /^[ \t]*$/d    
-     /^$/d    
-     /^#.*$/d    
-     s/^[ \t]*$key[ \t]*=[ \t]*\(.*\)[ \t]*/\1/p    
-    }" $DEFAULT_CONFIG
+	section=$(echo $1 | cut -d '.' -f 1)    
+	key=$(echo $1 | cut -d '.' -f 2)    
+	sed -n "/\[$section\]/,/\[.*\]/{    
+ 	/^\[.*\]/d    
+ 	/^[ \t]*$/d    
+	/^$/d    
+	/^#.*$/d    
+	s/^[ \t]*$key[ \t]*=[ \t]*\(.*\)[ \t]*/\1/p    
+	}" $DEFAULT_CONFIG
 }   
 
 VIRTTEST_DIR=$(get_config_key "dir.virt-test")
@@ -40,34 +43,35 @@ CURRENT_LOG_PATH=""
 CURRENT_CASESLIST_FILE=""
 CURRENT_LOG_FILE=""
 CURRENT_DETAIL_LOG_FILE=""
+CURRENT_CONFIG_LOG_FILE=""
 
 debug()
 {
-	echo "DEBUG:"
+	echo "DEBUG:" | tee >> "$CURRENT_CONFIG_LOG_FILE"
 
 	# print env params
-	echo -e "\tEnvironments:"
-	echo -e "\t\tCURRENT_DIR = $CURRENT_DIR"
-	echo -e "\t\tDEFAULT_LOG_DIR = $DEFAULT_LOG_DIR"
-	echo -e "\t\tDEFAULT_TESTS_DIR = $DEFAULT_TESTS_DIR"
-	echo -e "\t\tDEFAULT_MODULE_FILE_DIR = $DEFAULT_MODULE_FILE_DIR"
-	echo -e "\t\tCURRENT_LOG_PATH = $CURRENT_LOG_PATH"
+	echo -e "\tEnvironments:"  | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_DIR = $CURRENT_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_LOG_DIR = $DEFAULT_LOG_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_TESTS_DIR = $DEFAULT_TESTS_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_MODULE_FILE_DIR = $DEFAULT_MODULE_FILE_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_LOG_PATH = $CURRENT_LOG_PATH" | tee >> "$CURRENT_CONFIG_LOG_FILE"
 
-	echo -e "\t\tDEFAULT_CONFIG = $DEFAULT_CONFIG"
-	echo -e "\t\tDEFAULT_MODULE_LIST = $DEFAULT_MODULE_LIST"
-	echo -e "\t\tDEFAULT_SCATTERED_LIST = $DEFAULT_SCATTERED_LIST"
-	echo -e "\t\tCURRENT_CASESLIST_FILE = $CURRENT_CASESLIST_FILE"
-	echo -e "\t\tCURRENT_LOG_FILE = $CURRENT_LOG_FILE"
-	echo -e "\t\tCURRENT_DETAIL_LOG_FILE = $CURRENT_DETAIL_LOG_FILE"
+	echo -e "\t\tDEFAULT_CONFIG = $DEFAULT_CONFIG" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_MODULE_LIST = $DEFAULT_MODULE_LIST" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_SCATTERED_LIST = $DEFAULT_SCATTERED_LIST" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_CASESLIST_FILE = $CURRENT_CASESLIST_FILE" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_LOG_FILE = $CURRENT_LOG_FILE" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_DETAIL_LOG_FILE = $CURRENT_DETAIL_LOG_FILE" | tee >> "$CURRENT_CONFIG_LOG_FILE"
 
 	# print config data
-	echo -e "\tConfig:"
-	echo -e "\t\tVIRTEST_DIR = $VIRTTEST_DIR"
-	echo -e "\t\tDEFAULT_RUN_COMMAND = $DEFAULT_RUN_COMMAND"
-	echo -e "\t\tDEFAULT_EXTRA_COMMAND = $DEFAULT_EXTRA_COMMAND"
-	echo -e "\t\tQEMU_EXTRA_COMMAND = $QEMU_EXTRA_COMMAND"
-	echo -e "\t\tLIBVIRT_EXTRA_COMMAND = $LIBVIRT_EXTRA_COMMAND"
-	echo -e "\n"
+	echo -e "\tConfig:" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tVIRTEST_DIR = $VIRTTEST_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_RUN_COMMAND = $DEFAULT_RUN_COMMAND" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_EXTRA_COMMAND = $DEFAULT_EXTRA_COMMAND" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tQEMU_EXTRA_COMMAND = $QEMU_EXTRA_COMMAND" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tLIBVIRT_EXTRA_COMMAND = $LIBVIRT_EXTRA_COMMAND" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\n" | tee >> "$CURRENT_CONFIG_LOG_FILE"
 }
 
 # Merge repeated parameters
@@ -215,7 +219,7 @@ init_testcase_list()
 
 		if [ "$MODE" = "DIRECT" ]; then
 			echo -e "\t\tcase $module_count: $module_name $module_extra_params"
-			echo -e "$class"":""$module_name"" { ""$module_extra_params"" } " >> $CURRENT_CASESLIST_FILE
+			echo -e "$class"":""$module_name"" { ""$default_cmd"" } " >> $CURRENT_CASESLIST_FILE
 		else
 			printf "\tModule $module_count: %-40s\t%-60s\n" "$class:$module_name" "module_params:$module_extra_params"
 			if [ ! -f "$module_file" ]; then
@@ -306,6 +310,7 @@ init_env_params()
 	CURRENT_CASESLIST_FILE="$CURRENT_LOG_PATH""testcases_list"
 	CURRENT_LOG_FILE="$CURRENT_LOG_PATH""log"
 	CURRENT_DETAIL_LOG_FILE="$CURRENT_LOG_PATH""detail_log"
+	CURRENT_CONFIG_LOG_FILE="$CURRENT_LOG_PATH""config_log"
 }
 
 init_file()
@@ -330,6 +335,10 @@ init_file()
 	if [ ! -f "$CURRENT_DETAIL_LOG_FILE" ]; then
 		touch $CURRENT_DETAIL_LOG_FILE
 	fi
+
+	if [ ! -f "$CURRENT_CONFIG_LOG_FILE" ]; then
+		touch $CURRENT_DETAIL_LOG_FILE
+	fi
 }
 
 init()
@@ -343,9 +352,11 @@ init()
 
 main()
 {
-	debug
+	debug 
 	echo -e "Testcases List:"
-	init_testcase_list
+	init_testcase_list 
+	
+	echo -e "\n" >> "$CURRENT_CONFIG_LOG_FILE"
 
 	echo ""
 	echo -e "Start:"
