@@ -18,8 +18,7 @@ DEFAULT_MODULE_FILE_DIR=$CURRENT_DIR/tests/
 DEFAULT_QEMU_MODULE_FILE_DIR=$CURRENT_DIR/tests/qemu/
 DEFAULT_LIBVIRT_MODULE_FILE_DIR=$CURRENT_DIR/tests/libvirt/
 DEFAULT_SCATTERED_LIST=$CURRENT_DIR/tests/scattered_list
-MODE="ANALYSIS"
-CONTINUE="FALSE"
+
 
 get_config_key()
 {    
@@ -45,33 +44,42 @@ CURRENT_LOG_FILE=""
 CURRENT_DETAIL_LOG_FILE=""
 CURRENT_CONFIG_LOG_FILE=""
 
+TOTAL_COUNT=0
+PASS_COUNT=0
+SKIP_COUNT=0
+FAIL_COUNT=0
+MODULE_COUNT=0
+MODE="ANALYSIS"
+CONTINUE="FALSE"
+
+
 debug()
 {
-	echo "DEBUG:" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo "DEBUG:" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 
 	# print env params
-	echo -e "\tEnvironments:"  | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tCURRENT_DIR = $CURRENT_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tDEFAULT_LOG_DIR = $DEFAULT_LOG_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tDEFAULT_TESTS_DIR = $DEFAULT_TESTS_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tDEFAULT_MODULE_FILE_DIR = $DEFAULT_MODULE_FILE_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tCURRENT_LOG_PATH = $CURRENT_LOG_PATH" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\tEnvironments:"  | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_DIR = $CURRENT_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_LOG_DIR = $DEFAULT_LOG_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_TESTS_DIR = $DEFAULT_TESTS_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_MODULE_FILE_DIR = $DEFAULT_MODULE_FILE_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_LOG_PATH = $CURRENT_LOG_PATH" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 
-	echo -e "\t\tDEFAULT_CONFIG = $DEFAULT_CONFIG" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tDEFAULT_MODULE_LIST = $DEFAULT_MODULE_LIST" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tDEFAULT_SCATTERED_LIST = $DEFAULT_SCATTERED_LIST" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tCURRENT_CASESLIST_FILE = $CURRENT_CASESLIST_FILE" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tCURRENT_LOG_FILE = $CURRENT_LOG_FILE" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tCURRENT_DETAIL_LOG_FILE = $CURRENT_DETAIL_LOG_FILE" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_CONFIG = $DEFAULT_CONFIG" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_MODULE_LIST = $DEFAULT_MODULE_LIST" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_SCATTERED_LIST = $DEFAULT_SCATTERED_LIST" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_CASESLIST_FILE = $CURRENT_CASESLIST_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_LOG_FILE = $CURRENT_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_DETAIL_LOG_FILE = $CURRENT_DETAIL_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 
 	# print config data
-	echo -e "\tConfig:" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tVIRTEST_DIR = $VIRTTEST_DIR" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tDEFAULT_RUN_COMMAND = $DEFAULT_RUN_COMMAND" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tDEFAULT_EXTRA_COMMAND = $DEFAULT_EXTRA_COMMAND" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tQEMU_EXTRA_COMMAND = $QEMU_EXTRA_COMMAND" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tLIBVIRT_EXTRA_COMMAND = $LIBVIRT_EXTRA_COMMAND" | tee >> "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\n" | tee >> "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\tConfig:" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tVIRTEST_DIR = $VIRTTEST_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_RUN_COMMAND = $DEFAULT_RUN_COMMAND" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_EXTRA_COMMAND = $DEFAULT_EXTRA_COMMAND" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tQEMU_EXTRA_COMMAND = $QEMU_EXTRA_COMMAND" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tLIBVIRT_EXTRA_COMMAND = $LIBVIRT_EXTRA_COMMAND" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\n"
 }
 
 # Merge repeated parameters
@@ -135,7 +143,7 @@ merge_params()
 set_testcases_to_list()
 {
 	line_count=1
-	cat $1 | while read ts_line
+	while read ts_line
 	do
 		ts_line=`echo $ts_line`
 		if [ -z "$ts_line" ]; then
@@ -168,15 +176,14 @@ set_testcases_to_list()
 		if [ "$3" = "libvirt" ] || [ "$3" = "LIBVIRT" ]; then
 			echo -e "$3"":""$testcase_name"" { ""$extra_params"" } " >> $CURRENT_CASESLIST_FILE
 		fi	
-	done
+	done < "$1"
+	TOTAL_COUNT=$(($TOTAL_COUNT+$line_count))
 }
 
 
 init_testcase_list()
 {
-	module_count=1
-
-	cat $DEFAULT_MODULE_LIST | while read ml_line
+	while read ml_line
 	do
 		ml_line=`echo $ml_line`
 		if [ -z "$ml_line" ]; then
@@ -217,11 +224,12 @@ init_testcase_list()
 		fi
 
 
+		MODULE_COUNT=$(($MODULE_COUNT+1))
 		if [ "$MODE" = "DIRECT" ]; then
-			echo -e "\t\tcase $module_count: $module_name $module_extra_params"
+			echo -e "\t\tcase $MODULE_COUNT: $module_name $module_extra_params"
 			echo -e "$class"":""$module_name"" { ""$default_cmd"" } " >> $CURRENT_CASESLIST_FILE
 		else
-			printf "\tModule $module_count: %-40s\t%-60s\n" "$class:$module_name" "module_params:$module_extra_params"
+			printf "\tModule $MODULE_COUNT: %-40s\t%-60s\n" "$class:$module_name" "module_params:$module_extra_params"
 			if [ ! -f "$module_file" ]; then
 				echo "ERROR: Don\`t have testcases file($module_file)"
 				exit 3
@@ -229,8 +237,10 @@ init_testcase_list()
 				set_testcases_to_list "$module_file" "$default_cmd" "$class"
 			fi
 		fi
-		module_count=$(($module_count+1))
-	done
+	done < "$DEFAULT_MODULE_LIST"
+
+	echo -e "	"
+	echo -e "Total testcases: $TOTAL_COUNT"
 }
 
 generate_cmd()
@@ -257,9 +267,9 @@ generate_cmd()
 
 run_test()
 {
-	testcase_count=1
+	index=1
 
-	cat $CURRENT_CASESLIST_FILE | while read tc_line
+	while read tc_line
 	do
 		class=""
 		params=""
@@ -270,12 +280,12 @@ run_test()
 			params=`echo $tc_line | cut -d '{' -f2 | cut -d '}' -f1`
 			params=`echo $params`
 		fi
-		printf "%-150s" "$testcase_count. $class:$testcase_name"
+		printf "%-150s" "$index. $class:$testcase_name"
 		run_cmd=`generate_cmd "$class" "$testcase_name" "$params"`
 		if [ "$run_cmd" = "1" ]; then
 			echo -e "\033[34m SKIP(autorun: Parameter error)  \033[0m"
 			echo -e "SKIP\t$class:$testcase_name (autorun: Parameter error)" >> "CURRENT_LOG_FILE"
-			skip_count=$(($skip_count+1))
+			SKIP_COUNT=$(($SKIP_COUNT+1))
 		else
 			result=`${run_cmd}  2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED"`
 			PASS=`echo "$result" | grep "PASSED: " | awk -F'PASSED: ' '{print $2}'`
@@ -284,23 +294,23 @@ run_test()
 			if [ "$PASS" = "1" ]; then
 				printf "\033[32m %-20s \033[0m\n" "PASS"
 				echo -e "PASS\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
-				pass_count=$(($pass_count+1))
+				PASS_COUNT=$(($PASS_COUNT+1))
 			elif [ "$FAIL" = "1" ]; then
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
 				echo -e "FAIL\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
-				fail_count=$(($fail_count+1))
+				FAIL_COUNT=$(($FAIL_COUNT+1))
 			elif [ "$SKIP" = "1" ]; then
 				printf "\033[34m %-20s \033[0m\n" "SKIP"
 				echo -e "SKIP\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
-				skip_count=$(($skip_count+1))
+				SKIP_COUNT=$(($SKIP_COUNT+1))
 			else
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
 				echo -e "FAIL\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
-				fail_count=$(($fail_count+1))	
+				FAIL_COUNT=$(($FAIL_COUNT+1))	
 			fi	
 		fi
-		((testcase_count++))
-	done
+		((index++))
+	done < "$CURRENT_CASESLIST_FILE"
 }
 
 init_env_params()
@@ -361,6 +371,13 @@ main()
 	echo ""
 	echo -e "Start:"
 	run_test
+
+	echo -e "Finish"
+	echo -e "	"
+	echo -e "Total: $TOTAL_COUNT" | tee -a "$CURRENT_LOG_FILE"
+	echo -e "Pass:  $PASS_COUNT" | tee -a "$CURRENT_LOG_FILE"
+	echo -e "Fail:  $FAIL_COUNT" | tee -a "$CURRENT_LOG_FILE"
+	echo -e "Skip:  $SKIP_COUNT" | tee -a "$CURRENT_LOG_FILE"
 }
 
 
