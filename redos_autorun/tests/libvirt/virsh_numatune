@@ -28,7 +28,7 @@ type_specific.io-github-autotest-libvirt.virsh.numatune.positive_testing.get_num
 type_specific.io-github-autotest-libvirt.virsh.numatune.positive_testing.get_numa_parameter.shutoff_guest.options.config 
 type_specific.io-github-autotest-libvirt.virsh.numatune.positive_testing.get_numa_parameter.shutoff_guest.options.current 
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.get_numa_parameter.running_guest.options.none 
-type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.get_numa_parameter.running_guest.cgroup.stop 
+#type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.get_numa_parameter.running_guest.cgroup.stop   #cgconfig服务关闭的时候，virsh numatune test-3回复正确
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.get_numa_parameter.shutoff_guest.options.none 
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.get_numa_parameter.shutoff_guest.options.config 
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.running_guest.change_mode.options.config.preferred 
@@ -46,7 +46,7 @@ type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_num
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.running_guest.change_nodeset.options.current.ranges 
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.running_guest.change_nodeset.options.current.excluding 
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.running_guest.change_nodeset.options.current.single 
-type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.running_guest.cgroup.stop 
+#type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.running_guest.cgroup.stop 
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.shutoff_guest.change_nodeset.options.live.comma_list 
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.shutoff_guest.change_nodeset.options.live.ranges 
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.shutoff_guest.change_nodeset.options.live.excluding 

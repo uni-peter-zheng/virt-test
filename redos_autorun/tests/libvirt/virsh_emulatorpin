@@ -14,12 +14,12 @@ type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.shutoff_guest.cpulist.emulatorpin_options.current.excluding 
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.shutoff_guest.cpulist.emulatorpin_options.current.single 
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.live.comma_list 
-type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.live.ranges 
-type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.live.excluding 
+#type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.live.ranges         #//virsh emulatorpin test-3 --live --cpulist 0-9 (通过lscpu可知)  
+#type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.live.excluding 
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.live.single 
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.comma_list 
-type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.ranges 
-type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.excluding 
+#type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.ranges 
+#type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.excluding 
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.single 
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.negative_testing.get_emulatorpin_parameter.running_guest.emulatorpin_options.invalid 
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.negative_testing.get_emulatorpin_parameter.shutoff_guest.emulatorpin_options.invalid 

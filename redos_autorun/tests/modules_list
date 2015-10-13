@@ -19,7 +19,7 @@ libvirt:storage_pool
 #libvirt:storage_discard
 libvirt:hotplug_serial
 libvirt:usb_hotplug
-#libvirt:iface   部分测试导致网络不通
+#libvirt:iface   #部分测试导致网络不通
 #libvirt:vfio
 #libvirt:iface_bridge
 #
@@ -51,11 +51,11 @@ libvirt:virsh_domfstrim
 libvirt:virsh_domid
 libvirt:virsh_domiflist
 libvirt:virsh_domif_setlink_getlink
-libvirt:virsh_domiftune
+#libvirt:virsh_domiftune
 libvirt:virsh_domjobabort
 libvirt:virsh_domjobinfo
 libvirt:virsh_domname
-#libvirt:virsh_dompmsuspend  需要virsh capcabilities的xml提供能力支持才行 setting ACPI S3 not supported
+#libvirt:virsh_dompmsuspend  #需要virsh capcabilities的xml提供能力支持才行 setting ACPI S3 not supported
 libvirt:virsh_domuuid
 libvirt:virsh_domxml_from_native
 libvirt:virsh_domxml_to_native
@@ -73,8 +73,8 @@ libvirt:virsh_metadata
 #libvirt:virsh_migrate_set_get_speed
 #libvirt:virsh_migrate_setmaxdowntime
 #libvirt:virsh_migrate_stress
-#libvirt:virsh_numatune
-#libvirt:virsh_qemu_agent_command_fs
+libvirt:virsh_numatune
+libvirt:virsh_qemu_agent_command_fs
 #libvirt:virsh_qemu_agent_command
 #libvirt:virsh_qemu_attach
 #libvirt:virsh_qemu_monitor_blockjob
