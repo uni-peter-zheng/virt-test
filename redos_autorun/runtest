@@ -142,7 +142,8 @@ merge_params()
 
 set_testcases_to_list()
 {
-	line_count=1
+	line_count=0
+
 	while read ts_line
 	do
 		ts_line=`echo $ts_line`
@@ -154,28 +155,32 @@ set_testcases_to_list()
 			continue
 		fi
 		extra_params=""
+		full_params=""
 		testcase_name=`echo "$ts_line" | awk -F '[ {]' '{print $1}'`
 		if [[ "$ts_line" =~ "{" ]]; then
 			extra_params=`echo $ts_line | cut -d '{' -f2|cut -d '}' -f1`
 			extra_params=`echo $extra_params`
 		fi
 		
+		if [ ! -z "$extra_params" ] || [ ! -z "$2" ]; then
+			full_params=`merge_params "$extra_params" "$2"`
+		fi
+
+		if [ "$3" = "qemu" ] || [ "$3" = "QEMU" ]; then
+			echo -e "$3"":""$testcase_name"" { ""$full_params"" } " >> $CURRENT_CASESLIST_FILE
+		elif [ "$3" = "libvirt" ] || [ "$3" = "LIBVIRT" ]; then
+			echo -e "$3"":""$testcase_name"" { ""$full_params"" } " >> $CURRENT_CASESLIST_FILE
+		else
+			continue
+		fi
+
+		line_count=$(($line_count+1))	
 		if [ "$extra_params" = "" ]; then
 			echo -e "\t\tcase $line_count: $testcase_name"
 		else
 			echo -e "\t\tcase $line_count: $testcase_name\tParams:$extra_params"
 		fi
-		if [ ! -z "$extra_params" ] || [ ! -z "$2" ]; then
-			extra_params=`merge_params "$extra_params" "$2"`
-		fi
-		line_count=$(($line_count+1))
-		if [ "$3" = "qemu" ] || [ "$3" = "QEMU" ]; then
-			echo -e "$3"":""$testcase_name"" { ""$extra_params"" } " >> $CURRENT_CASESLIST_FILE
-		fi
 
-		if [ "$3" = "libvirt" ] || [ "$3" = "LIBVIRT" ]; then
-			echo -e "$3"":""$testcase_name"" { ""$extra_params"" } " >> $CURRENT_CASESLIST_FILE
-		fi	
 	done < "$1"
 	TOTAL_COUNT=$(($TOTAL_COUNT+$line_count))
 }
@@ -238,9 +243,6 @@ init_testcase_list()
 			fi
 		fi
 	done < "$DEFAULT_MODULE_LIST"
-
-	echo -e "	"
-	echo -e "Total testcases: $TOTAL_COUNT"
 }
 
 generate_cmd()
@@ -365,9 +367,10 @@ main()
 	debug 
 	echo -e "Testcases List:"
 	init_testcase_list 
-	
+
 	echo -e "\n" >> "$CURRENT_CONFIG_LOG_FILE"
 
+	echo -e "Total: $TOTAL_COUNT"
 	echo ""
 	echo -e "Start:"
 	run_test
