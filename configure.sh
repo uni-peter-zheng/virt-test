@@ -13,7 +13,7 @@ export remotehost="RedOS-92-new"
 export bridge="br0"
 
 CURRENT_DIR=$(pwd)
-AUTOTEST_PATH="$CURRENT_DIR/../autotest"
+AUTOTEST_PATH=`pwd $CURRENT_DIR/../autotest`
 TP_LIBVIRT=`pwd $CURRENT_DIR/../tp-libvirt`
 TP_QEMU=`pwd $CURRENT_DIR/../tp-qemu`
 
