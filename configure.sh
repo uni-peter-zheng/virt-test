@@ -9,13 +9,17 @@ export local_pwd="123456"
 export vms="test-3 test-4"
 export main_vms="test-3"
 export localhost="RedOS-4"
-export remotehost="RedOS-92-new"
+export remotehost="RedOS-70"
 export bridge="br0"
 
 CURRENT_DIR=$(pwd)
-AUTOTEST_PATH=`pwd $CURRENT_DIR/../autotest`
-TP_LIBVIRT=`pwd $CURRENT_DIR/../tp-libvirt`
-TP_QEMU=`pwd $CURRENT_DIR/../tp-qemu`
+cd $CURRENT_DIR/../autotest
+AUTOTEST_PATH=$(pwd)
+cd $CURRENT_DIR/../tp-libvirt
+TP_LIBVIRT=$(pwd)
+cd $CURRENT_DIR/../tp-qemu
+TP_QEMU=$(pwd)
+cd $CURRENT_DIR
 
 #
 export ENTER_YOUR_AVAILABLE_PARTITION="dev/sdh2" #为用例libvirt_scsi指定测试分区
