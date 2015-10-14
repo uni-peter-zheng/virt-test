@@ -14,8 +14,8 @@ export bridge="br0"
 
 CURRENT_DIR=$(pwd)
 AUTOTEST_PATH="$CURRENT_DIR/../autotest"
-TP_LIBVIRT="$CURRENT_DIR/../tp-libvirt"
-TP_QEMU="$CURRENT_DIR/../tp-qemu"
+TP_LIBVIRT=`pwd $CURRENT_DIR/../tp-libvirt`
+TP_QEMU=`pwd $CURRENT_DIR/../tp-qemu`
 
 #
 export ENTER_YOUR_AVAILABLE_PARTITION="dev/sdh2" #为用例libvirt_scsi指定测试分区
