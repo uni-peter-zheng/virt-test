@@ -12,7 +12,7 @@ type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.n
 type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.negative_test.invalid_size.nondigit_size 
 type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.negative_test.invalid_size.empty_size 
 type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.negative_test.invalid_size.zero_size 
-type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.negative_test.invalid_size.small_size 
+#type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.negative_test.invalid_size.small_size  #默认设置的migrate_compcache的最小值不能小于PAGESIZE,63336,4096
 type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.negative_test.invalid_size.large_size 
 type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.negative_test.invalid_size.huge_size 
 

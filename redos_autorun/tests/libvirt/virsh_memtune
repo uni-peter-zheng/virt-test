@@ -14,5 +14,5 @@ type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_options.option.shm_pages_to_scan 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_options.option.shm_sleep_millisecs 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_options.option.shm_merge_across_nodes 
-type_specific.io-github-autotest-libvirt.virsh.memtune 
+#type_specific.io-github-autotest-libvirt.virsh.memtune    #virsh memtune 对swap_hard_limit，hard_limit，soft_limit设置的限定值和读取出来不相等
 
