@@ -15,9 +15,9 @@ type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_fs.s
 type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_logical.source_format_lvm2 
 type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_logical.source_format_auto 
 type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_netfs.source_format_nfs 
-type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_netfs.source_format_glusterfs 
+#type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_netfs.source_format_glusterfs 
 type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_iscsi.ipv4_target 
-type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_iscsi.ipv6_target 
+#type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_iscsi.ipv6_target 
 type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_scsi 
-type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_gluster 
+#type_specific.io-github-autotest-libvirt.virsh.pool.positive_test.pool_type_gluster 
 
