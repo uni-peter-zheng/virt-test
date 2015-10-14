@@ -166,6 +166,7 @@ auto_scp_is_rsa() {
                    *same* {send -- \r;exp_continue;}
                 }"
     scp root@$remote_ip:/root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+    ssh root@$remote_ip "sed -i -e 's|#   StrictHostKeyChecking ask|StrictHostKeyChecking no|' /etc/ssh/ssh_config"
 }
 
 #单独测试用例配置的修改
