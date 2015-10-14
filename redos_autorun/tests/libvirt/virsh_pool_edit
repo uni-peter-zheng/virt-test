@@ -1,7 +1,7 @@
 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.name_option.dir_pool.edit_pool_target 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.name_option.dir_pool.edit_redefine 
-type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.name_option.gluster_pool.edit_redefine 
+#type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.name_option.gluster_pool.edit_redefine 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.name_option.disk_pool.edit_pool_format.dos 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.name_option.disk_pool.edit_pool_format.bsd 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.name_option.disk_pool.edit_pool_format.dvh 
@@ -11,7 +11,7 @@ type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.name_opti
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.name_option.disk_pool.edit_pool_format.sun 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.uuid_option.dir_pool.edit_pool_target 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.uuid_option.dir_pool.edit_redefine 
-type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.uuid_option.gluster_pool.edit_redefine 
+#type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.uuid_option.gluster_pool.edit_redefine 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.uuid_option.disk_pool.edit_pool_format.dos 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.uuid_option.disk_pool.edit_pool_format.bsd 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.uuid_option.disk_pool.edit_pool_format.dvh 
@@ -21,7 +21,7 @@ type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.uuid_opti
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.positive_test.uuid_option.disk_pool.edit_pool_format.sun 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.no_name.dir_pool.edit_pool_target 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.no_name.dir_pool.edit_redefine 
-type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.no_name.gluster_pool.edit_redefine 
+#type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.no_name.gluster_pool.edit_redefine 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.no_name.disk_pool.edit_pool_format.dos 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.no_name.disk_pool.edit_pool_format.bsd 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.no_name.disk_pool.edit_pool_format.dvh 
@@ -31,7 +31,7 @@ type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.no_name.d
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.no_name.disk_pool.edit_pool_format.sun 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_name.dir_pool.edit_pool_target 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_name.dir_pool.edit_redefine 
-type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_name.gluster_pool.edit_redefine 
+#type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_name.gluster_pool.edit_redefine 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_name.disk_pool.edit_pool_format.dos 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_name.disk_pool.edit_pool_format.bsd 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_name.disk_pool.edit_pool_format.dvh 
@@ -41,7 +41,7 @@ type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_n
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_name.disk_pool.edit_pool_format.sun 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_uuid.dir_pool.edit_pool_target 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_uuid.dir_pool.edit_redefine 
-type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_uuid.gluster_pool.edit_redefine 
+#type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_uuid.gluster_pool.edit_redefine 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_uuid.disk_pool.edit_pool_format.dos 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_uuid.disk_pool.edit_pool_format.bsd 
 type_specific.io-github-autotest-libvirt.virsh.pool_edit.negative_test.invalid_uuid.disk_pool.edit_pool_format.dvh 
