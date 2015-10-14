@@ -1,7 +1,8 @@
 
 type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.positive_test.attach_interface_before_vm_start 
-type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.positive_test.attach_interface_after_vm_start 
+#type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.positive_test.attach_interface_after_vm_start   internal error: unable to execute QEMU command 'device_add': Bus 'pci.0' does not support hotplugging
 type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.negative_test.invalid_option 
 type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.negative_test.invalid_net 
-type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.negative_test.invalid_mac 
+type_specific.io-github-autotest-libvirt.virsh.net_dhcp_leases.negative_test.invalid_mac  #TestFail: Expect fail, but run successfully   命令virsh net-dhcp-leases执行不能检测出错误的mac参数，已确认是个bug，件bug239
+
 
