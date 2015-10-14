@@ -6,8 +6,8 @@ export remote_ip="192.168.1.4"
 export remote_pwd="123456"
 export local_ip="192.168.1.71"
 export local_pwd="123456"
-export vms="test-3 test-4"
-export main_vms="test-3"
+export vms="RedOS-autotest"
+export main_vms="RedOS-autotest"
 export localhost="RedOS-71"
 export remotehost="RedOS-4"
 export bridge="br0"
@@ -20,6 +20,7 @@ TP_LIBVIRT=$(pwd)
 cd $CURRENT_DIR/../tp-qemu
 TP_QEMU=$(pwd)
 cd $CURRENT_DIR
+BASE_PATH=$CURRENT_DIR/backends/libvirt/cfg/base.cfg
 
 #
 export ENTER_YOUR_AVAILABLE_PARTITION="sda2" #为用例libvirt_scsi指定测试分区
@@ -97,9 +98,10 @@ setenv()
                 echo "export AUTOTEST_PATH=$AUTOTEST_PATH" >> ~/.bashrc
                 export AUTOTEST_PATH=$AUTOTEST_PATH
         else
-        echo "AUTOTEST_PATH has been set!"
+        	echo "AUTOTEST_PATH has been set!"
         fi
-
+	
+	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR"|g" ./redos_autorun/cfg/base.cfg
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
 
@@ -114,8 +116,13 @@ setenv()
         systemctl mask iptables
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
         setenforce 0
-
-	./run -t libvirt --list-tests > /dev/null
+        
+	if [ ! -f $BASE_PATH ];then
+		echo "build base.cfg,wait a minute!"
+                ./run -t libvirt --list-tests > /dev/null
+	else
+		echo "base.cfg exit!"
+	fi
 
         sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" ./backends/libvirt/cfg/base.cfg
 	echo "set remote_ip = $remote_ip"
