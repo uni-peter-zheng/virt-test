@@ -1,20 +1,25 @@
 #!/bin/sh
 
 #init初始化配置 公共config
-export remote_ip="192.168.1.92"
+
+export remote_ip="192.168.1.70"
 export remote_pwd="123456"
-export local_ip="192.168.1.71"
+export local_ip="192.168.1.4"
 export local_pwd="123456"
-export vms="RedOS-autotest RedOS-autotest2"
-export main_vms="RedOS-autotest"
-export localhost="RedOS-71"
-export remotehost="RedOS-92"
+export vms="test-3 test-4"
+export main_vms="test-3"
+export localhost="RedOS-4"
+export remotehost="RedOS-92-new"
 export bridge="br0"
-export AUTOTEST_PATH="/home/autotest/"
+
+CURRENT_DIR=$(pwd)
+AUTOTEST_PATH="$CURRENT_DIR/../autotest"
+TP_LIBVIRT="$CURRENT_DIR/../tp-libvirt"
+TP_QEMU="$CURRENT_DIR/../tp-qemu"
 
 #
-export ENTER.YOUR.AVAILABLE.PARTITION="dev/sda2" #为用例libvirt_scsi指定测试分区
-export PATH_OF_POOL_XML="/home/virt-test/pool/pool.xml" #指定用例pool_create创建的pool.xml的路径
+export ENTER_YOUR_AVAILABLE_PARTITION="dev/sdh2" #为用例libvirt_scsi指定测试分区
+export PATH_OF_POOL_XML="$CURRENT_DIR/pool/pool.xml" #指定用例pool_create创建的pool.xml的路径
 
 usage()
 {
@@ -33,26 +38,6 @@ usage()
 EOF
 exit 0
 }
-
-sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" ./backends/libvirt/cfg/base.cfg
-echo "set remote_ip = $remote_ip"
-         
-sed -i "s/^local_ip.*$/local_ip = $local_ip/" ./backends/libvirt/cfg/base.cfg
-echo "set local_ip = $local_ip"
-
-sed -i "s/^local_pwd.*$/local_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
-echo "set local_pwd = $local_pwd"
-
-sed -i "s/^main_vm.*$/main_vm = $main_vms/" ./backends/libvirt/cfg/base.cfg
-echo "set main_vms = $main_vms"
-
-sed -i "s/^vms.*$/vms = $vms/" ./backends/libvirt/cfg/base.cfg
-echo "set vms = $vms"
-
-echo "set localhost=$localhost"
-hostname $localhost
-
-remotehost=${remotehost:-$OPTARG}
 
 while getopts hr:L:P:g:G:l:R:t:T: arg
       do case $arg in
@@ -101,16 +86,23 @@ while getopts hr:L:P:g:G:l:R:t:T: arg
 setenv()
 
 {
-        grep -rn "AUTOTEST" ~/.bashrc
+        echo "##########   SET TEST ENVIRONMENT  ##########"
+	echo
+	grep -rn "AUTOTEST" ~/.bashrc > /dev/null
         if [ $? = 1 ];then
                 echo "export AUTOTEST_PATH=$AUTOTEST_PATH" >> ~/.bashrc
-                echo "export AUTOTEST_PATH=$AUTOTEST_PATH"
+                export AUTOTEST_PATH=$AUTOTEST_PATH
         else
         echo "AUTOTEST_PATH has been set!"
         fi
-        ln -s /usr/bin/qemu-system-ppc64 /usr/bin/qemu-kvm
-        ln -s /usr/bin/qemu-system-ppc64 /usr/bin/kvm
+
+        sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
+        sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
+
+	ln -s /usr/bin/qemu-system-ppc64 /usr/bin/qemu-kvm 1>/dev/null 2>&1
+        ln -s /usr/bin/qemu-system-ppc64 /usr/bin/kvm 1>/dev/null 2>&1
         echo "make link qemu-system-ppc64 to qemu-kvm"
+	echo
 
         systemctl stop firewalld
         systemctl mask firewalld
@@ -118,6 +110,28 @@ setenv()
         systemctl mask iptables
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
         setenforce 0
+
+	./run -t libvirt --list-tests > /dev/null
+
+        sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" ./backends/libvirt/cfg/base.cfg
+	echo "set remote_ip = $remote_ip"
+
+	sed -i "s/^local_ip.*$/local_ip = $local_ip/" ./backends/libvirt/cfg/base.cfg
+	echo "set local_ip = $local_ip"
+
+	sed -i "s/^local_pwd.*$/local_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
+	echo "set local_pwd = $local_pwd"
+
+	sed -i "s/^main_vm.*$/main_vm = $main_vms/" ./backends/libvirt/cfg/base.cfg
+	echo "set main_vms = $main_vms"
+
+	sed -i "s/^vms.*$/vms = $vms/" ./backends/libvirt/cfg/base.cfg
+	echo "set vms = $vms"
+
+	echo "set localhost=$localhost"
+	hostname $localhost
+
+	remotehost=${remotehost:-$OPTARG}
 }
 
 #配置locoalhost和remote的ssh无密码访问
@@ -137,26 +151,34 @@ auto_ssh_copy_id () {
                     eof        {exit 0;}
                 }";
 }
-auto_ssh_copy_id  $local_pwd $remote_ip
-expect -c "set timeout -1;
-           spawn ssh root@$remote_ip "ssh-keygen"
-           expect {
-               *y/n* {send -- y\r;exp_continue;}
-               */root/.ssh/id_rsa* {send -- \r;exp_continue;}
-               *empty* {send -- \r;exp_continue;}
-               *same* {send -- \r;exp_continue;}
-           }"
-scp root@$remote_ip:/root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+
+auto_scp_is_rsa() {
+    expect -c "set timeout -1;
+               spawn ssh root@$remote_ip "ssh-keygen"
+               expect {
+                   *y/n* {send -- y\r;exp_continue;}
+                   */root/.ssh/id_rsa* {send -- \r;exp_continue;}
+                   *empty* {send -- \r;exp_continue;}
+                   *same* {send -- \r;exp_continue;}
+                }"
+    scp root@$remote_ip:/root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+}
 
 #单独测试用例配置的修改
 specialcfg()
 {
+       echo "######## SET CONFIGURE FOR SPECIAL TESTCASES #########"
+       echo
       #config remote-test ip for teset: virsh_nodesuspend
+       echo "set config for testcases:virsh_nodesuspend!"
+       echo
        sed -i -e 's|ENTER.YOUR.REMOTE.EXAMPLE.COM|'$remote_ip'|' ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
        sed -i -e "s|EXAMPLE.PWD|$remote_pwd|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
 
       #libvirt_scsi_partition = "/dev/sda2" 为用例libvirt_scsi指定测试分区
-       sed -i -e "s|"ENTER.YOUR.AVAILABLE.PARTITION"|$ENTER.YOUR.AVAILABLE.PARTITION|" ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
+       echo "set config for testcases:libvirt_scsi!"
+       echo
+       sed -i -e "s|"ENTER.YOUR.AVAILABLE.PARTITION"|$ENTER_YOUR_AVAILABLE_PARTITION|" ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
       
       #virsh_iface 配置修改 iface_name，unprivileged_user，ping_ip
       # sed -i -e "s|"ENTER.BRIDGE.NAME"|$bridge|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface.cfg
@@ -165,11 +187,9 @@ specialcfg()
       # sed -i -e "s|"ENTER.ETH.IP.ADDRESS"|192.168.1.72|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface.cfg
       # sed -i -e "s|"ENTER.ETHERNET.CARD"|eth0|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface.cfg
  
-      #virsh_nodesuspend 配置修改nodesuspend_remote_ip和nodesuspend_remote_pwd
-       sed -i -e "s|"ENTER.YOUR.REMOTE.EXAMPLE.COM"|$remote_ip|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
-       sed -i -e "s|"EXAMPLE.PWD"|$remote_pwd|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
-       
        #为用例pool_create创建pool.xml
+       echo "build pool.xml for testcases:virsh_pool_create!"
+       echo
        sed -i -e "s|"/PATH/TO/POOL.XML"|$PATH_OF_POOL_XML|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/pool/virsh_pool_create.cfg
        cat > $PATH_OF_POOL_XML  <<-EOF
 <pool type='dir'>
@@ -185,19 +205,27 @@ specialcfg()
 </pool>
 EOF
        #用例virsh.pool_acl，iscsi默认收ipv6连接，修改/eth/hosts，注释掉::1
-        sed -i 's/^::1/#::1/g' /etc/hosts
+       echo "modify /etc/hosts for testcases:virsh.pool_acl!"
+       echo
+       sed -i 's/^::1/#::1/g' /etc/hosts
      
        #为用例virsh.cpu_baseline指定测试机
-        sed -i -e "s|virt-tests-vm1|$main_vms|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
+       echo "set config for testcases:virsh.cpu_baseline!"
+       echo
+       sed -i -e "s|virt-tests-vm1|$main_vms|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
  
        #修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301 
-        sed -i -e "s|node,nodeid=0,cpus=0-1,mem=300|node,nodeid=0,cpus=0-1,memdev=ram-node0|" ../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
-        sed -i -e "s|node,nodeid=1,cpus=2-3,mem=301|node,nodeid=1,cpus=2-3,memdev=ram-node1|" ../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
+       echo "modify config for testcases:guest_numa!"
+       echo
+       sed -i -e "s|node,nodeid=0,cpus=0-1,mem=300|node,nodeid=0,cpus=0-1,memdev=ram-node0|" ../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
+       sed -i -e "s|node,nodeid=1,cpus=2-3,mem=301|node,nodeid=1,cpus=2-3,memdev=ram-node1|" ../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
 }
 
 #测试用例所需的软件包安装
 install()
 {
+	echo "###########  INSTALL RPMS FOR　TESTS  ##########"
+	echo
         yum install iscsi* -y
         yum install targetcli* -y
         yum install targetd -y
@@ -208,7 +236,23 @@ install()
         yum install fuse-sshfs -y
 }
 
-setenv
-specialcfg
-install
+main()
+{	
+	setenv
+        
+        
+        echo "##### SET remote-local NO PASSWORD LOGIN  #####"
+	echo
+ 	auto_ssh_copy_id  $local_pwd $remote_ip
+        auto_scp_is_rsa
+	ssh root@$remote_ip "hostname $remotehost"
 
+	specialcfg
+
+	install	
+	
+	echo
+	echo "CONFIG FINISH,YOU CAN RUN TESTS!"
+}
+
+main
