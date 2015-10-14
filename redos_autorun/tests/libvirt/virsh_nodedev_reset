@@ -1,8 +1,8 @@
 
-type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.positive_test 
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.positive_test 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.negative_test.with_libvirt_off 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.negative_test.non_exist_device 
-type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.negative_test.non_pci_device 
-type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.negative_test.active_device 
-type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.negative_test.unresettable_device 
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.negative_test.non_pci_device 
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.negative_test.active_device 
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.negative_test.unresettable_device 
 
