@@ -2,14 +2,14 @@
 
 #init初始化配置 公共config
 
-export remote_ip="192.168.1.70"
+export remote_ip="192.168.1.4"
 export remote_pwd="123456"
-export local_ip="192.168.1.4"
+export local_ip="192.168.1.71"
 export local_pwd="123456"
 export vms="test-3 test-4"
 export main_vms="test-3"
-export localhost="RedOS-4"
-export remotehost="RedOS-70"
+export localhost="RedOS-71"
+export remotehost="RedOS-4"
 export bridge="br0"
 
 CURRENT_DIR=$(pwd)
@@ -22,7 +22,7 @@ TP_QEMU=$(pwd)
 cd $CURRENT_DIR
 
 #
-export ENTER_YOUR_AVAILABLE_PARTITION="dev/sdh2" #为用例libvirt_scsi指定测试分区
+export ENTER_YOUR_AVAILABLE_PARTITION="sda2" #为用例libvirt_scsi指定测试分区
 export PATH_OF_POOL_XML="$CURRENT_DIR/pool/pool.xml" #指定用例pool_create创建的pool.xml的路径
 
 usage()
@@ -183,7 +183,7 @@ specialcfg()
       #libvirt_scsi_partition = "/dev/sda2" 为用例libvirt_scsi指定测试分区
        echo "set config for testcases:libvirt_scsi!"
        echo
-       sed -i -e "s|"ENTER.YOUR.AVAILABLE.PARTITION"|$ENTER_YOUR_AVAILABLE_PARTITION|" ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
+       sed -i 's/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = dev\/'$ENTER_YOUR_AVAILABLE_PARTITION'/' ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
       
       #virsh_iface 配置修改 iface_name，unprivileged_user，ping_ip
       # sed -i -e "s|"ENTER.BRIDGE.NAME"|$bridge|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface.cfg
