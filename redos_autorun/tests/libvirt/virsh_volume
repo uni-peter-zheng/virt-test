@@ -12,12 +12,12 @@ type_specific.io-github-autotest-libvirt.virsh.volume.dir_pool.vol_encrypt_defau
 type_specific.io-github-autotest-libvirt.virsh.volume.dir_pool.vol_encrypt_default.vol_format_qcow2.vol_allocation.zero_size 
 type_specific.io-github-autotest-libvirt.virsh.volume.dir_pool.vol_encrypt_qcow.vol_format_qcow2.vol_allocation.normal_size 
 type_specific.io-github-autotest-libvirt.virsh.volume.dir_pool.vol_encrypt_qcow.vol_format_qcow2.vol_allocation.zero_size 
-type_specific.io-github-autotest-libvirt.virsh.volume.gluster_pool.vol_allocation.normal_size 
-type_specific.io-github-autotest-libvirt.virsh.volume.gluster_pool.vol_allocation.zero_size 
+#type_specific.io-github-autotest-libvirt.virsh.volume.gluster_pool.vol_allocation.normal_size 
+#type_specific.io-github-autotest-libvirt.virsh.volume.gluster_pool.vol_allocation.zero_size 
 type_specific.io-github-autotest-libvirt.virsh.volume.logical_pool.vol_allocation.normal_size 
 type_specific.io-github-autotest-libvirt.virsh.volume.logical_pool.vol_allocation.zero_size 
 type_specific.io-github-autotest-libvirt.virsh.volume.netfs_pool.nfs_format.vol_allocation.normal_size 
 type_specific.io-github-autotest-libvirt.virsh.volume.netfs_pool.nfs_format.vol_allocation.zero_size 
-type_specific.io-github-autotest-libvirt.virsh.volume.netfs_pool.glusterfs_format.vol_allocation.normal_size 
-type_specific.io-github-autotest-libvirt.virsh.volume.netfs_pool.glusterfs_format.vol_allocation.zero_size 
+#type_specific.io-github-autotest-libvirt.virsh.volume.netfs_pool.glusterfs_format.vol_allocation.normal_size 
+#type_specific.io-github-autotest-libvirt.virsh.volume.netfs_pool.glusterfs_format.vol_allocation.zero_size 
 
