@@ -1,6 +1,6 @@
 
 type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.default 
-type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.xen_uri 
+#type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.xen_uri  #缺少xen驱动
 type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.qemu_system_uri 
 type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.qemu_session_uri 
 type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.lxc_uri 
