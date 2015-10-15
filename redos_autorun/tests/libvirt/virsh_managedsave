@@ -29,11 +29,11 @@ type_specific.io-github-autotest-libvirt.virsh.managedsave.status_error_no.uuid_
 type_specific.io-github-autotest-libvirt.virsh.managedsave.status_error_no.uuid_option.paused_opt.show_progress 
 type_specific.io-github-autotest-libvirt.virsh.managedsave.status_error_no.uuid_option.running_opt.no_progress 
 type_specific.io-github-autotest-libvirt.virsh.managedsave.status_error_no.uuid_option.running_opt.show_progress 
-type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.cpu_mode 
+#type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.cpu_mode 
 type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.undefine 
-type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.bypass_cache 
-type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.autostart_bypass_cache 
-type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.libvirt_guests.single_guest 
+#type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.bypass_cache 
+#type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.autostart_bypass_cache 
+#type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.libvirt_guests.single_guest 
 type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.libvirt_guests.multi_guests 
 type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.security_driver 
 type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.saved_file 
