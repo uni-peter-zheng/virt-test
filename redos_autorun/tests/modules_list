@@ -3,17 +3,17 @@
 # Module name corresponding files in ./libvirt or ./qemu
 
 
-#libvirt:migration   
-#libvirt:svirt
-#libvirt:multifunction
+#libvirt:migration  p2p 迁移不支持 
+libvirt:svirt
+libvirt:multifunction
 libvirt:libvirt_scsi
 #libvirt:snapshot
-#libvirt:network_bandwidth
+libvirt:network_bandwidth
 #libvirt:pci_passthrough   系统不支持
 libvirt:storage_pool
 #libvirt:perf_kvm
 #libvirt:ksm_service  缺少ksmtuned服务
-#libvirt:timer_management
+#libvirt:timer_management 不支持kvmclock
 #libvirt:hugepage
 #libvirt:vcpu_hotplug
 #libvirt:storage_discard
@@ -75,10 +75,10 @@ libvirt:virsh_migrate_compcache
 #libvirt:virsh_migrate_stress
 libvirt:virsh_numatune
 libvirt:virsh_qemu_agent_command_fs
-#libvirt:virsh_qemu_agent_command
+#libvirt:virsh_qemu_agent_command   不支持--aysnc选项
 #libvirt:virsh_qemu_attach
 #libvirt:virsh_qemu_monitor_blockjob
-#libvirt:virsh_qemu_monitor_command
+libvirt:virsh_qemu_monitor_command
 libvirt:virsh_reboot
 libvirt:virsh_reset
 libvirt:virsh_restore
@@ -89,11 +89,11 @@ libvirt:virsh_save
 libvirt:virsh_schedinfo_qemu_posix
 libvirt:virsh_schedinfo_xen_credit
 #libvirt:virsh_screenshot
-#libvirt:virsh_sendkey
-#libvirt:virsh_setmaxmem
-#libvirt:virsh_setmem
+#libvirt:virsh_sendkey  测试用例命令执行发生错误
+#libvirt:virsh_setmaxmem  不支持虚拟机运行时修改大内存
+libvirt:virsh_setmem
 #libvirt:virsh_setvcpus
-#libvirt:virsh_shutdown
+libvirt:virsh_shutdown
 libvirt:virsh_start
 #libvirt:virsh_suspend
 libvirt:virsh_ttyconsole
@@ -101,30 +101,30 @@ libvirt:virsh_undefine
 
 
 
-#libvirt:virsh_update_device
-#libvirt:virsh_vcpucount
+#libvirt:virsh_update_device   不支持ide floppy设备
+libvirt:virsh_vcpucount
 #libvirt:virsh_vcpuinfo
 #libvirt:virsh_vcpupin
 #libvirt:virsh_vncdisplay
-#libvirt:virsh_domcapabilities
-#libvirt:virsh_hostname
+libvirt:virsh_domcapabilities
+libvirt:virsh_hostname
 #libvirt:virsh_capabilities
-#libvirt:virsh_cpu_models
+libvirt:virsh_cpu_models
 #libvirt:virsh_freecell
 #libvirt:virsh_freepages
-#libvirt:virsh_maxvcpus
-#libvirt:virsh_nodecpumap
+libvirt:virsh_maxvcpus
+libvirt:virsh_nodecpumap
 #libvirt:virsh_nodecpustats
 #libvirt:virsh_nodeinfo
-#libvirt:virsh_nodememstats
+libvirt:virsh_nodememstats
 #libvirt:virsh_node_memtune
 #libvirt:virsh_nodesuspend
-#libvirt:virsh_sysinfo
-#libvirt:virsh_uri
-#libvirt:virsh_version
+libvirt:virsh_sysinfo
+libvirt:virsh_uri
+libvirt:virsh_version
 #libvirt:virsh_domblkinfo
 #libvirt:virsh_domblkstat
-#libvirt:virsh_domifstat
+libvirt:virsh_domifstat
 #libvirt:virsh_domstate
 #libvirt:virsh_domstats
 #libvirt:virsh_list
