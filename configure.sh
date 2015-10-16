@@ -116,6 +116,7 @@ setenv()
         systemctl mask iptables
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
         setenforce 0
+        yum install expect -y
         
 	if [ ! -f $BASE_PATH ];then
 		echo "build base.cfg,wait a minute!"
