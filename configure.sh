@@ -101,7 +101,7 @@ setenv()
         	echo "AUTOTEST_PATH has been set!"
         fi
 	
-	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR"|g" ./redos_autorun/cfg/base.cfg
+	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR/"|g" ./redos_autorun/cfg/base.cfg
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
 
