@@ -162,6 +162,7 @@ auto_ssh_copy_id () {
                     *assword:* {send -- $1\r;exp_continue;}
                     eof        {exit 0;}
                 }";
+    ssh-add
 }
 
 auto_scp_is_rsa() {
