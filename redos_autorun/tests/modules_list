@@ -25,7 +25,7 @@ libvirt:usb_hotplug
 #
 #libvirt:virsh-attach-detach-disk
 #libvirt:virsh-attach-detach-interface
-#libvirt:attach_device
+libvirt:attach_device
 libvirt:virsh_autostart
 #libvirt:virsh_blockcommit
 #libvirt:virsh_blockcopy      需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把版本比对去掉，里面规定libvirt1.2.13以上才测试这个功能；并且会创建iscsi设备，需要安装targetcli*和iscsi*，此组测试用例特别耗时间。
@@ -64,7 +64,7 @@ libvirt:virsh_dumpxml
 libvirt:virsh_edit
 libvirt:virsh_emulatorpin
 libvirt:virsh_event 
-#libvirt:virsh_managedsave
+libvirt:virsh_managedsave
 libvirt:virsh_memtune
 libvirt:virsh_metadata
 libvirt:virsh_migrate_compcache
