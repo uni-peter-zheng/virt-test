@@ -65,7 +65,8 @@ SKIP_COUNT=0
 FAIL_COUNT=0
 MODULE_COUNT=0
 MODE="ANALYSIS"
-CONTINUE=""
+CONTINUE="false"
+START_TESTCASE=""
 
 
 debug()
@@ -182,11 +183,11 @@ set_testcases_to_list()
 		full_params=""
 		testcase_name=`echo "$ts_line" | awk -F '[ {]' '{print $1}'`
 
-		if [ "$CONTINUE" != "" ]; then
-			if [ "$CONTINUE" != "$3:$testcase_name" ]; then
+		if [ "$CONTINUE" = "true" ]; then
+			if [ "$START_TESTCASE" != "$3:$testcase_name" ]; then
 				continue;
 			else
-				CONTINUE=""
+				CONTINUE="false"
 			fi
 		fi
 
@@ -258,15 +259,16 @@ init_testcase_list()
 
 
 		if [ "$MODE" = "DIRECT" ]; then
-			if [ "$CONTINUE" != "" ]; then
-				if [ "$CONTINUE" != "$class:$module_name" ]; then
+			if [ "$CONTINUE" = "true" ]; then
+				if [ "$START_TESTCASE" != "$class:$module_name" ]; then
 					continue;
 				else
-					CONTINUE=""
+					CONTINUE="false"
 				fi
 			fi
-			echo -e "\t\tcase $MODULE_COUNT: $module_name $module_extra_params"
+			echo -e "\t\tcase $MODULE_COUNT: $module_name \tParams:$module_extra_params"
 			echo -e "$class"":""$module_name"" { ""$default_cmd"" } " >> $CURRENT_CASESLIST_FILE
+			TOTAL_COUNT=$MODULE_COUNT
 		else
 			printf "\tModule $MODULE_COUNT: %-40s\t%-60s\n" "$class:$module_name" "module_params:$module_extra_params"
 			if [ ! -f "$module_file" ]; then
@@ -410,10 +412,10 @@ main()
 
 	echo -e "Total: $TOTAL_COUNT"
 	echo ""
-	if [ "$CONTINUE" = "" ]; then
+	if [ "$START_TESTCASE" = "" ]; then
 		echo -e "Start:"
 	else
-		echo "Start test from $CONTINUE"
+		echo "Start test from $START_TESTCASE"
 	fi
 
 	run_test
@@ -480,8 +482,8 @@ do
 				echo -e "$OPTARG is not exist."
 				exit 1
 			fi
-			CONTINUE=`get_first_testcase "$OPTARG"`
-			echo $CONTINUE
+			START_TESTCASE=`get_first_testcase "$OPTARG"`
+			CONTINUE="true"
 			;;
 		h)
 			usage
@@ -491,6 +493,7 @@ do
 				echo -e "$OPTARG is not exist."
 				exit 1
 			fi
+			MODE="ANALYSIS"
 			DEFAULT_MODULE_LIST="$OPTARG"	
 			;;
 		t)
