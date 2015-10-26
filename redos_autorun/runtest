@@ -48,10 +48,13 @@ get_virttest_dir()
 
 
 VIRTTEST_DIR=`get_virttest_dir`
+VIRTTEST_LOG_DIR="$VIRTTEST_DIR""logs/"
 DEFAULT_RUN_COMMAND=$(get_config_key "$DEFAULT_CONFIG" "command.default_run_cmd")" "
 DEFAULT_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "command.extra_cmd")
 LIBVIRT_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "libvirt.extra_cmd")
 QEMU_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "qemu.extra_cmd")
+DEFAULT_LIBVIRT_CONFIG=""
+DEFAULT_QEMU_CONFIG=""
 CURRENT_LOG_PATH=""
 CURRENT_CASESLIST_FILE=""
 CURRENT_LOG_FILE=""
@@ -67,6 +70,10 @@ MODULE_COUNT=0
 MODE="ANALYSIS"
 CONTINUE="false"
 START_TESTCASE=""
+LIBVIRT_VM_NAME=""
+QEMU_VM_NAME=""
+VM_XML_FILE=""
+VM_BACKUP_XML_FILE=""
 
 
 debug()
@@ -88,6 +95,7 @@ debug()
 	echo -e "\t\tCURRENT_LOG_FILE = $CURRENT_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_DETAIL_LOG_FILE = $CURRENT_DETAIL_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_LAST_TESTCASE_FILE = $CURRENT_LAST_TESTCASE_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_XMLDIFF_LOG_FILE = $CURRENT_XMLDIFF_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 
 	# print config data
 	echo -e "\tConfig:" | tee -a "$CURRENT_CONFIG_LOG_FILE"
@@ -96,6 +104,8 @@ debug()
 	echo -e "\t\tDEFAULT_EXTRA_COMMAND = $DEFAULT_EXTRA_COMMAND" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tQEMU_EXTRA_COMMAND = $QEMU_EXTRA_COMMAND" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tLIBVIRT_EXTRA_COMMAND = $LIBVIRT_EXTRA_COMMAND" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tLIBVIRT_VM_NAME = $LIBVIRT_VM_NAME" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tVM_XML_FILE = $VM_XML_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\n"
 }
 
@@ -155,6 +165,16 @@ merge_params()
 		new_params=""
 	fi
 	echo -e "$final_params"
+}
+
+backup_vm_xml()
+{
+	if [ ! -f "$VM_XML_FILE" ]; then
+		echo "" > "$VM_BACKUP_XML_FILE"
+		return
+	fi
+
+	cat "$VM_XML_FILE" > "$VM_BACKUP_XML_FILE"	
 }
 
 set_testcases_to_list()
@@ -304,6 +324,11 @@ generate_cmd()
 	echo "$cmd"
 }
 
+clean_virttest_logs()
+{
+	rm -rf $VIRTTEST_LOG_DIR
+}
+
 run_test()
 {
 	index=1
@@ -327,6 +352,7 @@ run_test()
 			echo -e "SKIP\t$class:$testcase_name " { ""$params"" }"(autorun: Parameter error)" >> "CURRENT_LOG_FILE"
 			SKIP_COUNT=$(($SKIP_COUNT+1))
 		else
+			backup_vm_xml
 			result=`${run_cmd}  2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED"`
 			PASS=`echo "$result" | grep "PASSED: " | awk -F'PASSED: ' '{print $2}'`
 			FAIL=`echo "$result" | grep "FAILED: " | awk -F'FAILED: ' '{print $2}'`
@@ -349,8 +375,29 @@ run_test()
 				FAIL_COUNT=$(($FAIL_COUNT+1))	
 			fi	
 		fi
+
+		`diff --brief "$VM_XML_FILE" "$VM_BACKUP_XML_FILE"`
+		if [ $? -ne 0 ]; then
+			echo -e "$class:$testcase_name { $params }" >> "$CURRENT_XMLDIFF_LOG_FILE"
+			diff -u "$VM_XML_FILE" "$VM_BACKUP_XML_FILE" >> "$CURRENT_XMLDIFF_LOG_FILE"
+			echo -e " "
+		fi
+		clean_virttest_logs
 		((index++))
 	done < "$CURRENT_CASESLIST_FILE"
+}
+
+
+get_vm_name()
+{
+	# $1 is libvirt_config
+	if [ ! -f "$1" ]; then
+		echo ""
+		return
+	fi 
+	str=`grep "^vms" $1`
+	vm_name=`echo "$str" | cut -d '=' -f2`
+	echo $vm_name
 }
 
 init_env_params()
@@ -362,6 +409,15 @@ init_env_params()
 	CURRENT_DETAIL_LOG_FILE="$CURRENT_LOG_PATH""detail_log"
 	CURRENT_CONFIG_LOG_FILE="$CURRENT_LOG_PATH""config_log"
 	CURRENT_LAST_TESTCASE_FILE="$CURRENT_LOG_PATH""last_testcase"
+	CURRENT_XMLDIFF_LOG_FILE="$CURRENT_LOG_PATH""xmldiff_log"
+
+	DEFAULT_LIBVIRT_CONFIG="$VIRTTEST_DIR""backends/libvirt/cfg/base.cfg"
+	DEFAULT_QEMU_CONFIG="$VIRTTEST_DIR""backends/qemu/cfg/base.cfg"
+
+	LIBVIRT_VM_NAME=$(get_vm_name "$DEFAULT_LIBVIRT_CONFIG")
+	QEMU_VM_NAME=$(get_vm_name "$DEFAULT_QEMU_CONFIG")
+	VM_XML_FILE="/etc/libvirt/qemu/""$LIBVIRT_VM_NAME"".xml"
+	VM_BACKUP_XML_FILE="$CURRENT_LOG_PATH""xml_backup.xml"
 }
 
 init_file()
@@ -394,6 +450,10 @@ init_file()
 	if [ ! -f "$CURRENT_LAST_TESTCASE_FILE" ]; then
 		touch $CURRENT_LAST_TESTCASE_FILE
 	fi
+
+	if [ ! -f "$VM_BACKUP_XML_FILE" ]; then
+		touch "$VM_BACKUP_XML_FILE"
+	fi
 }
 
 init()
@@ -404,7 +464,6 @@ init()
 
 main()
 {
-	debug 
 	echo -e "Testcases List:"
 	init_testcase_list 
 
@@ -510,5 +569,6 @@ do
         		;;
         esac
 done
+debug
 main
 
