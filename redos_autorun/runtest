@@ -22,27 +22,42 @@ DEFAULT_SCATTERED_LIST=$CURRENT_DIR/tests/scattered_list
 
 get_config_key()
 {    
-	section=$(echo $1 | cut -d '.' -f 1)    
-	key=$(echo $1 | cut -d '.' -f 2)    
+	if [ "$1" = "" ]; then
+		return
+	fi
+	section=$(echo $2 | cut -d '.' -f 1)    
+	key=$(echo $2 | cut -d '.' -f 2)    
 	sed -n "/\[$section\]/,/\[.*\]/{    
  	/^\[.*\]/d    
  	/^[ \t]*$/d    
 	/^$/d    
 	/^#.*$/d    
 	s/^[ \t]*$key[ \t]*=[ \t]*\(.*\)[ \t]*/\1/p    
-	}" $DEFAULT_CONFIG
+	}" $1
 }   
 
-VIRTTEST_DIR=$(get_config_key "dir.virt-test")
-DEFAULT_RUN_COMMAND=$(get_config_key "command.default_run_cmd")" "
-DEFAULT_EXTRA_COMMAND=" "$(get_config_key "command.extra_cmd")
-LIBVIRT_EXTRA_COMMAND=" "$(get_config_key "libvirt.extra_cmd")
-QEMU_EXTRA_COMMAND=" "$(get_config_key "qemu.extra_cmd")
+get_virttest_dir()
+{
+	virttest_dir=$(get_config_key  "$DEFAULT_CONFIG" "dir.virt-test")
+	virttest_dir=`echo $virttest_dir`
+	if [ "${virttest_dir: -1}" != "/" ]; then
+		virttest_dir=$virttest_dir"/"
+	fi
+	echo $virttest_dir	
+}
+
+
+VIRTTEST_DIR=`get_virttest_dir`
+DEFAULT_RUN_COMMAND=$(get_config_key "$DEFAULT_CONFIG" "command.default_run_cmd")" "
+DEFAULT_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "command.extra_cmd")
+LIBVIRT_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "libvirt.extra_cmd")
+QEMU_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "qemu.extra_cmd")
 CURRENT_LOG_PATH=""
 CURRENT_CASESLIST_FILE=""
 CURRENT_LOG_FILE=""
 CURRENT_DETAIL_LOG_FILE=""
 CURRENT_CONFIG_LOG_FILE=""
+CURRENT_LAST_TESTCASE_FILE=""
 
 TOTAL_COUNT=0
 PASS_COUNT=0
@@ -50,7 +65,7 @@ SKIP_COUNT=0
 FAIL_COUNT=0
 MODULE_COUNT=0
 MODE="ANALYSIS"
-CONTINUE="FALSE"
+CONTINUE=""
 
 
 debug()
@@ -71,6 +86,7 @@ debug()
 	echo -e "\t\tCURRENT_CASESLIST_FILE = $CURRENT_CASESLIST_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_LOG_FILE = $CURRENT_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_DETAIL_LOG_FILE = $CURRENT_DETAIL_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_LAST_TESTCASE_FILE = $CURRENT_LAST_TESTCASE_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 
 	# print config data
 	echo -e "\tConfig:" | tee -a "$CURRENT_CONFIG_LOG_FILE"
@@ -143,6 +159,14 @@ merge_params()
 set_testcases_to_list()
 {
 	line_count=0
+	if [ "$3" = "qemu" ] || [ "$3" = "QEMU" ]; then
+		class="qemu"
+	elif [ "$3" = "libvirt" ] || [ "$3" = "LIBVIRT" ]; then
+		class="libvirt"
+	else
+		echo -e "class error"
+		return
+	fi
 
 	while read ts_line
 	do
@@ -157,6 +181,15 @@ set_testcases_to_list()
 		extra_params=""
 		full_params=""
 		testcase_name=`echo "$ts_line" | awk -F '[ {]' '{print $1}'`
+
+		if [ "$CONTINUE" != "" ]; then
+			if [ "$CONTINUE" != "$3:$testcase_name" ]; then
+				continue;
+			else
+				CONTINUE=""
+			fi
+		fi
+
 		if [[ "$ts_line" =~ "{" ]]; then
 			extra_params=`echo $ts_line | cut -d '{' -f2|cut -d '}' -f1`
 			extra_params=`echo $extra_params`
@@ -165,14 +198,7 @@ set_testcases_to_list()
 		if [ ! -z "$extra_params" ] || [ ! -z "$2" ]; then
 			full_params=`merge_params "$extra_params" "$2"`
 		fi
-
-		if [ "$3" = "qemu" ] || [ "$3" = "QEMU" ]; then
-			echo -e "$3"":""$testcase_name"" { ""$full_params"" } " >> $CURRENT_CASESLIST_FILE
-		elif [ "$3" = "libvirt" ] || [ "$3" = "LIBVIRT" ]; then
-			echo -e "$3"":""$testcase_name"" { ""$full_params"" } " >> $CURRENT_CASESLIST_FILE
-		else
-			continue
-		fi
+		echo -e "$class"":""$testcase_name"" { ""$full_params"" } " >> $CURRENT_CASESLIST_FILE
 
 		line_count=$(($line_count+1))	
 		if [ "$extra_params" = "" ]; then
@@ -188,6 +214,8 @@ set_testcases_to_list()
 
 init_testcase_list()
 {
+	MODULE_COUNT=1
+
 	while read ml_line
 	do
 		ml_line=`echo $ml_line`
@@ -229,8 +257,14 @@ init_testcase_list()
 		fi
 
 
-		MODULE_COUNT=$(($MODULE_COUNT+1))
 		if [ "$MODE" = "DIRECT" ]; then
+			if [ "$CONTINUE" != "" ]; then
+				if [ "$CONTINUE" != "$class:$module_name" ]; then
+					continue;
+				else
+					CONTINUE=""
+				fi
+			fi
 			echo -e "\t\tcase $MODULE_COUNT: $module_name $module_extra_params"
 			echo -e "$class"":""$module_name"" { ""$default_cmd"" } " >> $CURRENT_CASESLIST_FILE
 		else
@@ -242,6 +276,7 @@ init_testcase_list()
 				set_testcases_to_list "$module_file" "$default_cmd" "$class"
 			fi
 		fi
+		MODULE_COUNT=$(($MODULE_COUNT+1))
 	done < "$DEFAULT_MODULE_LIST"
 }
 
@@ -284,9 +319,10 @@ run_test()
 		fi
 		printf "%-150s" "$index. $class:$testcase_name"
 		run_cmd=`generate_cmd "$class" "$testcase_name" "$params"`
+		echo "$class:$testcase_name" > $CURRENT_LAST_TESTCASE_FILE
 		if [ "$run_cmd" = "1" ]; then
 			echo -e "\033[34m SKIP(autorun: Parameter error)  \033[0m"
-			echo -e "SKIP\t$class:$testcase_name (autorun: Parameter error)" >> "CURRENT_LOG_FILE"
+			echo -e "SKIP\t$class:$testcase_name " { ""$params"" }"(autorun: Parameter error)" >> "CURRENT_LOG_FILE"
 			SKIP_COUNT=$(($SKIP_COUNT+1))
 		else
 			result=`${run_cmd}  2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED"`
@@ -295,19 +331,19 @@ run_test()
 			SKIP=`echo "$result" | grep "SKIPPED: " | awk -F'SKIPPED: ' '{print $2}'`
 			if [ "$PASS" = "1" ]; then
 				printf "\033[32m %-20s \033[0m\n" "PASS"
-				echo -e "PASS\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
+				echo -e "PASS\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				PASS_COUNT=$(($PASS_COUNT+1))
 			elif [ "$FAIL" = "1" ]; then
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
-				echo -e "FAIL\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
+				echo -e "FAIL\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))
 			elif [ "$SKIP" = "1" ]; then
 				printf "\033[34m %-20s \033[0m\n" "SKIP"
-				echo -e "SKIP\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
+				echo -e "SKIP\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				SKIP_COUNT=$(($SKIP_COUNT+1))
 			else
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
-				echo -e "FAIL\t$class:$testcase_name" >> "$CURRENT_LOG_FILE"
+				echo -e "FAIL\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))	
 			fi	
 		fi
@@ -323,6 +359,7 @@ init_env_params()
 	CURRENT_LOG_FILE="$CURRENT_LOG_PATH""log"
 	CURRENT_DETAIL_LOG_FILE="$CURRENT_LOG_PATH""detail_log"
 	CURRENT_CONFIG_LOG_FILE="$CURRENT_LOG_PATH""config_log"
+	CURRENT_LAST_TESTCASE_FILE="$CURRENT_LOG_PATH""last_testcase"
 }
 
 init_file()
@@ -351,6 +388,10 @@ init_file()
 	if [ ! -f "$CURRENT_CONFIG_LOG_FILE" ]; then
 		touch $CURRENT_DETAIL_LOG_FILE
 	fi
+
+	if [ ! -f "$CURRENT_LAST_TESTCASE_FILE" ]; then
+		touch $CURRENT_LAST_TESTCASE_FILE
+	fi
 }
 
 init()
@@ -358,9 +399,6 @@ init()
 	init_env_params
 	init_file
 }
-
-
-
 
 main()
 {
@@ -372,7 +410,12 @@ main()
 
 	echo -e "Total: $TOTAL_COUNT"
 	echo ""
-	echo -e "Start:"
+	if [ "$CONTINUE" = "" ]; then
+		echo -e "Start:"
+	else
+		echo "Start test from $CONTINUE"
+	fi
+
 	run_test
 
 	echo -e "Finish"
@@ -384,22 +427,62 @@ main()
 }
 
 
+get_first_testcase()
+{
+	if [ ! -f "$1" ]; then
+		echo ""
+	else
+		while read tc_line
+		do
+			tc_line=`echo $tc_line`
+			if [ -z "$tc_line" ]; then
+				continue
+			fi
+	
+			if [ "${tc_line:0:1}" = "#" ]; then
+				continue
+			fi
+			class=""
+			tc_name=""
+			class=`echo $tc_line | cut -d ':' -f1`
+			tc_name=`echo "$tc_line" | cut -d ':' -f2  | awk -F'[ {]' '{print $1}'`
+			
+			if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ] || [ "$class" = "libvirt" ] || [ "$class" = "LIBVIRT" ]; then
+				echo "$tc_line"
+				return
+			else
+				echo -e "Invalid format in File:$1"	
+				exit 1
+			fi
+		done < "$1"
+	fi
+}
+
 usage()
 {
 	echo -e "Usage: runtest [Options]"
 	echo -e ""
 	echo -e "Options:"
 	printf "\t%-40s%-20s\n" "-h" "Show this help message and exit"
-	printf "\t%-40s%-20s\n" "-m <modules_list_file>" "Use custom modules_list.        Default: ./tests/modules_list"
-	printf "\t%-40s%-20s\n" "-t <testcases_list_file>" "Only run testcase in this file."
+	printf "\t%-40s%-20s\n" "-m <file>" "Use custom modules_list.        Default: ./tests/modules_list"
+	printf "\t%-40s%-20s\n" "-t <file>" "Only run testcase in this file."
+	printf "\t%-40s%-20s\n" "-c <file>" "Start test from first testcase in this file"
 	exit 0
 }
 
 # Start in here
 init
-while getopts "hm:t:" arg 
+while getopts "c:hm:t:" arg 
 do
 	case $arg in
+		c)
+			if [ ! -f "$OPTARG" ]; then
+				echo -e "$OPTARG is not exist."
+				exit 1
+			fi
+			CONTINUE=`get_first_testcase "$OPTARG"`
+			echo $CONTINUE
+			;;
 		h)
 			usage
 			;;
