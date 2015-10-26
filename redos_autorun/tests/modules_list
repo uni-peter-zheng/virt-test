@@ -51,7 +51,7 @@ libvirt:virsh_domfstrim
 libvirt:virsh_domid
 libvirt:virsh_domiflist
 libvirt:virsh_domif_setlink_getlink
-#libvirt:virsh_domiftune
+libvirt:virsh_domiftune
 libvirt:virsh_domjobabort
 libvirt:virsh_domjobinfo
 libvirt:virsh_domname
