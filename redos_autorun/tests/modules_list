@@ -3,17 +3,17 @@
 # Module name corresponding files in ./libvirt or ./qemu
 
 
-#libvirt:migration   
-#libvirt:svirt
-#libvirt:multifunction
+#libvirt:migration  p2p 迁移不支持 
+libvirt:svirt
+libvirt:multifunction
 libvirt:libvirt_scsi
 #libvirt:snapshot
-#libvirt:network_bandwidth
+libvirt:network_bandwidth
 #libvirt:pci_passthrough   系统不支持
 libvirt:storage_pool
 #libvirt:perf_kvm
 #libvirt:ksm_service  缺少ksmtuned服务
-#libvirt:timer_management
+#libvirt:timer_management 不支持kvmclock
 #libvirt:hugepage
 #libvirt:vcpu_hotplug
 #libvirt:storage_discard
@@ -40,7 +40,7 @@ libvirt:virsh_cpu_stats
 libvirt:virsh_create
 libvirt:virsh_define_undefine
 libvirt:virsh_desc
-#libvirt:virsh_destory
+libvirt:virsh_destory  #设置remote无密码ssh后，可pass
 #libvirt:virsh_detach_device
 #libvirt:virsh_domblkerror
 libvirt:virsh_domblklist
@@ -75,10 +75,10 @@ libvirt:virsh_migrate_compcache
 #libvirt:virsh_migrate_stress
 libvirt:virsh_numatune
 libvirt:virsh_qemu_agent_command_fs
-#libvirt:virsh_qemu_agent_command
+#libvirt:virsh_qemu_agent_command   不支持--aysnc选项
 #libvirt:virsh_qemu_attach
 #libvirt:virsh_qemu_monitor_blockjob
-#libvirt:virsh_qemu_monitor_command
+libvirt:virsh_qemu_monitor_command
 libvirt:virsh_reboot
 libvirt:virsh_reset
 libvirt:virsh_restore
@@ -89,11 +89,11 @@ libvirt:virsh_save
 libvirt:virsh_schedinfo_qemu_posix
 libvirt:virsh_schedinfo_xen_credit
 #libvirt:virsh_screenshot
-#libvirt:virsh_sendkey
-#libvirt:virsh_setmaxmem
-#libvirt:virsh_setmem
+#libvirt:virsh_sendkey  测试用例命令执行发生错误
+#libvirt:virsh_setmaxmem  不支持虚拟机运行时修改大内存
+libvirt:virsh_setmem
 #libvirt:virsh_setvcpus
-#libvirt:virsh_shutdown
+libvirt:virsh_shutdown
 libvirt:virsh_start
 #libvirt:virsh_suspend
 libvirt:virsh_ttyconsole
@@ -101,38 +101,38 @@ libvirt:virsh_undefine
 
 
 
-#libvirt:virsh_update_device
-#libvirt:virsh_vcpucount
-#libvirt:virsh_vcpuinfo
-#libvirt:virsh_vcpupin
-#libvirt:virsh_vncdisplay
-#libvirt:virsh_domcapabilities
-#libvirt:virsh_hostname
+#libvirt:virsh_update_device   不支持ide floppy设备
+libvirt:virsh_vcpucount
+libvirt:virsh_vcpuinfo
+libvirt:virsh_vcpupin
+libvirt:virsh_vncdisplay
+libvirt:virsh_domcapabilities
+libvirt:virsh_hostname
 #libvirt:virsh_capabilities
-#libvirt:virsh_cpu_models
-#libvirt:virsh_freecell
+libvirt:virsh_cpu_models
+libvirt:virsh_freecell
 #libvirt:virsh_freepages
-#libvirt:virsh_maxvcpus
-#libvirt:virsh_nodecpumap
-#libvirt:virsh_nodecpustats
-#libvirt:virsh_nodeinfo
-#libvirt:virsh_nodememstats
+libvirt:virsh_maxvcpus
+libvirt:virsh_nodecpumap
+libvirt:virsh_nodecpustats
+libvirt:virsh_nodeinfo  # 1 FAIL，已经注释
+libvirt:virsh_nodememstats
 #libvirt:virsh_node_memtune
-#libvirt:virsh_nodesuspend
-#libvirt:virsh_sysinfo
-#libvirt:virsh_uri
-#libvirt:virsh_version
+#libvirt:virsh_nodesuspend   不支持nodesuspend
+libvirt:virsh_sysinfo
+libvirt:virsh_uri
+libvirt:virsh_version
 #libvirt:virsh_domblkinfo
-#libvirt:virsh_domblkstat
-#libvirt:virsh_domifstat
+libvirt:virsh_domblkstat
+libvirt:virsh_domifstat
 #libvirt:virsh_domstate
-#libvirt:virsh_domstats
-#libvirt:virsh_list
+libvirt:virsh_domstats
+libvirt:virsh_list
 #libvirt:virsh_nodedev_create_destroy 需要HBA设备
 #libvirt:virsh_nodedev_detach_reattach 需要在配置文件设置用于测试detach的PCI总线，手动测试虚拟机的每条PCI总线在detach时都会报错。
 libvirt:virsh_nodedev_dumpxml
 libvirt:virsh_nodedev_list  
-libvirt:virsh_nodedev_reset #需要设置测试使用的special_device，但格式不清楚，尝试设置了多个值都报参数错误；查看源码可知，其实在设置的参数值不满足条件时，用例会自动检索host中的pci设备，由于我们host上的设备都不能resetable，所以用例报错，不过此处用例报错信息给的不准确
+#libvirt:virsh_nodedev_reset #需要设置测试使用的special_device，但格式不清楚，尝试设置了多个值都报参数错误；查看源码可知，其实在设置的参数值不满足条件时，用例会自动检索host中的pci设备，由于我们host上的设备都不能resetable，所以用例报错，不过此处用例报错信息给的不准确
 libvirt:virsh_secret_define_undefine
 libvirt:virsh_secret_dumpxml
 libvirt:virsh_secret_list
@@ -159,16 +159,16 @@ libvirt:virsh_net_update  #bridge,forward,ip这三个section不支持net-update
 libvirt:virsh_net_uuid
 libvirt:virsh_find_storage_pool_sources_as
 libvirt:virsh_pool_acl
-#libvirt:virsh_pool_create_as
-#libvirt:virsh_pool_create
+libvirt:virsh_pool_create_as
+libvirt:virsh_pool_create
 libvirt:virsh_pool_edit  #我们的源没有gluster-server包，需要便已安装gluster
 libvirt:virsh_pool  #gluster和ipv6
 #libvirt:virsh_snapshot_create_as
 #libvirt:virsh_snapshot_edit
 #libvirt:virsh_snapshot_par_cur
-#libvirt:virsh_connect
-#libvirt:virsh_help
-#libvirt:virsh_itself
+libvirt:virsh_connect #1 SKIP 缺少xen驱动
+libvirt:virsh_help
+libvirt:virsh_itself
 libvirt:virsh_vol_clone_wipe  #TestNAError: Option --prealloc-metadata is not supported.使用virsh help vol-wipe查看是否有参数--prealloc-metadata，没有则跳过这次，手动查询确实不支持这个参数；全部8个SKIP都是这个原因
 libvirt:virsh_vol_create_from
 libvirt:virsh_vol_create
@@ -177,14 +177,14 @@ libvirt:virsh_vol_resize #四个FAIL是因为在resize后，capacity大小和预
 #libvirt:virsh_voume_application
 libvirt:virsh_volume #gluster 跳过两个用例
 libvirt:virt-clone #将qcow2格式的img克隆成为raw，导致克隆后的虚拟机无法启动。 其他的iscsi的用例需要安装targetcli
-#libvirt:virt-top
+#libvirt:virt-top #还未测试
 #libvirt:virt_what
 #libvirt:virt_xml_validate
 #libvirt:qemu-guest-agent
 #libvirt:unattended_install
-#libvirt:virstual_disks
+#libvirt:virstual_disks   ALL FAIL，原因可能是测试用例定义的设备名如sda和现有的xml中的重复了
 #libvirt:macvtap
-#libvirt:libvirt_qemu_cmdline
+libvirt:libvirt_qemu_cmdline  #2 FAIL redhat有对应bug ：https://bugzilla.redhat.com/show_bug.cgi?format=multiple&id=1235511
 libvirt:guest_numa #no_nodemem的用例需要修改guest-numa.cfg,因为我们的版本对memtune的参数规则和autotest的要求不太一样；其他用例失败是系统不支持2M,1G的大页表，也不能把全部host大页分配给一个虚拟机。
 
 #

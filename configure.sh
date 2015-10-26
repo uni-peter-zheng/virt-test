@@ -101,7 +101,7 @@ setenv()
         	echo "AUTOTEST_PATH has been set!"
         fi
 	
-	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR"|g" ./redos_autorun/cfg/base.cfg
+	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR/"|g" ./redos_autorun/cfg/base.cfg
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
 
@@ -116,6 +116,7 @@ setenv()
         systemctl mask iptables
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
         setenforce 0
+        yum install expect -y
         
 	if [ ! -f $BASE_PATH ];then
 		echo "build base.cfg,wait a minute!"
@@ -161,6 +162,7 @@ auto_ssh_copy_id () {
                     *assword:* {send -- $1\r;exp_continue;}
                     eof        {exit 0;}
                 }";
+    ssh-add
 }
 
 auto_scp_is_rsa() {
