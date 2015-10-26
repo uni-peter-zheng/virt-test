@@ -3,8 +3,8 @@
 # Module name corresponding files in ./libvirt or ./qemu
 
 
-#libvirt:migration  p2p 迁移不支持 
-libvirt:svirt
+#libvirt:migration  p2p 迁移不支持
+libvirt:svirt      #注释掉相关host_selinux的用例
 libvirt:multifunction
 libvirt:libvirt_scsi
 #libvirt:snapshot
