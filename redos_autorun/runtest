@@ -527,7 +527,7 @@ usage()
 	printf "\t%-40s%-20s\n" "-h" "Show this help message and exit"
 	printf "\t%-40s%-20s\n" "-m <file>" "Use custom modules_list.        Default: ./tests/modules_list"
 	printf "\t%-40s%-20s\n" "-t <file>" "Only run testcase in this file."
-	printf "\t%-40s%-20s\n" "-c <file>" "Start test from first testcase in this file"
+	printf "\t%-40s%-20s\n" "-c <file>" "Start from testcase which first testcase in this file"
 	exit 0
 }
 
