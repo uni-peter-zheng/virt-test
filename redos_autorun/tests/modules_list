@@ -176,7 +176,7 @@ libvirt:virsh_vol_download_upload #原因是download部分完成后会对文件�
 libvirt:virsh_vol_resize #四个FAIL是因为在resize后，capacity大小和预期一致，而allocation大小测试不加--shrink，表示不压缩，而我们的系统会默认进行压缩。 修改源码将resize之后的size check注释之后可PASS
 #libvirt:virsh_voume_application
 libvirt:virsh_volume #gluster 跳过两个用例
-libvirt:virt-clone #将qcow2格式的img克隆成为raw，导致克隆后的虚拟机无法启动。 其他的iscsi的用例需要安装targetcli
+libvirt:virt-clone #部分用例测试有错误，暂时注释掉了。
 #libvirt:virt-top #还未测试
 #libvirt:virt_what
 #libvirt:virt_xml_validate
