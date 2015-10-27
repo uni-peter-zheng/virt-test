@@ -263,6 +263,7 @@ install()
         yum install mkisofs -y
         yum install perf -y
         yum install fuse-sshfs -y
+        yum install virt-install -y
 }
 
 main()
