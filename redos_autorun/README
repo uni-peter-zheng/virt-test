@@ -9,3 +9,13 @@ How to use ./runtest -t
 2) add testcase in this file, remember to add <class>: to the front of the testcase`s name.if this testcase will use special params, you can add {params} after testcase`s name.
    (example: libvirt:type_specific.io-github-autotest-libvirt.virsh.domblkerror.undefinded_error {-m 4096})
 3) use command ./runtest -t testcases_list
+
+How to start from the specified test
+	This function can promise start from the specified test which in test_list.
+1) create a file
+	(example: touch first_testcase)
+2) add testcase name in this file
+	(example: libvirt:type_specific.io-github-autotest-libvirt.virsh.domblkerror.undefinded_error {-m 4096})
+3) use command ./runtest -c first_testcase
+
+
