@@ -92,7 +92,7 @@ libvirt:virsh_schedinfo_xen_credit
 #libvirt:virsh_sendkey  测试用例命令执行发生错误
 #libvirt:virsh_setmaxmem  不支持虚拟机运行时修改大内存
 libvirt:virsh_setmem
-#libvirt:virsh_setvcpus
+libvirt:virsh_setvcpus
 libvirt:virsh_shutdown
 libvirt:virsh_start
 #libvirt:virsh_suspend
