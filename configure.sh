@@ -2,14 +2,14 @@
 
 #init初始化配置 公共config
 
-export remote_ip="192.168.1.4"
+export remote_ip="192.168.1.5"
 export remote_pwd="123456"
-export local_ip="192.168.1.71"
+export local_ip="192.168.1.4"
 export local_pwd="123456"
-export vms="RedOS-autotest"
-export main_vms="RedOS-autotest"
-export localhost="RedOS-71"
-export remotehost="RedOS-4"
+export vms="RedKVM-cxf"
+export main_vms="RedKVM-cxf"
+export localhost="RedOS-4"
+export remotehost="RedOS-5"
 export bridge="br0"
 
 CURRENT_DIR=$(pwd)
@@ -224,7 +224,7 @@ EOF
        #为用例virsh.domstats指定测试器
        echo "set config for testcases:virsh.domstats!"
        echo
-       sed -i -e 's/^    vm_list.*$/    vm_list = $main_vm/' ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
+       sed -i -e "s/^    vm_list.*$/    vm_list = $main_vm/" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
        sed -i -e "s|virt-tests-vm1||" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
        
        #修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301 
