@@ -8,7 +8,7 @@ libvirt:svirt      #注释掉相关host_selinux的用例
 libvirt:multifunction
 libvirt:libvirt_scsi
 #libvirt:snapshot
-libvirt:network_bandwidth
+#libvirt:network_bandwidth           #需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
 #libvirt:pci_passthrough   系统不支持
 libvirt:storage_pool
 #libvirt:perf_kvm
