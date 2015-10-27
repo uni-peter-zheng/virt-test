@@ -143,7 +143,12 @@ setenv()
 
 	echo "set localhost=$localhost"
 	hostname $localhost
-
+	
+	#默认关闭截屏选项
+	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" ./backends/libvirt/cfg/base.cfg
+	sed -i "s/^keep_screendumps_on_error.*$/keep_screendumps_on_error = no/" ./backends/libvirt/cfg/base.cfg
+	sed -i "s/^keep_screendumps.*$/keep_screendumps = no/" ./backends/libvirt/cfg/base.cfg
+	
 	remotehost=${remotehost:-$OPTARG}
 }
 
