@@ -24,7 +24,8 @@ BASE_PATH=$CURRENT_DIR/backends/libvirt/cfg/base.cfg
 
 #
 export ENTER_YOUR_AVAILABLE_PARTITION="sda2" #为用例libvirt_scsi指定测试分区
-export PATH_OF_POOL_XML="$CURRENT_DIR/pool/pool.xml" #指定用例pool_create创建的pool.xml的路径
+mkdir $CURRENT_DIR/shared/pool 1>/dev/null 2>&1
+export PATH_OF_POOL_XML="$CURRENT_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
 
 usage()
 {
@@ -207,7 +208,7 @@ specialcfg()
   <source>
   </source>
   <target>
-    <path>/home/virt-test/shared/pool</path>
+    <path>$CURRENT_DIR/shared/pool</path>
   </target>
 </pool>
 EOF
