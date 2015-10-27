@@ -193,13 +193,6 @@ specialcfg()
        echo "set config for testcases:libvirt_scsi!"
        echo
        sed -i 's/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = dev\/'$ENTER_YOUR_AVAILABLE_PARTITION'/' ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
-      
-      #virsh_iface 配置修改 iface_name，unprivileged_user，ping_ip
-      # sed -i -e "s|"ENTER.BRIDGE.NAME"|$bridge|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface.cfg
-      # sed -i -e "s|"EXAMPLE"|root|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface.cfg
-      # sed -i -e "s|"ENTER.VALID.IP.ADDRESS"|192.168.1.1|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface.cfg
-      # sed -i -e "s|"ENTER.ETH.IP.ADDRESS"|192.168.1.72|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface.cfg
-      # sed -i -e "s|"ENTER.ETHERNET.CARD"|eth0|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface.cfg
  
        #为用例pool_create创建pool.xml
        echo "build pool.xml for testcases:virsh_pool_create!"
@@ -227,7 +220,12 @@ EOF
        echo "set config for testcases:virsh.cpu_baseline!"
        echo
        sed -i -e "s|virt-tests-vm1|$main_vms|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
- 
+ 	
+       #为用例virsh.domstats指定测试器
+       echo "set config for testcases:virsh.domstats!"
+       echo
+       sed -i -e 's/^vm_list.*$/vm_list = $main_vm/' ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
+       
        #修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301 
        echo "modify config for testcases:guest_numa!"
        echo
