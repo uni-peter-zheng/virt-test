@@ -23,7 +23,8 @@ cd $CURRENT_DIR
 BASE_PATH=$CURRENT_DIR/backends/libvirt/cfg/base.cfg
 
 #
-export ENTER_YOUR_AVAILABLE_PARTITION="sda2" #为用例libvirt_scsi指定测试分区
+export tmp=`mount |grep boot`
+export ENTER_YOUR_AVAILABLE_PARTITION=${tmp:0:9} #为用例libvirt_scsi指定测试分区为boot分区
 mkdir $CURRENT_DIR/shared/pool 1>/dev/null 2>&1
 export PATH_OF_POOL_XML="$CURRENT_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
 
