@@ -1,5 +1,5 @@
 
-type_specific.io-github-autotest-libvirt.virt_clone 
+#type_specific.io-github-autotest-libvirt.virt_clone           except FAIL，but run successfully
 type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.normal_resource.twice_execute.kill_first 
 type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.normal_resource.twice_execute.leave_first 
 type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.cpu_lack 

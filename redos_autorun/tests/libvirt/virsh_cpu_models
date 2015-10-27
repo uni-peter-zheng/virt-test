@@ -1,7 +1,7 @@
 
-type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.local_host.auto_get_arch 
+#type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.local_host.auto_get_arch 
 type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.local_host.specific_arch 
-type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.remote_host.auto_get_arch 
+#type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.remote_host.auto_get_arch 
 type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.remote_host.specific_arch 
 type_specific.io-github-autotest-libvirt.virsh.cpu_models.negative_test.invalid_arch 
 type_specific.io-github-autotest-libvirt.virsh.cpu_models.negative_test.invalid_option 
