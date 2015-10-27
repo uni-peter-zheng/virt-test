@@ -1,6 +1,6 @@
 
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.logical_pool.normal_vol 
-type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.logical_pool.thin_vol 
+#type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.logical_pool.thin_vol 
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.logical_pool.snapshot_vol 
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.logical_pool.deactivate_vol 
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.logical_pool.incomplete_target 
@@ -37,10 +37,10 @@ type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_qed.src_pool_type.dir.acl_test 
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_qed.src_pool_type.fs 
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_qed.src_pool_type.netfs 
-type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_iso.src_pool_type.dir.non_acl 
-type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_iso.src_pool_type.dir.acl_test 
-type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_iso.src_pool_type.fs 
-type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_iso.src_pool_type.netfs 
+#type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_iso.src_pool_type.dir.non_acl 
+#type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_iso.src_pool_type.dir.acl_test 
+#type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_iso.src_pool_type.fs 
+#type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_iso.src_pool_type.netfs 
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_vmdk.src_pool_type.dir.non_acl 
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_vmdk.src_pool_type.dir.acl_test 
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_vmdk.src_pool_type.fs 

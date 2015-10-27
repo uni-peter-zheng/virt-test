@@ -1,20 +1,20 @@
 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.cpu_list.cpu_list_x 
-type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.cpu_list.cpu_list_x-y 
+#type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.cpu_list.cpu_list_x-y 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.cpu_list.cpu_list_comma 
-type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.cpu_list.cpu_list_exclude 
-type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.multi_dom 
+#type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.cpu_list.cpu_list_exclude 
+#type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.multi_dom     #自动测试 两个虚拟机
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_x 
-type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_x-y 
+#type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_x-y 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_comma 
-type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_exclude 
-type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_r 
+#type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_exclude 
+#type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_r 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.dom_name 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.uuid 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.live 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.config 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.current 
-type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.multi_dom 
+#type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.multi_dom   #自动测试 两个虚拟机
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.negative_test.no_dom_name 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.negative_test.dom_name_space 
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.negative_test.dom_not_exists 
