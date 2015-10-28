@@ -219,7 +219,7 @@ type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.mu
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.error_test.hex_id_option.file_positional.domain_positional 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.error_test.hex_id_option.file_positional.domain_argument 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.error_test.hex_id_option.file_argument.domain_positional 
-type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.error_test.hex_id_option.file_argument.domain_argument 
+#type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.error_test.hex_id_option.file_argument.domain_argument 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.error_test.invalid_id_option.file_positional.domain_positional 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.error_test.invalid_id_option.file_positional.domain_argument 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.error_test.invalid_id_option.file_argument.domain_positional 
@@ -919,7 +919,7 @@ type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_fi
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.error_test.hex_id_option.file_positional.domain_positional 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.error_test.hex_id_option.file_positional.domain_argument 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.error_test.hex_id_option.file_argument.domain_positional 
-type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.error_test.hex_id_option.file_argument.domain_argument 
+#type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.error_test.hex_id_option.file_argument.domain_argument 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.error_test.invalid_id_option.file_positional.domain_positional 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.error_test.invalid_id_option.file_positional.domain_argument 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.error_test.invalid_id_option.file_argument.domain_positional 
