@@ -87,7 +87,7 @@ libvirt:virsh_save_image_define
 libvirt:virsh_save_image_edit
 libvirt:virsh_save
 libvirt:virsh_schedinfo_qemu_posix
-libvirt:virsh_schedinfo_xen_credit
+#libvirt:virsh_schedinfo_xen_credit   xen的虚拟化测试，用不到
 #libvirt:virsh_screenshot
 #libvirt:virsh_sendkey  测试用例命令执行发生错误
 #libvirt:virsh_setmaxmem  不支持虚拟机运行时修改大内存
