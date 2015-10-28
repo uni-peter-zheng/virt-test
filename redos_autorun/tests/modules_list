@@ -25,7 +25,6 @@ libvirt:usb_hotplug
 #
 #libvirt:virsh-attach-detach-disk
 #libvirt:virsh-attach-detach-interface
-libvirt:attach_device #注释部分用例
 #libvirt:attach_device     #有接近1000测试用例，需要单独测试
 libvirt:virsh_autostart
 libvirt:virsh_blockcommit   #部分用例需要raw格式的磁盘,还有其他相关gluster的用例先注释掉
