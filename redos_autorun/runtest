@@ -362,19 +362,19 @@ run_test()
 			SKIP=`echo "$result" | grep "SKIPPED: " | awk -F'SKIPPED: ' '{print $2}'`
 			if [ "$PASS" = "1" ]; then
 				printf "\033[32m %-20s \033[0m\n" "PASS"
-				echo -e "PASS\ttime:$time\t $class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
+				echo -e "PASS\t$time\t $class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				PASS_COUNT=$(($PASS_COUNT+1))
 			elif [ "$FAIL" = "1" ]; then
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
-				echo -e "FAIL\ttime:$time\t $class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
+				echo -e "FAIL\t$time\t $class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))
 			elif [ "$SKIP" = "1" ]; then
 				printf "\033[34m %-20s \033[0m\n" "SKIP"
-				echo -e "SKIP\ttime:$time\t $class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
+				echo -e "SKIP\t$time\t $class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				SKIP_COUNT=$(($SKIP_COUNT+1))
 			else
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
-				echo -e "FAIL\ttime:$time\t $class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
+				echo -e "FAIL\t$time\t $class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))	
 			fi	
 		fi
