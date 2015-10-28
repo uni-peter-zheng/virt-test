@@ -11,7 +11,7 @@ libvirt:libvirt_scsi
 #libvirt:network_bandwidth           #需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
 #libvirt:pci_passthrough   系统不支持
 libvirt:storage_pool
-#libvirt:perf_kvm
+libvirt:perf_kvm       #注释6个用例
 #libvirt:ksm_service  缺少ksmtuned服务
 #libvirt:timer_management 不支持kvmclock
 #libvirt:hugepage
@@ -25,9 +25,9 @@ libvirt:usb_hotplug
 #
 #libvirt:virsh-attach-detach-disk
 #libvirt:virsh-attach-detach-interface
-libvirt:attach_device
+libvirt:attach_device #注释部分用例
 libvirt:virsh_autostart
-#libvirt:virsh_blockcommit
+libvirt:virsh_blockcommit   #部分用例需要raw格式的磁盘
 #libvirt:virsh_blockcopy      需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把版本比对去掉，里面规定libvirt1.2.13以上才测试这个功能；并且会创建iscsi设备，需要安装targetcli*和iscsi*，此组测试用例特别耗时间。
 libvirt:virsh_blockjob        #ALL FAIL  待修正
 #libvirt:virsh_blockresize   7个SKIP，因为qed_type不支持；15个FAIL因为pci.0不支持hotplug 
@@ -104,7 +104,7 @@ libvirt:virsh_undefine
 #libvirt:virsh_update_device   不支持ide floppy设备
 libvirt:virsh_vcpucount
 libvirt:virsh_vcpuinfo
-libvirt:virsh_vcpupin
+libvirt:virsh_vcpupin   #部分用例需要多台虚拟机，先注释掉
 libvirt:virsh_vncdisplay
 libvirt:virsh_domcapabilities
 libvirt:virsh_hostname
