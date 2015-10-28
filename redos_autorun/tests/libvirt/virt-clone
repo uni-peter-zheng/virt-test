@@ -1,10 +1,10 @@
 
 #type_specific.io-github-autotest-libvirt.virt_clone           except FAIL，but run successfully
-type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.normal_resource.twice_execute.kill_first 
-type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.normal_resource.twice_execute.leave_first 
-type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.cpu_lack 
-type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.memory_lack 
-type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.disk_lack 
+#type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.normal_resource.twice_execute.kill_first 
+#type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.normal_resource.twice_execute.leave_first 
+#type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.cpu_lack 
+#type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.memory_lack 
+#type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.disk_lack 
 type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_virt_content.sec_relabel_yes.sec_type_dynamic 
 type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_virt_content.sec_relabel_yes.sec_type_static 
 type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_svirt_image_s0.sec_relabel_no.sec_type_static 

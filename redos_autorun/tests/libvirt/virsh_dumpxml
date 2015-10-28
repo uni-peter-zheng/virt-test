@@ -57,5 +57,5 @@ type_specific.io-github-autotest-libvirt.virsh.dumpxml.error_test.not_exist_opti
 type_specific.io-github-autotest-libvirt.virsh.dumpxml.error_test.acl_test.security_info 
 type_specific.io-github-autotest-libvirt.resource_abnormal.virsh_dump.normal_resource.twice_execute.kill_first 
 type_specific.io-github-autotest-libvirt.resource_abnormal.virsh_dump.normal_resource.twice_execute.leave_first 
-type_specific.io-github-autotest-libvirt.resource_abnormal.virsh_dump.cpu_busy 
+#type_specific.io-github-autotest-libvirt.resource_abnormal.virsh_dump.cpu_busy 
 

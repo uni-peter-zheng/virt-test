@@ -2,14 +2,14 @@
 
 #init初始化配置 公共config
 
-export remote_ip="192.168.1.4"
+export remote_ip="192.168.1.5"
 export remote_pwd="123456"
-export local_ip="192.168.1.71"
+export local_ip="192.168.1.4"
 export local_pwd="123456"
-export vms="RedOS-autotest"
-export main_vms="RedOS-autotest"
-export localhost="RedOS-71"
-export remotehost="RedOS-4"
+export vms="RedKVM-cxf"
+export main_vms="RedKVM-cxf"
+export localhost="RedOS-4"
+export remotehost="RedOS-5"
 export bridge="br0"
 
 CURRENT_DIR=$(pwd)
@@ -23,8 +23,10 @@ cd $CURRENT_DIR
 BASE_PATH=$CURRENT_DIR/backends/libvirt/cfg/base.cfg
 
 #
-export ENTER_YOUR_AVAILABLE_PARTITION="sda2" #为用例libvirt_scsi指定测试分区
-export PATH_OF_POOL_XML="$CURRENT_DIR/pool/pool.xml" #指定用例pool_create创建的pool.xml的路径
+export tmp=`mount |grep boot`
+export ENTER_YOUR_AVAILABLE_PARTITION=${tmp:0:9} #为用例libvirt_scsi指定测试分区为boot分区
+mkdir $CURRENT_DIR/shared/pool 1>/dev/null 2>&1
+export PATH_OF_POOL_XML="$CURRENT_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
 
 usage()
 {
@@ -142,7 +144,12 @@ setenv()
 
 	echo "set localhost=$localhost"
 	hostname $localhost
-
+	
+	#默认关闭截屏选项
+	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" ./backends/libvirt/cfg/base.cfg
+	sed -i "s/^keep_screendumps_on_error.*$/keep_screendumps_on_error = no/" ./backends/libvirt/cfg/base.cfg
+	sed -i "s/^keep_screendumps.*$/keep_screendumps = no/" ./backends/libvirt/cfg/base.cfg
+	
 	remotehost=${remotehost:-$OPTARG}
 }
 
@@ -207,7 +214,7 @@ specialcfg()
   <source>
   </source>
   <target>
-    <path>/home/virt-test/shared/pool</path>
+    <path>$CURRENT_DIR/shared/pool</path>
   </target>
 </pool>
 EOF
@@ -224,13 +231,24 @@ EOF
        #为用例virsh.domstats指定测试器
        echo "set config for testcases:virsh.domstats!"
        echo
-       sed -i -e 's/^vm_list.*$/vm_list = $main_vm/' ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
+       sed -i -e "s/^    vm_list.*$/    vm_list = "$main_vms"/" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
+       sed -i -e "s|virt-tests-vm1||" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
        
        #修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301 
        echo "modify config for testcases:guest_numa!"
        echo
        sed -i -e "s|node,nodeid=0,cpus=0-1,mem=300|node,nodeid=0,cpus=0-1,memdev=ram-node0|" ../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
        sed -i -e "s|node,nodeid=1,cpus=2-3,mem=301|node,nodeid=1,cpus=2-3,memdev=ram-node1|" ../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
+       
+       #为用例virsh.domcapabilities指定远程测试主机
+       echo "set config for testcases:virsh.domcapabilities!"
+       echo
+       sed -i -e "s|EXAMPLE.COM|$remote_ip|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_domcapabilities.cfg
+       
+       #为用例virsh.cpu_models指定远程测试主机
+       echo "set config for testcases:virsh.cpu_models!"
+       echo
+       sed -i -e "s|EXAMPLE.COM|$remote_ip|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
 }
 
 #测试用例所需的软件包安装
@@ -246,6 +264,7 @@ install()
         yum install mkisofs -y
         yum install perf -y
         yum install fuse-sshfs -y
+        yum install virt-install -y
 }
 
 main()
