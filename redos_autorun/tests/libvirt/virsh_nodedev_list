@@ -1,12 +1,12 @@
 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.no_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.tree_option 
-type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.one_cap_option 
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.one_cap_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.multi_cap_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.long_cap_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.acl_test.no_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.acl_test.tree_option 
-type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.acl_test.one_cap_option 
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.acl_test.one_cap_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.acl_test.multi_cap_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.acl_test.long_cap_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.invalid_option.both_option 
