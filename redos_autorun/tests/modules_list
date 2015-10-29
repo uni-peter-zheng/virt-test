@@ -29,7 +29,7 @@ libvirt:usb_hotplug
 libvirt:virsh_autostart
 libvirt:virsh_blockcommit   #部分用例需要raw格式的磁盘,还有其他相关gluster的用例先注释掉
 #libvirt:virsh_blockcopy      需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把版本比对去掉，里面规定libvirt1.2.13以上才测试这个功能；并且会创建iscsi设备，需要安装targetcli*和iscsi*，此组测试用例特别耗时间。
-libvirt:virsh_blockjob        #ALL FAIL  待修正
+libvirt:virsh_blockjob        
 #libvirt:virsh_blockresize   7个SKIP，因为qed_type不支持；15个FAIL因为pci.0不支持hotplug 
 #libvirt:virsh_change_media  SKIP:需要mkisofs,安装包genisoimage ；这一组用例测试后不恢复环境，导致后面用例虚拟机启动失败；原因是try没有不做VM.start的异常，修改后可正常恢复环境；测试失败原因，IDE磁盘不支持，软驱floppy不支持eject，insert等
 libvirt:virsh_console
