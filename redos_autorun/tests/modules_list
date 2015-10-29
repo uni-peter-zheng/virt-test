@@ -114,7 +114,7 @@ libvirt:virsh_nodecpumap
 libvirt:virsh_nodecpustats
 libvirt:virsh_nodeinfo  # 1 FAIL，已经注释
 libvirt:virsh_nodememstats
-#libvirt:virsh_node_memtune
+libvirt:virsh_node_memtune  # 1 FAIL 已经注释
 #libvirt:virsh_nodesuspend   不支持nodesuspend
 libvirt:virsh_sysinfo
 libvirt:virsh_uri
