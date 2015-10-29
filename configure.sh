@@ -6,8 +6,8 @@ export remote_ip="192.168.1.4"
 export remote_pwd="123456"
 export local_ip="192.168.1.5"
 export local_pwd="123456"
-export vms="RedOS-autotest"
-export main_vms="RedOS-autotest"
+export vms="Redos-autotest"
+export main_vms="Redos-autotest"
 export localhost="RedOS-5"
 export remotehost="RedOS-4"
 export bridge="br0"
@@ -263,7 +263,7 @@ install()
         yum install policycoreutils-python -y
         yum install mkisofs -y
         yum install perf -y
-        yum install fuse-sshfs -y
+#        yum install fuse-sshfs -y   源上还没有这个包
         yum install virt-install -y
         yum install gstreamer-python -y
 }
