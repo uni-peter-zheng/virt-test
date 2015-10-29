@@ -75,7 +75,7 @@ libvirt:virsh_migrate_compcache
 #libvirt:virsh_migrate_stress
 libvirt:virsh_numatune
 libvirt:virsh_qemu_agent_command_fs
-#libvirt:virsh_qemu_agent_command   不支持--aysnc选项
+libvirt:virsh_qemu_agent_command   #不支持--aysnc选项,修改max_id和min_id
 #libvirt:virsh_qemu_attach
 #libvirt:virsh_qemu_monitor_blockjob
 #libvirt:virsh_qemu_monitor_command  #VM 'RedOS-autotest' failed to start: error: Domain is already active 用例测试之前是需要将虚拟机关闭，由于设置了--keep-guest-running这一组用例报错。暂时将其跳过
