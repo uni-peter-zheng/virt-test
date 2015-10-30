@@ -2,14 +2,14 @@
 
 #init初始化配置 公共config
 
-export remote_ip="192.168.1.5"
+export remote_ip="192.168.1.4"
 export remote_pwd="123456"
-export local_ip="192.168.1.4"
+export local_ip="192.168.1.5"
 export local_pwd="123456"
-export vms="RedKVM-cxf"
-export main_vms="RedKVM-cxf"
-export localhost="RedOS-4"
-export remotehost="RedOS-5"
+export vms="Redos-autotest"
+export main_vms="Redos-autotest"
+export localhost="RedOS-5"
+export remotehost="RedOS-4"
 export bridge="br0"
 
 CURRENT_DIR=$(pwd)
@@ -24,7 +24,7 @@ BASE_PATH=$CURRENT_DIR/backends/libvirt/cfg/base.cfg
 
 #
 export tmp=`mount |grep boot`
-export ENTER_YOUR_AVAILABLE_PARTITION=${tmp:0:9} #为用例libvirt_scsi指定测试分区为boot分区
+export ENTER_YOUR_AVAILABLE_PARTITION=${tmp:5:5} #为用例libvirt_scsi指定测试分区为boot分区
 mkdir $CURRENT_DIR/shared/pool 1>/dev/null 2>&1
 export PATH_OF_POOL_XML="$CURRENT_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
 
@@ -199,7 +199,7 @@ specialcfg()
       #libvirt_scsi_partition = "/dev/sda2" 为用例libvirt_scsi指定测试分区
        echo "set config for testcases:libvirt_scsi!"
        echo
-       sed -i 's/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = dev\/'$ENTER_YOUR_AVAILABLE_PARTITION'/' ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
+       sed -i "s/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = \/dev\/$ENTER_YOUR_AVAILABLE_PARTITION/" ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
  
        #为用例pool_create创建pool.xml
        echo "build pool.xml for testcases:virsh_pool_create!"
@@ -263,8 +263,9 @@ install()
         yum install policycoreutils-python -y
         yum install mkisofs -y
         yum install perf -y
-        yum install fuse-sshfs -y
+#        yum install fuse-sshfs -y   源上还没有这个包
         yum install virt-install -y
+        yum install gstreamer-python -y
 }
 
 main()

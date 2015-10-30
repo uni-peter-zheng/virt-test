@@ -59,14 +59,14 @@ type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.no_bench.qemu
 type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.no_bench.qemu_monitor.tablet 
 type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.no_bench.qemu_monitor.disk 
 type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.no_bench.attach_device.disk 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.keyboard 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.mouse 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.tablet 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.disk 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.attach_device.disk 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.keyboard 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.mouse 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.tablet 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.disk 
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.attach_device.disk 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.keyboard 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.mouse 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.tablet 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.disk 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.attach_device.disk 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.keyboard 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.mouse 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.tablet 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.disk 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.attach_device.disk 
 

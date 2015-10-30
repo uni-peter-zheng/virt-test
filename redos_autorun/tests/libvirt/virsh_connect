@@ -9,7 +9,7 @@ type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.error_test.
 type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.error_test.unrecognized_opt 
 type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.error_test.multi_arg 
 type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.ssh_transport 
-type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.tls_transport 
+#type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.tls_transport 
 type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.unix_transport 
-type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.tcp_transport 
+#type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.tcp_transport 
 
