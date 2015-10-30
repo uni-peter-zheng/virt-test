@@ -4,10 +4,7 @@
 
 
 #libvirt:migration  p2p 迁移不支持
-libvirt:svirt      #注释掉相关host_selinux的用例
-libvirt:multifunction
 libvirt:libvirt_scsi
-#libvirt:snapshot
 #libvirt:network_bandwidth           #需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
 #libvirt:pci_passthrough   系统不支持
 libvirt:storage_pool
@@ -31,7 +28,6 @@ libvirt:virsh_autostart
 #libvirt:virsh_blockcopy      需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把版本比对去掉，里面规定libvirt1.2.13以上才测试这个功能；并且会创建iscsi设备，需要安装targetcli*和iscsi*，此组测试用例特别耗时间。
 libvirt:virsh_blockjob        
 #libvirt:virsh_blockresize   7个SKIP，因为qed_type不支持；15个FAIL因为pci.0不支持hotplug 
-#libvirt:virsh_change_media  SKIP:需要mkisofs,安装包genisoimage ；这一组用例测试后不恢复环境，导致后面用例虚拟机启动失败；原因是try没有不做VM.start的异常，修改后可正常恢复环境；测试失败原因，IDE磁盘不支持，软驱floppy不支持eject，insert等
 libvirt:virsh_console
 libvirt:virsh_cpu_baseline
 libvirt:virsh_cpu_compare  #virsh capavilities内缺少host的cpu features列表，所以凡是delete和modefy features的用例都FAIL 或SKIP
@@ -75,7 +71,7 @@ libvirt:virsh_migrate_compcache
 #libvirt:virsh_migrate_stress
 libvirt:virsh_numatune
 libvirt:virsh_qemu_agent_command_fs
-#libvirt:virsh_qemu_agent_command   不支持--aysnc选项
+libvirt:virsh_qemu_agent_command   #不支持--aysnc选项,修改max_id和min_id
 #libvirt:virsh_qemu_attach
 #libvirt:virsh_qemu_monitor_blockjob
 #libvirt:virsh_qemu_monitor_command  #VM 'RedOS-autotest' failed to start: error: Domain is already active 用例测试之前是需要将虚拟机关闭，由于设置了--keep-guest-running这一组用例报错。暂时将其跳过
@@ -114,7 +110,7 @@ libvirt:virsh_nodecpumap
 libvirt:virsh_nodecpustats
 libvirt:virsh_nodeinfo  # 1 FAIL，已经注释
 libvirt:virsh_nodememstats
-#libvirt:virsh_node_memtune
+libvirt:virsh_node_memtune  # 1 FAIL 已经注释
 #libvirt:virsh_nodesuspend   不支持nodesuspend
 libvirt:virsh_sysinfo
 libvirt:virsh_uri
@@ -160,9 +156,6 @@ libvirt:virsh_pool_create_as
 libvirt:virsh_pool_create
 libvirt:virsh_pool_edit  #我们的源没有gluster-server包，需要便已安装gluster
 libvirt:virsh_pool  #gluster和ipv6
-#libvirt:virsh_snapshot_create_as
-#libvirt:virsh_snapshot_edit
-#libvirt:virsh_snapshot_par_cur
 libvirt:virsh_connect #1 SKIP 缺少xen驱动
 libvirt:virsh_help
 libvirt:virsh_itself
@@ -183,6 +176,14 @@ libvirt:virt-clone #部分用例测试有错误，暂时注释掉了。
 #libvirt:macvtap
 libvirt:libvirt_qemu_cmdline  #2 FAIL redhat有对应bug ：https://bugzilla.redhat.com/show_bug.cgi?format=multiple&id=1235511
 libvirt:guest_numa #no_nodemem的用例需要修改guest-numa.cfg,因为我们的版本对memtune的参数规则和autotest的要求不太一样；其他用例失败是系统不支持2M,1G的大页表，也不能把全部host大页分配给一个虚拟机。
+
+
+#将新增加用例模块，比较容易出问题的模块放到最后
+libvirt:snapshot                    #注释掉部分失败的用例
+libvirt:virsh_change_media  # 需要mkisofs,安装包genisoimage ；注释掉ide和floppy>的用例
+libvirt:svirt      #注释掉相关host_selinux的用例
+libvirt:multifunction
+
 
 #
 #
