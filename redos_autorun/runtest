@@ -323,9 +323,9 @@ generate_cmd()
 	cmd=""
 
 	if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
-		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"
+		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"" -v"
 	elif [ "$class" = "libvirt" ] || [ "$class" = "LIBVIRT" ]; then
-		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"
+		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"" -v"
 	else
 		echo "1"
 	fi	
