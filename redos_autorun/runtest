@@ -28,8 +28,8 @@ get_config_key()
 	section=$(echo $2 | cut -d '.' -f 1)    
 	key=$(echo $2 | cut -d '.' -f 2)    
 	sed -n "/\[$section\]/,/\[.*\]/{    
- 	/^\[.*\]/d    
- 	/^[ \t]*$/d    
+	/^\[.*\]/d    
+	/^[ \t]*$/d    
 	/^$/d    
 	/^#.*$/d    
 	s/^[ \t]*$key[ \t]*=[ \t]*\(.*\)[ \t]*/\1/p    
@@ -53,6 +53,8 @@ DEFAULT_RUN_COMMAND=$(get_config_key "$DEFAULT_CONFIG" "command.default_run_cmd"
 DEFAULT_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "command.extra_cmd")
 LIBVIRT_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "libvirt.extra_cmd")
 QEMU_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "qemu.extra_cmd")
+BACKUP_VM=$(get_config_key "$DEFAULT_CONFIG" "dir.backup_vm_image")
+SOURCE_VM=$(get_config_key "$DEFAULT_CONFIG" "dir.source_vm_image")
 DEFAULT_LIBVIRT_CONFIG=""
 DEFAULT_QEMU_CONFIG=""
 CURRENT_LOG_PATH=""
@@ -62,6 +64,7 @@ CURRENT_DETAIL_LOG_FILE=""
 CURRENT_CONFIG_LOG_FILE=""
 CURRENT_LAST_TESTCASE_FILE=""
 
+TIMEOUT_LIMIT=1800
 TOTAL_COUNT=0
 PASS_COUNT=0
 SKIP_COUNT=0
@@ -74,7 +77,8 @@ LIBVIRT_VM_NAME=""
 QEMU_VM_NAME=""
 VM_XML_FILE=""
 VM_BACKUP_XML_FILE=""
-
+VM_ORIGINAL_XML_FILE=""
+TMP_FILE=""
 
 debug()
 {
@@ -106,6 +110,10 @@ debug()
 	echo -e "\t\tLIBVIRT_EXTRA_COMMAND = $LIBVIRT_EXTRA_COMMAND" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tLIBVIRT_VM_NAME = $LIBVIRT_VM_NAME" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tVM_XML_FILE = $VM_XML_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tVM_ORIGINAL_XML_FILE = $VM_ORIGINAL_XML_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tSOURCE_VM_IMAGE = $BACKUP_VM" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tBACKUP_VM_IMAGE = $SOURCE_VM" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tTIMEOUT = $TIMEOUT_LIMIT" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\n"
 }
 
@@ -119,7 +127,7 @@ merge_params()
 		echo ""
 		return
 	fi
-	
+
 	if [ "$1" = "" ]; then
 		echo "$2"
 		return
@@ -147,7 +155,7 @@ merge_params()
 			#$1 have, ignore
 			if [ $? -eq 0 ]; then
 				new_params=""
-			#$1 don`t have, add in $1
+				#$1 don`t have, add in $1
 			else
 				new_params="$i"
 			fi
@@ -195,7 +203,7 @@ set_testcases_to_list()
 		if [ -z "$ts_line" ]; then
 			continue
 		fi
-		
+
 		if [ "${ts_line:0:1}" = "#" ]; then
 			continue
 		fi
@@ -215,7 +223,7 @@ set_testcases_to_list()
 			extra_params=`echo $ts_line | cut -d '{' -f2|cut -d '}' -f1`
 			extra_params=`echo $extra_params`
 		fi
-		
+
 		if [ ! -z "$extra_params" ] || [ ! -z "$2" ]; then
 			full_params=`merge_params "$extra_params" "$2"`
 		fi
@@ -264,7 +272,7 @@ init_testcase_list()
 			echo "ERROR: Modules name is not set($module_name)"
 			exit 1
 		fi
-					
+
 
 		if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
 			default_cmd=`merge_params "$QEMU_EXTRA_COMMAND" "$DEFAULT_EXTRA_COMMAND"`
@@ -311,17 +319,44 @@ generate_cmd()
 	if [ -z "$3" ]; then
 		echo "1";
 	fi
-	
+
 	cmd=""
-	
+
 	if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
-		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"" ""-v"
+		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"
 	elif [ "$class" = "libvirt" ] || [ "$class" = "LIBVIRT" ]; then
-		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"" ""-v"
+		cmd="$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND"" ""$params"" ""--tests"" ""$testcase_name"
 	else
 		echo "1"
 	fi	
 	echo "$cmd"
+}
+
+restore_env()
+{
+	if [ "$BACKUP_VM" != "" ] && [ "$SOURCE_VM" != "" ] && [ -f "$BACKUP_VM" ] && [ -f "$SOURCE_VM" ]; then
+		echo -e "Restore VM image" | tee -a "$CURRENT_DETAIL_LOG_FILE"
+		echo -e "Source vm image: $SOURCE_VM" >> "$CURRENT_DETAIL_LOG_FILE"
+		echo -e "Backup vm image: $BACKUP_VM" >> "$CURRENT_DETAIL_LOG_FILE"
+		cp -f "$BACKUP_VM" "$SOURCE_VM"
+	fi
+
+	if [ "$VM_ORIGINAL_XML_FILE" != "" ] && [ "$VM_XML_FILE" != "" ] && [ -f "$VM_ORIGINAL_XML_FILE" ]; then
+		echo -e "Restore VM xml" | tee -a "$CURRENT_DETAIL_LOG_FILE"
+		echo -e "Original_xml: $VM_ORIGINAL_XML_FILE" >> "$CURRENT_DETAIL_LOG_FILE"
+		echo -e "Do \"virsh define $VM_ORIGINAL_XML_FILE\"" >> "$CURRENT_DETAIL_LOG_FILE"
+		virsh define "$VM_ORIGINAL_XML_FILE" 1>/dev/null
+	fi
+}
+
+save_env()
+{
+	cp -f "$VM_XML_FILE" "$VM_ORIGINAL_XML_FILE"
+}
+
+clean_env()
+{
+	rm -f "$VM_BACKUP_XML_FILE"
 }
 
 clean_virttest_logs()
@@ -336,8 +371,14 @@ run_test()
 	while read tc_line
 	do
 		class=""
+		PASS=""
+		FAIL=""
+		SKIP=""
 		params=""
 		testcase_name=""
+		result=""
+		TIME=0
+		run_pid=0
 		class=`echo $tc_line | cut -d ':' -f1`
 		testcase_name=`echo "$tc_line" | cut -d ':' -f2  | awk -F'[ {]' '{print $1}'`
 		if [[ "$tc_line" =~ "{" ]]; then
@@ -349,32 +390,53 @@ run_test()
 		echo "$class:$testcase_name" > $CURRENT_LAST_TESTCASE_FILE
 		if [ "$run_cmd" = "1" ]; then
 			echo -e "\033[34m SKIP(autorun: Parameter error)  \033[0m"
-			echo -e "SKIP\t$class:$testcase_name " { ""$params"" }"(autorun: Parameter error)" >> "CURRENT_LOG_FILE"
+			echo -e "SKIP\t0s\t$class:$testcase_name " { ""$params"" }"(autorun: Parameter error)" >> "CURRENT_LOG_FILE"
 			SKIP_COUNT=$(($SKIP_COUNT+1))
 		else
 			backup_vm_xml
+			echo "" > "$TMP_FILE"
 			start_time=$(date +%s)
-			result=`${run_cmd}  2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED"`
+			`${run_cmd}  2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED" > "$TMP_FILE" &`
+			i=1
+			for (( ; i <= $TIMEOUT_LIMIT; i = i + 1))
+			do
+				run_pid=`ps aux | grep "$VIRTTEST_DIR""$DEFAULT_RUN_COMMAND" | grep "$testcase_name" | grep -v "grep" | awk '{print $2}'`
+				if [ "$run_pid" != "" ]; then
+					sleep 1
+				else
+					break
+				fi
+			done
+			
 			end_time=$(date +%s)
-			time=$(($end_time-$start_time))"s"
-			PASS=`echo "$result" | grep "PASSED: " | awk -F'PASSED: ' '{print $2}'`
-			FAIL=`echo "$result" | grep "FAILED: " | awk -F'FAILED: ' '{print $2}'`
-			SKIP=`echo "$result" | grep "SKIPPED: " | awk -F'SKIPPED: ' '{print $2}'`
+			TIME=$(($end_time-$start_time))"s"
+			if [ $i -ge $TIMEOUT_LIMIT ]; then
+				`kill -TERM "$run_pid"`
+				PASS="0"
+				FAIL="1"
+				SKIP="0"
+			else
+				result=`cat "$TMP_FILE" | grep -E "PASSED|FAILED|SKIPPED"`
+				PASS=`echo "$result" | grep "PASSED: " | awk -F'PASSED: ' '{print $2}'`
+				FAIL=`echo "$result" | grep "FAILED: " | awk -F'FAILED: ' '{print $2}'`
+				SKIP=`echo "$result" | grep "SKIPPED: " | awk -F'SKIPPED: ' '{print $2}'`
+			fi
+			
 			if [ "$PASS" = "1" ]; then
 				printf "\033[32m %-20s \033[0m\n" "PASS"
-				echo -e "PASS\t$time\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
+				echo -e "PASS\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				PASS_COUNT=$(($PASS_COUNT+1))
 			elif [ "$FAIL" = "1" ]; then
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
-				echo -e "FAIL\t$time\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
+				echo -e "FAIL\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))
 			elif [ "$SKIP" = "1" ]; then
 				printf "\033[34m %-20s \033[0m\n" "SKIP"
-				echo -e "SKIP\t$time\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
+				echo -e "SKIP\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				SKIP_COUNT=$(($SKIP_COUNT+1))
 			else
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
-				echo -e "FAIL\t$time\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
+				echo -e "FAIL\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))	
 			fi	
 		fi
@@ -386,8 +448,16 @@ run_test()
 			echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
 		fi
 		clean_virttest_logs
+		if [ $i -ge $TIMEOUT_LIMIT ]; then
+			echo -e "This testcase is timeout.($class:$testcase_name)" | tee -a "$CURRENT_DETAIL_LOG_FILE"
+			echo -e "Start restore enviroment.." | tee -a "$CURRENT_DETAIL_LOG_FILE"
+			restore_env
+			echo -e "Finish restore.Continue to runtest" | tee -a "$CURRENT_DETAIL_LOG_FILE"
+		fi
+		echo -e "" >> "$CURRENT_DETAIL_LOG_FILE"
 		((index++))
 	done < "$CURRENT_CASESLIST_FILE"
+	rm -f "$TMP_FILE"
 }
 
 get_vm_name()
@@ -420,15 +490,17 @@ init_env_params()
 	QEMU_VM_NAME=$(get_vm_name "$DEFAULT_QEMU_CONFIG")
 	VM_XML_FILE="/etc/libvirt/qemu/""$LIBVIRT_VM_NAME"".xml"
 	VM_BACKUP_XML_FILE="$CURRENT_LOG_PATH""xml_backup.xml"
+	VM_ORIGINAL_XML_FILE="$CURRENT_LOG_PATH""original.xml"
+	TMP_FILE="$CURRENT_LOG_PATH""tmp"
 }
 
 init_file()
 {
-	
+
 	if [ ! -d "$DEFAULT_LOG_DIR" ]; then
 		mkdir "$DEFAULT_LOG_DIR"
 	fi
-	
+
 	if [ ! -d "$CURRENT_LOG_PATH" ]; then
 		mkdir $CURRENT_LOG_PATH
 	fi
@@ -456,9 +528,34 @@ init_file()
 	if [ ! -f "$VM_BACKUP_XML_FILE" ]; then
 		touch "$VM_BACKUP_XML_FILE"
 	fi
-	
+
+	if [ ! -f "$VM_ORIGINAL_XML_FILE" ]; then
+		touch "$VM_ORIGINAL_XML_FILE"
+	fi
+
 	if [ ! -f "$CURRENT_XMLDIFF_LOG_FILE" ]; then
 		touch $CURRENT_XMLDIFF_LOG_FILE
+	fi
+
+	if [ ! -f "$TMP_FILE" ]; then
+		touch "$TMP_FILE"
+	fi
+}
+
+check_env()
+{
+	if [ "$SOURCE_VM" != "" ]; then
+		if [ ! -f "$SOURCE_VM" ]; then
+			echo -e "Source image is not exist.(source_vm_image = $SOURCE_VM)"
+			exit 1
+		fi
+	fi
+
+	if [ "$BACKUP_VM" != "" ]; then
+		if [ ! -f "$BACKUP_VM" ]; then
+			echo -e "Backup image is not exist.(backup_vm_image = $BACKUP_VM)"
+			exit 1
+		fi
 	fi
 }
 
@@ -483,7 +580,9 @@ main()
 		echo "Start test from $START_TESTCASE"
 	fi
 
+	save_env
 	run_test
+	clean_env
 
 	echo -e "Finish"
 	echo -e "	"
@@ -504,7 +603,7 @@ get_first_testcase()
 			if [ -z "$tc_line" ]; then
 				continue
 			fi
-	
+
 			if [ "${tc_line:0:1}" = "#" ]; then
 				continue
 			fi
@@ -512,7 +611,7 @@ get_first_testcase()
 			tc_name=""
 			class=`echo $tc_line | cut -d ':' -f1`
 			tc_name=`echo "$tc_line" | cut -d ':' -f2  | awk -F'[ {]' '{print $1}'`
-			
+
 			if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ] || [ "$class" = "libvirt" ] || [ "$class" = "LIBVIRT" ]; then
 				echo "$tc_line"
 				return
@@ -533,12 +632,13 @@ usage()
 	printf "\t%-40s%-20s\n" "-m <file>" "Use custom modules_list.        Default: ./tests/modules_list"
 	printf "\t%-40s%-20s\n" "-t <file>" "Only run testcase in this file."
 	printf "\t%-40s%-20s\n" "-c <file>" "Start from testcase which first testcase in this file"
+	printf "\t%-40s%-20s\n" "-o <number>" "Timeout is limited testcase runtime, if timeout, script will kill this testcase.        Default: 1800"
 	exit 0
 }
 
 # Start in here
 init
-while getopts "c:hm:t:" arg 
+while getopts "c:hm:t:o:" arg 
 do
 	case $arg in
 		c)
@@ -568,11 +668,19 @@ do
 			MODE="DIRECT"	
 			DEFAULT_MODULE_LIST="$OPTARG"	
 			;;
+		o)
+			var=$(echo $OPTARG | bc 2>/dev/null)
+			if [[ $var != $OPTARG ]]; then
+				echo -e "Param need a number, but $OPTARG is not a number."
+				exit 1
+			fi
+			TIMEOUT_LIMIT="$OPTARG"
+			;;
 		?)
 			echo "unkonw argument"
 			usage
-        		;;
-        esac
+			;;
+	esac
 done
 debug
 main
