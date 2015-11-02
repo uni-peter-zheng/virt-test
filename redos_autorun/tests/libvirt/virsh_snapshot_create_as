@@ -76,11 +76,11 @@ type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.live_memspec.compress_format.lzop 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.live_memspec.compress_format.gzip 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.live_memspec.compress_format.bzip2 
-type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.no_metadata 
+#type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.no_metadata 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.no_metadata_with_diskonly 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.no_metadata_with_memspec 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.reuse_external 
-type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.multi_snapshots 
+#type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.multi_snapshots 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.memspec_diskspec_xml 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.multi_diskspec_xml 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.multi_disk_external 
