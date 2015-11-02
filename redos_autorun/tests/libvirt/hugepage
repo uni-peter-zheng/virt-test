@@ -7,22 +7,17 @@ type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.with_mb.trans_d
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_enable.static_nonzero.mount_hugetlbfs 
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_enable.static_nonzero.umount_hugetlbfs 
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_enable.static_zero.mount_hugetlbfs 
-type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_enable.static_zero.umount_hugetlbfs 
+#type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_enable.static_zero.umount_hugetlbfs 
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_disable.static_nonzero.mount_hugetlbfs 
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_disable.static_nonzero.umount_hugetlbfs 
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_disable.static_zero.mount_hugetlbfs 
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_disable.static_zero.umount_hugetlbfs 
-type_specific.io-github-autotest-libvirt.libvirt_hugepage.contrast.with_mb.trans_disable.static_nonzero.mount_hugetlbfs 
+#type_specific.io-github-autotest-libvirt.libvirt_hugepage.contrast.with_mb.trans_disable.static_nonzero.mount_hugetlbfs 
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.stress.with_mb.trans_enable.static_nonzero.mount_hugetlbfs 
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.stress.with_mb.trans_disable.static_nonzero.mount_hugetlbfs 
-type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_enable.static_nonzero.mount_hugetlbfs 
-type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_enable.static_zero.mount_hugetlbfs 
-type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_disable.static_nonzero.mount_hugetlbfs 
-type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_disable.static_zero.mount_hugetlbfs 
-9150 io-github-autotest-qemu.trans_hugepage.base 
-9151 io-github-autotest-qemu.trans_hugepage.defrag 
-9152 io-github-autotest-qemu.trans_hugepage.swapping 
-9153 io-github-autotest-qemu.trans_hugepage.relocated 
-9154 io-github-autotest-qemu.trans_hugepage.migration 
-9155 io-github-autotest-qemu.trans_hugepage.memory_stress 
+#type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_enable.static_nonzero.mount_hugetlbfs 
+#type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_enable.static_zero.mount_hugetlbfs 
+#type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_disable.static_nonzero.mount_hugetlbfs 
+#type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_disable.static_zero.mount_hugetlbfs 
+
 
