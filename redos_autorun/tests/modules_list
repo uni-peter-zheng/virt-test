@@ -146,7 +146,7 @@ libvirt:hugepage  #注释掉部分用例
 #libvirt:network_bandwidth           #网络用例 需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
 #libvirt:iface                       #网络用例 部分测试导致网络不通,测试环境配置未处理
 #libvirt:iface_bridge                #网络用例 部分测试导致网络不通,测试环境配置未处理
-#libvirt:macvtap                     #网络用例 
+#libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:virsh-attach-detach-disk     #device用例
 #libvirt:virsh-attach-detach-interface#device用例
 #libvirt:attach_device               #device用例 有接近1000测试用例，需要单独测试
