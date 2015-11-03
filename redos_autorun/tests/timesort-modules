@@ -129,7 +129,8 @@ libvirt:hugepage  #注释掉部分用例
 libvirt:virsh_screenshot #已注释部分用例
 libvirt:virsh_qemu_monitor_command  #修改源码，增加测试前判断虚机状态语句
 libvirt:virsh_qemu_attach           #注释掉两个用例
-libvirt:virsh_setmaxmem  不支持虚拟机运行时修改大内存
+libvirt:virsh_setmaxmem             # 不支持虚拟机运行时修改大内存
+libvirt:virsh_setmem    
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求
 #libvirt:perf_kvm                    #我们的源上缺少fuse-sshfs，注释掉模块
@@ -179,7 +180,6 @@ libvirt:virsh_setmaxmem  不支持虚拟机运行时修改大内存
 #libvirt:virsh_create_lxc  lxc不需要测试
 #libvirt:virsh_dompmsuspend  #需要virsh capcabilities的xml提供能力支持才行 setting ACPI S3 not supported
 #libvirt:virsh_schedinfo_xen_credit   xen的虚拟化测试，用不到
-#libvirt:virsh_setmem    不支持，需要对源码做修改，暂时注释模块
 #libvirt:virsh_nodesuspend   不支持nodesuspend
 #libvirt:virsh_nodedev_create_destroy 需要HBA设备
 #libvirt:virsh_nodedev_detach_reattach 需要在配置文件设置用于测试detach的PCI总线，手动测试虚拟机的每条PCI总线在detach时都会报错。
