@@ -11,7 +11,7 @@ libvirt:storage_pool
 #libvirt:perf_kvm       #我们的源上缺少fuse-sshfs，注释掉模块
 #libvirt:ksm_service  缺少ksmtuned服务
 #libvirt:timer_management 不支持kvmclock
-#libvirt:hugepage
+libvirt:hugepage  #注释掉部分用例
 #libvirt:vcpu_hotplug
 #libvirt:storage_discard
 libvirt:hotplug_serial

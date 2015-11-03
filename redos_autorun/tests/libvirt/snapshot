@@ -638,7 +638,7 @@ type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_t
 type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_lun.non_auth.test_save_snapshot 
 type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_disk.non_auth.non_save_snapshot.ipv4_test 
 type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_disk.non_auth.non_save_snapshot.ipv6_test 
-type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_disk.non_auth.test_save_snapshot 
+#type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_disk.non_auth.test_save_snapshot  测试完成不删除快照，可能会影响其他用例
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.negative_tests_parent.both_current_and_snapname 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.negative_tests_parent.no_current_and_snapname 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.negative_tests_parent.invalid_snapshotname 
@@ -685,7 +685,7 @@ type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.live_memspec.compress_format.gzip 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.live_memspec.compress_format.bzip2 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.no_metadata 
-type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.no_metadata_with_diskonly 
+#type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.no_metadata_with_diskonly  测试完不删除快照
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.no_metadata_with_memspec 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.reuse_external 
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.multi_snapshots 
@@ -693,7 +693,7 @@ type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.multi_diskspec_xml 
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.multi_disk_external 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.multi_diskspec_no_snapshot 
-type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.with_snapshot_attr.disk_only_spec 
+#type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.with_snapshot_attr.disk_only_spec  测试完不删除快照
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.network_disk.gluster.disk_qcow2.no_snapshot_attr.transport_default.disk_only_spec 
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.network_disk.gluster.disk_qcow2.no_snapshot_attr.transport_default.quiesce_with_diskonly.with_diskspec 
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.network_disk.gluster.disk_qcow2.no_snapshot_attr.transport_default.live_memspec.compress_default 

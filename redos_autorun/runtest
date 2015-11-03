@@ -421,6 +421,13 @@ run_test()
 				FAIL=`echo "$result" | grep "FAILED: " | awk -F'FAILED: ' '{print $2}'`
 				SKIP=`echo "$result" | grep "SKIPPED: " | awk -F'SKIPPED: ' '{print $2}'`
 			fi
+
+			diff --brief "$VM_XML_FILE" "$VM_BACKUP_XML_FILE" >> /dev/null
+			if [ $? -ne 0 ]; then
+				echo -e "$class:$testcase_name { $params }" >> "$CURRENT_XMLDIFF_LOG_FILE"
+				diff -u "$VM_BACKUP_XML_FILE" "$VM_XML_FILE" >> "$CURRENT_XMLDIFF_LOG_FILE"
+				echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
+			fi
 			
 			if [ "$PASS" = "1" ]; then
 				printf "\033[32m %-20s \033[0m\n" "PASS"
@@ -430,6 +437,7 @@ run_test()
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
 				echo -e "FAIL\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))
+				restore_env
 			elif [ "$SKIP" = "1" ]; then
 				printf "\033[34m %-20s \033[0m\n" "SKIP"
 				echo -e "SKIP\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
@@ -438,15 +446,10 @@ run_test()
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
 				echo -e "FAIL\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))	
+				restore_env
 			fi	
 		fi
 
-		diff --brief "$VM_XML_FILE" "$VM_BACKUP_XML_FILE" >> /dev/null
-		if [ $? -ne 0 ]; then
-			echo -e "$class:$testcase_name { $params }" >> "$CURRENT_XMLDIFF_LOG_FILE"
-			diff -u "$VM_BACKUP_XML_FILE" "$VM_XML_FILE" >> "$CURRENT_XMLDIFF_LOG_FILE"
-			echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
-		fi
 		clean_virttest_logs
 		if [ $i -ge $TIMEOUT_LIMIT ]; then
 			echo -e "This testcase is timeout.($class:$testcase_name)" | tee -a "$CURRENT_DETAIL_LOG_FILE"
