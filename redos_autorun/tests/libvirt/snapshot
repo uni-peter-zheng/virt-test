@@ -635,10 +635,10 @@ type_specific.io-github-autotest-libvirt.virsh.snapshot_dumpxml.positive_tests.s
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_disk.no_delete.negative_test.pool_vol.netfs_gluster_pool.attach_img_qcow2.v_qcow2v3.snapshot_from_xml.disk_external.sys_checkpoint.live.memory_no 
 type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_lun.non_auth.non_save_snapshot.ipv4_test 
 type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_lun.non_auth.non_save_snapshot.ipv6_test 
-type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_lun.non_auth.test_save_snapshot 
+#type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_lun.non_auth.test_save_snapshot   测试完成不删除快照，可能会影响其他用例
 type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_disk.non_auth.non_save_snapshot.ipv4_test 
 type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_disk.non_auth.non_save_snapshot.ipv6_test 
-#type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_disk.non_auth.test_save_snapshot  测试完成不删除快照，可能会影响其他用例
+#type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_disk.non_auth.test_ 测试完成不删除快照，可能会影响其他用例
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.negative_tests_parent.both_current_and_snapname 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.negative_tests_parent.no_current_and_snapname 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.negative_tests_parent.invalid_snapshotname 
