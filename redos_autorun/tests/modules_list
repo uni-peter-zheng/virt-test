@@ -134,45 +134,45 @@ libvirt:guest_numa                  #numa的用例可能导致libvirtd启动失�
 libvirt:hugepage  #注释掉部分用例
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求
-#libvirt:migration  p2p 迁移不支持
-#libvirt:virsh_migrate_copy_storage
-#libvirt:virsh_migrate_multi_vms
-#libvirt:virsh_migrate_set_get_speed
-#libvirt:virsh_migrate_setmaxdowntime
-#libvirt:virsh_migrate_stress
-#libvirt:network_bandwidth           #需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
-#libvirt:perf_kvm       #我们的源上缺少fuse-sshfs，注释掉模块
-#libvirt:vcpu_hotplug
-#libvirt:storage_discard
-#libvirt:iface   #部分测试导致网络不通
-#libvirt:vfio
-#libvirt:iface_bridge
-#libvirt:virsh-attach-detach-disk
-#libvirt:virsh-attach-detach-interface
-#libvirt:attach_device     #有接近1000测试用例，需要单独测试
-#libvirt:virsh_blockcommit   #部分用例需要raw格式的磁盘,还有其他相关gluster的用例先注释掉.这组用例可能会导致测试环境损坏，暂时注释模块
-#libvirt:virsh_blockcopy      需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把版本比对去掉，里面规定libvirt1.2.13以上才测试这个功能；并且会创建iscsi设备，需要安装targetcli*和iscsi*，此组测试用例特别耗时间。
-#libvirt:virsh_detach_device
-#libvirt:virsh_domblkerror
-#libvirt:virsh_qemu_attach
-#libvirt:virsh_qemu_monitor_blockjob
+#libvirt:perf_kvm                    #我们的源上缺少fuse-sshfs，注释掉模块
+#libvirt:vcpu_hotplug                #错误太多，未修正，4PASS,19FAIL
+#libvirt:storage_discard             #错误太多，未修正，5PASS,24FAIL
+#libvirt:migration                   #迁移用例，p2p 迁移不支持
+#libvirt:virsh_migrate_copy_storage  #迁移用例
+#libvirt:virsh_migrate_multi_vms     #迁移用例
+#libvirt:virsh_migrate_set_get_speed #迁移用例
+#libvirt:virsh_migrate_setmaxdowntime#迁移用例
+#libvirt:virsh_migrate_stress        #迁移用例
+#libvirt:network_bandwidth           #网络用例 需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
+#libvirt:iface                       #网络用例 部分测试导致网络不通,测试环境配置未处理
+#libvirt:iface_bridge                #网络用例 部分测试导致网络不通,测试环境配置未处理
+#libvirt:macvtap                     #网络用例 
+#libvirt:virsh-attach-detach-disk     #device用例
+#libvirt:virsh-attach-detach-interface#device用例
+#libvirt:attach_device               #device用例 有接近1000测试用例，需要单独测试
+#libvirt:virsh_detach_device         #device用例
+#libvirt:virsh_qemu_attach           #device用例
+#libvirt:virsh_update_device         #device用例 不支持ide floppy设备
+#libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘,还有其他相关gluster的用例先注释掉.这组用例可能会导致测试环境损坏，暂时注释模块
+#libvirt:virsh_blockcopy             #block用例 需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把版本比对去掉，里面规定libvirt1.2.13以上才测试这个功能；并且会创建iscsi设备，需要安装targetcli*和iscsi*，此组测试用例特别耗时间。
+#libvirt:virsh_domblkerror           #block用例
+#libvirt:virsh_qemu_monitor_blockjob #block用例
+#libvirt:virsh_domblkinfo            #block用例
 #libvirt:virsh_qemu_monitor_command  #VM 'RedOS-autotest' failed to start: error: Domain is already active 用例测试之前是需要将虚拟机关闭，由于设置了--keep-guest-running这一组用例报错。暂时将其跳过
-#libvirt:virsh_screenshot
-#libvirt:virsh_sendkey  测试用例命令执行发生错误
-#libvirt:virsh_suspend
-#libvirt:virsh_update_device   不支持ide floppy设备
-#libvirt:virsh_capabilities
-#libvirt:virsh_freepages
-#libvirt:virsh_domblkinfo
-#libvirt:virsh_domstate
-#libvirt:virsh_voume_application
-#libvirt:virt-top #还未测试
-#libvirt:virt_what
-#libvirt:virt_xml_validate
-#libvirt:qemu-guest-agent
-#libvirt:unattended_install
-#libvirt:virstual_disks   ALL FAIL，原因可能是测试用例定义的设备名如sda和现有的xml中的重复了
-#libvirt:macvtap
+#libvirt:virsh_screenshot            #
+#libvirt:virsh_sendkey               #测试用例命令执行发生错误
+#libvirt:virsh_suspend               #
+#libvirt:virsh_capabilities          #
+#libvirt:virsh_freepages             #
+#libvirt:virsh_domstate              #
+#libvirt:virsh_voume_application     #
+#libvirt:virt-top                    #还未测试
+#libvirt:virt_what                   #
+#libvirt:virt_xml_validate           #
+#libvirt:qemu-guest-agent            #
+#libvirt:unattended_install          #
+#libvirt:virstual_disks              #ALL FAIL，原因可能是测试用例定义的设备名如sda和现有的xml中的重复了
+
 
 #系统不支持的测试模块
 #libvirt:pci_passthrough   系统不支持
@@ -188,6 +188,7 @@ libvirt:hugepage  #注释掉部分用例
 #libvirt:virsh_nodedev_create_destroy 需要HBA设备
 #libvirt:virsh_nodedev_detach_reattach 需要在配置文件设置用于测试detach的PCI总线，手动测试虚拟机的每条PCI总线在detach时都会报错。
 #libvirt:virsh_nodedev_reset #需要设置测试使用的special_device，但格式不清楚，尝试设置了多个值都报参数错误；查看源码可知，其实在设置的参数值不满足条件时，用例会自动检索host中的pci设备，由于我们host上的设备都不能resetable，所以用例报错，不过此处用例报错信息给的不准确
+#libvirt:vfio                #Please add 'intel_iommu=on' to kernel and reboot to effect it 
 
 #QEMU测试模块
 #
