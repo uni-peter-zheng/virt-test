@@ -27,13 +27,14 @@ get_config_key()
 	fi
 	section=$(echo $2 | cut -d '.' -f 1)    
 	key=$(echo $2 | cut -d '.' -f 2)    
-	sed -n "/\[$section\]/,/\[.*\]/{    
+	result=`sed -n "/\[$section\]/,/\[.*\]/{    
 	/^\[.*\]/d    
 	/^[ \t]*$/d    
 	/^$/d    
 	/^#.*$/d    
 	s/^[ \t]*$key[ \t]*=[ \t]*\(.*\)[ \t]*/\1/p    
-	}" $1
+	}" $1`
+	echo $result
 }   
 
 get_virttest_dir()
@@ -111,8 +112,8 @@ debug()
 	echo -e "\t\tLIBVIRT_VM_NAME = $LIBVIRT_VM_NAME" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tVM_XML_FILE = $VM_XML_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tVM_ORIGINAL_XML_FILE = $VM_ORIGINAL_XML_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tSOURCE_VM_IMAGE = $BACKUP_VM" | tee -a "$CURRENT_CONFIG_LOG_FILE"
-	echo -e "\t\tBACKUP_VM_IMAGE = $SOURCE_VM" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tSOURCE_VM_IMAGE = $SOURCE_VM" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tBACKUP_VM_IMAGE = $BACKUP_VM" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tTIMEOUT = $TIMEOUT_LIMIT" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\n"
 }
@@ -261,7 +262,7 @@ init_testcase_list()
 		module_name=""
 		module_file=""
 		class=`echo $ml_line | cut -d ':' -f1`
-		module_name=`echo "$ml_line" | cut -d ':' -f2  | awk -F'[ {]' '{print $1}'`
+		module_name=`echo $ml_line | cut -d ':' -f2  | awk -F'[ {]' '{print $1}'`
 		module_file="$DEFAULT_MODULE_FILE_DIR$class"/"$module_name"
 		if [[ "$ml_line" =~ "{" ]]; then
 			module_extra_params=`echo $ml_line | cut -d '{' -f2 | cut -d '}' -f1`
