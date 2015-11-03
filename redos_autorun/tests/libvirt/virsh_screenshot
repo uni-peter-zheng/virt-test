@@ -11,12 +11,12 @@ type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.non_acl.sc
 #type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.non_acl.screen_1.uuid_option 
 #type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.non_acl.screen_1.no_filename_option 
 #type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.non_acl.screen_1.no_screen_option 
-type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.id_option 
-type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.name_option 
-type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.paused_option 
-type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.uuid_option 
+#type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.id_option 
+#type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.name_option 
+#type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.paused_option 
+#type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.uuid_option 
 type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.no_filename_option 
-type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.no_screen_option 
+#type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.no_screen_option 
 #type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_1.id_option 
 #type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_1.name_option 
 #type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_1.paused_option 
@@ -29,7 +29,7 @@ type_specific.io-github-autotest-libvirt.virsh.screenshot.error_test.hex_id_opti
 type_specific.io-github-autotest-libvirt.virsh.screenshot.error_test.invalid_id_option 
 type_specific.io-github-autotest-libvirt.virsh.screenshot.error_test.invalid__uuid_option 
 type_specific.io-github-autotest-libvirt.virsh.screenshot.error_test.unexpected_option 
-type_specific.io-github-autotest-libvirt.virsh.screenshot.error_test.multiple_screen_option 
+#type_specific.io-github-autotest-libvirt.virsh.screenshot.error_test.multiple_screen_option 
 type_specific.io-github-autotest-libvirt.virsh.screenshot.error_test.empty_screen_number 
 type_specific.io-github-autotest-libvirt.virsh.screenshot.error_test.unexpected_screen_number 
 type_specific.io-github-autotest-libvirt.virsh.screenshot.error_test.empty_filename_option 
