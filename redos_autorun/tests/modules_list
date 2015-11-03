@@ -135,7 +135,7 @@ libvirt:snapshot                    #注释掉部分失败的用例,快照部分
 libvirt:hugepage  #注释掉部分用例
 libvirt:virsh_screenshot #已注释部分用例
 libvirt:virsh_qemu_monitor_command  #修改源码，增加测试前判断虚机状态语句
-
+libvirt:virsh_qemu_attach           #注释掉两个用例
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求
 #libvirt:perf_kvm                    #我们的源上缺少fuse-sshfs，注释掉模块
@@ -155,7 +155,6 @@ libvirt:virsh_qemu_monitor_command  #修改源码，增加测试前判断虚机�
 #libvirt:virsh-attach-detach-interface#device用例
 #libvirt:attach_device               #device用例 有接近1000测试用例，需要单独测试
 #libvirt:virsh_detach_device         #device用例
-#libvirt:virsh_qemu_attach           #device用例
 #libvirt:virsh_update_device         #device用例 不支持ide floppy设备
 #libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘,还有其他相关gluster的用例先注释掉.这组用例可能会导致测试环境损坏，暂时注释模块
 #libvirt:virsh_blockcopy             #block用例 需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把版本比对去掉，里面规定libvirt1.2.13以上才测试这个功能；并且会创建iscsi设备，需要安装targetcli*和iscsi*，此组测试用例特别耗时间。
