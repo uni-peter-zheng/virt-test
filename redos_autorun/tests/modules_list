@@ -124,11 +124,12 @@ libvirt:libvirt_qemu_cmdline  #2 FAIL redhat有对应bug ：https://bugzilla.red
 #比较耗时间的用例
 
 #比较容易出问题的模块放到最后
-libvirt:svirt      #注释掉相关host_selinux的用例
+libvirt:svirt                       #注释掉相关host_selinux的用例
 libvirt:multifunction
-libvirt:virsh_change_media  # 需要mkisofs,安装包genisoimage ；注释掉ide和floppy>的用例
-libvirt:snapshot                    #注释掉部分失败的用例,快照部分的用例，可能导致后面的用例使用virsh undefine失败，所以放在最后
-libvirt:guest_numa                  #numa的用例可能导致libvirtd启动失败，放在最后。no_nodemem的用例需要修改guest-numa.cfg,因为我们的版本对memtune的参数规则和autotest的要求不太一样；其他用例失败是系统不支持2M,1G的大页表，也不能把全部host大页分配给一个虚拟机。
+libvirt:virsh_change_media          # 需要mkisofs,安装包genisoimage ；注释掉ide和floppy>的用例
+libvirt:guest_numa                  #numa的用例可能导致libvirtd启动失败[发现原因是由于该用例修改qemu.conf内hugetlbfs挂载点为/dev/hugepages16M，当umount掉这个挂载点后，qemu.conf依然生效，导致libvirtd启动失败]
+#no_nodemem的用例需要修改guest-numa.cfg,因为我们的版本对memtune的参数规则和autotest的要求不太一样；其他用例失败是系统不支持2M,1G的大页表，也不能把全部host大页分配给一个虚拟机。
+libvirt:snapshot                    #注释掉部分失败的用例,快照部分的用例，测试完不恢复img,可能导致后面的用例使用virsh undefine失败，所以放在最后
 
 #新增用例，可能容易出问题，放到最后面
 libvirt:hugepage  #注释掉部分用例
