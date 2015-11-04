@@ -335,6 +335,7 @@ generate_cmd()
 
 restore_env()
 {
+	sleep 3
 	if [ "$BACKUP_VM" != "" ] && [ "$SOURCE_VM" != "" ] && [ -f "$BACKUP_VM" ] && [ -f "$SOURCE_VM" ]; then
 		echo -e "Restore VM image" | tee -a "$CURRENT_DETAIL_LOG_FILE"
 		echo -e "Source vm image: $SOURCE_VM" >> "$CURRENT_DETAIL_LOG_FILE"
