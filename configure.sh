@@ -11,6 +11,9 @@ export main_vms="Redos-autotest"
 export localhost="RedOS-5"
 export remotehost="RedOS-4"
 export bridge="br0"
+export image_name="\/home\/source\/templet\/redos_autotest.img"
+export source_vm_image="\/home\/source\/templet\/redos_autotest.img"
+export backup_vm_image="\/home\/source\/templet-bck\/redos_autotest.img"
 
 CURRENT_DIR=$(pwd)
 cd $CURRENT_DIR/../autotest
@@ -20,7 +23,8 @@ TP_LIBVIRT=$(pwd)
 cd $CURRENT_DIR/../tp-qemu
 TP_QEMU=$(pwd)
 cd $CURRENT_DIR
-BASE_PATH=$CURRENT_DIR/backends/libvirt/cfg/base.cfg
+LIBVIRT_BASE_PATH=$CURRENT_DIR/backends/libvirt/cfg/base.cfg
+QEMU_BASE_PATH=$CURRENT_DIR/backends/qemu/cfg/base.cfg
 
 #
 export tmp=`mount |grep boot`
@@ -102,8 +106,10 @@ setenv()
         else
         	echo "AUTOTEST_PATH has been set!"
         fi
-	
+	#修改redos_autorun的配置
 	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR/"|g" ./redos_autorun/cfg/base.cfg
+        sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image"|g" ./redos_autorun/cfg/base.cfg
+        sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image"|g" ./redos_autorun/cfg/base.cfg
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
 
@@ -120,30 +126,44 @@ setenv()
         setenforce 0
         yum install expect -y
         
-	if [ ! -f $BASE_PATH ];then
-		echo "build base.cfg,wait a minute!"
+	if [ ! -f $LIBVIRT_BASE_PATH ];then
+		echo "build libvirt base.cfg,wait a minute!"
                 ./run -t libvirt --list-tests > /dev/null
 	else
-		echo "base.cfg exit!"
+		echo "libvirt base.cfg exit!"
 	fi
+	if [ ! -f $QEMU_BASE_PATH ];then
+                echo "build qemu base.cfg,wait a minute!"
+                ./run -t qemu --list-tests > /dev/null
+        else
+                echo "qemu base.cfg exit!"
+        fi
+
 
         sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" ./backends/libvirt/cfg/base.cfg
+        sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" ./backends/qemu/cfg/base.cfg
 	echo "set remote_ip = $remote_ip"
 
 	sed -i "s/^local_ip.*$/local_ip = $local_ip/" ./backends/libvirt/cfg/base.cfg
+        sed -i "s/^local_ip.*$/local_ip = $local_ip/" ./backends/qemu/cfg/base.cfg
 	echo "set local_ip = $local_ip"
 
 	sed -i "s/^local_pwd.*$/local_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
+        sed -i "s/^local_pwd.*$/local_pwd = $local_pwd/" ./backends/qemu/cfg/base.cfg
 	echo "set local_pwd = $local_pwd"
 
 	sed -i "s/^main_vm.*$/main_vm = $main_vms/" ./backends/libvirt/cfg/base.cfg
+        sed -i "s/^main_vm.*$/main_vm = $main_vms/" ./backends/qemu/cfg/base.cfg
 	echo "set main_vms = $main_vms"
 
 	sed -i "s/^vms.*$/vms = $vms/" ./backends/libvirt/cfg/base.cfg
+        sed -i "s/^vms.*$/vms = $vms/" ./backends/qemu/cfg/base.cfg
 	echo "set vms = $vms"
 
 	echo "set localhost=$localhost"
 	hostname $localhost
+        
+        sed -i "s/^    image_name =.*$/    image_name ="$image_name"/" ./shared/cfg/guest-os/Linux/RHEL/7.1/ppc64.cfg
 	
 	#默认关闭截屏选项
 	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" ./backends/libvirt/cfg/base.cfg
