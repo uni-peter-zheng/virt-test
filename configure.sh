@@ -11,7 +11,9 @@ export main_vms="Redos-autotest"
 export localhost="RedOS-5"
 export remotehost="RedOS-4"
 export bridge="br0"
-export image_name="\/home\/test\/test.img"
+export image_name="\/home\/source\/templet\/redos_autotest.img"
+export source_vm_image="\/home\/source\/templet\/redos_autotest.img"
+export backup_vm_image="\/home\/source\/templet-bck\/redos_autotest.img"
 
 CURRENT_DIR=$(pwd)
 cd $CURRENT_DIR/../autotest
@@ -104,8 +106,10 @@ setenv()
         else
         	echo "AUTOTEST_PATH has been set!"
         fi
-	
+	#修改redos_autorun的配置
 	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR/"|g" ./redos_autorun/cfg/base.cfg
+        sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image"|g" ./redos_autorun/cfg/base.cfg
+        sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image"|g" ./redos_autorun/cfg/base.cfg
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
 
