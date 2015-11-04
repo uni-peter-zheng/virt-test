@@ -335,6 +335,7 @@ generate_cmd()
 
 restore_env()
 {
+	sleep 3
 	if [ "$BACKUP_VM" != "" ] && [ "$SOURCE_VM" != "" ] && [ -f "$BACKUP_VM" ] && [ -f "$SOURCE_VM" ]; then
 		echo -e "Restore VM image" | tee -a "$CURRENT_DETAIL_LOG_FILE"
 		echo -e "Source vm image: $SOURCE_VM" >> "$CURRENT_DETAIL_LOG_FILE"
@@ -438,6 +439,9 @@ run_test()
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
 				echo -e "FAIL\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))
+				if [ $i -ge $TIMEOUT_LIMIT ]; then
+					echo -e "This testcase is timeout.($class:$testcase_name)" | tee -a "$CURRENT_DETAIL_LOG_FILE"
+				fi
 				restore_env
 			elif [ "$SKIP" = "1" ]; then
 				printf "\033[34m %-20s \033[0m\n" "SKIP"
@@ -447,17 +451,14 @@ run_test()
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
 				echo -e "FAIL\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				FAIL_COUNT=$(($FAIL_COUNT+1))	
+				if [ $i -ge $TIMEOUT_LIMIT ]; then
+					echo -e "This testcase is timeout.($class:$testcase_name)" | tee -a "$CURRENT_DETAIL_LOG_FILE"
+				fi
 				restore_env
 			fi	
 		fi
 
 		clean_virttest_logs
-		if [ $i -ge $TIMEOUT_LIMIT ]; then
-			echo -e "This testcase is timeout.($class:$testcase_name)" | tee -a "$CURRENT_DETAIL_LOG_FILE"
-			echo -e "Start restore enviroment.." | tee -a "$CURRENT_DETAIL_LOG_FILE"
-			restore_env
-			echo -e "Finish restore.Continue to runtest" | tee -a "$CURRENT_DETAIL_LOG_FILE"
-		fi
 		echo -e "" >> "$CURRENT_DETAIL_LOG_FILE"
 		((index++))
 	done < "$CURRENT_CASESLIST_FILE"
