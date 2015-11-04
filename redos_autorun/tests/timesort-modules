@@ -125,103 +125,53 @@ libvirt:guest_numa                  #numa的用例可能导致libvirtd启动失�
 libvirt:snapshot                    #注释掉部分失败的用例,快照部分的用例，测试完不恢复img,可能导致后面的用例使用virsh undefine失败，所以放在最后
 
 #新增用例，可能容易出问题，放到最后面
-libvirt:hugepage  #注释掉部分用例
-libvirt:virsh_screenshot #已注释部分用例
-libvirt:virsh_qemu_monitor_command  #修改源码，增加测试前判断虚机状态语句
-libvirt:virsh_qemu_attach           #注释掉两个用例
-libvirt:virsh_setmaxmem             # 不支持虚拟机运行时修改大内存
-libvirt:virsh_setmem    
+libvirt:hugepage                    #75s   
+libvirt:virsh_screenshot            #55s   
+libvirt:virsh_qemu_monitor_command  #45s   修改源码，增加测试前判断虚机状态语句
+libvirt:virsh_qemu_attach           #15s   注释掉两个用例
+libvirt:virsh_setmaxmem             #10s   不支持虚拟机运行时修改大内存
+libvirt:virsh_setmem                #80s
+libvirt:virsh_suspend               #40s 
+libvirt:virsh_capabilities          #25s    
+libvirt:virsh_freepages             #6s      
+libvirt:virsh_domstate              #15s 
+libvirt:virt_xml_validate           #4s  
 
-#暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求
-#libvirt:perf_kvm                    #我们的源上缺少fuse-sshfs，注释掉模块
+libvirt:virsh_domblkinfo            #block用例  1 FAIL 已经注释
+libvirt:virsh-attach-detach-disk    #device用例 注释部分用例
+libvirt:virsh-attach-detach-interface #device用例 注释部分用例
+libvirt:virsh_detach_device         #注释部分用例 
+libvirt:virsh_update_device         #device用例 不支持ide floppy设备
+
+#暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求[有一些用例需要使用gluster的都已经注释掉]
 #libvirt:vcpu_hotplug                #错误太多，未修正，4PASS,19FAIL
 #libvirt:storage_discard             #错误太多，未修正，5PASS,24FAIL
-#libvirt:migration                   #迁移用例，p2p 迁移不支持
-#libvirt:virsh_migrate_copy_storage  #迁移用例
-#libvirt:virsh_migrate_multi_vms     #迁移用例
-#libvirt:virsh_migrate_set_get_speed #迁移用例
-#libvirt:virsh_migrate_setmaxdowntime#迁移用例
-#libvirt:virsh_migrate_stress        #迁移用例
 #libvirt:network_bandwidth           #网络用例 需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
 #libvirt:iface                       #网络用例 部分测试导致网络不通,测试环境配置未处理
 #libvirt:iface_bridge                #网络用例 部分测试导致网络不通,测试环境配置未处理
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
-#libvirt:virsh-attach-detach-disk     #device用例
-#libvirt:virsh-attach-detach-interface#device用例
-#libvirt:attach_device               #device用例 有接近1000测试用例，需要单独测试
-#libvirt:virsh_detach_device         #device用例
-#libvirt:virsh_qemu_attach           #device用例
-#libvirt:virsh_update_device         #device用例 不支持ide floppy设备
-#libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘,还有其他相关gluster的用例先注释掉.这组用例可能会导致测试环境损坏，暂时注释模块
-#libvirt:virsh_blockcopy             #block用例 需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把版本比对去掉，里面规定libvirt1.2.13以上才测试这个功能；并且会创建iscsi设备，需要安装targetcli*和iscsi*，此组测试用例特别耗时间。
-#libvirt:virsh_domblkerror           #block用例
-#libvirt:virsh_qemu_monitor_blockjob #block用例
-#libvirt:virsh_domblkinfo            #block用例
-#libvirt:virsh_qemu_monitor_command  #VM 'RedOS-autotest' failed to start: error: Domain is already active 用例测试之前是需要将虚拟机关闭，由于设置了--keep-guest-running这一组用例报错。暂时将其跳过
-#libvirt:virsh_sendkey               #测试用例命令执行发生错误
-#libvirt:virsh_suspend               #
-#libvirt:virsh_capabilities          #
-#libvirt:virsh_freepages             #
-#libvirt:virsh_domstate              #
-#libvirt:virsh_voume_application     #
-#libvirt:virt-top                    #还未测试
-#libvirt:virt_what                   #
-#libvirt:virt_xml_validate           #
-#libvirt:qemu-guest-agent            #
-#libvirt:unattended_install          #
+#libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘.这组用例可能会导致测试环境损坏，暂时注释模块
+#libvirt:virsh_blockcopy             #block用例 需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把libvirt1.2.13版本比对去掉，此组测试用例特别耗时间。
+#libvirt:virsh_qemu_monitor_blockjob #block用例  ALL FAIL
+#libvirt:unattended_install          #安装用例
 #libvirt:virstual_disks              #ALL FAIL，原因可能是测试用例定义的设备名如sda和现有的xml中的重复了
-
+#libvirt:virt_what                   #virt-what名字功能不全，只能help和version
+#libvirt:virsh_volume_application    #ALL FAIL
 
 #系统不支持的测试模块
-#libvirt:pci_passthrough   系统不支持
-#libvirt:ksm_service  缺少ksmtuned服务
-#libvirt:timer_management 不支持kvmclock
-#libvirt:virsh_blockresize   7个SKIP，因为qed_type不支持；15个FAIL因为pci.0不支持hotplug 
-#libvirt:virsh_create_lxc  lxc不需要测试
-#libvirt:virsh_dompmsuspend  #需要virsh capcabilities的xml提供能力支持才行 setting ACPI S3 not supported
-#libvirt:virsh_schedinfo_xen_credit   xen的虚拟化测试，用不到
-#libvirt:virsh_nodesuspend   不支持nodesuspend
-#libvirt:virsh_nodedev_create_destroy 需要HBA设备
-#libvirt:virsh_nodedev_detach_reattach 需要在配置文件设置用于测试detach的PCI总线，手动测试虚拟机的每条PCI总线在detach时都会报错。
-#libvirt:virsh_nodedev_reset #需要设置测试使用的special_device，但格式不清楚，尝试设置了多个值都报参数错误；查看源码可知，其实在设置的参数值不满足条件时，用例会自动检索host中的pci设备，由于我们host上的设备都不能resetable，所以用例报错，不过此处用例报错信息给的不准确
-#libvirt:vfio                #Please add 'intel_iommu=on' to kernel and reboot to effect it 
+#libvirt:perf_kvm                     #我们的源上缺少fuse-sshfs，注释掉模块
+#libvirt:pci_passthrough              #系统不支持
+#libvirt:ksm_service                  #缺少ksmtuned服务
+#libvirt:timer_management             #不支持kvmclock
+#libvirt:virsh_blockresize            #7SKIP，qed_type不支持；15FAIL pci.0不支持hotplug 
+#libvirt:virsh_domblkerror            #PCI.0
+#libvirt:virsh_create_lxc             #lxc不需要测试
+#libvirt:virsh_dompmsuspend           #需要virsh capcabilities的xml提供能力支持才行 setting ACPI S3 not supported
+#libvirt:virsh_schedinfo_xen_credit   #xen的虚拟化测试，用不到
+#libvirt:virsh_nodesuspend            #不支持nodesuspend
+#libvirt:virsh_nodedev_create_destroy #需要HBA设备
+#libvirt:virsh_nodedev_detach_reattach #需要在配置文件设置用于测试detach的PCI总线，手动测试虚拟机的每条PCI总线在detach时都会报错。
+#libvirt:virsh_nodedev_reset          #需要设置测试使用的special_device，用例会自动检索host中的pci设备，由于我们host上的设备都不能resetable，所以用例报错
+#libvirt:vfio                         #Please add 'intel_iommu=on' to kernel and reboot to effect it 
+#libvirt:virt-top                     #我们源没有提供virt-top安装包
 
-#QEMU测试模块
-#
-#qemu:qemu_unattended_install
-#qemu:qemu_nic_hotplug
-#qemu:qemu_timedrift_no_net
-#qemu:qemu_live_snapshot
-#qemu:qemu_watchdog
-#qemu:qemu_qemu_guest_agent
-#qemu:qemu_qmp_event_notification
-#qemu:multi_disk_random_hotplug
-#qemu:qemu_disk_img
-#qemu:mq_change_qnum
-#qemu:qemu_usb
-#qemu:qemu_img
-#qemu:set_link
-#qemu:boot_from_device
-#qemu:qemu_timerdevice
-#qemu:qemu_virtio_console
-#qemu:live_snapshot_chain
-#qemu:qemu_performance
-#qemu:qemu_balloon_check
-#qemu:qemu_io_blkdebug
-#qemu:qemu_pci_hotplug
-#qemu:qemu_rv
-#qemu:block_stream
-#qemu:qemu_cgroup
-#qemu:openflow_test
-#qemu:drive_mirror
-#qemu:qemu_migrate
-#qemu:qemu_iotests
-#qemu:timedrift_adjust_time
-#qemu:qmp_command
-#qemu:openflow_acl_test
-#qemu:multi_nics_hotplug
-#qemu:numa_opts
-#libvirt:domuuid.normal_test
-#qemu:cpuflags.interface
-#libvirt:domblkerror
-#qemu:qcow2perf
