@@ -118,6 +118,7 @@ setenv()
         echo "make link qemu-system-ppc64 to qemu-kvm"
 	echo
 
+	ppc64_cpu --smt=off
         systemctl stop firewalld
         systemctl mask firewalld
         systemctl stop iptables
