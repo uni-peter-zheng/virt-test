@@ -1,0 +1,12 @@
+
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.dir 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.disk 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.fs 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.logical 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.netfs 
+type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.dir 
+type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.disk 
+type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.fs 
+type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.logical 
+type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.netfs 
+
