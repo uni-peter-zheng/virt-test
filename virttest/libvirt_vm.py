@@ -1689,6 +1689,7 @@ class VM(virt_vm.BaseVM):
                                           "to go down...")
                             if utils_misc.wait_for(self.is_dead, 60, 1, 1):
                                 logging.debug("VM is down")
+                                time.sleep(2)
                                 return
                         finally:
                             session.close()
@@ -1701,6 +1702,7 @@ class VM(virt_vm.BaseVM):
 
         finally:
             self.cleanup_serial_console()
+            time.sleep(2)
         if free_mac_addresses:
             if self.is_persistent():
                 logging.warning("Requested MAC address release from "
