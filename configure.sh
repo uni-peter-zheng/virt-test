@@ -11,9 +11,9 @@ export main_vms="Redos-autotest"
 export localhost="RedOS-5"
 export remotehost="RedOS-4"
 export bridge="br0"
-export image_name="\/home\/source\/templet\/redos_autotest.img"
-export source_vm_image="\/home\/source\/templet\/redos_autotest.img"
-export backup_vm_image="\/home\/source\/templet-bck\/redos_autotest.img"
+export image_name="/home/source/templet/redos_autotest.img"
+export source_vm_image="/home/source/templet/redos_autotest.img"
+export backup_vm_image="/home/source/templet-bck/redos_autotest.img"
 
 CURRENT_DIR=$(pwd)
 cd $CURRENT_DIR/../autotest
@@ -139,7 +139,7 @@ setenv()
 	echo "set localhost=$localhost"
 	hostname $localhost
         
-        sed -i "s/^    image_name =.*$/    image_name ="$image_name"/" ./shared/cfg/guest-os/Linux/RHEL/7.1/ppc64.cfg
+        sed -i "s|^    image_name =.*$|    image_name ="$image_name"|" ./shared/cfg/guest-os/Linux/RHEL/7.1/ppc64.cfg
 	
 	#默认关闭截屏选项
 	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" ./backends/libvirt/cfg/base.cfg
