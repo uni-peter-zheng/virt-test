@@ -94,7 +94,6 @@ setenv()
         systemctl mask firewalld
         systemctl stop iptables
         systemctl mask iptables
-        sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
         setenforce 0
         yum install expect -y
         
