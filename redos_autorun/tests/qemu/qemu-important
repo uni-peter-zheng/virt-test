@@ -33,9 +33,9 @@ type_specific.io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_po
 type_specific.io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_shutdown
 type_specific.io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_debug
 type_specific.io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_none
-type_specific.io-github-autotest-qemu.check_clock_offset.with_syscall (requires root)
+type_specific.io-github-autotest-qemu.check_clock_offset.with_syscall
 type_specific.io-github-autotest-qemu.qmp_basic
-type_specific.io-github-autotest-qemu.qemu_nobody (requires root)
+type_specific.io-github-autotest-qemu.qemu_nobody
 type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.guest_guest.enable_msi
 type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.guest_guest.disable_msi
 type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_pktgen.guest_guest.enable_msi
@@ -150,18 +150,18 @@ type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_write_tabl
 type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_switch_table
 type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_hookup
 type_specific.io-github-autotest-qemu.qemu_io_blkdebug.read_aio
-#type_specific.io-github-autotest-qemu.cgroup.blkio_bandwidth (requires root)
-#type_specific.io-github-autotest-qemu.cgroup.blkio_throttle (requires root)
-#type_specific.io-github-autotest-qemu.cgroup.blkio_throttle_multi (requires root)
-type_specific.io-github-autotest-qemu.cgroup.cpu_cfs_util (requires root)
-#type_specific.io-github-autotest-qemu.cgroup.cpu_share (requires root)
-type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus (requires root)
-type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus_switching (requires root)
-type_specific.io-github-autotest-qemu.cgroup.devices_access (requires root)
-type_specific.io-github-autotest-qemu.cgroup.freezer (requires root)
-type_specific.io-github-autotest-qemu.cgroup.memory_limit (requires root)
-type_specific.io-github-autotest-qemu.cgroup.memory_memsw_limit (requires root)
-type_specific.io-github-autotest-qemu.cgroup.memory_move (requires root)
+#type_specific.io-github-autotest-qemu.cgroup.blkio_bandwidth
+#type_specific.io-github-autotest-qemu.cgroup.blkio_throttle
+#type_specific.io-github-autotest-qemu.cgroup.blkio_throttle_multi
+type_specific.io-github-autotest-qemu.cgroup.cpu_cfs_util 
+#type_specific.io-github-autotest-qemu.cgroup.cpu_share 
+type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus 
+type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus_switching 
+type_specific.io-github-autotest-qemu.cgroup.devices_access 
+type_specific.io-github-autotest-qemu.cgroup.freezer
+type_specific.io-github-autotest-qemu.cgroup.memory_limit 
+type_specific.io-github-autotest-qemu.cgroup.memory_memsw_limit 
+type_specific.io-github-autotest-qemu.cgroup.memory_move 
 type_specific.io-github-autotest-qemu.drive_mirror.simple_test.cancel
 type_specific.io-github-autotest-qemu.drive_mirror.simple_test.set_speed
 type_specific.io-github-autotest-qemu.drive_mirror.simple_test.reset_speed
@@ -190,7 +190,7 @@ type_specific.io-github-autotest-qemu.numa_opts.nodes.2.defaults
 type_specific.io-github-autotest-qemu.gluster.gluster_create_images.gluster_raw
 type_specific.io-github-autotest-qemu.gluster.gluster_create_images.gluster_qcow2
 type_specific.io-github-autotest-qemu.gluster.gluster_boot_snap_boot
-type_specific.io-github-autotest-qemu.smbios_table.machine_type (requires root)
+type_specific.io-github-autotest-qemu.smbios_table.machine_type
 type_specific.io-github-autotest-qemu.hello_world
 type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_model
 type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_dump
@@ -240,9 +240,9 @@ io-github-autotest-qemu.shutdown
 
 #type_specific.io-github-autotest-qemu.device_option_check.blk_serial_check
 #type_specific.io-github-autotest-qemu.enospc
-#type_specific.io-github-autotest-qemu.ksm_base.disable.other_host (requires root)
-#type_specific.io-github-autotest-qemu.ksm_base.base (requires root)
-#type_specific.io-github-autotest-qemu.ksm_base.negative (requires root)
+#type_specific.io-github-autotest-qemu.ksm_base.disable.other_host 
+#type_specific.io-github-autotest-qemu.ksm_base.base 
+#type_specific.io-github-autotest-qemu.ksm_base.negative 
 #type_specific.io-github-autotest-qemu.multi_vms_file_transfer
 #type_specific.io-github-autotest-qemu.getfd
 #type_specific.io-github-autotest-qemu.qmp_basic_rhel6
@@ -258,8 +258,8 @@ io-github-autotest-qemu.shutdown
 #type_specific.io-github-autotest-qemu.create_macvtap_device.multi_macvtap_mode
 #type_specific.io-github-autotest-qemu.create_macvtap_device.macvtap_passthru
 #type_specific.io-github-autotest-qemu.ping_kill_test
-#type_specific.io-github-autotest-qemu.ksm_overcommit.ksm_serial (requires root)
-#type_specific.io-github-autotest-qemu.ksm_overcommit.ksm_parallel (requires root)
+#type_specific.io-github-autotest-qemu.ksm_overcommit.ksm_serial 
+#type_specific.io-github-autotest-qemu.ksm_overcommit.ksm_parallel 
 #type_specific.io-github-autotest-qemu.multi_disk.one_disk_repeat
 #type_specific.io-github-autotest-qemu.multi_disk.max_disk
 #type_specific.io-github-autotest-qemu.multi_disk.all_drive_format_types
@@ -274,7 +274,7 @@ io-github-autotest-qemu.shutdown
 #type_specific.io-github-autotest-qemu.audio
 #type_specific.io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_suspend
 #type_specific.io-github-autotest-qemu.nmi_watchdog
-#type_specific.io-github-autotest-qemu.check_clock_offset.when_crash.hang (requires root)
+#type_specific.io-github-autotest-qemu.check_clock_offset.when_crash.hang 
 #type_specific.io-github-autotest-qemu.stress_kernel_compile.multi_guests
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.host_guest.enable_msi
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.host_guest.disable_msi
@@ -322,7 +322,7 @@ io-github-autotest-qemu.shutdown
 #type_specific.io-github-autotest-qemu.block_stream.drop_backingfile
 #type_specific.io-github-autotest-qemu.block_stream.check_backingfile
 #type_specific.io-github-autotest-qemu.block_stream.with_stress
-#type_specific.io-github-autotest-qemu.cgroup.cpuset_mems_switching (requires root)
+#type_specific.io-github-autotest-qemu.cgroup.cpuset_mems_switching 
 #type_specific.io-github-autotest-qemu.openflow_test.arp
 #type_specific.io-github-autotest-qemu.openflow_test.icmp
 #type_specific.io-github-autotest-qemu.openflow_test.ip
@@ -372,9 +372,9 @@ io-github-autotest-qemu.shutdown
 #type_specific.io-github-autotest-qemu.numa_opts.nodes.3.defaults
 #type_specific.io-github-autotest-qemu.numa_opts.nodes.3.custom_values.implicit_ids
 #type_specific.io-github-autotest-qemu.numa_opts.nodes.3.custom_values.unordered_ids
-#type_specific.io-github-autotest-qemu.smbios_table.type0 (requires root)
-#type_specific.io-github-autotest-qemu.smbios_table.type1 (requires root)
-#type_specific.io-github-autotest-qemu.smbios_table.type0and1 (requires root)
+#type_specific.io-github-autotest-qemu.smbios_table.type0 
+#type_specific.io-github-autotest-qemu.smbios_table.type1 
+#type_specific.io-github-autotest-qemu.smbios_table.type0and1 
 #type_specific.io-github-autotest-qemu.unit_test_kvmctl.access
 #type_specific.io-github-autotest-qemu.unit_test_kvmctl.apic
 #type_specific.io-github-autotest-qemu.unit_test_kvmctl.emulator
@@ -429,12 +429,12 @@ io-github-autotest-qemu.shutdown
 #io-github-autotest-qemu.kdump.one_vm.with_stress.io_stress.nmi
 #io-github-autotest-qemu.kdump.one_vm.with_ssh.default
 #io-github-autotest-qemu.kdump.one_vm.with_ssh.nmi
-#io-github-autotest-qemu.trans_hugepage.base (requires root)
-#io-github-autotest-qemu.trans_hugepage.defrag (requires root)
-#io-github-autotest-qemu.trans_hugepage.swapping (requires root)
-#io-github-autotest-qemu.trans_hugepage.relocated (requires root)
-#io-github-autotest-qemu.trans_hugepage.migration (requires root)
-#io-github-autotest-qemu.trans_hugepage.memory_stress (requires root)
+#io-github-autotest-qemu.trans_hugepage.base 
+#io-github-autotest-qemu.trans_hugepage.defrag 
+#io-github-autotest-qemu.trans_hugepage.swapping 
+#io-github-autotest-qemu.trans_hugepage.relocated
+#io-github-autotest-qemu.trans_hugepage.migration 
+#io-github-autotest-qemu.trans_hugepage.memory_stress 
 #io-github-autotest-qemu.io-github-autotest-qemu.hypervisor_flag
 #io-github-autotest-qemu.io-github-autotest-qemu.tray_open
 #io-github-autotest-qemu.io-github-autotest-qemu.windows_support
