@@ -1,5 +1,4 @@
 #!/bin/sh
-
 #init初始化配置 公共config
 
 export remote_ip="192.168.1.4"
@@ -59,9 +58,8 @@ while getopts ht:T: arg
 
 
 #autotest测试基本环境
-#AUTOTEST路径
-#qemu-system-ppc64做链接
-#防火墙关闭
+#[AUTOTEST路径] [qemu-system-ppc64做链接] [防火墙关闭] [smt关闭] [修改redos_autotest的配置]
+#[修改test-providers.d] [主机名设置并写入hosts文件] [base.cfg的修改]
 
 setenv()
 
@@ -201,13 +199,13 @@ specialcfg()
 {
        echo "######## SET CONFIGURE FOR SPECIAL TESTCASES #########"
        echo
-      #config remote-test ip for teset: virsh_nodesuspend
+       #config remote-test ip for teset: virsh_nodesuspend
        echo "set config for testcases:virsh_nodesuspend!"
        echo
        sed -i -e 's|ENTER.YOUR.REMOTE.EXAMPLE.COM|'$remote_ip'|' ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
        sed -i -e "s|EXAMPLE.PWD|$remote_pwd|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
 
-      #libvirt_scsi_partition = "/dev/sda2" 为用例libvirt_scsi指定测试分区
+       #为用例libvirt_scsi指定测试分区
        echo "set config for testcases:libvirt_scsi!"
        echo
        sed -i "s/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = \/dev\/$ENTER_YOUR_AVAILABLE_PARTITION/" ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
@@ -282,7 +280,6 @@ main()
 {	
 	setenv
         
-        
         echo "##### SET remote-local NO PASSWORD LOGIN  #####"
 	echo
  	auto_ssh_copy_id  $local_pwd $remote_ip
@@ -300,7 +297,6 @@ main()
         else
            ssh root@$remote_ip "echo '$local_ip $localhost' >> /etc/hosts"
         fi 
-
 	specialcfg
 
 	install	
