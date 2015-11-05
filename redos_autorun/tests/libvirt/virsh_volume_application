@@ -1,0 +1,12 @@
+
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.dir 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.disk 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.fs 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.logical 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.netfs 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.dir  #测试完成后umount nfs-mount失败
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.disk  #targetcli create 执行失败
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.fs    #targetcli create 执行失败
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.logical #targetcli create 执行失败
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.netfs #targetcli create 执行失败
+

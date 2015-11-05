@@ -124,14 +124,20 @@ libvirt:libvirt_qemu_cmdline  #2 FAIL redhat有对应bug ：https://bugzilla.red
 #比较耗时间的用例
 
 #比较容易出问题的模块放到最后
-libvirt:svirt      #注释掉相关host_selinux的用例
+libvirt:svirt                       #注释掉相关host_selinux的用例
 libvirt:multifunction
-libvirt:virsh_change_media  # 需要mkisofs,安装包genisoimage ；注释掉ide和floppy>的用例
-libvirt:snapshot                    #注释掉部分失败的用例,快照部分的用例，可能导致后面的用例使用virsh undefine失败，所以放在最后
-libvirt:guest_numa                  #numa的用例可能导致libvirtd启动失败，放在最后。no_nodemem的用例需要修改guest-numa.cfg,因为我们的版本对memtune的参数规则和autotest的要求不太一样；其他用例失败是系统不支持2M,1G的大页表，也不能把全部host大页分配给一个虚拟机。
+libvirt:virsh_change_media          # 需要mkisofs,安装包genisoimage ；注释掉ide和floppy>的用例
+libvirt:guest_numa                  #numa的用例可能导致libvirtd启动失败[发现原因是由于该用例修改qemu.conf内hugetlbfs挂载点为/dev/hugepages16M，当umount掉这个挂载点后，qemu.conf依然生效，导致libvirtd启动失败]
+#no_nodemem的用例需要修改guest-numa.cfg,因为我们的版本对memtune的参数规则和autotest的要求不太一样；其他用例失败是系统不支持2M,1G的大页表，也不能把全部host大页分配给一个虚拟机。
+libvirt:snapshot                    #注释掉部分失败的用例,快照部分的用例，测试完不恢复img,可能导致后面的用例使用virsh undefine失败，所以放在最后
 
 #新增用例，可能容易出问题，放到最后面
 libvirt:hugepage  #注释掉部分用例
+libvirt:virsh_screenshot #已注释部分用例
+libvirt:virsh_qemu_monitor_command  #修改源码，增加测试前判断虚机状态语句
+libvirt:virsh_qemu_attach           #注释掉两个用例
+libvirt:virsh_setmaxmem            # 不支持虚拟机运行时修改大内存
+libvirt:virsh_setmem
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求
 #libvirt:perf_kvm                    #我们的源上缺少fuse-sshfs，注释掉模块
@@ -146,20 +152,17 @@ libvirt:hugepage  #注释掉部分用例
 #libvirt:network_bandwidth           #网络用例 需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
 #libvirt:iface                       #网络用例 部分测试导致网络不通,测试环境配置未处理
 #libvirt:iface_bridge                #网络用例 部分测试导致网络不通,测试环境配置未处理
-#libvirt:macvtap                     #网络用例 
+#libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:virsh-attach-detach-disk     #device用例
 #libvirt:virsh-attach-detach-interface#device用例
 #libvirt:attach_device               #device用例 有接近1000测试用例，需要单独测试
 #libvirt:virsh_detach_device         #device用例
-#libvirt:virsh_qemu_attach           #device用例
 #libvirt:virsh_update_device         #device用例 不支持ide floppy设备
 #libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘,还有其他相关gluster的用例先注释掉.这组用例可能会导致测试环境损坏，暂时注释模块
 #libvirt:virsh_blockcopy             #block用例 需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把版本比对去掉，里面规定libvirt1.2.13以上才测试这个功能；并且会创建iscsi设备，需要安装targetcli*和iscsi*，此组测试用例特别耗时间。
 #libvirt:virsh_domblkerror           #block用例
 #libvirt:virsh_qemu_monitor_blockjob #block用例
 #libvirt:virsh_domblkinfo            #block用例
-#libvirt:virsh_qemu_monitor_command  #VM 'RedOS-autotest' failed to start: error: Domain is already active 用例测试之前是需要将虚拟机关闭，由于设置了--keep-guest-running这一组用例报错。暂时将其跳过
-#libvirt:virsh_screenshot            #
 #libvirt:virsh_sendkey               #测试用例命令执行发生错误
 #libvirt:virsh_suspend               #
 #libvirt:virsh_capabilities          #
