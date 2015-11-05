@@ -6,7 +6,7 @@ type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.no_vm_na
 type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.hex_vm_id.disk_test.block_type 
 type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.hex_vm_id.disk_test.file_type 
 type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.hex_vm_id.iface_test 
-type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.invalid_vm_id.cdrom_test 
+#type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.invalid_vm_id.cdrom_test 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.invalid_vm_id.disk_test.block_type 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.invalid_vm_id.disk_test.file_type 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.invalid_vm_id.iface_test 

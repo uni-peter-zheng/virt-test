@@ -1,5 +1,4 @@
 #!/bin/sh
-
 #init初始化配置 公共config
 
 export remote_ip="192.168.1.4"
@@ -31,7 +30,7 @@ result_of_domiflist=`virsh domiflist $main_vms`
 mac_nic1=`echo $result_of_domiflist|cut -d ' ' -f 11`
 export tmp=`mount |grep boot`
 export ENTER_YOUR_AVAILABLE_PARTITION=${tmp:5:5} #为用例libvirt_scsi指定测试分区为boot分区
-mkdir $CURRENT_DIR/shared/pool > /dev/null 
+mkdir $CURRENT_DIR/shared/pool >/dev/null 2>&1
 export PATH_OF_POOL_XML="$CURRENT_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
 
 usage()
@@ -59,9 +58,8 @@ while getopts ht:T: arg
 
 
 #autotest测试基本环境
-#AUTOTEST路径
-#qemu-system-ppc64做链接
-#防火墙关闭
+#[AUTOTEST路径] [qemu-system-ppc64做链接] [防火墙关闭] [smt关闭] [修改redos_autotest的配置]
+#[修改test-providers.d] [主机名设置并写入hosts文件] [base.cfg的修改]
 
 setenv()
 
@@ -79,7 +77,7 @@ setenv()
 	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR/"|g" ./redos_autorun/cfg/base.cfg
         sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image"|g" ./redos_autorun/cfg/base.cfg
         sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image"|g" ./redos_autorun/cfg/base.cfg
-        sed -i "s|^extra_cmd = -t qemu.*$|extra_cmd = -t qemu --machine-type pseries --g Linux.RHEL.7.1.ppc64.pseries --qemu_sandbox off --netdst="$bridge"|g" ./redos_autorun/cfg/base.cfg
+        sed -i "s/br0/$bridge/g" ./redos_autorun/cfg/base.cfg
         #修改test-providers.d
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
@@ -139,7 +137,25 @@ setenv()
 	hostname $localhost
         
         sed -i "s|^    image_name =.*$|    image_name ="$image_name"|" ./shared/cfg/guest-os/Linux/RHEL/7.1/ppc64.cfg
-	
+
+	#修改migration的配置选项
+	sed -i "s/^migrate_source_host =.*$/migrate_source_host = $local_ip/" ./backends/libvirt/cfg/base.cfg
+	sed -i "s/^migrate_source_pwd =.*$/migrate_source_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
+        sed -i "s/^migrate_dest_host =.*$/migrate_dest_host = $remote_ip/" ./backends/libvirt/cfg/base.cfg
+        sed -i "s/^migrate_dest_pwd =.*$/migrate_dest_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
+	  #在/etc/hosts中添加hostname
+        grep "$remote_ip" /etc/hosts
+        if [ $? == 0 ]; then
+           grep "$remote_ip $remotehost" /etc/hosts
+           if [ $? == 0 ]; then
+	      echo "remote_ip has been set to hosts"
+           else
+              sed -i "s|^$remote_ip.*$|$remote_ip $remotehost|" /etc/hosts
+           fi
+        else
+           echo "$remote_ip $remotehost" >> /etc/hosts
+        fi       
+
 	#默认关闭截屏选项
 	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" ./backends/libvirt/cfg/base.cfg
 	sed -i "s/^keep_screendumps_on_error.*$/keep_screendumps_on_error = no/" ./backends/libvirt/cfg/base.cfg
@@ -183,13 +199,13 @@ specialcfg()
 {
        echo "######## SET CONFIGURE FOR SPECIAL TESTCASES #########"
        echo
-      #config remote-test ip for teset: virsh_nodesuspend
+       #config remote-test ip for teset: virsh_nodesuspend
        echo "set config for testcases:virsh_nodesuspend!"
        echo
        sed -i -e 's|ENTER.YOUR.REMOTE.EXAMPLE.COM|'$remote_ip'|' ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
        sed -i -e "s|EXAMPLE.PWD|$remote_pwd|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
 
-      #libvirt_scsi_partition = "/dev/sda2" 为用例libvirt_scsi指定测试分区
+       #为用例libvirt_scsi指定测试分区
        echo "set config for testcases:libvirt_scsi!"
        echo
        sed -i "s/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = \/dev\/$ENTER_YOUR_AVAILABLE_PARTITION/" ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
@@ -264,7 +280,6 @@ main()
 {	
 	setenv
         
-        
         echo "##### SET remote-local NO PASSWORD LOGIN  #####"
 	echo
  	auto_ssh_copy_id  $local_pwd $remote_ip
@@ -276,7 +291,12 @@ main()
                    *(yes/no)* {send -- yes\r;exp_continue;}
                    *assword:* {send -- $local_pwd\r;exp_continue;}
                 }"
-
+        ssh root@$remote_ip "grep $local_ip /etc/hosts"
+        if [ $? = 0 ]; then
+	   ssh root@$remote_ip "sed -i 's|^$local_ip.*$|$local_ip $localhost|' /etc/hosts"
+        else
+           ssh root@$remote_ip "echo '$local_ip $localhost' >> /etc/hosts"
+        fi 
 	specialcfg
 
 	install	
