@@ -33,9 +33,9 @@ type_specific.io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_po
 type_specific.io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_shutdown
 type_specific.io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_debug
 type_specific.io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_none
-type_specific.io-github-autotest-qemu.check_clock_offset.with_syscall (requires root)
+type_specific.io-github-autotest-qemu.check_clock_offset.with_syscall
 type_specific.io-github-autotest-qemu.qmp_basic
-type_specific.io-github-autotest-qemu.qemu_nobody (requires root)
+type_specific.io-github-autotest-qemu.qemu_nobody
 type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.guest_guest.enable_msi
 type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.guest_guest.disable_msi
 type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_pktgen.guest_guest.enable_msi
@@ -49,6 +49,123 @@ type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_fil
 type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_migrate.enable_msi
 type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_migrate.disable_msi
 type_specific.io-github-autotest-qemu.mq_change_qnum.disable_enable_queues.under_pktgen.guest_guest.enable_msi
+type_specific.io-github-autotest-qemu.live_snapshot_chain.pause
+type_specific.io-github-autotest-qemu.live_snapshot_chain.long_chain
+type_specific.io-github-autotest-qemu.live_snapshot_chain.check
+type_specific.io-github-autotest-qemu.live_snapshot_chain.oops
+type_specific.io-github-autotest-qemu.performance.iozone.summary_results_iozone
+type_specific.io-github-autotest-qemu.check_coredump
+type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-migrate
+type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-reboot
+type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-shutdown
+type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-stop_continue
+type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-migrate
+type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-reboot
+type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-shutdown
+type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-stop_continue
+type_specific.io-github-autotest-qemu.balloon_check.balloon_evict_and_enlarge.balloon_base
+type_specific.io-github-autotest-qemu.qemu_killer_report
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_update_part
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.cluster_alloc
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.vmstate_load
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.l1_grow_alloc_table
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.l1_grow_activate_table
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_write
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.write_aio
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.vmstate_save
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.reftable_grow
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_load
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_write_table
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_switch_table
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_hookup
+type_specific.io-github-autotest-qemu.qemu_io_blkdebug.read_aio
+#type_specific.io-github-autotest-qemu.cgroup.blkio_bandwidth
+#type_specific.io-github-autotest-qemu.cgroup.blkio_throttle
+#type_specific.io-github-autotest-qemu.cgroup.blkio_throttle_multi
+type_specific.io-github-autotest-qemu.cgroup.cpu_cfs_util 
+#type_specific.io-github-autotest-qemu.cgroup.cpu_share 
+type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus 
+type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus_switching 
+type_specific.io-github-autotest-qemu.cgroup.devices_access 
+type_specific.io-github-autotest-qemu.cgroup.freezer
+type_specific.io-github-autotest-qemu.cgroup.memory_limit 
+type_specific.io-github-autotest-qemu.cgroup.memory_memsw_limit 
+type_specific.io-github-autotest-qemu.cgroup.memory_move 
+type_specific.io-github-autotest-qemu.drive_mirror.simple_test.cancel
+type_specific.io-github-autotest-qemu.drive_mirror.simple_test.set_speed
+type_specific.io-github-autotest-qemu.drive_mirror.simple_test.reset_speed
+type_specific.io-github-autotest-qemu.drive_mirror.simple_test.query
+type_specific.io-github-autotest-qemu.drive_mirror.simple_test.mirroring.block_job_complete.target_in_localfs
+type_specific.io-github-autotest-qemu.drive_mirror.simple_test.mirroring.block_job_complete.target_in_nfs
+type_specific.io-github-autotest-qemu.drive_mirror.simple_test.mirroring.continuous_backup
+type_specific.io-github-autotest-qemu.drive_mirror.simple_test.negative_test.readonly_target
+type_specific.io-github-autotest-qemu.drive_mirror.with_reboot
+type_specific.io-github-autotest-qemu.qmp_command.qmp_query-kvm
+type_specific.io-github-autotest-qemu.qmp_command.qmp_query-status
+type_specific.io-github-autotest-qemu.qmp_command.qmp_query-name
+type_specific.io-github-autotest-qemu.qmp_command.qmp_query-uuid
+type_specific.io-github-autotest-qemu.qmp_command.qmp_query-version
+type_specific.io-github-autotest-qemu.qmp_command.qmp_query-chardev
+type_specific.io-github-autotest-qemu.qmp_command.qmp_query-blockstats
+type_specific.io-github-autotest-qemu.qmp_command.qmp_query-vnc
+type_specific.io-github-autotest-qemu.qmp_command.qmp_query-commands
+type_specific.io-github-autotest-qemu.qmp_command.qmp_cont
+type_specific.io-github-autotest-qemu.qmp_command.qmp_stop
+type_specific.io-github-autotest-qemu.qmp_command.qmp_negative
+type_specific.io-github-autotest-qemu.qmp_command.qmp_human-monitor-command
+type_specific.io-github-autotest-qemu.numa_opts.nodes.0
+type_specific.io-github-autotest-qemu.numa_opts.nodes.1
+type_specific.io-github-autotest-qemu.numa_opts.nodes.2.defaults
+type_specific.io-github-autotest-qemu.gluster.gluster_create_images.gluster_raw
+type_specific.io-github-autotest-qemu.gluster.gluster_create_images.gluster_qcow2
+type_specific.io-github-autotest-qemu.gluster.gluster_boot_snap_boot
+type_specific.io-github-autotest-qemu.smbios_table.machine_type
+type_specific.io-github-autotest-qemu.hello_world
+type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_model
+type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_dump
+type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_cpuid
+type_specific.io-github-autotest-qemu.cpuflags.boot_guest.qemu_boot_cpu_model
+type_specific.io-github-autotest-qemu.cpuflags.boot_guest.qemu_boot_cpu_model_and_flags
+type_specific.io-github-autotest-qemu.cpuflags.boot_guest.qemu_warn_boot_check_cpu_model
+type_specific.io-github-autotest-qemu.cpuflags.boot_guest.qemu_boot_fail_cpu_model
+type_specific.io-github-autotest-qemu.cpuflags.stress_guest.qemu_test_boot_guest_and_try_flags_under_load
+type_specific.io-github-autotest-qemu.cpuflags.stress_guest.qemu_test_online_offline_guest_CPUs
+type_specific.io-github-autotest-qemu.cpuflags.stress_guest.qemu_test_migration_with_additional_flags
+type_specific.io-github-autotest-qemu.invalid_parameter.fd_vhostfds
+type_specific.io-github-autotest-qemu.invalid_parameter.fd_queues
+type_specific.io-github-autotest-qemu.invalid_parameter.fd_fds
+type_specific.io-github-autotest-qemu.invalid_parameter.fds_vhostfd
+type_specific.io-github-autotest-qemu.invalid_parameter.fds_queues
+type_specific.io-github-autotest-qemu.invalid_parameter.helper_fd
+type_specific.io-github-autotest-qemu.invalid_parameter.helper_fds
+type_specific.io-github-autotest-qemu.invalid_parameter.helper_vhostfds
+type_specific.io-github-autotest-qemu.invalid_parameter.helper_vhostfd
+type_specific.io-github-autotest-qemu.invalid_parameter.helper_queues
+type_specific.io-github-autotest-qemu.serial_modprobe
+type_specific.io-github-autotest-qemu.qcow2perf.writeoffset0
+type_specific.io-github-autotest-qemu.qcow2perf.writeoffset1
+type_specific.io-github-autotest-qemu.qcow2perf.read
+type_specific.io-github-autotest-qemu.qcow2perf.convert.cache_none
+type_specific.io-github-autotest-qemu.qcow2perf.convert.cache_unsafe
+type_specific.io-github-autotest-qemu.qcow2perf.convert.cache_writeback
+type_specific.io-github-autotest-qemu.qcow2perf.convert.cache_writethrough
+type_specific.io-github-autotest-qemu.qcow2perf.rebase.cache_none
+type_specific.io-github-autotest-qemu.qcow2perf.rebase.cache_unsafe
+type_specific.io-github-autotest-qemu.qcow2perf.rebase.cache_writeback
+type_specific.io-github-autotest-qemu.qcow2perf.rebase.cache_writethrough
+type_specific.io-github-autotest-qemu.qcow2perf.commit.cache_none
+type_specific.io-github-autotest-qemu.qcow2perf.commit.cache_unsafe
+type_specific.io-github-autotest-qemu.qcow2perf.commit.cache_writeback
+type_specific.io-github-autotest-qemu.qcow2perf.commit.cache_writethrough
+type_specific.io-github-autotest-qemu.virtio_port_login.virtio_serial
+io-github-autotest-qemu.yum_update
+io-github-autotest-qemu.kdump.one_vm.basic.default
+io-github-autotest-qemu.kdump.one_vm.with_stress.netperf_stress.default
+io-github-autotest-qemu.kdump.one_vm.with_stress.io_stress.default
+io-github-autotest-qemu.io-github-autotest-qemu.gluster_boot_snap_boot
+io-github-autotest-qemu.io-github-autotest-qemu.build
+io-github-autotest-qemu.io-github-autotest-qemu.gluster_create_images
+io-github-autotest-qemu.shutdown
 type_specific.io-github-autotest-qemu.virtio_console.spread_linear.specifiable.virtserialport.virtio_console_smoke.open
 type_specific.io-github-autotest-qemu.virtio_console.spread_linear.specifiable.virtserialport.virtio_console_smoke.check_zero_sym
 type_specific.io-github-autotest-qemu.virtio_console.spread_linear.specifiable.virtserialport.virtio_console_smoke.multi_open
@@ -120,129 +237,12 @@ type_specific.io-github-autotest-qemu.virtio_console.spread_2.unspecifiable.perf
 type_specific.io-github-autotest-qemu.virtio_console.spread_2.unspecifiable.incorrect_options.boot_nr0
 type_specific.io-github-autotest-qemu.virtio_console.spread_2.unspecifiable.incorrect_options.boot_nr1
 type_specific.io-github-autotest-qemu.virtio_console.spread_2.unspecifiable.incorrect_options.boot_too_much_ports
-type_specific.io-github-autotest-qemu.live_snapshot_chain.pause
-type_specific.io-github-autotest-qemu.live_snapshot_chain.long_chain
-type_specific.io-github-autotest-qemu.live_snapshot_chain.check
-type_specific.io-github-autotest-qemu.live_snapshot_chain.oops
-type_specific.io-github-autotest-qemu.performance.iozone.summary_results_iozone
-type_specific.io-github-autotest-qemu.check_coredump
-type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-migrate
-type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-reboot
-type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-shutdown
-type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-stop_continue
-type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-migrate
-type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-reboot
-type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-shutdown
-type_specific.io-github-autotest-qemu.balloon_check.balloon_enlarge.balloon-stop_continue
-type_specific.io-github-autotest-qemu.balloon_check.balloon_evict_and_enlarge.balloon_base
-type_specific.io-github-autotest-qemu.qemu_killer_report
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_update_part
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.cluster_alloc
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.vmstate_load
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.l1_grow_alloc_table
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.l1_grow_activate_table
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_write
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.write_aio
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.vmstate_save
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.reftable_grow
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_load
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_write_table
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_switch_table
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.refblock_alloc_hookup
-type_specific.io-github-autotest-qemu.qemu_io_blkdebug.read_aio
-#type_specific.io-github-autotest-qemu.cgroup.blkio_bandwidth (requires root)
-#type_specific.io-github-autotest-qemu.cgroup.blkio_throttle (requires root)
-#type_specific.io-github-autotest-qemu.cgroup.blkio_throttle_multi (requires root)
-type_specific.io-github-autotest-qemu.cgroup.cpu_cfs_util (requires root)
-#type_specific.io-github-autotest-qemu.cgroup.cpu_share (requires root)
-type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus (requires root)
-type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus_switching (requires root)
-type_specific.io-github-autotest-qemu.cgroup.devices_access (requires root)
-type_specific.io-github-autotest-qemu.cgroup.freezer (requires root)
-type_specific.io-github-autotest-qemu.cgroup.memory_limit (requires root)
-type_specific.io-github-autotest-qemu.cgroup.memory_memsw_limit (requires root)
-type_specific.io-github-autotest-qemu.cgroup.memory_move (requires root)
-type_specific.io-github-autotest-qemu.drive_mirror.simple_test.cancel
-type_specific.io-github-autotest-qemu.drive_mirror.simple_test.set_speed
-type_specific.io-github-autotest-qemu.drive_mirror.simple_test.reset_speed
-type_specific.io-github-autotest-qemu.drive_mirror.simple_test.query
-type_specific.io-github-autotest-qemu.drive_mirror.simple_test.mirroring.block_job_complete.target_in_localfs
-type_specific.io-github-autotest-qemu.drive_mirror.simple_test.mirroring.block_job_complete.target_in_nfs
-type_specific.io-github-autotest-qemu.drive_mirror.simple_test.mirroring.continuous_backup
-type_specific.io-github-autotest-qemu.drive_mirror.simple_test.negative_test.readonly_target
-type_specific.io-github-autotest-qemu.drive_mirror.with_reboot
-type_specific.io-github-autotest-qemu.qmp_command.qmp_query-kvm
-type_specific.io-github-autotest-qemu.qmp_command.qmp_query-status
-type_specific.io-github-autotest-qemu.qmp_command.qmp_query-name
-type_specific.io-github-autotest-qemu.qmp_command.qmp_query-uuid
-type_specific.io-github-autotest-qemu.qmp_command.qmp_query-version
-type_specific.io-github-autotest-qemu.qmp_command.qmp_query-chardev
-type_specific.io-github-autotest-qemu.qmp_command.qmp_query-blockstats
-type_specific.io-github-autotest-qemu.qmp_command.qmp_query-vnc
-type_specific.io-github-autotest-qemu.qmp_command.qmp_query-commands
-type_specific.io-github-autotest-qemu.qmp_command.qmp_cont
-type_specific.io-github-autotest-qemu.qmp_command.qmp_stop
-type_specific.io-github-autotest-qemu.qmp_command.qmp_negative
-type_specific.io-github-autotest-qemu.qmp_command.qmp_human-monitor-command
-type_specific.io-github-autotest-qemu.numa_opts.nodes.0
-type_specific.io-github-autotest-qemu.numa_opts.nodes.1
-type_specific.io-github-autotest-qemu.numa_opts.nodes.2.defaults
-type_specific.io-github-autotest-qemu.gluster.gluster_create_images.gluster_raw
-type_specific.io-github-autotest-qemu.gluster.gluster_create_images.gluster_qcow2
-type_specific.io-github-autotest-qemu.gluster.gluster_boot_snap_boot
-type_specific.io-github-autotest-qemu.smbios_table.machine_type (requires root)
-type_specific.io-github-autotest-qemu.hello_world
-type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_model
-type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_dump
-type_specific.io-github-autotest-qemu.cpuflags.interface.qemu_cpu_cpuid
-type_specific.io-github-autotest-qemu.cpuflags.boot_guest.qemu_boot_cpu_model
-type_specific.io-github-autotest-qemu.cpuflags.boot_guest.qemu_boot_cpu_model_and_flags
-type_specific.io-github-autotest-qemu.cpuflags.boot_guest.qemu_warn_boot_check_cpu_model
-type_specific.io-github-autotest-qemu.cpuflags.boot_guest.qemu_boot_fail_cpu_model
-type_specific.io-github-autotest-qemu.cpuflags.stress_guest.qemu_test_boot_guest_and_try_flags_under_load
-type_specific.io-github-autotest-qemu.cpuflags.stress_guest.qemu_test_online_offline_guest_CPUs
-type_specific.io-github-autotest-qemu.cpuflags.stress_guest.qemu_test_migration_with_additional_flags
-type_specific.io-github-autotest-qemu.invalid_parameter.fd_vhostfds
-type_specific.io-github-autotest-qemu.invalid_parameter.fd_queues
-type_specific.io-github-autotest-qemu.invalid_parameter.fd_fds
-type_specific.io-github-autotest-qemu.invalid_parameter.fds_vhostfd
-type_specific.io-github-autotest-qemu.invalid_parameter.fds_queues
-type_specific.io-github-autotest-qemu.invalid_parameter.helper_fd
-type_specific.io-github-autotest-qemu.invalid_parameter.helper_fds
-type_specific.io-github-autotest-qemu.invalid_parameter.helper_vhostfds
-type_specific.io-github-autotest-qemu.invalid_parameter.helper_vhostfd
-type_specific.io-github-autotest-qemu.invalid_parameter.helper_queues
-type_specific.io-github-autotest-qemu.serial_modprobe
-type_specific.io-github-autotest-qemu.qcow2perf.writeoffset0
-type_specific.io-github-autotest-qemu.qcow2perf.writeoffset1
-type_specific.io-github-autotest-qemu.qcow2perf.read
-type_specific.io-github-autotest-qemu.qcow2perf.convert.cache_none
-type_specific.io-github-autotest-qemu.qcow2perf.convert.cache_unsafe
-type_specific.io-github-autotest-qemu.qcow2perf.convert.cache_writeback
-type_specific.io-github-autotest-qemu.qcow2perf.convert.cache_writethrough
-type_specific.io-github-autotest-qemu.qcow2perf.rebase.cache_none
-type_specific.io-github-autotest-qemu.qcow2perf.rebase.cache_unsafe
-type_specific.io-github-autotest-qemu.qcow2perf.rebase.cache_writeback
-type_specific.io-github-autotest-qemu.qcow2perf.rebase.cache_writethrough
-type_specific.io-github-autotest-qemu.qcow2perf.commit.cache_none
-type_specific.io-github-autotest-qemu.qcow2perf.commit.cache_unsafe
-type_specific.io-github-autotest-qemu.qcow2perf.commit.cache_writeback
-type_specific.io-github-autotest-qemu.qcow2perf.commit.cache_writethrough
-type_specific.io-github-autotest-qemu.virtio_port_login.virtio_serial
-io-github-autotest-qemu.yum_update
-io-github-autotest-qemu.kdump.one_vm.basic.default
-io-github-autotest-qemu.kdump.one_vm.with_stress.netperf_stress.default
-io-github-autotest-qemu.kdump.one_vm.with_stress.io_stress.default
-io-github-autotest-qemu.io-github-autotest-qemu.gluster_boot_snap_boot
-io-github-autotest-qemu.io-github-autotest-qemu.build
-io-github-autotest-qemu.io-github-autotest-qemu.gluster_create_images
-io-github-autotest-qemu.shutdown
 
 #type_specific.io-github-autotest-qemu.device_option_check.blk_serial_check
 #type_specific.io-github-autotest-qemu.enospc
-#type_specific.io-github-autotest-qemu.ksm_base.disable.other_host (requires root)
-#type_specific.io-github-autotest-qemu.ksm_base.base (requires root)
-#type_specific.io-github-autotest-qemu.ksm_base.negative (requires root)
+#type_specific.io-github-autotest-qemu.ksm_base.disable.other_host 
+#type_specific.io-github-autotest-qemu.ksm_base.base 
+#type_specific.io-github-autotest-qemu.ksm_base.negative 
 #type_specific.io-github-autotest-qemu.multi_vms_file_transfer
 #type_specific.io-github-autotest-qemu.getfd
 #type_specific.io-github-autotest-qemu.qmp_basic_rhel6
@@ -258,8 +258,8 @@ io-github-autotest-qemu.shutdown
 #type_specific.io-github-autotest-qemu.create_macvtap_device.multi_macvtap_mode
 #type_specific.io-github-autotest-qemu.create_macvtap_device.macvtap_passthru
 #type_specific.io-github-autotest-qemu.ping_kill_test
-#type_specific.io-github-autotest-qemu.ksm_overcommit.ksm_serial (requires root)
-#type_specific.io-github-autotest-qemu.ksm_overcommit.ksm_parallel (requires root)
+#type_specific.io-github-autotest-qemu.ksm_overcommit.ksm_serial 
+#type_specific.io-github-autotest-qemu.ksm_overcommit.ksm_parallel 
 #type_specific.io-github-autotest-qemu.multi_disk.one_disk_repeat
 #type_specific.io-github-autotest-qemu.multi_disk.max_disk
 #type_specific.io-github-autotest-qemu.multi_disk.all_drive_format_types
@@ -274,7 +274,7 @@ io-github-autotest-qemu.shutdown
 #type_specific.io-github-autotest-qemu.audio
 #type_specific.io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_suspend
 #type_specific.io-github-autotest-qemu.nmi_watchdog
-#type_specific.io-github-autotest-qemu.check_clock_offset.when_crash.hang (requires root)
+#type_specific.io-github-autotest-qemu.check_clock_offset.when_crash.hang 
 #type_specific.io-github-autotest-qemu.stress_kernel_compile.multi_guests
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.host_guest.enable_msi
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.host_guest.disable_msi
@@ -322,7 +322,7 @@ io-github-autotest-qemu.shutdown
 #type_specific.io-github-autotest-qemu.block_stream.drop_backingfile
 #type_specific.io-github-autotest-qemu.block_stream.check_backingfile
 #type_specific.io-github-autotest-qemu.block_stream.with_stress
-#type_specific.io-github-autotest-qemu.cgroup.cpuset_mems_switching (requires root)
+#type_specific.io-github-autotest-qemu.cgroup.cpuset_mems_switching 
 #type_specific.io-github-autotest-qemu.openflow_test.arp
 #type_specific.io-github-autotest-qemu.openflow_test.icmp
 #type_specific.io-github-autotest-qemu.openflow_test.ip
@@ -372,9 +372,9 @@ io-github-autotest-qemu.shutdown
 #type_specific.io-github-autotest-qemu.numa_opts.nodes.3.defaults
 #type_specific.io-github-autotest-qemu.numa_opts.nodes.3.custom_values.implicit_ids
 #type_specific.io-github-autotest-qemu.numa_opts.nodes.3.custom_values.unordered_ids
-#type_specific.io-github-autotest-qemu.smbios_table.type0 (requires root)
-#type_specific.io-github-autotest-qemu.smbios_table.type1 (requires root)
-#type_specific.io-github-autotest-qemu.smbios_table.type0and1 (requires root)
+#type_specific.io-github-autotest-qemu.smbios_table.type0 
+#type_specific.io-github-autotest-qemu.smbios_table.type1 
+#type_specific.io-github-autotest-qemu.smbios_table.type0and1 
 #type_specific.io-github-autotest-qemu.unit_test_kvmctl.access
 #type_specific.io-github-autotest-qemu.unit_test_kvmctl.apic
 #type_specific.io-github-autotest-qemu.unit_test_kvmctl.emulator
@@ -429,12 +429,12 @@ io-github-autotest-qemu.shutdown
 #io-github-autotest-qemu.kdump.one_vm.with_stress.io_stress.nmi
 #io-github-autotest-qemu.kdump.one_vm.with_ssh.default
 #io-github-autotest-qemu.kdump.one_vm.with_ssh.nmi
-#io-github-autotest-qemu.trans_hugepage.base (requires root)
-#io-github-autotest-qemu.trans_hugepage.defrag (requires root)
-#io-github-autotest-qemu.trans_hugepage.swapping (requires root)
-#io-github-autotest-qemu.trans_hugepage.relocated (requires root)
-#io-github-autotest-qemu.trans_hugepage.migration (requires root)
-#io-github-autotest-qemu.trans_hugepage.memory_stress (requires root)
+#io-github-autotest-qemu.trans_hugepage.base 
+#io-github-autotest-qemu.trans_hugepage.defrag 
+#io-github-autotest-qemu.trans_hugepage.swapping 
+#io-github-autotest-qemu.trans_hugepage.relocated
+#io-github-autotest-qemu.trans_hugepage.migration 
+#io-github-autotest-qemu.trans_hugepage.memory_stress 
 #io-github-autotest-qemu.io-github-autotest-qemu.hypervisor_flag
 #io-github-autotest-qemu.io-github-autotest-qemu.tray_open
 #io-github-autotest-qemu.io-github-autotest-qemu.windows_support
