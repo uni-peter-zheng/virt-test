@@ -11,9 +11,9 @@ export main_vms="Redos-autotest"
 export localhost="RedOS-5"
 export remotehost="RedOS-4"
 export bridge="br0"
-export image_name="\/home\/source\/templet\/redos_autotest.img"
-export source_vm_image="\/home\/source\/templet\/redos_autotest.img"
-export backup_vm_image="\/home\/source\/templet-bck\/redos_autotest.img"
+export image_name="/home/source/templet/redos_autotest.img"
+export source_vm_image="/home/source/templet/redos_autotest.img"
+export backup_vm_image="/home/source/templet-bck/redos_autotest.img"
 
 CURRENT_DIR=$(pwd)
 cd $CURRENT_DIR/../autotest
@@ -27,6 +27,8 @@ LIBVIRT_BASE_PATH=$CURRENT_DIR/backends/libvirt/cfg/base.cfg
 QEMU_BASE_PATH=$CURRENT_DIR/backends/qemu/cfg/base.cfg
 
 #
+result_of_domiflist=`virsh domiflist $main_vms`
+mac_nic1=`echo $result_of_domiflist|cut -d ' ' -f 11`
 export tmp=`mount |grep boot`
 export ENTER_YOUR_AVAILABLE_PARTITION=${tmp:5:5} #为用例libvirt_scsi指定测试分区为boot分区
 mkdir $CURRENT_DIR/shared/pool 1>/dev/null 2>&1
@@ -35,50 +37,17 @@ export PATH_OF_POOL_XML="$CURRENT_DIR/shared/pool/virt-test-pool.xml" #指定用
 usage()
 {
     cat <<-EOF >&2
-    usage: [ -h ] [ -r remote_ip ] [ -g vms ] [ -G main_vms ] [ -l localhost ][ -R remotehost ][ -t testcase][ -T testcase -v]
-    -h                               Prints all available options.
-    -r              remote_ip        The default user is root 
-    -L              local_ip
-    -P              local_pwd
-    -g              vms              Default will be the main test guest
-    -G              main_vms
-    -l              localhost name
-    -R              remotehost name
-    -t              testcase
-    -T              testcase -v
+    usage: [ -h ][ -t testcase][ -T testcase -v]
+    -h             Prints all available options.
+    -t             libvirt:testcase
+    -T             libvirt:testcase -v
 EOF
 exit 0
 }
 
-while getopts hr:L:P:g:G:l:R:t:T: arg
+while getopts ht:T: arg
       do case $arg in
          h) usage;;
-         r)
-            remote_ip=${remote_ip:-$OPTARG}
-            sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" ./backends/libvirt/cfg/base.cfg
-            echo "set remote_ip = $remote_ip";;
-         L)
-            local_ip=${local_ip:-$OPTARG}
-            sed -i "s/^local_ip.*$/local_ip = $local_ip/" ./backends/libvirt/cfg/base.cfg
-            echo "set local_ip = $local_ip";;
-         P)
-            local_pwd=${local_pwd:-$OPTARG}
-            sed -i "s/^local_pwd.*$/local_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
-            echo "set local_pwd = $local_pwd";;
-         g)
-            main_vms=${main_vms:-$OPTARG}
-            sed -i "s/^main_vm.*$/main_vm = $main_vms/" ./backends/libvirt/cfg/base.cfg
-            echo "set main_vms = $main_vms";;
-         G)
-            vms=${vms:-$OPTARG}
-            sed -i "s/^vms =/vms = $vms/" ./backends/libvirt/cfg/base.cfg
-            echo "set vms = $vms";;
-         l)
-            localhost=${localhost:-$OPTARG}
-            echo "set localhost=$localhost"
-            hostname $localhost;;
-         R)
-            remotehost=${remotehost:-$OPTARG};;
          t)
             ./run -t libvirt --no-downloads -k --keep-image-between-tests --tests $OPTARG
             exit 0;;
@@ -110,6 +79,8 @@ setenv()
 	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR/"|g" ./redos_autorun/cfg/base.cfg
         sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image"|g" ./redos_autorun/cfg/base.cfg
         sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image"|g" ./redos_autorun/cfg/base.cfg
+        sed -i "s|^extra_cmd = -t qemu.*$|extra_cmd = -t qemu --machine-type pseries --g Linux.RHEL.7.1.ppc64.pseries --qemu_sandbox off --netdst="$bridge"|g" ./redos_autorun/cfg/base.cfg
+        #修改test-providers.d
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
 
@@ -123,7 +94,6 @@ setenv()
         systemctl mask firewalld
         systemctl stop iptables
         systemctl mask iptables
-        sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
         setenforce 0
         yum install expect -y
         
@@ -160,11 +130,15 @@ setenv()
 	sed -i "s/^vms.*$/vms = $vms/" ./backends/libvirt/cfg/base.cfg
         sed -i "s/^vms.*$/vms = $vms/" ./backends/qemu/cfg/base.cfg
 	echo "set vms = $vms"
+	
+	sed -i "s/^# mac_nic1.*$/mac_nic1 = $mac_nic1/" ./backends/qemu/cfg/base.cfg
+	sed -i "s/^mac_nic1.*$/mac_nic1 = $mac_nic1/" ./backends/qemu/cfg/base.cfg
+	echo "set mac_nic1 = $mac_nic1"
 
 	echo "set localhost=$localhost"
 	hostname $localhost
         
-        sed -i "s/^    image_name =.*$/    image_name ="$image_name"/" ./shared/cfg/guest-os/Linux/RHEL/7.1/ppc64.cfg
+        sed -i "s|^    image_name =.*$|    image_name ="$image_name"|" ./shared/cfg/guest-os/Linux/RHEL/7.1/ppc64.cfg
 	
 	#默认关闭截屏选项
 	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" ./backends/libvirt/cfg/base.cfg
