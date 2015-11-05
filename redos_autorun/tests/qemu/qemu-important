@@ -3,14 +3,14 @@ type_specific.io-github-autotest-qemu.vhost_with_cgroup
 #type_specific.io-github-autotest-qemu.image_remove   #²âÊÔÍê³Éºó»ÚÉ¾³ýimage²»»Ö¸´
 type_specific.io-github-autotest-qemu.macvtap_event_notification
 type_specific.io-github-autotest-qemu.format_disk
-type_specific.io-github-autotest-qemu.softlockup
+#type_specific.io-github-autotest-qemu.softlockup
 type_specific.io-github-autotest-qemu.live_snapshot.with_reboot
 type_specific.io-github-autotest-qemu.live_snapshot.with_runtime
 type_specific.io-github-autotest-qemu.live_snapshot.with_file_transfer
 type_specific.io-github-autotest-qemu.vnc_test
 type_specific.io-github-autotest-qemu.balloon_stop_continue
 type_specific.io-github-autotest-qemu.reboot_time
-type_specific.io-github-autotest-qemu.pktgen.guest_guest
+#type_specific.io-github-autotest-qemu.pktgen.guest_guest
 type_specific.io-github-autotest-qemu.qemu_guest_agent.virtio_serial.gagent_install
 type_specific.io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_sync
 type_specific.io-github-autotest-qemu.qemu_guest_agent.virtio_serial.check_powerdown
