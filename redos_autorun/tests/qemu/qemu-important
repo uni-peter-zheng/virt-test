@@ -1,6 +1,6 @@
 type_specific.io-github-autotest-qemu.vhost_with_cgroup
-type_specific.io-github-autotest-qemu.virtio_serial_stop_continue
-type_specific.io-github-autotest-qemu.image_remove
+#type_specific.io-github-autotest-qemu.virtio_serial_stop_continue
+#type_specific.io-github-autotest-qemu.image_remove   #测试完成后悔删除image不恢复
 type_specific.io-github-autotest-qemu.macvtap_event_notification
 type_specific.io-github-autotest-qemu.format_disk
 type_specific.io-github-autotest-qemu.softlockup
