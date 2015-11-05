@@ -31,7 +31,7 @@ result_of_domiflist=`virsh domiflist $main_vms`
 mac_nic1=`echo $result_of_domiflist|cut -d ' ' -f 11`
 export tmp=`mount |grep boot`
 export ENTER_YOUR_AVAILABLE_PARTITION=${tmp:5:5} #为用例libvirt_scsi指定测试分区为boot分区
-mkdir $CURRENT_DIR/shared/pool 1>/dev/null 2>&1
+mkdir $CURRENT_DIR/shared/pool > /dev/null 
 export PATH_OF_POOL_XML="$CURRENT_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
 
 usage()
@@ -84,8 +84,8 @@ setenv()
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
         sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
 
-	ln -s /usr/bin/qemu-system-ppc64 /usr/bin/qemu-kvm 1>/dev/null 2>&1
-        ln -s /usr/bin/qemu-system-ppc64 /usr/bin/kvm 1>/dev/null 2>&1
+	ln -s /usr/bin/qemu-system-ppc64 /usr/bin/qemu-kvm > /dev/null 
+        ln -s /usr/bin/qemu-system-ppc64 /usr/bin/kvm > /dev/null 
         echo "make link qemu-system-ppc64 to qemu-kvm"
 	echo
 
@@ -150,21 +150,19 @@ setenv()
 
 #配置locoalhost和remote的ssh无密码访问
 auto_ssh_copy_id () {
-    expect -c " set timeout -1;
-                spawn ssh-keygen
-                expect {
-                    *y/n* {send -- y\r;exp_continue;}
-                    */root/.ssh/id_rsa* {send -- \r;exp_continue;}
-                    *empty* {send -- \r;exp_continue;}
-                    *same* {send -- \r;exp_continue;}
-                }
-                spawn ssh-copy-id root@$2;
-                expect {
-                    *(yes/no)* {send -- yes\r;exp_continue;}
-                    *assword:* {send -- $1\r;exp_continue;}
-                    eof        {exit 0;}
-                }";
-    ssh-add
+    expect -c "set timeout -1;
+               spawn ssh-keygen
+               expect {
+                   *y/n* {send -- y\r;exp_continue;}
+                   */root/.ssh/id_rsa* {send -- \r;exp_continue;}
+                   *empty* {send -- \r;exp_continue;}
+                   *same* {send -- \r;exp_continue;}
+               }
+               spawn ssh-copy-id root@$2;
+               expect {
+                   *(yes/no)* {send -- yes\r;exp_continue;}
+                   *assword:* {send -- $1\r;exp_continue;}
+               }"
 }
 
 auto_scp_is_rsa() {
@@ -223,7 +221,7 @@ EOF
        echo
        sed -i -e "s|virt-tests-vm1|$main_vms|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
  	
-       #为用例virsh.domstats指定测试器
+       #为用例virsh.domstats指定测试机
        echo "set config for testcases:virsh.domstats!"
        echo
        sed -i -e "s/^    vm_list.*$/    vm_list = "$main_vms"/" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
@@ -258,7 +256,6 @@ install()
         yum install policycoreutils-python -y
         yum install mkisofs -y
         yum install perf -y
-#        yum install fuse-sshfs -y   源上还没有这个包
         yum install virt-install -y
         yum install gstreamer-python -y
 }
@@ -273,6 +270,12 @@ main()
  	auto_ssh_copy_id  $local_pwd $remote_ip
         auto_scp_is_rsa
 	ssh root@$remote_ip "hostname $remotehost"
+        expect -c "set timeout -1;
+        	spawn ssh-copy-id root@$local_ip;
+                expect {
+                   *(yes/no)* {send -- yes\r;exp_continue;}
+                   *assword:* {send -- $local_pwd\r;exp_continue;}
+                }"
 
 	specialcfg
 
