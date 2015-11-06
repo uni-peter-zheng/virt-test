@@ -672,7 +672,7 @@ type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.negative_tests
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.negative_tests.network_disk.iscsi.with_snapshot_attr 
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.negative_tests.network_disk.gluster.with_snapshot_attr 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.negative_tests.acl_test 
-type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.name_with_double_dash 
+#type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.name_with_double_dash 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.disk_only_spec 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.check_libvirtd_log 
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.quiesce_with_diskonly.no_diskspec 
