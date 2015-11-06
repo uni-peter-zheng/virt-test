@@ -18,7 +18,7 @@ DEFAULT_MODULE_FILE_DIR=$CURRENT_DIR/tests/
 DEFAULT_QEMU_MODULE_FILE_DIR=$CURRENT_DIR/tests/qemu/
 DEFAULT_LIBVIRT_MODULE_FILE_DIR=$CURRENT_DIR/tests/libvirt/
 DEFAULT_SCATTERED_LIST=$CURRENT_DIR/tests/scattered_list
-
+DEFAULT_SCRIPTS_DIR=$CURRENT_DIR/scripts/
 
 get_config_key()
 {    
@@ -51,7 +51,7 @@ get_virttest_dir()
 VIRTTEST_DIR=`get_virttest_dir`
 VIRTTEST_LOG_DIR="$VIRTTEST_DIR""logs/"
 DEFAULT_RUN_COMMAND=$(get_config_key "$DEFAULT_CONFIG" "command.default_run_cmd")" "
-DEFAULT_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "command.extra_cmd")
+DEFAULT_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "command.default_extra_cmd")
 LIBVIRT_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "libvirt.extra_cmd")
 QEMU_EXTRA_COMMAND=" "$(get_config_key "$DEFAULT_CONFIG" "qemu.extra_cmd")
 BACKUP_VM=$(get_config_key "$DEFAULT_CONFIG" "dir.backup_vm_image")
@@ -90,6 +90,7 @@ debug()
 	echo -e "\t\tCURRENT_DIR = $CURRENT_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tDEFAULT_LOG_DIR = $DEFAULT_LOG_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tDEFAULT_TESTS_DIR = $DEFAULT_TESTS_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tDEFAULT_SCRIPTS_DIR = $DEFAULT_SCRIPTS_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tDEFAULT_MODULE_FILE_DIR = $DEFAULT_MODULE_FILE_DIR" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_LOG_PATH = $CURRENT_LOG_PATH" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 
@@ -98,6 +99,7 @@ debug()
 	echo -e "\t\tDEFAULT_SCATTERED_LIST = $DEFAULT_SCATTERED_LIST" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_CASESLIST_FILE = $CURRENT_CASESLIST_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_LOG_FILE = $CURRENT_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
+	echo -e "\t\tCURRENT_CONFIG_LOG_FILE = $CURRENT_CONFIG_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_DETAIL_LOG_FILE = $CURRENT_DETAIL_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_LAST_TESTCASE_FILE = $CURRENT_LAST_TESTCASE_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
 	echo -e "\t\tCURRENT_XMLDIFF_LOG_FILE = $CURRENT_XMLDIFF_LOG_FILE" | tee -a "$CURRENT_CONFIG_LOG_FILE"
@@ -189,6 +191,7 @@ backup_vm_xml()
 set_testcases_to_list()
 {
 	line_count=0
+
 	if [ "$3" = "qemu" ] || [ "$3" = "QEMU" ]; then
 		class="qemu"
 	elif [ "$3" = "libvirt" ] || [ "$3" = "LIBVIRT" ]; then
@@ -198,6 +201,7 @@ set_testcases_to_list()
 		return
 	fi
 
+	module_name=`echo $4`
 	while read ts_line
 	do
 		ts_line=`echo $ts_line`
@@ -211,6 +215,7 @@ set_testcases_to_list()
 		extra_params=""
 		full_params=""
 		testcase_name=`echo "$ts_line" | awk -F '[ {]' '{print $1}'`
+		testcase_name=`echo $testcase_name`
 
 		if [ "$CONTINUE" = "true" ]; then
 			if [ "$START_TESTCASE" != "$3:$testcase_name" ]; then
@@ -228,7 +233,7 @@ set_testcases_to_list()
 		if [ ! -z "$extra_params" ] || [ ! -z "$2" ]; then
 			full_params=`merge_params "$extra_params" "$2"`
 		fi
-		echo -e "$class"":""$testcase_name"" { ""$full_params"" } " >> $CURRENT_CASESLIST_FILE
+		echo -e "$class"":""$module_name"":""$testcase_name"" { ""$full_params"" } " >> $CURRENT_CASESLIST_FILE
 
 		line_count=$(($line_count+1))	
 		if [ "$extra_params" = "" ]; then
@@ -262,8 +267,11 @@ init_testcase_list()
 		module_name=""
 		module_file=""
 		class=`echo $ml_line | cut -d ':' -f1`
+		class=`echo $class`
 		module_name=`echo $ml_line | cut -d ':' -f2  | awk -F'[ {]' '{print $1}'`
+		module_name=`echo $module_name`
 		module_file="$DEFAULT_MODULE_FILE_DIR$class"/"$module_name"
+		module_file=`echo $module_file`
 		if [[ "$ml_line" =~ "{" ]]; then
 			module_extra_params=`echo $ml_line | cut -d '{' -f2 | cut -d '}' -f1`
 			module_extra_params=`echo $module_extra_params`
@@ -296,7 +304,7 @@ init_testcase_list()
 				fi
 			fi
 			echo -e "\t\tcase $MODULE_COUNT: $module_name \tParams:$module_extra_params"
-			echo -e "$class"":""$module_name"" { ""$default_cmd"" } " >> $CURRENT_CASESLIST_FILE
+			echo -e "$class"":"":""$module_name"" { ""$default_cmd"" } " >> $CURRENT_CASESLIST_FILE
 			TOTAL_COUNT=$MODULE_COUNT
 		else
 			printf "\tModule $MODULE_COUNT: %-40s\t%-60s\n" "$class:$module_name" "module_params:$module_extra_params"
@@ -304,7 +312,7 @@ init_testcase_list()
 				echo "ERROR: Don\`t have testcases file($module_file)"
 				exit 3
 			else
-				set_testcases_to_list "$module_file" "$default_cmd" "$class"
+				set_testcases_to_list "$module_file" "$default_cmd" "$class" "$module_name"
 			fi
 		fi
 		MODULE_COUNT=$(($MODULE_COUNT+1))
@@ -351,6 +359,48 @@ restore_env()
 	fi
 }
 
+pre_script()
+{
+	class=$1
+	module=$2
+	testcase_name=`echo $3`
+	
+	if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
+		script_file="$DEFAULT_SCRIPTS_DIR""qemu/""$module"
+	fi
+	if [ "$class" = "libvirt" ] || [ "$classdasdass" = "LIBVIRT" ]; then
+		script_file="$DEFAULT_SCRIPTS_DIR""libvirt/""$module"
+	fi
+	script_file=`echo $script_file`
+	if [ -f "$script_file" ]; then
+		if [ ! -x "$script_file" ]; then
+			chmod +x "$script_file"
+		fi
+		$script_file "prepare:$testcase_name" "$CURRENT_DETAIL_LOG_FILE" 2>>"$CURRENT_DETAIL_LOG_FILE" 1>>"$CURRENT_DETAIL_LOG_FILE"
+	fi
+}
+
+end_script()
+{
+	class=$1
+	module=$2
+	testcase_name=`echo $3`
+	
+	if [ "$class" = "qemu" ] || [ "$class" = "QEMU" ]; then
+		script_file="$DEFAULT_SCRIPTS_DIR""qemu/""$module"
+	fi
+	if [ "$class" = "libvirt" ] || [ "$classdasdass" = "LIBVIRT" ]; then
+		script_file="$DEFAULT_SCRIPTS_DIR""libvirt/""$module"
+	fi
+	script_file=`echo $script_file`
+	if [ -f "$script_file" ]; then
+		if [ ! -x "$script_file" ]; then
+			chmod +x "$script_file"
+		fi
+		$script_file "restore:$testcase_name" "$CURRENT_DETAIL_LOG_FILE" 2>>"$CURRENT_DETAIL_LOG_FILE" 1>>"$CURRENT_DETAIL_LOG_FILE"
+	fi
+}
+
 save_env()
 {
 	cp -f "$VM_XML_FILE" "$VM_ORIGINAL_XML_FILE"
@@ -363,7 +413,10 @@ clean_env()
 
 clean_virttest_logs()
 {
-	rm -rf $VIRTTEST_LOG_DIR
+	if [ -d "$VIRTTEST_LOG_DIR" ] && [ "$VIRTTEST_LOG_DIR" != "/" ]; then
+		dir="$VIRTTEST_LOG_DIR""*"
+		rm -rf $dir
+	fi
 }
 
 run_test()
@@ -382,7 +435,8 @@ run_test()
 		TIME=0
 		run_pid=0
 		class=`echo $tc_line | cut -d ':' -f1`
-		testcase_name=`echo "$tc_line" | cut -d ':' -f2  | awk -F'[ {]' '{print $1}'`
+		module=`echo $tc_line | cut -d ':' -f2`
+		testcase_name=`echo "$tc_line" | cut -d ':' -f3  | awk -F'[ {]' '{print $1}'`
 		if [[ "$tc_line" =~ "{" ]]; then
 			params=`echo $tc_line | cut -d '{' -f2 | cut -d '}' -f1`
 			params=`echo $params`
@@ -396,6 +450,7 @@ run_test()
 			SKIP_COUNT=$(($SKIP_COUNT+1))
 		else
 			backup_vm_xml
+			pre_script $class $module $testcase_name
 			echo "" > "$TMP_FILE"
 			start_time=$(date +%s)
 			`${run_cmd}  2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED" > "$TMP_FILE" &`
@@ -409,7 +464,7 @@ run_test()
 					break
 				fi
 			done
-			
+
 			end_time=$(date +%s)
 			TIME=$(($end_time-$start_time))"s"
 			if [ $i -ge $TIMEOUT_LIMIT ]; then
@@ -430,7 +485,7 @@ run_test()
 				diff -u "$VM_BACKUP_XML_FILE" "$VM_XML_FILE" >> "$CURRENT_XMLDIFF_LOG_FILE"
 				echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
 			fi
-			
+
 			if [ "$PASS" = "1" ]; then
 				printf "\033[32m %-20s \033[0m\n" "PASS"
 				echo -e "PASS\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
@@ -457,9 +512,9 @@ run_test()
 				restore_env
 			fi	
 		fi
-
+		end_script $class $module $testcase_name
 		clean_virttest_logs
-		echo -e "" >> "$CURRENT_DETAIL_LOG_FILE"
+		echo -e "\n\n\n" >> "$CURRENT_DETAIL_LOG_FILE"
 		((index++))
 	done < "$CURRENT_CASESLIST_FILE"
 	rm -f "$TMP_FILE"
