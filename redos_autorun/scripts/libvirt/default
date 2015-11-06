@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# prepare: func run before testcase
+# restore: func run after testcase
+# 
+# If you need, you can use one of prepare and resotre, or both of them.
+# Function`s name must be prepare:<testcase name> or restore:<testcase name>
+# For example:
+#		prepare:testcase1()
+#		{
+#			i=1
+#       }
+#
+#       restore:testcase1()
+#		{
+#			i=2
+#		}
+#
+#		prepare:testcase2()
+#		{
+#			echo "I don`t have restore"
+#		}
+#
+# Add function in here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# End of function
+# start in here
+main()
+{
+	if [ "$1" = "" ]; then
+		exit
+	fi
+
+	testcase=$1
+	class=`echo $1 | cut -d ':' -f1`
+	if [ "$class" = "prepare" ]; then
+		echo "Run prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "Run restore function($1) in $0" 
+	else
+		echo "Unknow class($1) in $0" 
+	fi
+
+	$testcase 
+
+	if [ "$class" = "prepare" ]; then
+		echo "End of prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "End of restore function($1) in $0" 
+	else
+		echo "End of Unknow class($1) in $0" 
+	fi
+	echo ""
+}
+
+main $1 $2
