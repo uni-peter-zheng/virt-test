@@ -1,4 +1,5 @@
 #!/bin/sh
+
 #init初始化配置 公共config
 
 export remote_ip="192.168.1.4"
@@ -58,8 +59,9 @@ while getopts ht:T: arg
 
 
 #autotest测试基本环境
-#[AUTOTEST路径] [qemu-system-ppc64做链接] [防火墙关闭] [smt关闭] [修改redos_autotest的配置]
-#[修改test-providers.d] [主机名设置并写入hosts文件] [base.cfg的修改]
+#AUTOTEST路径
+#qemu-system-ppc64做链接
+#防火墙关闭
 
 setenv()
 
@@ -143,7 +145,7 @@ setenv()
 	sed -i "s/^migrate_source_pwd =.*$/migrate_source_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
         sed -i "s/^migrate_dest_host =.*$/migrate_dest_host = $remote_ip/" ./backends/libvirt/cfg/base.cfg
         sed -i "s/^migrate_dest_pwd =.*$/migrate_dest_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
-	  #在/etc/hosts中添加hostname
+	#在/etc/hosts中添加hostname
         grep "$remote_ip" /etc/hosts
         if [ $? == 0 ]; then
            grep "$remote_ip $remotehost" /etc/hosts
@@ -205,7 +207,7 @@ specialcfg()
        sed -i -e 's|ENTER.YOUR.REMOTE.EXAMPLE.COM|'$remote_ip'|' ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
        sed -i -e "s|EXAMPLE.PWD|$remote_pwd|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
 
-       #为用例libvirt_scsi指定测试分区
+       #libvirt_scsi_partition = "/dev/sda2" 为用例libvirt_scsi指定测试分区
        echo "set config for testcases:libvirt_scsi!"
        echo
        sed -i "s/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = \/dev\/$ENTER_YOUR_AVAILABLE_PARTITION/" ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
@@ -280,6 +282,7 @@ main()
 {	
 	setenv
         
+        
         echo "##### SET remote-local NO PASSWORD LOGIN  #####"
 	echo
  	auto_ssh_copy_id  $local_pwd $remote_ip
@@ -291,12 +294,9 @@ main()
                    *(yes/no)* {send -- yes\r;exp_continue;}
                    *assword:* {send -- $local_pwd\r;exp_continue;}
                 }"
-        ssh root@$remote_ip "grep $local_ip /etc/hosts"
-        if [ $? = 0 ]; then
-	   ssh root@$remote_ip "sed -i 's|^$local_ip.*$|$local_ip $localhost|' /etc/hosts"
-        else
-           ssh root@$remote_ip "echo '$local_ip $localhost' >> /etc/hosts"
-        fi 
+        ssh root@$remote_ip "ln -s /usr/bin/qemu-system-ppc64 /usr/bin/qemu-kvm > /dev/null"
+        ssh root@$remote_ip "ln -s /usr/bin/qemu-system-ppc64 /usr/bin/kvm > /dev/null"
+
 	specialcfg
 
 	install	
