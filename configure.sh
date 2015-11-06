@@ -45,7 +45,7 @@ EOF
 exit 0
 }
 
-while getopts ht:T: arg
+while getopts ht:T:r arg
     do case $arg in
         h) usage;;
         t)
@@ -54,6 +54,9 @@ while getopts ht:T: arg
         T) 
            ./run -t libvirt --no-downloads -k --keep-image-between-tests --tests $OPTARG -v
            exit 0;;
+        r)
+	   virsh undefine 
+
         esac
     done
 
