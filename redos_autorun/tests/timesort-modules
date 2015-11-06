@@ -17,6 +17,15 @@ libvirt:virsh_nodecpumap
 libvirt:virsh_cpu_models
 libvirt:virsh_node_memtune  # 1 FAIL 已经注释
 libvirt:virsh_nodememstats
+
+libvirt:virt_xml_validate           #4s  
+libvirt:virsh_freepages             #6s   
+libvirt:virsh_setmaxmem             #10s   不支持虚拟机运行时修改大内存
+libvirt:virsh_qemu_attach           #15s   注释掉两个用例
+libvirt:virsh_domstate              #15s
+libvirt:virsh_capabilities          #25s 
+libvirt:virsh_domblkinfo            #25s    block用例  1 FAIL 已经注释
+
 libvirt:virsh_maxvcpus
 libvirt:virsh_itself
 libvirt:libvirt_qemu_cmdline  #2 FAIL redhat有对应bug ：https://bugzilla.redhat.com/show_bug.cgi?format=multiple&id=1235511
@@ -40,6 +49,13 @@ libvirt:virsh_vncdisplay
 libvirt:virsh_domcapabilities
 libvirt:virsh_nodecpustats
 libvirt:virsh_nodeinfo  # 1 FAIL，已经注释
+
+libvirt:virsh_update_device         #35s    device用例 不支持ide floppy设备
+libvirt:virsh_suspend               #40s 
+libvirt:virsh-attach-detach-interface #40s  device用例 注释部分用例
+libvirt:virsh_qemu_monitor_command  #45s   修改源码，增加测试前判断虚机状态语句
+libvirt:virsh_detach_device         #50s    注释部分用例
+
 libvirt:virsh_save_image_edit
 libvirt:virsh_nodedev_dumpxml
 libvirt:virsh_nodedev_list  
@@ -92,6 +108,12 @@ libvirt:virsh_domblklist
 libvirt:virsh_dump
 libvirt:virsh_edit
 libvirt:virsh_qemu_agent_command   #不支持--aysnc选项,修改max_id和min_id
+
+libvirt:virsh_screenshot            #55s   
+libvirt:hugepage                    #75s   
+libvirt:virsh_setmem                #80s
+libvirt:virsh-attach-detach-disk    #80s    device用例 注释部分用例
+
 libvirt:virsh_blockjob
 libvirt:virsh_reboot
 libvirt:virsh_resume
@@ -125,23 +147,25 @@ libvirt:guest_numa                  #numa的用例可能导致libvirtd启动失�
 libvirt:snapshot                    #注释掉部分失败的用例,快照部分的用例，测试完不恢复img,可能导致后面的用例使用virsh undefine失败，所以放在最后
 
 #新增用例，可能容易出问题，放到最后面
-libvirt:hugepage                    #75s   
-libvirt:virsh_screenshot            #55s   
-libvirt:virsh_qemu_monitor_command  #45s   修改源码，增加测试前判断虚机状态语句
-libvirt:virsh_qemu_attach           #15s   注释掉两个用例
-libvirt:virsh_setmaxmem             #10s   不支持虚拟机运行时修改大内存
-libvirt:virsh_setmem                #80s
-libvirt:virsh_suspend               #40s 
-libvirt:virsh_capabilities          #25s    
-libvirt:virsh_freepages             #6s      
-libvirt:virsh_domstate              #15s 
-libvirt:virt_xml_validate           #4s  
+#libvirt:virt_xml_validate           #4s  
+#libvirt:virsh_freepages             #6s   
+#libvirt:virsh_setmaxmem             #10s   不支持虚拟机运行时修改大内存
+#libvirt:virsh_qemu_attach           #15s   注释掉两个用例
+#libvirt:virsh_domstate              #15s
+#libvirt:virsh_capabilities          #25s 
+#libvirt:virsh_domblkinfo            #25s    block用例  1 FAIL 已经注释 
+#libvirt:virsh_update_device         #35s    device用例 不支持ide floppy设备
+#libvirt:virsh_suspend               #40s 
+#libvirt:virsh-attach-detach-interface #40s  device用例 注释部分用例
+#libvirt:virsh_qemu_monitor_command  #45s   修改源码，增加测试前判断虚机状态语句
+#libvirt:virsh_detach_device         #50s    注释部分用例
+#libvirt:virsh_screenshot            #55s   
+#libvirt:hugepage                    #75s   
+#libvirt:virsh_setmem                #80s
+#libvirt:virsh-attach-detach-disk    #80s    device用例 注释部分用例
 
-libvirt:virsh_domblkinfo            #block用例  1 FAIL 已经注释
-libvirt:virsh-attach-detach-disk    #device用例 注释部分用例
-libvirt:virsh-attach-detach-interface #device用例 注释部分用例
-libvirt:virsh_detach_device         #注释部分用例 
-libvirt:virsh_update_device         #device用例 不支持ide floppy设备
+ 
+
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求[有一些用例需要使用gluster的都已经注释掉]
 #libvirt:vcpu_hotplug                #错误太多，未修正，4PASS,19FAIL
