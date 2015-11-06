@@ -156,7 +156,19 @@ setenv()
            fi
         else
            echo "$remote_ip $remotehost" >> /etc/hosts
-        fi       
+        fi
+        #在/etc/libvirt/qemu.conf中添加migration_address     
+        grep "migration_address" /etc/libvirt/qemu.conf
+        if [ $? == 0 ]; then
+           grep "# migration_address" /etc/libvirt/qemu.conf
+           if [ $? == 0 ]; then
+              sed -i "s|^# migration_address.*$|migration_address =  '0.0.0.0'|" /etc/libvirt/qemu.conf
+           else
+              sed -i "s|^migration_address.*$|migration_address =  '0.0.0.0'|" /etc/libvirt/qemu.conf
+           fi
+        else
+           echo "migration_address =  '0.0.0.0'" >> /etc/libvirt/qemu.conf
+        fi  
 
 	#默认关闭截屏选项
 	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" ./backends/libvirt/cfg/base.cfg
