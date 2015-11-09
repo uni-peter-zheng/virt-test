@@ -7,32 +7,37 @@ export remote_pwd="123456"
 export local_ip="192.168.1.5"
 export local_pwd="123456"
 export vms="Redos-autotest"
+export vms_raw="autotest-raw"
 export main_vms="Redos-autotest"
+export main_vms_raw="autotest-raw"
 export localhost="RedOS-5"
 export remotehost="RedOS-4"
 export bridge="br0"
-export image_name="/home/source/templet/redos_autotest.img"
-export source_vm_image="/home/source/templet/redos_autotest.img"
-export backup_vm_image="/home/source/templet-bck/redos_autotest.img"
+export image_name="/home/source/templet/redos_autotest"
+export source_vm_image="/home/source/templet/redos_autotest.qcow2"
+export source_vm_image_raw="/home/source/templet/redos_autotest.img"
+export backup_vm_image="/home/source/templet-bck/redos_autotest.qcow2"
+export source_vm_image_raw="/home/source/templet-bck/redos_autotest.img"
 
-CURRENT_DIR=$(pwd)
-cd $CURRENT_DIR/../autotest
+#CONFIG_DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+export CONFIG_DIR=$(pwd)
+cd $CONFIG_DIR/../autotest
 AUTOTEST_PATH=$(pwd)
-cd $CURRENT_DIR/../tp-libvirt
+cd $CONFIG_DIR/../tp-libvirt
 TP_LIBVIRT=$(pwd)
-cd $CURRENT_DIR/../tp-qemu
+cd $CONFIG_DIR/../tp-qemu
 TP_QEMU=$(pwd)
-cd $CURRENT_DIR
-LIBVIRT_BASE_PATH=$CURRENT_DIR/backends/libvirt/cfg/base.cfg
-QEMU_BASE_PATH=$CURRENT_DIR/backends/qemu/cfg/base.cfg
+cd $CONFIG_DIR
+LIBVIRT_BASE_PATH=$CONFIG_DIR/backends/libvirt/cfg/base.cfg
+QEMU_BASE_PATH=$CONFIG_DIR/backends/qemu/cfg/base.cfg
 
 #
 result_of_domiflist=`virsh domiflist $main_vms`
 mac_nic1=`echo $result_of_domiflist|cut -d ' ' -f 11`
 export tmp=`mount |grep boot`
 export ENTER_YOUR_AVAILABLE_PARTITION=${tmp:5:5} #为用例libvirt_scsi指定测试分区为boot分区
-mkdir $CURRENT_DIR/shared/pool >/dev/null 2>&1
-export PATH_OF_POOL_XML="$CURRENT_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
+mkdir $CONFIG_DIR/shared/pool >/dev/null 2>&1
+export PATH_OF_POOL_XML="$CONFIG_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
 
 usage()
 {
@@ -49,10 +54,10 @@ while getopts ht:T:r arg
     do case $arg in
         h) usage;;
         t)
-           ./run -t libvirt --no-downloads -k --keep-image-between-tests --tests $OPTARG
+           $CONFIG_DIR/./run -t libvirt --no-downloads -k --keep-image-between-tests --tests $OPTARG
            exit 0;;
         T) 
-           ./run -t libvirt --no-downloads -k --keep-image-between-tests --tests $OPTARG -v
+           $CONFIG_DIR/./run -t libvirt --no-downloads -k --keep-image-between-tests --tests $OPTARG -v
            exit 0;;
         r)
 	   virsh undefine 
@@ -70,22 +75,48 @@ setenv()
 
 {
     echo "##########   SET TEST ENVIRONMENT  ##########"
-	echo
-	grep -rn "AUTOTEST" ~/.bashrc > /dev/null
-    if [ $? = 1 ];then
-        echo "export AUTOTEST_PATH=$AUTOTEST_PATH" >> ~/.bashrc
-        export AUTOTEST_PATH=$AUTOTEST_PATH
-    else
-        echo "AUTOTEST_PATH has been set!"
-    fi
+#	echo
+#	grep -rn "AUTOTEST" ~/.bashrc > /dev/null
+#    if [ $? = 1 ];then
+#        echo "export AUTOTEST_PATH=$AUTOTEST_PATH" >> ~/.bashrc
+#        export AUTOTEST_PATH=$AUTOTEST_PATH
+#    else
+#        echo "AUTOTEST_PATH has been set!"
+#    fi
+    cat > ~/.bashrc <<-EOF
+# .bashrc
+
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+export AUTOTEST_PATH=$AUTOTEST_PATH
+export CONFIG_DIR=$CONFIG_DIR
+export vms=$vms
+export vms_raw=$vms_raw
+export main_vms=$main_vms
+export main_vms_raw=$main_vms_raw
+export source_vm_image=$source_vm_image
+export source_vm_image_raw=$source_vm_image_raw
+export backup_vm_image=$backup_vm_image
+export source_vm_image_raw=$source_vm_image_raw
+export CONFIG_DIR=$CONFIG_DIR
+EOF
 	#修改redos_autorun的配置
-	sed -i "s|^virt-test.*$|virt-test = "$CURRENT_DIR/"|g" ./redos_autorun/cfg/base.cfg
-    sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image"|g" ./redos_autorun/cfg/base.cfg
-    sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image"|g" ./redos_autorun/cfg/base.cfg
-    sed -i "s/br0/$bridge/g" ./redos_autorun/cfg/base.cfg
+	sed -i "s|^virt-test.*$|virt-test = "$CONFIG_DIR/"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+    sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+    sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+    sed -i "s/br0/$bridge/g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
     #修改test-providers.d
-    sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' ./test-providers.d/io-github-autotest-libvirt.ini
-    sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' ./test-providers.d/io-github-autotest-qemu.ini
+    sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' $CONFIG_DIR/test-providers.d/io-github-autotest-libvirt.ini
+    sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' $CONFIG_DIR/test-providers.d/io-github-autotest-qemu.ini
 
 	ppc64_cpu --smt=off
     systemctl stop firewalld
@@ -97,53 +128,53 @@ setenv()
         
 	if [ ! -f $LIBVIRT_BASE_PATH ];then
 		echo "build libvirt base.cfg,wait a minute!"
-        ./run -t libvirt --list-tests > /dev/null
+        $CONFIG_DIR/./run -t libvirt --list-tests > /dev/null
 	else
 		echo "libvirt base.cfg exit!"
 	fi
 	if [ ! -f $QEMU_BASE_PATH ];then
         echo "build qemu base.cfg,wait a minute!"
-        ./run -t qemu --list-tests > /dev/null
+        $CONFIG_DIR/./run -t qemu --list-tests > /dev/null
     else
         echo "qemu base.cfg exit!"
     fi
 
-    sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" ./backends/libvirt/cfg/base.cfg
-    sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" ./backends/qemu/cfg/base.cfg
+    sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+    sed -i "s/^remote_ip.*$/remote_ip = $remote_ip/" $CONFIG_DIR/backends/qemu/cfg/base.cfg
 	echo "set remote_ip = $remote_ip"
 
-	sed -i "s/^local_ip.*$/local_ip = $local_ip/" ./backends/libvirt/cfg/base.cfg
-    sed -i "s/^local_ip.*$/local_ip = $local_ip/" ./backends/qemu/cfg/base.cfg
+	sed -i "s/^local_ip.*$/local_ip = $local_ip/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+    sed -i "s/^local_ip.*$/local_ip = $local_ip/" $CONFIG_DIR/backends/qemu/cfg/base.cfg
 	echo "set local_ip = $local_ip"
 
-	sed -i "s/^local_pwd.*$/local_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
-    sed -i "s/^local_pwd.*$/local_pwd = $local_pwd/" ./backends/qemu/cfg/base.cfg
+	sed -i "s/^local_pwd.*$/local_pwd = $local_pwd/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+    sed -i "s/^local_pwd.*$/local_pwd = $local_pwd/" $CONFIG_DIR/backends/qemu/cfg/base.cfg
 	echo "set local_pwd = $local_pwd"
 
-	sed -i "s/^main_vm.*$/main_vm = $main_vms/" ./backends/libvirt/cfg/base.cfg
-    sed -i "s/^main_vm.*$/main_vm = $main_vms/" ./backends/qemu/cfg/base.cfg
+	sed -i "s/^main_vm.*$/main_vm = $main_vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+    sed -i "s/^main_vm.*$/main_vm = $main_vms/" $CONFIG_DIR/backends/qemu/cfg/base.cfg
 	echo "set main_vms = $main_vms"
 
-	sed -i "s/^vms.*$/vms = $vms/" ./backends/libvirt/cfg/base.cfg
-    sed -i "s/^vms.*$/vms = $vms/" ./backends/qemu/cfg/base.cfg
+	sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+    sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/qemu/cfg/base.cfg
 	echo "set vms = $vms"
 	
-	sed -i "s/^# mac_nic1.*$/mac_nic1 = $mac_nic1/" ./backends/qemu/cfg/base.cfg
-	sed -i "s/^mac_nic1.*$/mac_nic1 = $mac_nic1/" ./backends/qemu/cfg/base.cfg
+	sed -i "s/^# mac_nic1.*$/mac_nic1 = $mac_nic1/" $CONFIG_DIR/backends/qemu/cfg/base.cfg
+	sed -i "s/^mac_nic1.*$/mac_nic1 = $mac_nic1/" $CONFIG_DIR/backends/qemu/cfg/base.cfg
 	echo "set mac_nic1 = $mac_nic1"
         
-    sed -i "s|^    image_name =.*$|    image_name ="$image_name"|" ./shared/cfg/guest-os/Linux/RHEL/7.1/ppc64.cfg
+    sed -i "s|^    image_name =.*$|    image_name ="$image_name"|" $CONFIG_DIR/shared/cfg/guest-os/Linux/RHEL/7.1/ppc64.cfg
 
 	#修改migration的配置选项
-	sed -i "s/^migrate_source_host =.*$/migrate_source_host = $local_ip/" ./backends/libvirt/cfg/base.cfg
-	sed -i "s/^migrate_source_pwd =.*$/migrate_source_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
-    sed -i "s/^migrate_dest_host =.*$/migrate_dest_host = $remote_ip/" ./backends/libvirt/cfg/base.cfg
-    sed -i "s/^migrate_dest_pwd =.*$/migrate_dest_pwd = $local_pwd/" ./backends/libvirt/cfg/base.cfg
+	sed -i "s/^migrate_source_host =.*$/migrate_source_host = $local_ip/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+	sed -i "s/^migrate_source_pwd =.*$/migrate_source_pwd = $local_pwd/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+    sed -i "s/^migrate_dest_host =.*$/migrate_dest_host = $remote_ip/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+    sed -i "s/^migrate_dest_pwd =.*$/migrate_dest_pwd = $local_pwd/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
 
 	#默认关闭截屏选项
-	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" ./backends/libvirt/cfg/base.cfg
-	sed -i "s/^keep_screendumps_on_error.*$/keep_screendumps_on_error = no/" ./backends/libvirt/cfg/base.cfg
-	sed -i "s/^keep_screendumps.*$/keep_screendumps = no/" ./backends/libvirt/cfg/base.cfg
+	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+	sed -i "s/^keep_screendumps_on_error.*$/keep_screendumps_on_error = no/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+	sed -i "s/^keep_screendumps.*$/keep_screendumps = no/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
 }
 
 #配置locoalhost和remote的ssh无密码访问
@@ -184,18 +215,18 @@ specialcfg()
     	#config remote-test ip for teset: virsh_nodesuspend
     	echo "set config for testcases:virsh_nodesuspend!"
     	echo
-    	sed -i -e 's|ENTER.YOUR.REMOTE.EXAMPLE.COM|'$remote_ip'|' ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
-    	sed -i -e "s|EXAMPLE.PWD|$remote_pwd|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
+    	sed -i -e 's|ENTER.YOUR.REMOTE.EXAMPLE.COM|'$remote_ip'|' $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
+    	sed -i -e "s|EXAMPLE.PWD|$remote_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
 
     	#libvirt_scsi_partition = "/dev/sda2" 为用例libvirt_scsi指定测试分区
     	echo "set config for testcases:libvirt_scsi!"
     	echo
-    	sed -i "s/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = \/dev\/$ENTER_YOUR_AVAILABLE_PARTITION/" ../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
+    	sed -i "s/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = \/dev\/$ENTER_YOUR_AVAILABLE_PARTITION/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
  
     	#为用例pool_create创建pool.xml
     	echo "build pool.xml for testcases:virsh_pool_create!"
     	echo
-    	sed -i -e "s|"/PATH/TO/POOL.XML"|$PATH_OF_POOL_XML|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/pool/virsh_pool_create.cfg
+    	sed -i -e "s|"/PATH/TO/POOL.XML"|$PATH_OF_POOL_XML|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/pool/virsh_pool_create.cfg
     	cat > $PATH_OF_POOL_XML  <<-EOF
 <pool type='dir'>
   <name>virt-test-pool</name>
@@ -205,7 +236,7 @@ specialcfg()
   <source>
   </source>
   <target>
-    <path>$CURRENT_DIR/shared/pool</path>
+    <path>$CONFIG_DIR/shared/pool</path>
   </target>
 </pool>
 EOF
@@ -217,29 +248,29 @@ EOF
     	#为用例virsh.cpu_baseline指定测试机
     	echo "set config for testcases:virsh.cpu_baseline!"
     	echo
-    	sed -i -e "s|virt-tests-vm1|$main_vms|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
+    	sed -i -e "s|virt-tests-vm1|$main_vms|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
  
     	#为用例virsh.domstats指定测试机
     	echo "set config for testcases:virsh.domstats!"
     	echo
-    	sed -i -e "s/^    vm_list.*$/    vm_list = "$main_vms"/" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
-    	sed -i -e "s|virt-tests-vm1||" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
+    	sed -i -e "s/^    vm_list.*$/    vm_list = "$main_vms"/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
+    	sed -i -e "s|virt-tests-vm1||" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
        
     	#修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301 
     	echo "modify config for testcases:guest_numa!"
     	echo
-    	sed -i -e "s|node,nodeid=0,cpus=0-1,mem=300|node,nodeid=0,cpus=0-1,memdev=ram-node0|" ../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
-    	sed -i -e "s|node,nodeid=1,cpus=2-3,mem=301|node,nodeid=1,cpus=2-3,memdev=ram-node1|" ../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
+    	sed -i -e "s|node,nodeid=0,cpus=0-1,mem=300|node,nodeid=0,cpus=0-1,memdev=ram-node0|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
+    	sed -i -e "s|node,nodeid=1,cpus=2-3,mem=301|node,nodeid=1,cpus=2-3,memdev=ram-node1|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
        
     	#为用例virsh.domcapabilities指定远程测试主机
     	echo "set config for testcases:virsh.domcapabilities!"
     	echo
-    	sed -i -e "s|EXAMPLE.COM|$remote_ip|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_domcapabilities.cfg
+    	sed -i -e "s|EXAMPLE.COM|$remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_domcapabilities.cfg
        
     	#为用例virsh.cpu_models指定远程测试主机
     	echo "set config for testcases:virsh.cpu_models!"
     	echo
-    	sed -i -e "s|EXAMPLE.COM|$remote_ip|" ../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
+    	sed -i -e "s|EXAMPLE.COM|$remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
 }
 
 #测试用例所需的软件包安装
@@ -312,13 +343,12 @@ main()
                     *assword:* {send -- $local_pwd\r;exp_continue;}
                    }"
     	remotesh $local_ip $localhost $remote_ip $remotehost
-    	chmod +x /home/set_remote_local.sh
     	sh /home/set_remote_local.sh
     	remotesh $remote_ip $remotehost $local_ip $localhost
-	chmod +x /home/set_remote_local.sh
     	scp /home/set_remote_local.sh root@$remote_ip:/home/set_remote_local.sh
     	ssh root@$remote_ip "sh /home/set_remote_local.sh"
         ssh root@$remote_ip "rm -rf /home/set_remote_local.sh"
+        rm -rf /home/set_remote_local.sh
     
 	specialcfg
 	install	
