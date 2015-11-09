@@ -25,7 +25,7 @@ type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.combina
 type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.combination_options.p2p_tunnelled.local  
 type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.combination_options.direct.local  
 #type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.migrate_option  
-#type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.single_disk.copy_storage_inc.file_image  
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.single_disk.copy_storage_inc.file_image  
 #type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.single_disk.copy_storage_all.file_image  
 #type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_inc.file_image  
 #type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_inc.lvm_image  
