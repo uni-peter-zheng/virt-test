@@ -150,24 +150,7 @@ libvirt:attach_device
 qemu:qemu-important
 
 #新增用例，可能容易出问题，放到最后面
-#libvirt:virt_xml_validate           #4s  
-#libvirt:virsh_freepages             #6s   
-#libvirt:virsh_setmaxmem             #10s   不支持虚拟机运行时修改大内存
-#libvirt:virsh_qemu_attach           #15s   注释掉两个用例
-#libvirt:virsh_domstate              #15s
-#libvirt:virsh_capabilities          #25s 
-#libvirt:virsh_domblkinfo            #25s    block用例  1 FAIL 已经注释 
-#libvirt:virsh_update_device         #35s    device用例 不支持ide floppy设备
-#libvirt:virsh_suspend               #40s 
-#libvirt:virsh-attach-detach-interface #40s  device用例 注释部分用例
-#libvirt:virsh_qemu_monitor_command  #45s   修改源码，增加测试前判断虚机状态语句
-#libvirt:virsh_detach_device         #50s    注释部分用例
-#libvirt:virsh_screenshot            #55s   
-#libvirt:hugepage                    #75s   
-#libvirt:virsh_setmem                #80s
-#libvirt:virsh-attach-detach-disk    #80s    device用例 注释部分用例
-
- 
+libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘.这组用例可能会导致测试环境损坏，暂时注释模块
 
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求[有一些用例需要使用gluster的都已经注释掉]
@@ -177,7 +160,6 @@ qemu:qemu-important
 #libvirt:iface                       #网络用例 部分测试导致网络不通,测试环境配置未处理
 #libvirt:iface_bridge                #网络用例 部分测试导致网络不通,测试环境配置未处理
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
-#libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘.这组用例可能会导致测试环境损坏，暂时注释模块
 #libvirt:virsh_blockcopy             #block用例 需要使用virtio的VDA磁盘；--blockdev的用例需要在源码里把libvirt1.2.13版本比对去掉，此组测试用例特别耗时间。
 #libvirt:virsh_qemu_monitor_blockjob #block用例  ALL FAIL
 #libvirt:unattended_install          #安装用例
