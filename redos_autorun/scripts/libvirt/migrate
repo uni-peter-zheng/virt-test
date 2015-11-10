@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# prepare: func run before testcase
+# restore: func run after testcase
+# 
+# If you need, you can use one of prepare and resotre, or both of them.
+# Function`s name must be prepare:<testcase name> or restore:<testcase name>
+# For example:
+#		prepare:testcase1()
+#		{
+#			i=1
+#       }
+#
+#       restore:testcase1()
+#		{
+#			i=2
+#		}
+#
+#		prepare:testcase2()
+#		{
+#			echo "I don`t have restore"
+#		}
+#
+# Add function in here
+prepare:type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.single_disk.copy_storage_inc.file_image()
+{
+	export vm1="redos-migrate"
+		export vm2="redos-migrate1"
+		export vm1_local_image_dir=/var/lib/libvirt/images/redos-migrate.img
+		export vm2_local_image_dir=/var/lib/libvirt/images/redos-migrate1.img
+		export vm1_xml_file=/etc/libvirt/qemu/$vm1.xml
+		export vm2_xml_file=/etc/libvirt/qemu/$vm2.xml
+		export vm1_nfs_share_image=/var/lib/libvirt/images/nfs/slw/redos-migrate.img
+		export vm2_nfs_share_image=/var/lib/libvirt/images/nfs/slw/redos-migrate1.img
+		virsh shutdown $vm1
+		virsh shutdown $vm2
+		sleep 40
+		cp $vm1_xml_file /tmp/
+		cp $vm2_xml_file /tmp/
+		sed -i -e 's|'$vm1_nfs_share_image'|'$vm1_local_image_dir'|' /tmp/$vm1.xml
+		sed -i -e 's|'$vm2_nfs_share_image'|'$vm2_local_image_dir'|' /tmp/$vm2.xml
+		virsh define /tmp/$vm1.xml
+		virsh define /tmp/$vm2.xml
+		rm -rf /tmp/$vm1.xml
+		rm -rf /tmp/$vm2.xml
+}
+restore:type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_all.file_image()
+{
+	export vm1="redos-migrate"
+		export vm2="redos-migrate1"
+		export vm1_local_image_dir=/var/lib/libvirt/images/redos-migrate.img
+		export vm2_local_image_dir=/var/lib/libvirt/images/redos-migrate1.img
+		export vm1_xml_file=/etc/libvirt/qemu/$vm1.xml
+		export vm2_xml_file=/etc/libvirt/qemu/$vm2.xml
+		export vm1_nfs_share_image=/var/lib/libvirt/images/nfs/slw/redos-migrate.img
+		export vm2_nfs_share_image=/var/lib/libvirt/images/nfs/slw/redos-migrate1.img
+		virsh shutdown $vm1
+		virsh shutdown $vm2
+		sleep 40
+		cp $vm1_xml_file /tmp/
+		cp $vm2_xml_file /tmp/
+		sed -i -e 's|'$vm1_local_image_dir'|'$vm1_nfs_share_image'|' /tmp/$vm1.xml
+		sed -i -e 's|'$vm2_local_image_dir'|'$vm2_nfs_share_image'|' /tmp/$vm2.xml
+		virsh define /tmp/$vm1.xml
+		virsh define /tmp/$vm2.xml
+		rm -rf /tmp/$vm1.xml
+		rm -rf /tmp/$vm2.xml
+}
+
+# End of function
+# start in here
+main()
+{
+	if [ "$1" = "" ]; then
+		exit
+			fi
+
+			testcase=$1
+			class=`echo $1 | cut -d ':' -f1`
+			if [ "$class" = "prepare" ]; then
+				echo "Run prepare function($1) in $0" 
+					elif [ "$class" = "restore" ]; then
+					echo "Run restore function($1) in $0" 
+			else
+				echo "Unknow class($1) in $0" 
+					fi
+
+					$testcase 
+
+					if [ "$class" = "prepare" ]; then
+						echo "End of prepare function($1) in $0" 
+							elif [ "$class" = "restore" ]; then
+							echo "End of restore function($1) in $0" 
+					else
+						echo "End of Unknow class($1) in $0" 
+							fi
+							echo ""
+}
+
+main $1 $2

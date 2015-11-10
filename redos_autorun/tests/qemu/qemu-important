@@ -36,10 +36,10 @@ type_specific.io-github-autotest-qemu.qmp_event_notification.qmp_watchdog.qmp_no
 type_specific.io-github-autotest-qemu.check_clock_offset.with_syscall
 type_specific.io-github-autotest-qemu.qmp_basic
 type_specific.io-github-autotest-qemu.qemu_nobody
-type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.guest_guest.enable_msi
+#type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.guest_guest.enable_msi
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_qnum.under_pktgen.guest_guest.disable_msi
-type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_pktgen.guest_guest.enable_msi
-type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_pktgen.guest_guest.disable_msi
+#type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_pktgen.guest_guest.enable_msi
+#type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_pktgen.guest_guest.disable_msi
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_pktgen.host_guest.enable_msi
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_pktgen.host_guest.disable_msi
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_netperf_and_ping.enable_msi
@@ -48,7 +48,7 @@ type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_pkt
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_file_transfer.disable_msi
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_migrate.enable_msi
 #type_specific.io-github-autotest-qemu.mq_change_qnum.change_error_qnum.under_migrate.disable_msi
-type_specific.io-github-autotest-qemu.mq_change_qnum.disable_enable_queues.under_pktgen.guest_guest.enable_msi
+#type_specific.io-github-autotest-qemu.mq_change_qnum.disable_enable_queues.under_pktgen.guest_guest.enable_msi
 type_specific.io-github-autotest-qemu.live_snapshot_chain.pause
 type_specific.io-github-autotest-qemu.live_snapshot_chain.long_chain
 type_specific.io-github-autotest-qemu.live_snapshot_chain.check
@@ -89,7 +89,7 @@ type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus
 type_specific.io-github-autotest-qemu.cgroup.devices_access 
 #type_specific.io-github-autotest-qemu.cgroup.freezer
 #type_specific.io-github-autotest-qemu.cgroup.memory_limit 
-type_specific.io-github-autotest-qemu.cgroup.memory_memsw_limit 
+#type_specific.io-github-autotest-qemu.cgroup.memory_memsw_limit 
 #type_specific.io-github-autotest-qemu.cgroup.memory_move 
 type_specific.io-github-autotest-qemu.drive_mirror.simple_test.cancel
 type_specific.io-github-autotest-qemu.drive_mirror.simple_test.set_speed

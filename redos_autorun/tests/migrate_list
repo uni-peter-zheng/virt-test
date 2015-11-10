@@ -17,7 +17,7 @@ libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simulta
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.abort_job.combination_options.p2p_tunnelled.local  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.abort_job.combination_options.direct.local  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.live.default.local  
-libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.live.p2p.local  
+#libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.live.p2p.local  
 #libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.live.p2p_tunnelled.local  
 #libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.live.direct.local  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.combination_options.default.local  
@@ -79,7 +79,7 @@ libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate.there_suspend
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate.there_persistent  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate.there_undefinesource  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate.there_change-protection  
-libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate.there_with_scsi_disk  
+#libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate.there_with_scsi_disk  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate.there_verbose  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate.there_unsafe  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate.there_timeout  
@@ -159,7 +159,7 @@ libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneo
 #libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_vcpu_1  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_vcpu_2  
 #libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_memory_1  
-libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_memory_2  
+#libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_memory_2  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_on_host.half_memory.memory_stress.set_vcpu_1  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_on_host.half_memory.memory_stress.set_vcpu_2  
 libvirt:type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_on_host.half_memory.memory_stress.set_memory_1  
