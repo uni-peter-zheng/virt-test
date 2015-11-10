@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# prepare: func run before testcase
+# virsh_blockcommit的用例使用raw格式镜像的虚拟机进行测试
+#
+
+prepare:type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_chain.file_disk.local.no_ga.notimeout.nobase.top_inactive()
+{      
+        sed -i "s/^vms.*$/vms = $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg 
+	sed -i "s/^main_vm.*$/main_vm = $main_vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg #设置为raw格式的测试虚机
+	sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image_raw"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+        sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image_raw"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg	
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+restore:type_specific.io-github-autotest-libvirt.virsh.blockcommit.error_test.active_commit()
+{
+	sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+	sed -i "s/^main_vm.*$/main_vm = $main_vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg #切换回qcow2的测试虚机
+        sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+        sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+# Add function in here
+
+
+
+# End of function
+# start in here
+main()
+{
+	if [ "$1" = "" ]; then
+		exit
+	fi
+
+	testcase=$1
+	class=`echo $1 | cut -d ':' -f1`
+	if [ "$class" = "prepare" ]; then
+		echo "Run prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "Run restore function($1) in $0" 
+	else
+		echo "Unknow class($1) in $0" 
+	fi
+
+	$testcase 
+
+	if [ "$class" = "prepare" ]; then
+		echo "End of prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "End of restore function($1) in $0" 
+	else
+		echo "End of Unknow class($1) in $0" 
+	fi
+	echo ""
+}
+
+main $1 $2
