@@ -3,9 +3,9 @@ type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.no_opt
 type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_stp 
 type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_delay_1 
 type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_delay_2 
-type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_start 
+#type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_start 
 type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_delay_no_stp 
-type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_stp_no_start 
+#type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_stp_no_start 
 type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.unbridge_no_start 
 type_specific.io-github-autotest-libvirt.virsh.iface_bridge.negative_test.invalid_delay_1 
 type_specific.io-github-autotest-libvirt.virsh.iface_bridge.negative_test.invalid_delay_2 
