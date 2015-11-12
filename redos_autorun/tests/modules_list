@@ -154,6 +154,7 @@ libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的�
 libvirt:virstual_disks              #需要多台虚机同时测试，已经使用脚本virstual_disks配置
 libvirt:virsh_blockcopy             #在libvirt-1.2.9中测试错误很多，在libvirt-1.2.19测试通过率极高
 libvirt:iface                       
+libvirt:virsh_volume_application    #将vdb的热插拔切换成冷插拔用例可pass
 
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求[有一些用例需要使用gluster的都已经注释掉]
@@ -164,7 +165,6 @@ libvirt:iface
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
 #libvirt:virt_what                   #virt-what名字功能不全，只能help和version
-#libvirt:virsh_volume_application    #ALL FAIL
 
 #系统不支持的测试模块
 #libvirt:perf_kvm                     #我们的源上缺少fuse-sshfs，注释掉模块
