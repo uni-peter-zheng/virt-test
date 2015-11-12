@@ -54,9 +54,9 @@ restore:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.negative_tes
         exit 1
     fi
     sed -i 's/^ONBOOT=.*/ONBOOT="no"/' $iface_file
-    service NetworkManager restart
-    sleep 2
+    service network restart
     route add default gw 192.168.1.1
+    service NetworkManager restart
 }
 # Add function in here
 
