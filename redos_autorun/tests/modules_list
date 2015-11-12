@@ -153,13 +153,13 @@ qemu:qemu-important
 libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘.这组用例可能会导致测试环境损坏，暂时注释模块
 libvirt:virstual_disks              #需要多台虚机同时测试，已经使用脚本virstual_disks配置
 libvirt:virsh_blockcopy             #在libvirt-1.2.9中测试错误很多，在libvirt-1.2.19测试通过率极高
+libvirt:iface                       
 
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求[有一些用例需要使用gluster的都已经注释掉]
 #libvirt:vcpu_hotplug                #错误太多，未修正，4PASS,19FAIL
 #libvirt:storage_discard             #错误太多，未修正，5PASS,24FAIL
 #libvirt:network_bandwidth           #网络用例 需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
-#libvirt:iface                       #网络用例 部分测试导致网络不通,测试环境配置未处理
 #libvirt:iface_bridge                #网络用例 部分测试导致网络不通,测试环境配置未处理
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
