@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# prepare: func run before testcase
+# virt-clone的用例使用raw格式镜像的虚拟机进行测试
+#
+
+prepare:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.no_option()
+{
+    host_iface=`brctl show | awk '/enP3p9s0f/{print $1}' | sed -n '1p'`
+    host_ip=`ifconfig $host_iface | grep "inet " | awk '{print $2}'`
+    if [ -z host_ip ]
+    then
+        exit 1
+    fi
+    service NetworkManager restart
+    sleep 2
+    iface=`virsh iface-list | awk '/enP3p9s0f/{print $1}' | sed -n '1p'`
+    export iface_file=`echo -e "/etc/sysconfig/network-scripts/ifcfg-${iface}"`
+    if [ ! -e $iface_file ]
+    then
+        exit 1
+    fi
+    sed -i 's/^BOOTPROTO=.*/BOOTPROTO="DHCP"/' $iface_file
+    sed -i 's/^ONBOOT=.*/ONBOOT="yes"/' $iface_file
+    service NetworkManager restart
+    sleep 2
+    int=1
+    while (($int <= 10))
+    do
+        sleep 5
+        iface_ip=`ifconfig $iface | grep "inet " | awk '{print $2}'`
+        if [ -n iface_ip ]
+        then
+            break
+        fi
+    done
+    if [ -z iface_ip ]
+    then
+        exit 1
+    fi
+    
+    ip route add 0.0.0.0/0 via 192.168.1.1 dev $host_iface table 10
+    ip route add 192.168.1.0/24 dev $host_iface src $host_ip table 10
+    ip rule add from $host_ip table 10
+    ip route add 0.0.0.0/0 via 192.168.1.1 dev $iface table 22
+    ip route add 192.168.1.0/24 dev $iface src $iface_ip table 22
+    ip rule add from $iface_ip table 22
+}
+
+restore:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.negative_test.unbridge_iface()
+{
+    if [ ! -e $iface_file ] 
+    then
+        exit 1
+    fi
+    sed -i 's/^ONBOOT=.*/ONBOOT="no"/' $iface_file
+    service NetworkManager restart
+    sleep 2
+    route add default gw 192.168.1.1
+}
+# Add function in here
+
+
+
+# End of function
+# start in here
+main()
+{
+	if [ "$1" = "" ]; then
+		exit
+	fi
+
+	testcase=$1
+	class=`echo $1 | cut -d ':' -f1`
+	if [ "$class" = "prepare" ]; then
+		echo "Run prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "Run restore function($1) in $0" 
+	else
+		echo "Unknow class($1) in $0" 
+	fi
+
+	$testcase 
+
+	if [ "$class" = "prepare" ]; then
+		echo "End of prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "End of restore function($1) in $0" 
+	else
+		echo "End of Unknow class($1) in $0" 
+	fi
+	echo ""
+}
+
+main $1 $2
