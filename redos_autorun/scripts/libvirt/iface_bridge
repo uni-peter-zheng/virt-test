@@ -6,57 +6,103 @@
 
 prepare:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.no_option()
 {
+    echo "iface_bridge prepare"
     host_iface=`brctl show | awk '/enP3p9s0f/{print $1}' | sed -n '1p'`
     host_ip=`ifconfig $host_iface | grep "inet " | awk '{print $2}'`
-    if [ -z host_ip ]
+    if [ -z $host_ip ]
     then
+        echo "can not get bridge whose iface is enP3p9s0f*"
         exit 1
     fi
-    service NetworkManager restart
-    sleep 2
+    for ethw in enP3p9s0f0 enP3p9s0f1 enP3p9s0f2 enP3p9s0f3
+    do
+        ifconfig $ethw up
+    done
+    sleep 6
+    virsh iface-list
     iface=`virsh iface-list | awk '/enP3p9s0f/{print $1}' | sed -n '1p'`
-    export iface_file=`echo -e "/etc/sysconfig/network-scripts/ifcfg-${iface}"`
+    if [ -z $iface ]
+    then
+        echo "host have no activate iface(virsh iface-list)"
+        exit 1
+    fi
+    iface_file=`echo -e "/etc/sysconfig/network-scripts/ifcfg-${iface}"`
     if [ ! -e $iface_file ]
     then
         exit 1
     fi
-    sed -i 's/^BOOTPROTO=.*/BOOTPROTO="DHCP"/' $iface_file
-    sed -i 's/^ONBOOT=.*/ONBOOT="yes"/' $iface_file
-    service NetworkManager restart
+    cp $iface_file /etc/sysconfig/network-scripts/autotest_bridge.${iface}.bk
+    #dhcp
+    echo -e "TYPE=Ethernet" > temp_iface
+    echo -e "BOOTPROTO="DHCP"" >> temp_iface
+    echo -e "NAME=$iface" >> temp_iface
+    echo -e "DEVICE=$iface" >> temp_iface
+    echo -e "ONBOOT=yes" >> temp_iface
+    dhclient $iface
     sleep 2
-    int=1
-    while (($int <= 10))
-    do
-        sleep 5
-        iface_ip=`ifconfig $iface | grep "inet " | awk '{print $2}'`
-        if [ -n iface_ip ]
-        then
-            break
-        fi
-    done
-    if [ -z iface_ip ]
+    dhc_id=`ps -aux | grep dhclient | sed -n '1p' | awk '{print $2}'`
+    kill $dhc_id
+
+    iface_ip=`ifconfig $iface | grep "inet " | awk '{print $2}'`
+    if [ -z $iface_ip ]
     then
+        echo "dhcp get ip fail for host extra iface"
         exit 1
     fi
-    
+    echo -e "TYPE=Ethernet" > temp_iface
+    echo -e "BOOTPROTO="static"" >> temp_iface
+    echo -e "IPADDR=$iface_ip" >> temp_iface
+    echo -e "GATEWAY=192.168.1.1" >> temp_iface
+    echo -e "NETMASK=255.255.255.0" >> temp_iface
+    echo -e "NAME=$iface" >> temp_iface
+    echo -e "DEVICE=$iface" >> temp_iface
+    echo -e "ONBOOT=yes" >> temp_iface
+    yes | cp temp_iface $iface_file
+    rm -rf temp_iface
+    systemctl restart network
+    sleep 2
+    iface_ip=`ifconfig $iface | grep "inet " | awk '{print $2}'`
+    if [ -z $iface_ip ]
+    then
+        echo "static get ip fail for host extra iface"
+        exit 1
+    fi
+
     ip route add 0.0.0.0/0 via 192.168.1.1 dev $host_iface table 10
     ip route add 192.168.1.0/24 dev $host_iface src $host_ip table 10
     ip rule add from $host_ip table 10
     ip route add 0.0.0.0/0 via 192.168.1.1 dev $iface table 22
     ip route add 192.168.1.0/24 dev $iface src $iface_ip table 22
     ip rule add from $iface_ip table 22
-}
+    ip route flush cache
+    echo 1 > /proc/sys/net/ipv4/conf/all/arp_ignore
+    echo 2 > /proc/sys/net/ipv4/conf/all/arp_announce
+    sleep 6
+    route -n
+    sed -i "/# Caveat/{n; s/iface_name =.*/iface_name = "$iface"/}" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface_bridge.cfg
 
+}
 restore:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.negative_test.unbridge_iface()
 {
-    if [ ! -e $iface_file ] 
+    echo "iface_bridge clean"
+    iface_name_bk=`ls /etc/sysconfig/network-scripts/autotest_bridge.*.bk`
+    if [ ! -e ${iface_name_bk} ]
     then
+        echo -e  "${iface_name_bk} is not exist"
         exit 1
     fi
-    sed -i 's/^ONBOOT=.*/ONBOOT="no"/' $iface_file
-    service network restart
-    route add default gw 192.168.1.1
-    service NetworkManager restart
+    iface=`awk -F "=" '/NAME=/{print $2}' ${iface_name_bk}`
+    if [ ! -e /etc/sysconfig/network-scripts/ifcfg-${iface} ]
+    then
+        echo -e "${iface_name_bk} is a wrong file or /etc/sysconfig/network-scripts/ifcfg-${iface} is no exist"
+        exit 1
+    fi
+    yes | cp ${iface_name_bk} /etc/sysconfig/network-scripts/ifcfg-${iface} 
+    rm -rf ${iface_name_bk}
+    systemctl restart network
+    sleep 2
+    ip rule del table 22
+    ip rule del table 10
 }
 # Add function in here
 
