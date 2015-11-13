@@ -6,8 +6,8 @@
 #type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.netfs 
 #attach的原用例是热插拔，我换成冷插拔
 type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.dir  
-type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.disk  
-type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.fs
-type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.logical 
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.disk  
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.fs
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.logical 
 type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.netfs 
 
