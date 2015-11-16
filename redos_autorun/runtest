@@ -78,6 +78,8 @@ LIBVIRT_VM_NAME=""
 QEMU_VM_NAME=""
 VM_XML_FILE=""
 VM_BACKUP_XML_FILE=""
+QEMU_CONF_FILE=""
+BACK_QEMU_CONF_FILE=""
 VM_ORIGINAL_XML_FILE=""
 TMP_FILE=""
 
@@ -185,7 +187,8 @@ backup_vm_xml()
 		return
 	fi
 
-	cat "$VM_XML_FILE" > "$VM_BACKUP_XML_FILE"	
+	cat "$VM_XML_FILE" > "$VM_BACKUP_XML_FILE"
+	cat "$QEMU_CONF_FILE" > "$BACK_QEMU_CONF_FILE"	
 }
 
 set_testcases_to_list()
@@ -357,6 +360,7 @@ restore_env()
 		echo -e "Do \"virsh define $VM_ORIGINAL_XML_FILE\"" >> "$CURRENT_DETAIL_LOG_FILE"
 		virsh define "$VM_ORIGINAL_XML_FILE" 1>/dev/null
 	fi
+	cp -f "$BACK_QEMU_CONF_FILE" "$QEMU_CONF_FILE"
 }
 
 pre_script()
@@ -404,11 +408,13 @@ end_script()
 save_env()
 {
 	cp -f "$VM_XML_FILE" "$VM_ORIGINAL_XML_FILE"
+	cp -f "$QEMU_CONF_FILE" "$BACK_QEMU_CONF_FILE"
 }
 
 clean_env()
 {
 	rm -f "$VM_BACKUP_XML_FILE"
+	rm -f "$BACK_QEMU_CONF_FILE"
 }
 
 clean_virttest_logs()
@@ -551,6 +557,8 @@ init_env_params()
 	VM_XML_FILE="/etc/libvirt/qemu/""$LIBVIRT_VM_NAME"".xml"
 	VM_BACKUP_XML_FILE="$CURRENT_LOG_PATH""xml_backup.xml"
 	VM_ORIGINAL_XML_FILE="$CURRENT_LOG_PATH""original.xml"
+        QEMU_CONF_FILE="/etc/libvirt/qemu.conf"
+        BACK_QEMU_CONF_FILE="/etc/libvirt/qemu-bck.conf"
 	TMP_FILE="$CURRENT_LOG_PATH""tmp"
 }
 
@@ -592,6 +600,9 @@ init_file()
 	if [ ! -f "$VM_ORIGINAL_XML_FILE" ]; then
 		touch "$VM_ORIGINAL_XML_FILE"
 	fi
+	if [ ! -f "$BACK_QEMU_CONF_FILE" ]; then
+                touch "$BACK_QEMU_CONF_FILE"
+        fi
 
 	if [ ! -f "$CURRENT_XMLDIFF_LOG_FILE" ]; then
 		touch $CURRENT_XMLDIFF_LOG_FILE
@@ -617,6 +628,7 @@ check_env()
 			exit 1
 		fi
 	fi
+	
 }
 
 init()
