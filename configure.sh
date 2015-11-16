@@ -272,6 +272,7 @@ EOF
     	echo "set config for testcases:virsh.cpu_models!"
     	echo
     	sed -i -e "s|EXAMPLE.COM|$remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
+        sed -i -e "s|^    cpu_arch =.$|    cpu_arch = "ppc64"|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
 }
 
 #测试用例所需的软件包安装
