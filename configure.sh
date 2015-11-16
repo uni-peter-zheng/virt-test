@@ -123,6 +123,7 @@ EOF
     systemctl mask firewalld
     systemctl stop iptables
     systemctl mask iptables
+    systemctl stop NetworkManager
     setenforce 0
     yum install expect -y
         
