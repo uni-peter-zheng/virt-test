@@ -145,17 +145,17 @@ libvirt:virsh_event
 libvirt:guest_numa                  #numa的用例可能导致libvirtd启动失败[发现原因是由于该用例修改qemu.conf内hugetlbfs挂载点为/dev/hugepages16M，当umount掉这个挂载点后，qemu.conf依然生效，导致libvirtd启动失败]
 #no_nodemem的用例需要修改guest-numa.cfg,因为我们的版本对memtune的参数规则和autotest的要求不太一样；其他用例失败是系统不支持2M,1G的大页表，也不能把全部host大页分配给一个虚拟机。
 libvirt:snapshot                    #注释掉部分失败的用例,快照部分的用例，测试完不恢复img,可能导致后面的用例使用virsh undefine失败，所以放在最后
-
-libvirt:attach_device
-qemu:qemu-important
-
-#新增用例，可能容易出问题，放到最后面
 libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘.这组用例可能会导致测试环境损坏，暂时注释模块
 libvirt:virstual_disks              #需要多台虚机同时测试，已经使用脚本virstual_disks配置
 libvirt:virsh_blockcopy             #在libvirt-1.2.9中测试错误很多，在libvirt-1.2.19测试通过率极高                       
 libvirt:virsh_volume_application    #将vdb的热插拔切换成冷插拔用例可pass
 libvirt:iface
 libvirt:iface_bridge                #双网卡
+
+libvirt:attach_device
+qemu:qemu-important
+
+#新增用例，可能容易出问题，放到最后面
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求[有一些用例需要使用gluster的都已经注释掉]
 #libvirt:vcpu_hotplug                #错误太多，未修正，4PASS,19FAIL
