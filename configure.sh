@@ -260,11 +260,11 @@ EOF
     	sed -i -e "s/^    vm_list.*$/    vm_list = "$main_vms"/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
     	sed -i -e "s|virt-tests-vm1||" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
        
-    	#修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301 
-    	echo "modify config for testcases:guest_numa!"
-    	echo
-    	sed -i -e "s|node,nodeid=0,cpus=0-1,mem=300|node,nodeid=0,cpus=0-1,memdev=ram-node0|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
-    	sed -i -e "s|node,nodeid=1,cpus=2-3,mem=301|node,nodeid=1,cpus=2-3,memdev=ram-node1|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
+    	#修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301   libvirt1.1.9版本需要做修改，1.1.19版本不需改动
+    	#echo "modify config for testcases:guest_numa!"
+    	#echo
+    	#sed -i -e "s|node,nodeid=0,cpus=0-1,mem=300|node,nodeid=0,cpus=0-1,memdev=ram-node0|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
+    	#sed -i -e "s|node,nodeid=1,cpus=2-3,mem=301|node,nodeid=1,cpus=2-3,memdev=ram-node1|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
        
     	#为用例virsh.domcapabilities指定远程测试主机
     	echo "set config for testcases:virsh.domcapabilities!"
