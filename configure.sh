@@ -1,25 +1,25 @@
 #!/bin/sh
 
 #init初始化配置 公共config
-
-export remote_ip="192.168.1.4"
-export remote_pwd="123456"
-export local_ip="192.168.1.5"
-export local_pwd="123456"
-export vms="Redos-autotest"
+remote_ip="192.168.1.4"
+remote_pwd="123456"
+local_ip="192.168.1.5"
+local_pwd="123456"
+export vms="autotest-qcow2"
 export vms_raw="autotest-raw"
-export main_vms="Redos-autotest"
+export main_vms="autotest-qcow2"
 export main_vms_raw="autotest-raw"
-export localhost="RedOS-5"
-export remotehost="RedOS-4"
-export bridge="br0"
-export image_name="/home/source/templet/redos_autotest"
-export source_vm_image="/home/source/templet/redos_autotest.qcow2"
-export source_vm_image_raw="/home/source/templet/redos_autotest.img"
-export backup_vm_image="/home/source/templet-bck/redos_autotest.qcow2"
-export source_vm_image_raw="/home/source/templet-bck/redos_autotest.img"
+localhost="RedOS-5"
+remotehost="RedOS-4"
+bridge="br0"
+image_name="/home/source/templet/redos-le1.1.5"
+export source_vm_image="/home/source/templet/redos-le1.1.5.qcow2"
+export source_vm_image_raw="/home/source/templet/redos-le1.1.5.img"
+export backup_vm_image="/home/source/templet-bck/redos-le1.1.5.qcow2"
+export source_vm_image_raw="/home/source/templet-bck/redos-le1.1.5.img"
+BLOCK_DEVICE="dev/sdi" #填写host上可用的空物理盘/DEV/EXAMPLE
 
-#CONFIG_DIR="$( cd "$( dirname "$0"  )" && pwd  )"
+
 export CONFIG_DIR=$(pwd)
 cd $CONFIG_DIR/../autotest
 AUTOTEST_PATH=$(pwd)
@@ -34,10 +34,10 @@ QEMU_BASE_PATH=$CONFIG_DIR/backends/qemu/cfg/base.cfg
 #
 result_of_domiflist=`virsh domiflist $main_vms`
 mac_nic1=`echo $result_of_domiflist|cut -d ' ' -f 11`
-export tmp=`mount |grep boot`
-export ENTER_YOUR_AVAILABLE_PARTITION=${tmp:5:5} #为用例libvirt_scsi指定测试分区为boot分区
+tmp=`mount |grep boot`
+ENTER_YOUR_AVAILABLE_PARTITION=${tmp:5:5} #为用例libvirt_scsi指定测试分区为boot分区
 mkdir $CONFIG_DIR/shared/pool >/dev/null 2>&1
-export PATH_OF_POOL_XML="$CONFIG_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
+PATH_OF_POOL_XML="$CONFIG_DIR/shared/pool/virt-test-pool.xml" #指定用例pool_create创建的pool.xml的路径
 
 usage()
 {
@@ -75,14 +75,9 @@ setenv()
 
 {
     echo "##########   SET TEST ENVIRONMENT  ##########"
-#	echo
-#	grep -rn "AUTOTEST" ~/.bashrc > /dev/null
-#    if [ $? = 1 ];then
-#        echo "export AUTOTEST_PATH=$AUTOTEST_PATH" >> ~/.bashrc
-#        export AUTOTEST_PATH=$AUTOTEST_PATH
-#    else
-#        echo "AUTOTEST_PATH has been set!"
-#    fi
+	
+    export AUTOTEST_PATH=$AUTOTEST_PATH
+
     cat > ~/.bashrc <<-EOF
 # .bashrc
 
@@ -107,10 +102,9 @@ export source_vm_image=$source_vm_image
 export source_vm_image_raw=$source_vm_image_raw
 export backup_vm_image=$backup_vm_image
 export source_vm_image_raw=$source_vm_image_raw
-export CONFIG_DIR=$CONFIG_DIR
 EOF
 	#修改redos_autorun的配置
-	sed -i "s|^virt-test.*$|virt-test = "$CONFIG_DIR/"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+    sed -i "s|^virt-test.*$|virt-test = "$CONFIG_DIR/"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
     sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
     sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
     sed -i "s/br0/$bridge/g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
@@ -118,12 +112,17 @@ EOF
     sed -i 's|^uri.*$|uri: file:\/\/'$TP_LIBVIRT'|g' $CONFIG_DIR/test-providers.d/io-github-autotest-libvirt.ini
     sed -i 's|^uri.*$|uri: file:\/\/'$TP_QEMU'|g' $CONFIG_DIR/test-providers.d/io-github-autotest-qemu.ini
 
-	ppc64_cpu --smt=off
+    ppc64_cpu --smt=off
     systemctl stop firewalld
     systemctl mask firewalld
     systemctl stop iptables
     systemctl mask iptables
+    systemctl stop NetworkManager
     setenforce 0
+    
+    #打开libvirtd日志
+    sed -i "s|#log_level = 3|log_level = 3|g" /etc/libvirt/libvirtd.conf
+    sed -i "s|^#log_outputs=.*$|log_outputs=\"3:file:/var/log/libvirt/libvirtd.log\"|g" /etc/libvirt/libvirtd.conf
     yum install expect -y
         
 	if [ ! -f $LIBVIRT_BASE_PATH ];then
@@ -218,11 +217,16 @@ specialcfg()
     	sed -i -e 's|ENTER.YOUR.REMOTE.EXAMPLE.COM|'$remote_ip'|' $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
     	sed -i -e "s|EXAMPLE.PWD|$remote_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
 
-    	#libvirt_scsi_partition = "/dev/sda2" 为用例libvirt_scsi指定测试分区
-    	echo "set config for testcases:libvirt_scsi!"
+    	#libvirt_scsi_partition = "" 为用例libvirt_scsi指定测试分区
+    	echo "set partition for testcases:libvirt_scsi!"
     	echo
     	sed -i "s/^    libvirt_scsi_partition =.*$/    libvirt_scsi_partition = \/dev\/$ENTER_YOUR_AVAILABLE_PARTITION/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/libvirt_scsi.cfg
- 
+	
+	#block_device =“” 为用例virsh_volume_application指定磁盘设备
+        echo "set block_device for testcases:virsh_volume_application!"
+        echo
+        sed -i "s|^    block_device =.*$|    block_device = $BLOCK_DEVICE|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/volume/virsh_volume_application.cfg
+	 
     	#为用例pool_create创建pool.xml
     	echo "build pool.xml for testcases:virsh_pool_create!"
     	echo
@@ -256,11 +260,11 @@ EOF
     	sed -i -e "s/^    vm_list.*$/    vm_list = "$main_vms"/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
     	sed -i -e "s|virt-tests-vm1||" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
        
-    	#修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301 
-    	echo "modify config for testcases:guest_numa!"
-    	echo
-    	sed -i -e "s|node,nodeid=0,cpus=0-1,mem=300|node,nodeid=0,cpus=0-1,memdev=ram-node0|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
-    	sed -i -e "s|node,nodeid=1,cpus=2-3,mem=301|node,nodeid=1,cpus=2-3,memdev=ram-node1|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
+    	#修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301   libvirt1.1.9版本需要做修改，1.1.19版本不需改动
+    	#echo "modify config for testcases:guest_numa!"
+    	#echo
+    	#sed -i -e "s|node,nodeid=0,cpus=0-1,mem=300|node,nodeid=0,cpus=0-1,memdev=ram-node0|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
+    	#sed -i -e "s|node,nodeid=1,cpus=2-3,mem=301|node,nodeid=1,cpus=2-3,memdev=ram-node1|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/numa/guest_numa.cfg
        
     	#为用例virsh.domcapabilities指定远程测试主机
     	echo "set config for testcases:virsh.domcapabilities!"
@@ -271,6 +275,7 @@ EOF
     	echo "set config for testcases:virsh.cpu_models!"
     	echo
     	sed -i -e "s|EXAMPLE.COM|$remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
+        sed -i -e "s|^    cpu_arch =.*$|    cpu_arch = "ppc64"|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
 }
 
 #测试用例所需的软件包安装
