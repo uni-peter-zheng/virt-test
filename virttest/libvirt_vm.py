@@ -1672,8 +1672,10 @@ class VM(virt_vm.BaseVM):
                 logging.debug("Destroying VM")
                 if self.is_paused():
                     self.resume()
+#                if (not self.is_lxc() and gracefully and
+#                        self.params.get("shutdown_command")):
                 if (not self.is_lxc() and gracefully and
-                        self.params.get("shutdown_command")):
+                        self.params.get("shutdown -H now")):			
                     # Try to destroy with shell command
                     logging.debug("Trying to shutdown VM with shell command")
                     try:
@@ -1683,8 +1685,10 @@ class VM(virt_vm.BaseVM):
                     else:
                         try:
                             # Send the shutdown command
-                            session.sendline(
-                                self.params.get("shutdown_command"))
+#                            session.sendline(
+#                                self.params.get("shutdown_command"))
+		            session.sendline(
+                                 self.params.get("shutdown -H now"))
                             logging.debug("Shutdown command sent; waiting for VM "
                                           "to go down...")
                             if utils_misc.wait_for(self.is_dead, 60, 1, 1):
