@@ -1,23 +1,23 @@
 #!/bin/sh
 
 #init初始化配置 公共config
-remote_ip="192.168.1.23"
+remote_ip="192.168.1.4"
 remote_pwd="123456"
-local_ip="192.168.1.3"
+local_ip="192.168.1.5"
 local_pwd="123456"
 export vms="autotest-qcow2"
 export vms_raw="autotest-raw"
 export main_vms="autotest-qcow2"
 export main_vms_raw="autotest-raw"
-localhost="RedOS-3"
-remotehost="RedOS-23"
+localhost="RedOS-5"
+remotehost="RedOS-4"
 bridge="br0"
 image_name="/home/source/templet/redos-le1.1.5"
 export source_vm_image="/home/source/templet/redos-le1.1.5.qcow2"
 export source_vm_image_raw="/home/source/templet/redos-le1.1.5.img"
 export backup_vm_image="/home/source/templet-bck/redos-le1.1.5.qcow2"
 export backup_vm_image_raw="/home/source/templet-bck/redos-le1.1.5.img"
-BLOCK_DEVICE="dev/sdi" #填写host上可用的空物理盘/DEV/EXAMPLE
+BLOCK_DEVICE="/dev/sdi" #填写host上可用的空物理盘/DEV/EXAMPLE
 
 
 export CONFIG_DIR=$(pwd)
@@ -283,6 +283,7 @@ install()
 {
 	echo "###########  INSTALL RPMS FOR　TESTS  ##########"
 	echo
+	yum install virt-top -y
 	yum install iscsi* -y
     	yum install targetcli* -y
     	yum install targetd -y
