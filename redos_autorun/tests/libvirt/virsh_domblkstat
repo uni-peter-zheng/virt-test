@@ -12,6 +12,7 @@ type_specific.io-github-autotest-libvirt.virsh.domblkstat.error_test.with_libvir
 type_specific.io-github-autotest-libvirt.virsh.domblkstat.error_test.invalid_uuid_uuid 
 type_specific.io-github-autotest-libvirt.virsh.domblkstat.error_test.extra_option 
 type_specific.io-github-autotest-libvirt.virsh.domblkstat.error_test.only_name_option.extra_option 
-type_specific.io-github-autotest-libvirt.virsh.domblkstat.error_test.only_name_option.null_extra_option 
+#type_specific.io-github-autotest-libvirt.virsh.domblkstat.error_test.only_name_option.null_extra_option 
+#新版本的virsh domblkstat只有--domain是必须参数，--device不必须
 type_specific.io-github-autotest-libvirt.virsh.domblkstat.error_test.only_name_option.space_extra_option 
 
