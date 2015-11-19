@@ -284,6 +284,7 @@ install()
 	echo "###########  INSTALL RPMS FOR　TESTS  ##########"
 	echo
 	yum install virt-top -y
+	yum install ksm -y
 	yum install iscsi* -y
     	yum install targetcli* -y
     	yum install targetd -y
