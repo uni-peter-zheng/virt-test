@@ -142,8 +142,7 @@ libvirt:virsh_event
 #比较耗时间的用例
 
 #比较容易出问题的模块放到最后
-libvirt:guest_numa                  #numa的用例可能导致libvirtd启动失败[发现原因是由于该用例修改qemu.conf内hugetlbfs挂载点为/dev/hugepages16M，当umount掉这个挂载点后，qemu.conf依然生效，导致libvirtd启动失败]
-#no_nodemem的用例需要修改guest-numa.cfg,因为我们的版本对memtune的参数规则和autotest的要求不太一样；其他用例失败是系统不支持2M,1G的大页表，也不能把全部host大页分配给一个虚拟机。
+libvirt:guest_numa                  
 libvirt:snapshot                    #注释掉部分失败的用例,快照部分的用例，测试完不恢复img,可能导致后面的用例使用virsh undefine失败，所以放在最后
 libvirt:virsh_blockcommit           #block用例 部分用例需要raw格式的磁盘.这组用例可能会导致测试环境损坏，暂时注释模块
 libvirt:virstual_disks              #需要多台虚机同时测试，已经使用脚本virstual_disks配置
@@ -156,6 +155,8 @@ libvirt:attach_device
 qemu:qemu-important
 
 #新增用例，可能容易出问题，放到最后面
+libvirt:virsh_domblkerror            #将热插拔换成冷插拔
+libvirt:virt-top                     #源上添加了virt-top安装包
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求[有一些用例需要使用gluster的都已经注释掉]
 #libvirt:vcpu_hotplug                #错误太多，未修正，4PASS,19FAIL
@@ -163,7 +164,7 @@ qemu:qemu-important
 #libvirt:network_bandwidth           #网络用例 需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
-#libvirt:virt_what                   #virt-what名字功能不全，只能help和version
+#libvirt:virt_what                   #virt-what功能无效
 
 #系统不支持的测试模块
 #libvirt:perf_kvm                     #我们的源上缺少fuse-sshfs，注释掉模块
@@ -171,7 +172,6 @@ qemu:qemu-important
 #libvirt:ksm_service                  #缺少ksmtuned服务
 #libvirt:timer_management             #不支持kvmclock
 #libvirt:virsh_blockresize            #7SKIP，qed_type不支持；15FAIL pci.0不支持hotplug 
-#libvirt:virsh_domblkerror            #PCI.0
 #libvirt:virsh_create_lxc             #lxc不需要测试
 #libvirt:virsh_dompmsuspend           #需要virsh capcabilities的xml提供能力支持才行 setting ACPI S3 not supported
 #libvirt:virsh_schedinfo_xen_credit   #xen的虚拟化测试，用不到
@@ -180,5 +180,4 @@ qemu:qemu-important
 #libvirt:virsh_nodedev_detach_reattach #需要在配置文件设置用于测试detach的PCI总线，手动测试虚拟机的每条PCI总线在detach时都会报错。
 #libvirt:virsh_nodedev_reset          #需要设置测试使用的special_device，用例会自动检索host中的pci设备，由于我们host上的设备都不能resetable，所以用例报错
 #libvirt:vfio                         #Please add 'intel_iommu=on' to kernel and reboot to effect it 
-#libvirt:virt-top                     #我们源没有提供virt-top安装包
 
