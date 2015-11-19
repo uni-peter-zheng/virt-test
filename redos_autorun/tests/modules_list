@@ -157,6 +157,7 @@ qemu:qemu-important
 #新增用例，可能容易出问题，放到最后面
 libvirt:virsh_domblkerror            #将热插拔换成冷插拔
 libvirt:virt-top                     #源上添加了virt-top安装包
+libvirt:ksm_service                  
 
 #暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求[有一些用例需要使用gluster的都已经注释掉]
 #libvirt:vcpu_hotplug                #错误太多，未修正，4PASS,19FAIL
@@ -169,7 +170,6 @@ libvirt:virt-top                     #源上添加了virt-top安装包
 #系统不支持的测试模块
 #libvirt:perf_kvm                     #我们的源上缺少fuse-sshfs，注释掉模块
 #libvirt:pci_passthrough              #系统不支持
-#libvirt:ksm_service                  #缺少ksmtuned服务
 #libvirt:timer_management             #不支持kvmclock
 #libvirt:virsh_blockresize            #7SKIP，qed_type不支持；15FAIL pci.0不支持hotplug 
 #libvirt:virsh_create_lxc             #lxc不需要测试
