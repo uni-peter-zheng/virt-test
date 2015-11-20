@@ -16,8 +16,8 @@ image_name="/home/source/templet/redos-le1.1.5"
 export source_vm_image="/home/source/templet/redos-le1.1.5.qcow2"
 export source_vm_image_raw="/home/source/templet/redos-le1.1.5.img"
 export backup_vm_image="/home/source/templet-bck/redos-le1.1.5.qcow2"
-export source_vm_image_raw="/home/source/templet-bck/redos-le1.1.5.img"
-BLOCK_DEVICE="dev/sdi" #填写host上可用的空物理盘/DEV/EXAMPLE
+export backup_vm_image_raw="/home/source/templet-bck/redos-le1.1.5.img"
+BLOCK_DEVICE="/dev/sdi" #填写host上可用的空物理盘/DEV/EXAMPLE
 
 
 export CONFIG_DIR=$(pwd)
@@ -283,6 +283,8 @@ install()
 {
 	echo "###########  INSTALL RPMS FOR　TESTS  ##########"
 	echo
+	yum install virt-top -y
+	yum install ksm -y
 	yum install iscsi* -y
     	yum install targetcli* -y
     	yum install targetd -y
