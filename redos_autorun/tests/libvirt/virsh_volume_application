@@ -7,7 +7,8 @@
 #attach的原用例是热插拔，我换成冷插拔
 type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.dir  
 type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.disk  
-type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.fs
-type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.logical 
+#由于系统的磁盘资源老是不能很好地释放，导致测试结果不稳定
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.fs
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.logical 
 type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.netfs 
 
