@@ -12,7 +12,7 @@ type_specific.io-github-autotest-libvirt.virsh.domcontrol.error_test.hex_id_opti
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.error_test.invalid_id_option 
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.error_test.unexpect_option 
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.error_test.invalid_uuid_option 
-type_specific.io-github-autotest-libvirt.virsh.domcontrol.error_test.shut_off_option 
+#type_specific.io-github-autotest-libvirt.virsh.domcontrol.error_test.shut_off_option 
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.error_test.invalid_option 
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.error_test.readonly_with_invalid_option 
 
