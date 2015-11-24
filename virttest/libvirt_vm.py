@@ -2342,6 +2342,9 @@ class VM(virt_vm.BaseVM):
         """
         session = self.wait_for_login()
         try:
+	    #clean the yum cache
+	    cmd_clean = "rm -rf /var/cache/yum/*" 
+	    status, output = session.cmd_status_output(cmd_clean)
             # Install the package if it does not exists
             cmd = "rpm -q %s || yum install -y %s" % (name, name)
             status, output = session.cmd_status_output(cmd, timeout=300)
@@ -2396,7 +2399,7 @@ class VM(virt_vm.BaseVM):
             self.start()
 
         self.install_package('qemu-guest-agent')
-
+	
         session = self.wait_for_login()
 
         def _is_ga_running():
