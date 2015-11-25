@@ -1,6 +1,6 @@
 
-#type_specific.io-github-autotest-libvirt.virt_xml_validate.domain 
-#type_specific.io-github-autotest-libvirt.virt_xml_validate.domainsnapshot 
+type_specific.io-github-autotest-libvirt.virt_xml_validate.domain 
+#type_specific.io-github-autotest-libvirt.virt_xml_validate.domainsnapshot  #创建完镜像不移除，导致后面用例undefine失败
 type_specific.io-github-autotest-libvirt.virt_xml_validate.network 
 type_specific.io-github-autotest-libvirt.virt_xml_validate.storagepool 
 type_specific.io-github-autotest-libvirt.virt_xml_validate.storagevol 
