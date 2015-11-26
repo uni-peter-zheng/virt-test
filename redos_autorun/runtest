@@ -459,7 +459,7 @@ run_test()
 			pre_script $class $module $testcase_name
 			echo "" > "$TMP_FILE"
 			start_time=$(date +%s)
-			`${run_cmd}  2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED" > "$TMP_FILE" &`
+			`${run_cmd} </dev/null 2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED" > "$TMP_FILE" &`
 			i=1
 			for (( ; i <= $TIMEOUT_LIMIT; i = i + 1))
 			do
