@@ -65,15 +65,15 @@ type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.gu
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.timeout_option.valid_domname 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.timeout_option.valid_domid 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.timeout_option.valid_domuuid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.pretty_option.valid_domname 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.pretty_option.valid_domid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.pretty_option.valid_domuuid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.pretty_option.valid_domname 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.pretty_option.valid_domid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.pretty_option.valid_domuuid 
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.async_option.valid_domname 
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.async_option.valid_domid 
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.async_option.valid_domuuid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.block_option.valid_domname 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.block_option.valid_domid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.block_option.valid_domuuid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.block_option.valid_domname 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.block_option.valid_domid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.min_minus_one_id.block_option.valid_domuuid 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.normal_id.non_option.valid_domname 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.normal_id.non_option.valid_domid 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.normal_id.non_option.valid_domuuid 
@@ -119,6 +119,7 @@ type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.gu
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync_extra.normal_id.block_option.valid_domname 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync_extra.normal_id.block_option.valid_domid 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync_extra.normal_id.block_option.valid_domuuid 
+#Guest agent disappeared while executing command
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.non_option.valid_domname 
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.non_option.valid_domid 
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.non_option.valid_domuuid 
@@ -131,9 +132,9 @@ type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.gu
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.async_option.valid_domname 
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.async_option.valid_domid 
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.async_option.valid_domuuid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.block_option.valid_domname 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.block_option.valid_domid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.block_option.valid_domuuid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.block_option.valid_domname 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.block_option.valid_domid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_shutdown.block_option.valid_domuuid 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_ping.guest_cpu_busy.non_option.valid_domname 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_ping.guest_cpu_busy.non_option.valid_domid 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_ping.guest_cpu_busy.non_option.valid_domuuid 
@@ -176,13 +177,13 @@ type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.gu
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fstrim.async_option.valid_domname 
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fstrim.async_option.valid_domid 
 #type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fstrim.async_option.valid_domuuid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fstrim.block_option.valid_domname 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fstrim.block_option.valid_domid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fstrim.block_option.valid_domuuid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.non_option.valid_domname 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.non_option.valid_domid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.non_option.valid_domuuid 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.timeout_option.valid_domname 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fstrim.block_option.valid_domname 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fstrim.block_option.valid_domid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fstrim.block_option.valid_domuuid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.non_option.valid_domname 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.non_option.valid_domid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.non_option.valid_domuuid 
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.timeout_option.valid_domname 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.timeout_option.valid_domid 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.timeout_option.valid_domuuid 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.pretty_option.valid_domname 
@@ -451,7 +452,7 @@ type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.inv
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.invalid_options.guest_cmd_invalid.argument.guest_fsfreeze_status 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.vm_shutoff 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.vm_paused 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.no_ga 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.vm_halt 
-#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.vm_pm_suspend 
+#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.no_ga   #
+type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.vm_halt 
+#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.error_test.vm_pm_suspend  #Bug: https://bugzilla.redhat.com/show_bug.cgi?id=853673
 
