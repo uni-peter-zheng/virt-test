@@ -12,12 +12,12 @@ export main_vms_raw="autotest-raw"
 localhost="RedOS-5"
 remotehost="RedOS-4"
 bridge="br0"
-image_name="/home/source/templet/redos-le1.1.5"
-export source_vm_image="/home/source/templet/redos-le1.1.5.qcow2"
-export source_vm_image_raw="/home/source/templet/redos-le1.1.5.img"
-export backup_vm_image="/home/source/templet-bck/redos-le1.1.5.qcow2"
-export backup_vm_image_raw="/home/source/templet-bck/redos-le1.1.5.img"
-BLOCK_DEVICE="/dev/sdi" #填写host上可用的空物理盘/DEV/EXAMPLE
+image_name="/home/source/templet/redos-le1-1-5"
+export source_vm_image="/home/source/templet/redos-le1-1-5.qcow2"
+export source_vm_image_raw="/home/source/templet/redos-le1-1-5.img"
+export backup_vm_image="/home/source/templet-bck/redos-le1-1-5.qcow2"
+export backup_vm_image_raw="/home/source/templet-bck/redos-le1-1-5.img"
+BLOCK_DEVICE="/DEV/EXAMPLE" #填写host上可用的空物理盘/dev/sdf
 
 
 export CONFIG_DIR=$(pwd)
