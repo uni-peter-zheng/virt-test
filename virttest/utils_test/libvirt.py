@@ -916,11 +916,13 @@ class PoolVolumeTest(object):
             utils.run(cmd)
         elif pool_type == "logical":
             logical_device = device_name
-            cmd_pv = "pvcreate %s" % logical_device
+            cmd_pv = "y | pvcreate %s" % logical_device
+	    # cmd_pv = "pvcreate %s" % logical_device
             vg_name = "vg_%s" % pool_type
             cmd_vg = "vgcreate %s %s" % (vg_name, logical_device)
             extra = "--source-name %s" % vg_name
-            utils.run(cmd_pv)
+            os.system(cmd_pv)
+	    # utils.run(cmd_pv)
             utils.run(cmd_vg)
             # Create a small volume for verification
             # And VG path will not exist if no any volume in.(bug?)
