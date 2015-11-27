@@ -17,7 +17,7 @@ export source_vm_image="/home/source/templet/redos-le1-1-5.qcow2"
 export source_vm_image_raw="/home/source/templet/redos-le1-1-5.img"
 export backup_vm_image="/home/source/templet-bck/redos-le1-1-5.qcow2"
 export backup_vm_image_raw="/home/source/templet-bck/redos-le1-1-5.img"
-BLOCK_DEVICE="/DEV/EXAMPLE" #填写host上可用的空物理盘/dev/sdf
+BLOCK_DEVICE="/dev/sdf" #填写host上可用的空物理盘/dev/sdf
 
 
 export CONFIG_DIR=$(pwd)
@@ -226,7 +226,12 @@ specialcfg()
         echo "set block_device for testcases:virsh_volume_application!"
         echo
         sed -i "s|^    block_device =.*$|    block_device = $BLOCK_DEVICE|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/volume/virsh_volume_application.cfg
-	 
+	
+        #block_device =“” 为用例storage_discard指定磁盘设备
+        echo "set discard_device for testcases:storage_discard!"
+        echo
+        sed -i "s|^    discard_device =.*$|    discard_device = $BLOCK_DEVICE|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/storage_discard.cfg
+         
     	#为用例pool_create创建pool.xml
     	echo "build pool.xml for testcases:virsh_pool_create!"
     	echo
