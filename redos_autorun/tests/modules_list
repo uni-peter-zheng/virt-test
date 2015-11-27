@@ -91,7 +91,7 @@ libvirt:virsh_nwfilter_list
 libvirt:virsh_nwfilter_undefine
 libvirt:virsh_dumpxml
 libvirt:virsh_save_image_define
-libvirt:virsh_change_media          # 需要mkisofs,安装包genisoimage ；注释掉ide和floppy>的用例
+libvirt:virsh_change_media          #注释掉ide和floppy的用例
 libvirt:virsh_domif_setlink_getlink
 libvirt:storage_pool
 libvirt:virsh_destory  
@@ -165,18 +165,19 @@ libvirt:attach_device                #注释200个用例 PCI hotplug
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
 #libvirt:virt_what                   #virt-what功能无效
+#libvirt:vfio                        #测试用例不支持ppc的vfio测试
 
 #系统不支持的测试模块
 #libvirt:vcpu_hotplug                 #QEMU command 'cpu-add': Not supported
 #libvirt:perf_kvm                     #我们的源上缺少fuse-sshfs，注释掉模块
-#libvirt:pci_passthrough              #系统不支持
 #libvirt:virsh_blockresize            #7SKIP，qed_type不支持；15FAIL pci.0不支持hotplug 
 #libvirt:virsh_create_lxc             #lxc不需要测试
 #libvirt:virsh_dompmsuspend           #需要virsh capcabilities的xml提供能力支持才行 setting ACPI S3 not supported
 #libvirt:virsh_schedinfo_xen_credit   #xen的虚拟化测试，用不到
 #libvirt:virsh_nodesuspend            #不支持nodesuspend
-#libvirt:vfio                         #Please add 'intel_iommu=on' to kernel and reboot to effect it 
-#参考：http://wiki.libvirt.org/page/NPIV_in_libvirt https://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/chap-Virtualization-PCI_passthrough.html
+
+#nodedev和pci_passthrough参考：http://wiki.libvirt.org/page/NPIV_in_libvirt https://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/chap-Virtualization-PCI_passthrough.html
+#libvirt:pci_passthrough              #系统不支持
 #libvirt:virsh_nodedev_create_destroy #需要HBA设备
 #libvirt:virsh_nodedev_detach_reattach #需要在配置文件设置用于测试detach的PCI总线，手动测试虚拟机的每条PCI总线在detach时都会报错。
 #libvirt:virsh_nodedev_reset          #需要设置测试使用的special_device，用例会自动检索host中的pci设备，由于我们host上的设备都不能resetable，所以用例报错
