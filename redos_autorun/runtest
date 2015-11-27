@@ -499,10 +499,10 @@ run_test()
 				diff -u "$VM_BACKUP_XML_FILE" "$VM_XML_FILE" >> "$CURRENT_XMLDIFF_LOG_FILE"
 				echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
 			fi
-			
+	
 			if [ "$class" = "libvirt" ]; then
 				libvirt_vm_log=`virsh list --all | grep "\<$LIBVIRT_VM_NAME\>" | awk '{print $3}'`
-				if [ x${libvirt_vm_log} != xrunning ] && [ x${libvirt_vm_log} != xshut ];then
+				if [ x${libvirt_vm_log} != xrunning ] && [ x${libvirt_vm_log} != xshut ] && [ x${libvirt_vm_log} != xpaused ];then
 					echo -e "warnning test $class:$testcase_name lost vm:$LIBVIRT_VM_NAME" >> "$CURRENT_XMLDIFF_LOG_FILE"
 					virsh list --all >>"$CURRENT_XMLDIFF_LOG_FILE"
 					echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
