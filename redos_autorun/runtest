@@ -458,7 +458,7 @@ run_test()
 			backup_vm_xml
 			if [ "$class" = "qemu" ]; then
 				libvirt_vm_log=`virsh list | grep "\<$LIBVIRT_VM_NAME\>" | awk '{print $2}'`
-				if [ -n ${libvirt_vm_log} ];then
+				if [ ! -z ${libvirt_vm_log} ];then
 					echo -e "warnning:it is wrong for libvirt to running vm:$LIBVIRT_VM_NAME" >> "$CURRENT_DETAIL_LOG_FILE"
 					virsh list --all >>"$CURRENT_DETAIL_LOG_FILE"
 					virsh destroy $LIBVIRT_VM_NAME
