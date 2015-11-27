@@ -491,7 +491,16 @@ run_test()
 				diff -u "$VM_BACKUP_XML_FILE" "$VM_XML_FILE" >> "$CURRENT_XMLDIFF_LOG_FILE"
 				echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
 			fi
-
+			
+			if [ "$class" = "libvirt" ]; then
+				libvirt_vm_log=`virsh list --all | grep "\<$LIBVIRT_VM_NAME\>" | awk '{print $3}'`
+				if [ x${libvirt_vm_log} != xrunning ] && [ x${libvirt_vm_log} != xshut ];then
+					echo -e "warnning test $class:$testcase_name lost vm:$LIBVIRT_VM_NAME" >> "$CURRENT_XMLDIFF_LOG_FILE"
+					virsh list --all >>"$CURRENT_XMLDIFF_LOG_FILE"
+					echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
+				fi
+			fi
+			
 			if [ "$PASS" = "1" ]; then
 				printf "\033[32m %-20s \033[0m\n" "PASS"
 				echo -e "PASS\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
@@ -508,6 +517,7 @@ run_test()
 				printf "\033[34m %-20s \033[0m\n" "SKIP"
 				echo -e "SKIP\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
 				SKIP_COUNT=$(($SKIP_COUNT+1))
+				restore_env
 			else
 				printf "\033[31m %-20s \033[0m\n" "FAIL"
 				echo -e "FAIL\t$TIME\t$class:$testcase_name"" { ""$params"" }" >> "$CURRENT_LOG_FILE"
