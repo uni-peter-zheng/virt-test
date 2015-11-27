@@ -139,9 +139,7 @@ libvirt:virsh_define_undefine
 libvirt:virsh_domfstrim
 libvirt:virsh_console         
 libvirt:virsh_event                 #注释8个用例
-#比较耗时间的用例
 
-#比较容易出问题的模块放到最后
 libvirt:guest_numa                  #注释掉2M，1G的20个用例
 libvirt:snapshot                    #注释掉150个用例 PCI hotplug
 libvirt:virsh_blockcommit           #注释掉50个用例 gluster
@@ -153,23 +151,23 @@ libvirt:virsh_domblkerror            #将热插拔换成冷插拔
 libvirt:virt-top                     #源上添加了virt-top安装包
 libvirt:ksm_service  
 libvirt:timer_management             #部分用例报错Unable to find PowerPC CPU definition，不支持xml插入kvmclock ;注释13个用例
-
 qemu:qemu-important                  #注释250个用例
-libvirt:virsh_blockcopy              #在libvirt-1.2.9中测试错误很多，在libvirt-1.2.19测试通过率极高，注释25个用例
-libvirt:attach_device                #注释200个用例 PCI hotplug
 
 #新增用例，可能容易出问题，放到最后面
-             
+libvirt:storage_discard             #300s  指定discard_device为host上一个可用磁盘  
+libvirt:network_bandwidth           #添加脚本network_bandwidth，把这组用例测试虚拟机网络设置为default
 
-#暂时跳过的模块，错误太多，还未修正；测试环境不满足，网络，磁盘，安装包等方面有特殊要求[有一些用例需要使用gluster的都已经注释掉]
-#libvirt:vcpu_hotplug                #错误太多，未修正，4PASS,19FAIL
-#libvirt:storage_discard             #错误太多，未修正，5PASS,24FAIL
-#libvirt:network_bandwidth           #网络用例 需要把虚拟机网络设置为default形式，我们现在默认使用br0，暂时跳过这组用例
+超级耗时的用例
+libvirt:virsh_blockcopy              #注释25个用例
+libvirt:attach_device                #注释200个用例 PCI hotplug         
+
+#暂时跳过的模块，测试环境不满足
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
 #libvirt:virt_what                   #virt-what功能无效
 
 #系统不支持的测试模块
+#libvirt:vcpu_hotplug                 #QEMU command 'cpu-add': Not supported
 #libvirt:perf_kvm                     #我们的源上缺少fuse-sshfs，注释掉模块
 #libvirt:pci_passthrough              #系统不支持
 #libvirt:virsh_blockresize            #7SKIP，qed_type不支持；15FAIL pci.0不支持hotplug 
