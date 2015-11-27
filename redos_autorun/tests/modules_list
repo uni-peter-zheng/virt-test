@@ -157,7 +157,7 @@ qemu:qemu-important                  #注释250个用例
 libvirt:storage_discard             #300s  指定discard_device为host上一个可用磁盘  
 libvirt:network_bandwidth           #添加脚本network_bandwidth，把这组用例测试虚拟机网络设置为default
 
-超级耗时的用例
+#超级耗时的用例
 libvirt:virsh_blockcopy              #注释25个用例
 libvirt:attach_device                #注释200个用例 PCI hotplug         
 
