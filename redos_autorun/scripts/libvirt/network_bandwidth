@@ -6,15 +6,13 @@
 
 prepare:type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.network()
 {
-      virsh attach-interface --domain $main_vms --type network --source default --model virtio --config
       virsh detach-interface --domain $main_vms --type bridge --config
-      rm -rf $CONFIG_DIR/backends/libvirt/env 
+      virsh attach-interface --domain $main_vms --type network --source default --model virtio --mac $mac_nic1 --config
 }
 restore:type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.portgroup()
 {
-      virsh attach-interface --domain $main_vms --type bridge --source br0 --model virtio --config
       virsh detach-interface --domain $main_vms --type network --config
-      rm -rf $CONFIG_DIR/backends/libvirt/env
+      virsh attach-interface --domain $main_vms --type bridge --source br0 --model virtio --mac $mac_nic1 --config
 }
 # Add function in here
 
