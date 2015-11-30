@@ -916,7 +916,7 @@ class PoolVolumeTest(object):
             utils.run(cmd)
         elif pool_type == "logical":
             logical_device = device_name
-            cmd_pv = "y | pvcreate %s" % logical_device
+            cmd_pv = "yes | pvcreate %s" % logical_device
 	    # cmd_pv = "pvcreate %s" % logical_device
             vg_name = "vg_%s" % pool_type
             cmd_vg = "vgcreate %s %s" % (vg_name, logical_device)
