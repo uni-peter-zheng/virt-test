@@ -17,7 +17,7 @@ export source_vm_image="/home/source/templet/redos-le1-1-5.qcow2"
 export source_vm_image_raw="/home/source/templet/redos-le1-1-5.img"
 export backup_vm_image="/home/source/templet-bck/redos-le1-1-5.qcow2"
 export backup_vm_image_raw="/home/source/templet-bck/redos-le1-1-5.img"
-BLOCK_DEVICE="/dev/sdf" #填写host上可用的空物理盘/dev/sdf
+BLOCK_DEVICE="/DEV/EXAMPLE" #填写host上可用的空物理盘/dev/sdf
 
 
 export CONFIG_DIR=$(pwd)
@@ -33,7 +33,7 @@ QEMU_BASE_PATH=$CONFIG_DIR/backends/qemu/cfg/base.cfg
 
 #
 result_of_domiflist=`virsh domiflist $main_vms`
-mac_nic1=`echo $result_of_domiflist|cut -d ' ' -f 11`
+export mac_nic1=`echo $result_of_domiflist|cut -d ' ' -f 11`
 tmp=`mount |grep boot`
 ENTER_YOUR_AVAILABLE_PARTITION=${tmp:5:5} #为用例libvirt_scsi指定测试分区为boot分区
 mkdir $CONFIG_DIR/shared/pool >/dev/null 2>&1
@@ -102,6 +102,7 @@ export source_vm_image=$source_vm_image
 export source_vm_image_raw=$source_vm_image_raw
 export backup_vm_image=$backup_vm_image
 export source_vm_image_raw=$source_vm_image_raw
+export mac_nic1=$mac_nic1
 EOF
 	#修改redos_autorun的配置
     sed -i "s|^virt-test.*$|virt-test = "$CONFIG_DIR/"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
