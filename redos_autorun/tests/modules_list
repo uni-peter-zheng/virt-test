@@ -3,23 +3,23 @@
 # Module name corresponding files in ./libvirt or ./qemu
 
 libvirt:virsh_help
-libvirt:virsh_cpu_compare  #virsh capavilities内缺少host的cpu features列表，所以凡是delete和modefy features的用例都FAIL 或SKIP
+libvirt:virsh_cpu_compare  #virsh capavilities内缺少host的cpu features列表，所以凡是delete和modefy features的用例都FAIL 或SKIP  bug248
 libvirt:virsh_cpu_stats
 libvirt:libvirt_scsi
 libvirt:virsh_cpu_baseline
 libvirt:virsh_domname
-libvirt:virsh_numatune      #注释掉部分失败的用例
-libvirt:virsh_undefine      #注释两个用例
+libvirt:virsh_numatune      
+libvirt:virsh_undefine      
 libvirt:virsh_domblkstat    #注释了一个在新版本无效的用例
 libvirt:virsh_domifstat
 libvirt:virsh_sysinfo
-libvirt:virsh_nodecpumap    #注释一个用例
-libvirt:virsh_cpu_models    #注释两个用例
-libvirt:virsh_node_memtune  # 1 FAIL 已经注释
+libvirt:virsh_nodecpumap    #注释一个用例 bug318
+libvirt:virsh_cpu_models    
+libvirt:virsh_node_memtune  
 libvirt:virsh_nodememstats
 
-libvirt:virt_xml_validate           #4s    注释了6个用例
-libvirt:virsh_freepages             #6s    注释一个用例
+libvirt:virt_xml_validate           #4s    注释了4个用例 测试代码写的有问题，还没修正
+libvirt:virsh_freepages             
 libvirt:virsh_setmaxmem             #10s   kvm不支持虚拟机运行时修改最大内存，注释24个用例
 libvirt:virsh_qemu_attach           #15s   注释掉两个用例
 libvirt:virsh_domstate              #15s   
