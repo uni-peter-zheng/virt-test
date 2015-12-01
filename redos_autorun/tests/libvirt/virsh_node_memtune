@@ -10,7 +10,7 @@ type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.get
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_value.shm_pages_to_scan 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_value.shm_sleep_millisecs 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_value.shm_merge_across_nodes.invalid_number 
-#type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_value.shm_merge_across_nodes.invalid_operation 
+type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_value.shm_merge_across_nodes.invalid_operation 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_options.option.shm_pages_to_scan 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_options.option.shm_sleep_millisecs 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_options.option.shm_merge_across_nodes 
