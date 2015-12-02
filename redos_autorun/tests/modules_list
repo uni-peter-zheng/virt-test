@@ -15,7 +15,6 @@ libvirt:virsh_domifstat
 libvirt:virsh_sysinfo
 libvirt:virsh_nodecpumap    #注释一个用例 bug318
 libvirt:virsh_cpu_models    
-libvirt:virsh_node_memtune  
 libvirt:virsh_nodememstats
 
 libvirt:virt_xml_validate           #4s    注释了4个用例 测试代码写的有问题，还没修正
