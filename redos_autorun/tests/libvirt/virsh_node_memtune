@@ -4,7 +4,7 @@ type_specific.io-github-autotest-libvirt.virsh.node_memtune.positive_testing.set
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.positive_testing.set_node_memory_parameter.shm_pages_to_scan.zero 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.positive_testing.set_node_memory_parameter.shm_sleep_millisecs.normal 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.positive_testing.set_node_memory_parameter.shm_sleep_millisecs.zero 
-type_specific.io-github-autotest-libvirt.virsh.node_memtune.positive_testing.set_node_memory_parameter.shm_merge_across_nodes.disable 
+#type_specific.io-github-autotest-libvirt.virsh.node_memtune.positive_testing.set_node_memory_parameter.shm_merge_across_nodes.disable  #bug288
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.positive_testing.set_node_memory_parameter.shm_merge_across_nodes.enable 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.get_node_memory_parameter 
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.negative_testing.set_node_memory_parameter.invalid_value.shm_pages_to_scan 
