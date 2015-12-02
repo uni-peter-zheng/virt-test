@@ -1,5 +1,5 @@
 
-#type_specific.io-github-autotest-libvirt.virsh.capabilities.no_option 
+#type_specific.io-github-autotest-libvirt.virsh.capabilities.no_option          #系统不支持suspend
 type_specific.io-github-autotest-libvirt.virsh.capabilities.unexpect_option 
 type_specific.io-github-autotest-libvirt.virsh.capabilities.with_libvirtd_stop 
 
