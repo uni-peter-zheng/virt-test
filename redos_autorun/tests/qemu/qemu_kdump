@@ -1,7 +1,7 @@
 
 io-github-autotest-qemu.kdump.one_vm.basic.default
 io-github-autotest-qemu.kdump.one_vm.basic.nmi
-io-github-autotest-qemu.kdump.one_vm.with_stress.netperf_stress.default
+#io-github-autotest-qemu.kdump.one_vm.with_stress.netperf_stress.default  #小端编译netperf需要./configure --build=powerpc64le-redhat-linux-gnu
 io-github-autotest-qemu.kdump.one_vm.with_stress.netperf_stress.nmi
 io-github-autotest-qemu.kdump.one_vm.with_stress.io_stress.default
 io-github-autotest-qemu.kdump.one_vm.with_stress.io_stress.nmi

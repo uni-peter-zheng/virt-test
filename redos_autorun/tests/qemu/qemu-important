@@ -160,7 +160,7 @@ type_specific.io-github-autotest-qemu.qcow2perf.commit.cache_writethrough
 type_specific.io-github-autotest-qemu.virtio_port_login.virtio_serial
 io-github-autotest-qemu.yum_update
 io-github-autotest-qemu.kdump.one_vm.basic.default
-io-github-autotest-qemu.kdump.one_vm.with_stress.netperf_stress.default
+#io-github-autotest-qemu.kdump.one_vm.with_stress.netperf_stress.default  #–°∂À±‡“Înetperf–Ë“™./configure --build=powerpc64le-redhat-linux-gnu
 io-github-autotest-qemu.kdump.one_vm.with_stress.io_stress.default
 io-github-autotest-qemu.io-github-autotest-qemu.gluster_boot_snap_boot
 io-github-autotest-qemu.io-github-autotest-qemu.build
