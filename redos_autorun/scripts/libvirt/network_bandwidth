@@ -8,11 +8,13 @@ prepare:type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.netwo
 {
       virsh detach-interface --domain $main_vms --type bridge --config
       virsh attach-interface --domain $main_vms --type network --source default --model virtio --mac $mac_nic1 --config
+      rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
 }
 restore:type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.portgroup()
 {
       virsh detach-interface --domain $main_vms --type network --config
       virsh attach-interface --domain $main_vms --type bridge --source br0 --model virtio --mac $mac_nic1 --config
+       rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
 }
 # Add function in here
 
