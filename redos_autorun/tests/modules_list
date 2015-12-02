@@ -20,21 +20,21 @@ libvirt:virsh_nodememstats
 libvirt:virt_xml_validate           #4s    注释了4个用例 测试代码写的有问题，还没修正
 libvirt:virsh_freepages             
 libvirt:virsh_setmaxmem             #10s   kvm不支持虚拟机运行时修改最大内存，注释24个用例
-libvirt:virsh_qemu_attach           #15s   注释掉两个用例
+libvirt:virsh_qemu_attach           #15s   注释掉两个用例 错误原因不好排查
 libvirt:virsh_domstate              #15s   
-libvirt:virsh_capabilities          #25s   注释一个用例
-libvirt:virsh_domblkinfo            #25s   block用例  1 FAIL 已经注释
+libvirt:virsh_capabilities          #25s   注释一个用例，系统不支持suspend    bug 126
+libvirt:virsh_domblkinfo            #25s   block用例  1FAIL pci.0不支持hotplug  bug243
 
 libvirt:virsh_maxvcpus
 libvirt:virsh_itself
-libvirt:libvirt_qemu_cmdline        #2 FAIL redhat有对应bug ：https://bugzilla.redhat.com/show_bug.cgi?format=multiple&id=1235511
+libvirt:libvirt_qemu_cmdline        #2 FAIL  注释两个用例 bug 320
 libvirt:virsh_domdisplay            
 libvirt:virsh_connect               #1 SKIP 缺少xen驱动
-libvirt:virsh_emulatorpin           #注释4个用例
-libvirt:virsh_memtune               #注释两个用例
+libvirt:virsh_emulatorpin           #注释4个用例  源码不适合我们的机器，cpu_list 格式不一样
+libvirt:virsh_memtune               #注释两个用例 bug288 
 libvirt:virsh_iface_edit
 libvirt:virsh_iface_trans
-libvirt:virt-clone                  #部分用例测试有错误，暂时注释掉2个用例
+libvirt:virt-clone                  #暂时注释掉1个用例，IndexError: list index out of range
 libvirt:virsh_vcpuinfo
 libvirt:virsh_uri
 libvirt:virsh_version
@@ -42,12 +42,12 @@ libvirt:virsh_domstats
 libvirt:usb_hotplug                 #部分用例需要添加压力测试工具，注释掉10个用例
 libvirt:virsh_domuuid
 libvirt:virsh_domxml_from_native
-libvirt:virsh_domxml_to_native      #一个用例注释
-libvirt:virsh_vcpupin               #部分用例需要多台虚拟机，部分用例还不支持ppc的测试，先注释掉，注释7个用例  
+libvirt:virsh_domxml_to_native      
+libvirt:virsh_vcpupin               #部分用例需要多台虚拟机，部分用例不好支持ppc的测试，还有部分是由于cpu_list格式的原因，先注释掉，注释7个用例  
 libvirt:virsh_vncdisplay
 libvirt:virsh_domcapabilities       #bug 295
-libvirt:virsh_nodecpustats          #一个用例注释
-libvirt:virsh_nodeinfo              #1 FAIL，已经注释
+libvirt:virsh_nodecpustats          #一个用例注释 
+libvirt:virsh_nodeinfo              #1 FAIL，已经注释  virsh nodecpustats计算时间比cat /proc/uptime 稍大
 
 libvirt:virsh_update_device         #35s    device用例 不支持ide floppy设备
 libvirt:virsh_suspend               #40s    注释两个用例
