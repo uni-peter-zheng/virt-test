@@ -24,7 +24,7 @@ libvirt:virsh_setmaxmem             #10s   kvm不支持虚拟机运行时修改�
 libvirt:virsh_qemu_attach           #15s   注释掉两个用例
 libvirt:virsh_domstate              #15s   
 libvirt:virsh_capabilities          #25s   注释一个用例
-libvirt:virsh_domblkinfo            #25s    block用例  1 FAIL 已经注释
+libvirt:virsh_domblkinfo            #25s   block用例  1 FAIL 已经注释
 
 libvirt:virsh_maxvcpus
 libvirt:virsh_itself
@@ -46,14 +46,14 @@ libvirt:virsh_domxml_from_native
 libvirt:virsh_domxml_to_native      #一个用例注释
 libvirt:virsh_vcpupin               #部分用例需要多台虚拟机，部分用例还不支持ppc的测试，先注释掉，注释7个用例  
 libvirt:virsh_vncdisplay
-libvirt:virsh_domcapabilities
+libvirt:virsh_domcapabilities       #bug 295
 libvirt:virsh_nodecpustats          #一个用例注释
-libvirt:virsh_nodeinfo              # 1 FAIL，已经注释
+libvirt:virsh_nodeinfo              #1 FAIL，已经注释
 
 libvirt:virsh_update_device         #35s    device用例 不支持ide floppy设备
 libvirt:virsh_suspend               #40s    注释两个用例
 libvirt:virsh-attach-detach-interface #40s  device用例 注释部分用例
-libvirt:virsh_qemu_monitor_command  #45s   修改源码，增加测试前判断虚机状态语句
+libvirt:virsh_qemu_monitor_command  #45s    修改源码，增加测试前判断虚机状态语句
 libvirt:virsh_detach_device         #50s    注释部分用例
 
 libvirt:virsh_save_image_edit       #注释一个用例
@@ -64,7 +64,7 @@ libvirt:virsh_net_autostart
 libvirt:virsh_net_create
 libvirt:virsh_net_define_undefine  
 libvirt:virsh_net_destroy
-libvirt:virsh_net_dhcp_leases        #一个报错是因为PCI hotplug，另一个是已确认bug，不检测mac地址合法性
+libvirt:virsh_net_dhcp_leases        #一个报错是因为PCI hotplug  bug243，不检测mac地址合法性  bug239
 libvirt:virsh_net_dumpxml
 libvirt:virsh_net_edit
 libvirt:virsh_net_info
@@ -97,7 +97,7 @@ libvirt:storage_pool
 libvirt:virsh_destory  
 libvirt:virsh_vcpucount             #注释两个用例
 libvirt:virsh_vol_clone_wipe        #TestNAError: Option --prealloc-metadata is not supported；全部8个SKIP都是这个原因
-libvirt:virsh_vol_create_from  
+libvirt:virsh_vol_create_from       #bug 289
 libvirt:virsh_vol_create            #注释5个用例
 libvirt:virsh_vol_download_upload   #修改源码将md5校验去掉
 libvirt:virsh_vol_resize            #四个FAIL是因为在resize后，capacity大小和预期一致，而allocation大小测试不加--shrink，表示不压缩，而我们的系统会默认进行压缩。 修改源码将resize之后的size check注释之后可PASS
@@ -107,12 +107,12 @@ libvirt:virsh_autostart
 libvirt:virsh_domblklist
 libvirt:virsh_dump                  #注释两个用例
 libvirt:virsh_edit
-libvirt:virsh_qemu_agent_command    #不支持--aysnc选项,修改max_id和min_id       共注释80个用例
+libvirt:virsh_qemu_agent_command    #不支持--aysnc选项,shutdown有问题  共注释80个用例  bug312 bug313
 
 libvirt:virsh_screenshot            #55s    注释18个用例  rhel的系统跳过Multiple screen
 libvirt:hugepage                    #75s    注释5个用例 需要测试工具unixbench等 
-libvirt:virsh_setmem                #80s
-libvirt:virsh-attach-detach-disk    #80s    device用例 注释28个用例 PCI热插拔问题
+libvirt:virsh_setmem                #80s    bug303
+libvirt:virsh-attach-detach-disk    #80s    device用例 注释28个用例 PCI热插拔问题  bug243
 
 libvirt:virsh_blockjob
 libvirt:virsh_reboot
@@ -140,8 +140,8 @@ libvirt:virsh_domfstrim
 libvirt:virsh_console         
 libvirt:virsh_event                 #注释8个用例
 
-libvirt:guest_numa                  #注释掉2M，1G的20个用例
-libvirt:snapshot                    #注释掉150个用例 PCI hotplug
+#libvirt:guest_numa                  #注释掉2M，1G的20个用例    bug288
+libvirt:snapshot                    #注释掉150个用例 PCI hotplug  bug243
 libvirt:virsh_blockcommit           #注释掉50个用例 gluster
 libvirt:virstual_disks              #需要多台虚机同时测试，已经使用脚本virstual_disks配置，注释掉2个用例                      
 libvirt:virsh_volume_application    #注释掉安装的5个用例
@@ -154,30 +154,30 @@ libvirt:timer_management             #部分用例报错Unable to find PowerPC C
 qemu:qemu-important                  #注释250个用例
 
 #新增用例，可能容易出问题，放到最后面
-libvirt:storage_discard             #300s  指定discard_device为host上一个可用磁盘  
+libvirt:storage_discard             #300s  指定discard_device为host上一个可用磁盘   fstrim_out_vm执行失败，注释10个用例
 libvirt:network_bandwidth           #添加脚本network_bandwidth，把这组用例测试虚拟机网络设置为default
 
 #超级耗时的用例
 libvirt:virsh_blockcopy              #注释25个用例
-libvirt:attach_device                #注释200个用例 PCI hotplug         
+libvirt:attach_device                #注释200个用例 PCI hotplug  bug243       
 
 #暂时跳过的模块，测试环境不满足
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
-#libvirt:virt_what                   #virt-what功能无效
+#libvirt:virt_what                   #virt-what功能无效  bug298
 #libvirt:vfio                        #测试用例不支持ppc的vfio测试
 
 #系统不支持的测试模块
 #libvirt:vcpu_hotplug                 #QEMU command 'cpu-add': Not supported
 #libvirt:perf_kvm                     #我们的源上缺少fuse-sshfs，注释掉模块
-#libvirt:virsh_blockresize            #7SKIP，qed_type不支持；15FAIL pci.0不支持hotplug 
+#libvirt:virsh_blockresize            #7SKIP，qed_type不支持；15FAIL pci.0不支持hotplug  bug243
 #libvirt:virsh_create_lxc             #lxc不需要测试
 #libvirt:virsh_dompmsuspend           #需要virsh capcabilities的xml提供能力支持才行 setting ACPI S3 not supported
 #libvirt:virsh_schedinfo_xen_credit   #xen的虚拟化测试，用不到
 #libvirt:virsh_nodesuspend            #不支持nodesuspend
 
 #nodedev和pci_passthrough参考：http://wiki.libvirt.org/page/NPIV_in_libvirt https://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/chap-Virtualization-PCI_passthrough.html
-#libvirt:pci_passthrough              #系统不支持
+#libvirt:pci_passthrough              #系统不支持    bug292
 #libvirt:virsh_nodedev_create_destroy #需要HBA设备
 #libvirt:virsh_nodedev_detach_reattach #需要在配置文件设置用于测试detach的PCI总线，手动测试虚拟机的每条PCI总线在detach时都会报错。
 #libvirt:virsh_nodedev_reset          #需要设置测试使用的special_device，用例会自动检索host中的pci设备，由于我们host上的设备都不能resetable，所以用例报错
