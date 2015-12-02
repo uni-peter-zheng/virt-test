@@ -12,7 +12,7 @@ type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.memory
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.memory_dump.elf_format 
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.memory_dump.kdump-zlib_format 
 #type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.memory_dump.kdump-lzo_format 
-type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.memory_dump.kdump-snappy_format 
+#type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.memory_dump.kdump-snappy_format #bug304 not support kdump-snappy
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.memory_crash_dump 
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.memory_bypass_cache_dump 
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.lzop_format_dump 
@@ -35,7 +35,7 @@ type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.memor
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.memory_dump.elf_format 
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.memory_dump.kdump-zlib_format 
 #type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.memory_dump.kdump-lzo_format 
-type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.memory_dump.kdump-snappy_format 
+#type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.memory_dump.kdump-snappy_format #bug304 not support kdump-snappy
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.memory_crash_dump 
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.memory_bypass_cache_dump 
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.lzop_format_dump 
