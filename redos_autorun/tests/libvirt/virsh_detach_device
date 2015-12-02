@@ -40,12 +40,12 @@ type_specific.io-github-autotest-libvirt.virsh.detach_device.error_test.no_targe
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_id.disk_test.block_type 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_id.disk_test.file_type 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_id.iface_test 
-type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_name.cdrom_test 
+#type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_name.cdrom_test 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_name.disk_test.block_type 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_name.disk_test.file_type 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_name.iface_test 
-type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_uuid.cdrom_test 
-type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_uuid.disk_test.block_type 
+#type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_uuid.cdrom_test 
+#type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_uuid.disk_test.block_type 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_uuid.disk_test.file_type 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_uuid.iface_test 
 #type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.vm_suspend.disk_test.block_type 
