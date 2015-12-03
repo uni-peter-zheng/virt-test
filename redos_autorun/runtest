@@ -510,6 +510,9 @@ run_test()
 				if [ "$SOURCE_VM" != "" ] && [ ! -f "$SOURCE_VM" ];then
 					echo -e "Error test $class:$testcase_name lost vm:$LIBVIRT_VM_NAME image" >> "$CURRENT_XMLDIFF_LOG_FILE"
 					echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
+					if [ -f "$BACKUP_VM" ];then
+						cp -f "$BACKUP_VM" "$SOURCE_VM"
+					fi
 				fi
 			fi
 			
