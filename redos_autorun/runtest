@@ -347,7 +347,7 @@ generate_cmd()
 restore_env()
 {
 	sleep 3
-	if [ "$BACKUP_VM" != "" ] && [ "$SOURCE_VM" != "" ] && [ -f "$BACKUP_VM" ] && [ -f "$SOURCE_VM" ]; then
+	if [ "$BACKUP_VM" != "" ] && [ "$SOURCE_VM" != "" ] && [ -f "$BACKUP_VM" ]; then
 		echo -e "Restore VM image" | tee -a "$CURRENT_DETAIL_LOG_FILE"
 		echo -e "Source vm image: $SOURCE_VM" >> "$CURRENT_DETAIL_LOG_FILE"
 		echo -e "Backup vm image: $BACKUP_VM" >> "$CURRENT_DETAIL_LOG_FILE"
@@ -505,6 +505,10 @@ run_test()
 				if [ x${libvirt_vm_log} != xrunning ] && [ x${libvirt_vm_log} != xshut ] && [ x${libvirt_vm_log} != xpaused ];then
 					echo -e "warnning test $class:$testcase_name lost vm:$LIBVIRT_VM_NAME" >> "$CURRENT_XMLDIFF_LOG_FILE"
 					virsh list --all >>"$CURRENT_XMLDIFF_LOG_FILE"
+					echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
+				fi
+				if [ "$SOURCE_VM" != "" ] && [ ! -f "$SOURCE_VM" ];then
+					echo -e "Error test $class:$testcase_name lost vm:$LIBVIRT_VM_NAME image" >> "$CURRENT_XMLDIFF_LOG_FILE"
 					echo -e "\n" >> "$CURRENT_XMLDIFF_LOG_FILE"
 				fi
 			fi
