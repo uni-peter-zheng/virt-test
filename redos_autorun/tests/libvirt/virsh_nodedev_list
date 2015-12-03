@@ -1,7 +1,7 @@
 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.no_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.tree_option 
-#type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.one_cap_option 
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.one_cap_option   #设备block_sr0是空的，但是加入到了virsh nodedev_list中 bug 325
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.multi_cap_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.long_cap_option 
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.acl_test.no_option 
