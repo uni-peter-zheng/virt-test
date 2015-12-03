@@ -5,7 +5,7 @@ type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.paused_op
 type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.uuid_option 
 type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.save_option 
 type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.managedsave_option 
-#type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.migrate_option       #需要设置迁移参数
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.migrate_option       #需要设置迁移参数
 type_specific.io-github-autotest-libvirt.virsh.domjobabort.error_test.no_option 
 type_specific.io-github-autotest-libvirt.virsh.domjobabort.error_test.hex_id_option 
 type_specific.io-github-autotest-libvirt.virsh.domjobabort.error_test.invalid_id_option 
