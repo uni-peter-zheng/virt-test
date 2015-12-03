@@ -1,5 +1,5 @@
 
-#type_specific.io-github-autotest-libvirt.virsh.hostname.no_option 
+type_specific.io-github-autotest-libvirt.virsh.hostname.no_option 
 type_specific.io-github-autotest-libvirt.virsh.hostname.unexpect_option 
 type_specific.io-github-autotest-libvirt.virsh.hostname.with_libvirtd_stop 
 
