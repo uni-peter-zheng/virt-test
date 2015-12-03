@@ -1,5 +1,5 @@
 
-#type_specific.io-github-autotest-libvirt.virsh.nodeinfo.no_option      用例失败，原因待分析
+#type_specific.io-github-autotest-libvirt.virsh.nodeinfo.no_option      #在关闭smt的情况下，virsh nodeinfo获取的cpu数依然是80个  bug 324
 type_specific.io-github-autotest-libvirt.virsh.nodeinfo.unexpect_option 
 type_specific.io-github-autotest-libvirt.virsh.nodeinfo.with_libvirtd_stop 
 
