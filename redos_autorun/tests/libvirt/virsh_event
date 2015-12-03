@@ -1,9 +1,9 @@
 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.list_events.other_option.no_timeout.no_loop 
-#type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.all_events.no_timeout.loop 
-#type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.all_events.timeout.loop 
-#type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.lifecycle_events.no_timeout.loop 
-#type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.lifecycle_events.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.all_events.no_timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.all_events.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.lifecycle_events.no_timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.lifecycle_events.timeout.loop 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.reboot_event.no_timeout.no_loop 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.reboot_event.no_timeout.loop 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.reboot_event.timeout.no_loop 
