@@ -4,9 +4,9 @@ type_specific.io-github-autotest-libvirt.virt_xml_validate.domainsnapshot  #创�
 type_specific.io-github-autotest-libvirt.virt_xml_validate.network 
 type_specific.io-github-autotest-libvirt.virt_xml_validate.storagepool 
 type_specific.io-github-autotest-libvirt.virt_xml_validate.storagevol 
-#type_specific.io-github-autotest-libvirt.virt_xml_validate.nodedev        #Element capability has extra content: logical_block_size
-#type_specific.io-github-autotest-libvirt.virt_xml_validate.capability     #capabilities的错误很多，对ppc64支持不好
+#type_specific.io-github-autotest-libvirt.virt_xml_validate.nodedev        # bug 328
+#type_specific.io-github-autotest-libvirt.virt_xml_validate.capability     # bug 328
 type_specific.io-github-autotest-libvirt.virt_xml_validate.nwfilter 
-#type_specific.io-github-autotest-libvirt.virt_xml_validate.secret         #用例有问题，不创建secret就测试 
-#type_specific.io-github-autotest-libvirt.virt_xml_validate.interface      #用例有问题
+type_specific.io-github-autotest-libvirt.virt_xml_validate.secret          #用例有问题，不创建secret就测试,已修改 
+#type_specific.io-github-autotest-libvirt.virt_xml_validate.interface      # bug 328
 
