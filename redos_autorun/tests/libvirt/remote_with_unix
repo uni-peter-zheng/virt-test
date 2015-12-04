@@ -1,0 +1,14 @@
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.default_unix_config 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.readonly 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.customized_unix_sock_dir 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.default_config_and_start_vm 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.allow_sasl_users 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_access_controls 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_with_auth_conf 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_with_polkit_and_acl_control 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_with_polkit_rw 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.negative_testing.no_allowed_sasl_user 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.negative_testing.allow_sasl_user_with_readonly 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.negative_testing.readonly_without_auth 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.negative_testing.socket_access_controls 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.negative_testing.socket_with_polkit_ro 
