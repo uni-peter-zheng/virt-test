@@ -17,7 +17,7 @@ libvirt:virsh_nodecpumap    #注释一个用例 bug318
 libvirt:virsh_cpu_models    
 libvirt:virsh_nodememstats
 
-libvirt:virt_xml_validate           #4s    -------------注释了4个用例 测试代码写的有问题，还没修正----------
+libvirt:virt_xml_validate           #4s    bug 328
 libvirt:virsh_freepages             
 libvirt:virsh_setmaxmem             #10s   kvm不支持虚拟机运行时修改最大内存，注释24个用例
 libvirt:virsh_qemu_attach           #15s   ---------------注释掉两个用例 错误原因不好排查-------------
@@ -161,6 +161,30 @@ libvirt:virsh_blockcopy              # ----------注释25个用例--------------
 libvirt:attach_device                #注释200个用例 PCI hotplug  bug243       
 
 #暂时跳过的模块，测试环境不满足
+#libvirt:daemon
+#libvirt:virsh_remote_with_tcp
+#libvirt:domstate_switch_by_groups
+#libvirt:conf_file
+#libvirt:dac_nfs_save_restore
+#libvirt:virsh_dommemstat
+#libvirt:dac_vm_per_image_start
+#libvirt:dac_nfs_disk
+#libvirt:remote_with_tls
+#libvirt:controller_functional
+#libvirt:virsh_blockpull
+#libvirt:kernel_panic
+#libvirt:remote_with_ssh
+#libvirt:startup_policy
+#libvirt:qemu_monitor_blockjob
+#libvirt:nwfilter_vm_attach
+#libvirt:numa_capabilities 
+#libvirt:guest_kernel_debugging
+#libvirt:numa_preferred_undefine 
+#libvirt:remote_with_unix
+#libvirt:virsh_blkdeviotune
+#libvirt:multiqueue
+#libvirt:graphics_functional
+#libvirt:io-github-autotest-qemu
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
 #libvirt:virt_what                   #virt-what功能无效  bug298
