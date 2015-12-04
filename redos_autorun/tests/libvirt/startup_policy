@@ -1,0 +1,6 @@
+type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.mandatory.device_type.cdrom 
+type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.mandatory.device_type.floppy 
+type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.optional.device_type.cdrom 
+type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.optional.device_type.floppy 
+type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.requisite.device_type.cdrom 
+type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.requisite.device_type.floppy 
