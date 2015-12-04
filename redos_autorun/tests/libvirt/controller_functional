@@ -1,0 +1,17 @@
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.pci_root 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.pcie_root 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.virtio_serial 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.virtio_serial_0_vectors 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.auto_addr.ich9-uhci1.master_ehci 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.auto_addr.ich9-uhci1.master_ich9-ehci1 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.auto_addr.ich9-uhci2.master_ehci 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.auto_addr.ich9-uhci2.master_ich9-ehci1 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.auto_addr.ich9-uhci3.master_ehci 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.auto_addr.ich9-uhci3.master_ich9-ehci1 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.manual_addr.ich9-uhci1.master_ehci 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.manual_addr.ich9-uhci1.master_ich9-ehci1 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.manual_addr.ich9-uhci2.master_ehci 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.manual_addr.ich9-uhci2.master_ich9-ehci1 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.manual_addr.ich9-uhci3.master_ehci 
+type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.manual_addr.ich9-uhci3.master_ich9-ehci1 
+type_specific.io-github-autotest-libvirt.controller.functional.negative_tests.invalid_index 
