@@ -283,6 +283,35 @@ EOF
     	echo
     	sed -i -e "s|EXAMPLE.COM|$remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
         sed -i -e "s|^    cpu_arch =.*$|    cpu_arch = "ppc64"|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
+	
+	#为用例remote_access指定测试配置
+	#remote_with_ssh
+	sed -i -e "s|^    server_ip =.*$|    server_ip = $remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg
+	sed -i -e "s|ENTER.YOUR.REMOTE.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg
+	sed -i -e "s|^    server_pwd =.*$|    server_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg
+	sed -i -e "s|^    client_ip =.*$|    client_ip = $local_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg
+        sed -i -e "s|ENTER.YOUR.CLIENT.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg
+        sed -i -e "s|^    client_pwd =.*$|    client_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg	
+	#remote_with_tcp
+	sed -i -e "s|^    server_ip =.*$|    server_ip = $remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tcp.cfg
+        sed -i -e "s|ENTER.YOUR.REMOTE.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tcp.cfg
+        sed -i -e "s|^    server_pwd =.*$|    server_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tcp.cfg
+	#remote_with_tls
+	sed -i -e "s|^    server_ip =.*$|    server_ip = $remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
+        sed -i -e "s|ENTER.YOUR.REMOTE.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
+        sed -i -e "s|^    server_pwd =.*$|    server_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
+	sed -i -e "s|^    client_ip =.*$|    client_ip = $local_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
+        sed -i -e "s|ENTER.YOUR.CLIENT.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
+        sed -i -e "s|^    client_pwd =.*$|    client_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
+	sed -i -e "s|^    server_cn =.*$|    server_cn = $remotehost|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
+	sed -i -e "s|^    client_cn =.*$|    client_cn = $localhost|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
+	#remote_with_unix	
+	sed -i -e "s|^    server_ip =.*$|    server_ip = $remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
+        sed -i -e "s|ENTER.YOUR.REMOTE.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
+        sed -i -e "s|^    server_pwd =.*$|    server_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
+	sed -i -e "s|^    client_ip =.*$|    client_ip = $local_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
+        sed -i -e "s|ENTER.YOUR.CLIENT.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
+        sed -i -e "s|^    client_pwd =.*$|    client_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
 }
 
 #测试用例所需的软件包安装
