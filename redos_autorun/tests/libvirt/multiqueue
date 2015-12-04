@@ -1,0 +1,8 @@
+type_specific.io-github-autotest-libvirt.multiqueue.iperf.vcpu_2.queue_4 
+type_specific.io-github-autotest-libvirt.multiqueue.iperf.vcpu_2.queue_8 
+type_specific.io-github-autotest-libvirt.multiqueue.iperf.vcpu_2.queue_9 
+type_specific.io-github-autotest-libvirt.multiqueue.iperf.vcpu_4.queue_4 
+type_specific.io-github-autotest-libvirt.multiqueue.iperf.vcpu_4.queue_8 
+type_specific.io-github-autotest-libvirt.multiqueue.iperf.vcpu_4.queue_9 
+type_specific.io-github-autotest-libvirt.multiqueue.cpu_affinity.vcpu_2.queue_4 
+type_specific.io-github-autotest-libvirt.multiqueue.cpu_affinity.vcpu_4.queue_4 
