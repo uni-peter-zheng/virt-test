@@ -258,12 +258,13 @@ EOF
     	#为用例virsh.cpu_baseline指定测试机
     	echo "set config for testcases:virsh.cpu_baseline!"
     	echo
-    	sed -i -e "s|virt-tests-vm1|$main_vms|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
+	sed -i -e "s/^                    vms*$/                    vms = $vms/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
+	sed -i -e "s/^                    main_vm =*$/                    main_vm = $main_vms/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
  
     	#为用例virsh.domstats指定测试机
     	echo "set config for testcases:virsh.domstats!"
     	echo
-    	sed -i -e "s/^    vm_list.*$/    vm_list = "$main_vms"/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
+    	sed -i -e "s/^    vm_list.*$/    vm_list = "$vms"/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
     	sed -i -e "s|virt-tests-vm1||" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/monitor/virsh_domstats.cfg
        
     	#修改guest_numa的配置文件，改动qemu默认配置参数node,nodeid=1,cpus=2-3,mem=301   libvirt1.1.9版本需要做修改，1.1.19版本不需改动
