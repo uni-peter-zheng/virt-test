@@ -161,27 +161,27 @@ libvirt:virsh_blockcopy              # ----------注释25个用例--------------
 libvirt:attach_device                #注释200个用例 PCI hotplug  bug243       
 
 #暂时跳过的模块，测试环境不满足
-#libvirt:daemon
+libvirt:daemon                       #pmsuspended报错  注释10个用例
 #libvirt:virsh_remote_with_tcp
-#libvirt:domstate_switch_by_groups
-#libvirt:conf_file
+#libvirt:remote_with_tls
+#libvirt:remote_with_ssh
+#libvirt:remote_with_unix
 #libvirt:dac_nfs_save_restore
-#libvirt:virsh_dommemstat
 #libvirt:dac_vm_per_image_start
 #libvirt:dac_nfs_disk
-#libvirt:remote_with_tls
-#libvirt:controller_functional
 #libvirt:virsh_blockpull
+#libvirt:virsh_dommemstat
+#libvirt:virsh_blkdeviotune
+#libvirt:controller_functional
+#libvirt:domstate_switch_by_groups
+#libvirt:conf_file
 #libvirt:kernel_panic
-#libvirt:remote_with_ssh
 #libvirt:startup_policy
-#libvirt:qemu_monitor_blockjob
 #libvirt:nwfilter_vm_attach
 #libvirt:numa_capabilities 
 #libvirt:guest_kernel_debugging
 #libvirt:numa_preferred_undefine 
-#libvirt:remote_with_unix
-#libvirt:virsh_blkdeviotune
+
 #libvirt:multiqueue
 #libvirt:graphics_functional
 #libvirt:io-github-autotest-qemu
