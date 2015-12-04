@@ -10,14 +10,14 @@ type_specific.io-github-autotest-libvirt.daemon.kill_qemu.paused.sigabrt
 type_specific.io-github-autotest-libvirt.daemon.kill_qemu.paused.sighup 
 type_specific.io-github-autotest-libvirt.daemon.kill_qemu.paused.sigkill 
 type_specific.io-github-autotest-libvirt.daemon.kill_qemu.paused.sigquit 
-type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigstop 
-type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigterm 
-type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigabrt 
-type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sighup 
-type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigkill 
-type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigquit 
+#type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigstop 
+#type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigterm 
+#type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigabrt 
+#type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sighup 
+#type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigkill 
+#type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigquit 
 
-type_specific.io-github-autotest-libvirt.daemon.restart_consist 
+#type_specific.io-github-autotest-libvirt.daemon.restart_consist 
 type_specific.io-github-autotest-libvirt.daemon.init_scripts 
 type_specific.io-github-autotest-libvirt.daemon.kill_starting.virStateInitialize 
 type_specific.io-github-autotest-libvirt.daemon.kill_starting.qemuStateInitialize 
@@ -27,7 +27,7 @@ type_specific.io-github-autotest-libvirt.daemon.kill_starting.nwfilterStateIniti
 type_specific.io-github-autotest-libvirt.daemon.functional.no_opt 
 type_specific.io-github-autotest-libvirt.daemon.functional.opt_help 
 type_specific.io-github-autotest-libvirt.daemon.functional.opt_version 
-type_specific.io-github-autotest-libvirt.daemon.functional.opt_timeout_3 
+#type_specific.io-github-autotest-libvirt.daemon.functional.opt_timeout_3 
 type_specific.io-github-autotest-libvirt.daemon.functional.opt_timeout_3_live_vm 
 type_specific.io-github-autotest-libvirt.daemon.functional.opt_config 
 type_specific.io-github-autotest-libvirt.daemon.functional.opt_pid 
@@ -39,7 +39,7 @@ type_specific.io-github-autotest-libvirt.daemon.kill_started.sigint
 type_specific.io-github-autotest-libvirt.daemon.kill_started.sigterm 
 type_specific.io-github-autotest-libvirt.daemon.kill_started.sighup 
 type_specific.io-github-autotest-libvirt.daemon.kill_started.sigabrt 
-type_specific.io-github-autotest-libvirt.daemon.kill_started.sigkill 
+#type_specific.io-github-autotest-libvirt.daemon.kill_started.sigkill 
 
 
 
