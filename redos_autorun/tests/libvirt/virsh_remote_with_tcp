@@ -1,0 +1,11 @@
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.positive_testing.allow_one_sasl_user 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.positive_testing.allow_sasl_users 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.positive_testing.customized_ipv4_tcp_port 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.positive_testing.customized_ipv4_listen_address_with_sasl_auth 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.positive_testing.customized_ipv6_listen_address 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.positive_testing.customized_ipv6_tcp_port 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.positive_testing.customized_ipv6_listen_address_with_sasl_auth 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.negative_testing.only_simpy_connect_libvirtd 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.negative_testing.no_allowed_sasl_user 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.negative_testing.ipv4_with_allowed_sasl_user_readonly 
+type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.negative_testing.ipv6_with_readonly 
