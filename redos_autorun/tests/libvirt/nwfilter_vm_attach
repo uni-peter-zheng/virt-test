@@ -1,3 +1,3 @@
-type_specific.io-github-autotest-libvirt.nwfilter_vm_attach.possitive_test.allow_arp 
+#type_specific.io-github-autotest-libvirt.nwfilter_vm_attach.possitive_test.allow_arp 
 type_specific.io-github-autotest-libvirt.nwfilter_vm_attach.negative_test.attach_none 
 type_specific.io-github-autotest-libvirt.nwfilter_vm_attach.negative_test.attach_invalid_twice 
