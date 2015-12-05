@@ -23,21 +23,21 @@ type_specific.io-github-autotest-libvirt.conf_file.sysconfig_libvirtd.libvirtd_c
 type_specific.io-github-autotest-libvirt.conf_file.sysconfig_libvirtd.libvirtd_config.positive_test.set 
 type_specific.io-github-autotest-libvirt.conf_file.sysconfig_libvirtd.libvirtd_config.negative_test.invalid 
 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.positive_test.default 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.positive_test.clear_caps 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.positive_test.no_clear_caps.priviledge_user 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.positive_test.no_clear_caps.default_user 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.negative_test.invalid 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.positive_test.set_sandbox_default 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.positive_test.default 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.positive_test.clear_caps 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.positive_test.no_clear_caps.priviledge_user 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.positive_test.no_clear_caps.default_user 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.negative_test.invalid 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.positive_test.set_sandbox_default 
 #type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.positive_test.set_sandbox_on 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.positive_test.set_sandbox_off 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.positive_test.set_sandbox_minus_1 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.negative_test.set_sandbox_invalid 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.positive_test.set_sandbox_off 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.positive_test.set_sandbox_minus_1 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.negative_test.set_sandbox_invalid 
 #type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.auto_dump.default_bypass_cache 
 #type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.auto_dump.enable_bypass_cache 
 #type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.auto_dump.disable_bypass_cache 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.set_process_name.positive_test.default 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.set_process_name.positive_test.set_name 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.set_process_name.positive_test.unset_name 
-#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.set_process_name.negative_test.invalid 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.set_process_name.positive_test.default 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.set_process_name.positive_test.set_name 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.set_process_name.positive_test.unset_name 
+type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.set_process_name.negative_test.invalid 
 
