@@ -154,37 +154,38 @@ qemu:qemu-important                 # -------------注释250个用例-----------
 
 #新增用例，可能容易出问题，放到最后面
 libvirt:storage_discard             #300s  指定discard_device为host上一个可用磁盘   ---fstrim_out_vm执行失败，注释10个用例---
-libvirt:network_bandwidth           
+libvirt:network_bandwidth    
+
+libvirt:daemon                      #pmsuspended报错  注释10个用例
+libvirt:dac_nfs_save_restore        #注释一个用例
+libvirt:dac_vm_per_image_start      #注释两个用例
+libvirt:dac_nfs_disk
+libvirt:virsh_blockpull             #注释22个用例
+libvirt:virsh_dommemstat
+libvirt:virsh_blkdeviotune
+libvirt:conf_file                   #注释4个用例
+libvirt:nwfilter_vm_attach          #注释一个用例
+libvirt:numa_capabilities 
+libvirt:numa_preferred_undefine
+libvirt:graphics_functional         #注释37个用例
+
 
 #超级耗时的用例
 libvirt:virsh_blockcopy              # ----------注释25个用例---------------
 libvirt:attach_device                #注释200个用例 PCI hotplug  bug243       
 
 #暂时跳过的模块，测试环境不满足
-libvirt:daemon                       #pmsuspended报错  注释10个用例
-#libvirt:virsh_remote_with_tcp
+#libvirt:virsh_remote_with_tcp       #tcp连接有报错，需要两台机器的libvirt
 #libvirt:remote_with_tls
 #libvirt:remote_with_ssh
 #libvirt:remote_with_unix
-#libvirt:dac_nfs_save_restore
-#libvirt:dac_vm_per_image_start
-#libvirt:dac_nfs_disk
-#libvirt:virsh_blockpull
-#libvirt:virsh_dommemstat
-#libvirt:virsh_blkdeviotune
-#libvirt:controller_functional
-#libvirt:domstate_switch_by_groups
-#libvirt:conf_file
-#libvirt:kernel_panic
-#libvirt:startup_policy
-#libvirt:nwfilter_vm_attach
-#libvirt:numa_capabilities 
-#libvirt:guest_kernel_debugging
-#libvirt:numa_preferred_undefine 
-
-#libvirt:multiqueue
-#libvirt:graphics_functional
-#libvirt:io-github-autotest-qemu
+#libvirt:controller_functional       #ALL FAIL
+#libvirt:domstate_switch_by_groups   #需要多台虚机
+#libvirt:kernel_panic                #ALL FAIL
+#libvirt:startup_policy              #ALL FAIL
+#libvirt:guest_kernel_debugging      #ALL FAIL
+#libvirt:multiqueue                  #ALL FAIL
+#libvirt:io-github-autotest-qemu     #ALL FAIL
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
 #libvirt:virt_what                   #virt-what功能无效  bug298
