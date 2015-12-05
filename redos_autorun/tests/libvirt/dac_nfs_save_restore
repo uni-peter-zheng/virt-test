@@ -8,7 +8,7 @@ type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exis
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu.qemu_user.dynamic_ownership_off.no_root_squash 
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu.root_user.dynamic_ownership_on.no_root_squash 
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu.root_user.dynamic_ownership_off.no_root_squash 
-type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu_grp.qemu_user.dynamic_ownership_on.root_squash 
+#type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu_grp.qemu_user.dynamic_ownership_on.root_squash 
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu_grp.qemu_user.dynamic_ownership_on.no_root_squash 
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu_grp.qemu_user.dynamic_ownership_off.root_squash 
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu_grp.qemu_user.dynamic_ownership_off.no_root_squash 
