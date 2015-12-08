@@ -127,7 +127,7 @@ libvirt:virsh_create
 libvirt:virsh_desc
 libvirt:virsh_migrate_compcache     # -------------注释一个用例------------- TestFail: Expected fail, but succeed 
 libvirt:virsh_save
-libvirt:virsh_setvcpus              #注释8个用例  pci.0不支持hotplug bug 243
+libvirt:virsh_setvcpus              #注释8个用例  qemu不支持cpu-add  bug 329
 libvirt:virsh_domcontrol            # 注释一个用例virsh domcontrol autotest-qcow2 预期关闭的虚拟机会报错
 libvirt:virsh_restore
 libvirt:virsh_domjobabort           
@@ -140,7 +140,7 @@ libvirt:virsh_console
 libvirt:virsh_event                 #注释4个用例 pci.0 bug 243
 
 #libvirt:guest_numa                  #注释掉2M，1G的20个用例    bug288
-libvirt:snapshot                    #注释掉150个用例 PCI hotplug  bug243
+libvirt:snapshot                    #注释掉150个用例 PCI hotplug  bug243   qed_type不支持；50FAIL
 libvirt:virsh_blockcommit           #注释掉50个用例 gluster bug 311
 libvirt:virstual_disks              # -------------注释掉2个用例 原因未调试---------------                     
 libvirt:virsh_volume_application    #注释掉安装的5个用例
@@ -192,7 +192,7 @@ libvirt:attach_device                #注释200个用例 PCI hotplug  bug243
 #libvirt:vfio                        #测试用例不支持ppc的vfio测试
 
 #系统不支持的测试模块
-#libvirt:vcpu_hotplug                 #QEMU command 'cpu-add': Not supported bug 243
+#libvirt:vcpu_hotplug                 #QEMU command 'cpu-add' bug 329
 #libvirt:perf_kvm                     #我们的源上缺少fuse-sshfs，注释掉模块
 #libvirt:virsh_blockresize            #7SKIP，qed_type不支持；15FAIL pci.0不支持hotplug  bug243
 #libvirt:virsh_create_lxc             #lxc不需要测试
