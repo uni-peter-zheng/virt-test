@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# prepare: func run before testcase
+# virstual_disks用例需要两台虚拟机
+#
+
+prepare:type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_by_groups.shutdown_start_pause_resume()
+{      
+        sed -i "s/^vms.*$/vms = $vms $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg 
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+restore:type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_by_groups.pause_resume()
+{
+	sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+# Add function in here
+
+
+
+# End of function
+# start in here
+main()
+{
+	if [ "$1" = "" ]; then
+		exit
+	fi
+
+	testcase=$1
+	class=`echo $1 | cut -d ':' -f1`
+	if [ "$class" = "prepare" ]; then
+		echo "Run prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "Run restore function($1) in $0" 
+	else
+		echo "Unknow class($1) in $0" 
+	fi
+
+	$testcase 
+
+	if [ "$class" = "prepare" ]; then
+		echo "End of prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "End of restore function($1) in $0" 
+	else
+		echo "End of Unknow class($1) in $0" 
+	fi
+	echo ""
+}
+
+main $1 $2
