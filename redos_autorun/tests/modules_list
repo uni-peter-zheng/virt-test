@@ -51,9 +51,9 @@ libvirt:virsh_nodeinfo              #1 FAIL bug 324
 
 libvirt:virsh_update_device         #device用例 不支持ide floppy设备
 libvirt:virsh_suspend               #   
-libvirt:virsh-attach-detach-interface #device用例 注释nomal用例   pci.0 bug 243
+libvirt:virsh-attach-detach-interface 
 libvirt:virsh_qemu_monitor_command    
-libvirt:virsh_detach_device         #注释部分用例  pci.0 bug 243
+libvirt:virsh_detach_device         
 
 libvirt:virsh_save_image_edit       
 libvirt:virsh_nodedev_dumpxml
@@ -63,7 +63,7 @@ libvirt:virsh_net_autostart
 libvirt:virsh_net_create
 libvirt:virsh_net_define_undefine  
 libvirt:virsh_net_destroy
-libvirt:virsh_net_dhcp_leases        #一个报错是因为PCI hotplug  bug243，不检测mac地址合法性  bug239
+libvirt:virsh_net_dhcp_leases        #注释一个用例，不检测mac地址合法性  bug239
 libvirt:virsh_net_dumpxml
 libvirt:virsh_net_edit
 libvirt:virsh_net_info
@@ -111,7 +111,7 @@ libvirt:virsh_qemu_agent_command    #不支持--aysnc选项,shutdown有问题  �
 libvirt:virsh_screenshot            #55s    注释18个用例  rhel的系统跳过Multiple screen
 libvirt:hugepage                    #75s    注释5个用例 需要测试工具unixbench等 
 libvirt:virsh_setmem                #80s    bug303
-libvirt:virsh-attach-detach-disk    #80s    device用例 注释28个用例 PCI热插拔问题  bug243
+#libvirt:virsh-attach-detach-disk   #注释两个用例 ， ide controller 
 
 libvirt:virsh_blockjob
 libvirt:virsh_reboot
@@ -137,10 +137,10 @@ libvirt:virsh_domiftune
 libvirt:virsh_define_undefine
 libvirt:virsh_domfstrim
 libvirt:virsh_console         
-libvirt:virsh_event                 #注释4个用例 pci.0 bug 243
+libvirt:virsh_event                 
 
 #libvirt:guest_numa                  #注释掉2M，1G的20个用例    bug288
-libvirt:snapshot                    #注释掉150个用例 PCI hotplug  bug243   qed_type不支持；50FAIL
+libvirt:snapshot                    #qed_type不支持；50FAIL ;memory state SKIP
 libvirt:virsh_blockcommit           #注释掉50个用例 gluster bug 311
 libvirt:virstual_disks              # -------------注释掉2个用例 原因未调试---------------                     
 libvirt:virsh_volume_application    #注释掉安装的5个用例
@@ -154,13 +154,14 @@ qemu:qemu-important                 # -------------注释250个用例-----------
 
 #新增用例，可能容易出问题，放到最后面
 libvirt:storage_discard             #300s  指定discard_device为host上一个可用磁盘   ---fstrim_out_vm执行失败，注释10个用例---
-libvirt:network_bandwidth    
+libvirt:network_bandwidth 
+libvirt:virsh_blockresize           #7SKIP，qed_type不支持； 
 
 libvirt:daemon                      #pmsuspended报错  注释10个用例
 libvirt:dac_nfs_save_restore        #注释一个用例
 libvirt:dac_vm_per_image_start      #注释两个用例
 libvirt:dac_nfs_disk
-libvirt:virsh_blockpull             #注释22个用例
+libvirt:virsh_blockpull             #注释22个用例 缺少gluster bug 311
 libvirt:virsh_dommemstat
 libvirt:virsh_blkdeviotune
 libvirt:conf_file                   #注释4个用例
@@ -173,7 +174,7 @@ libvirt:domstate_switch_by_groups   #需要多台虚机
 
 #超级耗时的用例
 libvirt:virsh_blockcopy              # ----------注释25个用例---------------
-libvirt:attach_device                #注释200个用例 PCI hotplug  bug243       
+libvirt:attach_device                # ide不支持，注释91个用例;   
 
 #暂时跳过的模块，测试环境不满足
 #libvirt:virsh_remote_with_tcp       #tcp连接有报错，需要两台机器的libvirt
@@ -194,7 +195,6 @@ libvirt:attach_device                #注释200个用例 PCI hotplug  bug243
 #系统不支持的测试模块
 #libvirt:vcpu_hotplug                 #QEMU command 'cpu-add' bug 329
 #libvirt:perf_kvm                     #我们的源上缺少fuse-sshfs，注释掉模块
-#libvirt:virsh_blockresize            #7SKIP，qed_type不支持；15FAIL pci.0不支持hotplug  bug243
 #libvirt:virsh_create_lxc             #lxc不需要测试
 #libvirt:virsh_dompmsuspend           #需要virsh capcabilities的xml提供能力支持才行 setting ACPI S3 not supported  bug 248
 #libvirt:virsh_schedinfo_xen_credit   #xen的虚拟化测试，用不到
