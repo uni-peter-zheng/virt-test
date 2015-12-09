@@ -26,8 +26,8 @@ type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.no
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.vm_running_persistent 
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.twice_diff_target 
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.twice_multifunction 
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom 
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom_eject_control 
+#type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom 
+#type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom_eject_control 
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.file_disk_type 
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type 
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type_lun 
