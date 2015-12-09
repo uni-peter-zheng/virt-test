@@ -20,10 +20,10 @@ type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.t
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.balloon-change_event.no_timeout.loop 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.balloon-change_event.timeout.no_loop 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.balloon-change_event.timeout.loop 
-#type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.device-removed_event.no_timeout.no_loop  #virsh attach-disk失败：Bus 'pci.0' does not support hotplugging，导致无法detach-disk,从而没有相应事件产生
-#type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.device-removed_event.no_timeout.loop 
-#type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.device-removed_event.timeout.no_loop 
-#type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.device-removed_event.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.device-removed_event.no_timeout.no_loop  
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.device-removed_event.no_timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.device-removed_event.timeout.no_loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.device-removed_event.timeout.loop 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.all_events.no_timeout.loop 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.all_events.timeout.loop 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.lifecycle_events.no_timeout.loop 
