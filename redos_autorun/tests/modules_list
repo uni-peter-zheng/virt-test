@@ -101,7 +101,7 @@ libvirt:virsh_vol_create            #注释5个用例 Volume format 'iso' is not
 libvirt:virsh_vol_download_upload   #修改源码将md5校验去掉
 libvirt:virsh_vol_resize            #四个FAIL是因为在resize后，capacity大小和预期一致，而allocation大小测试不加--shrink，表示不压缩，而我们的系统会默认进行压缩。 修改源码将resize之后的size check注释之后可PASS
 libvirt:virsh_volume                #gluster 跳过两个用例  bug 311
-libvirt:hotplug_serial              # -------------------注释4个用例-------------------
+libvirt:hotplug_serial              
 libvirt:virsh_autostart
 libvirt:virsh_domblklist
 libvirt:virsh_dump                  #注释两个用例 bug 304
@@ -111,7 +111,7 @@ libvirt:virsh_qemu_agent_command    #不支持--aysnc选项,shutdown有问题  �
 libvirt:virsh_screenshot            #55s    注释18个用例  rhel的系统跳过Multiple screen
 libvirt:hugepage                    #75s    注释5个用例 需要测试工具unixbench等 
 libvirt:virsh_setmem                #80s    bug303
-#libvirt:virsh-attach-detach-disk   #注释两个用例 ， ide controller 
+libvirt:virsh-attach-detach-disk   #注释两个用例 ， ide controller 
 
 libvirt:virsh_blockjob
 libvirt:virsh_reboot
@@ -125,13 +125,13 @@ libvirt:virsh_shutdown
 libvirt:svirt                       
 libvirt:virsh_create 
 libvirt:virsh_desc
-libvirt:virsh_migrate_compcache     # -------------注释一个用例------------- TestFail: Expected fail, but succeed 
+libvirt:virsh_migrate_compcache     # 系统页大小为64k，但是支持migrate_compcache设置 >= 4k  TestFail: Expected fail, but succeed 
 libvirt:virsh_save
-libvirt:virsh_setvcpus              #注释8个用例  qemu不支持cpu-add  bug 329
+libvirt:virsh_setvcpus              # 注释8个用例  qemu不支持cpu-add  bug 329
 libvirt:virsh_domcontrol            # 注释一个用例virsh domcontrol autotest-qcow2 预期关闭的虚拟机会报错
 libvirt:virsh_restore
 libvirt:virsh_domjobabort           
-libvirt:virsh_managedsave           # --------命令返回值正确，check错误 注释3个---------
+libvirt:virsh_managedsave           # 问题是bypass_cache设置flag不生效，注释3个用例【同conf_file】
 libvirt:virsh_ttyconsole
 libvirt:virsh_domiftune
 libvirt:virsh_define_undefine
@@ -139,12 +139,12 @@ libvirt:virsh_domfstrim
 libvirt:virsh_console         
 libvirt:virsh_event                 
 
-#libvirt:guest_numa                  #注释掉2M，1G的20个用例    bug288
+#libvirt:guest_numa                 #注释掉2M，1G的20个用例    bug288
 libvirt:snapshot                    #qed_type不支持；50FAIL ;memory state 注释20个 bug 331
 libvirt:virsh_blockcommit           #注释掉50个用例 gluster bug 311
-libvirt:virstual_disks              # -------------注释掉2个用例 原因未调试---------------                     
+libvirt:virstual_disks              #不支持ide，注释两个用例                     
 libvirt:virsh_volume_application    #注释掉安装的5个用例
-libvirt:iface                       # -------------注释掉8个用例 TestFail: Expect fail, but run successfully
+libvirt:iface                       #注释掉8个用例，主要是会导致网络断开 TestFail: Expect fail, but run successfully
 libvirt:iface_bridge                # -------------双网卡，注释两个用例----------------
 libvirt:virsh_domblkerror            
 libvirt:virt-top                     
@@ -158,21 +158,21 @@ libvirt:network_bandwidth
 libvirt:virsh_blockresize           #7SKIP，qed_type不支持； 
 
 libvirt:daemon                      #pmsuspended报错  注释10个用例
-libvirt:dac_nfs_save_restore        #注释一个用例
-libvirt:dac_vm_per_image_start      #注释两个用例
+libvirt:dac_nfs_save_restore        #注释一个用例 使用参数root_squash挂载nfs，导致root用户没有写入权限，不知道用例出发点是什么
+libvirt:dac_vm_per_image_start      #注释一个用例 gluster bug 311
 libvirt:dac_nfs_disk
-libvirt:virsh_blockpull             #注释22个用例 缺少gluster bug 311
+libvirt:virsh_blockpull             #注释22个用例 缺少gluster bug 311 
 libvirt:virsh_dommemstat
 libvirt:virsh_blkdeviotune
-libvirt:conf_file                   #注释4个用例
-libvirt:nwfilter_vm_attach          #注释一个用例
+libvirt:conf_file                   #一个用例缺少sandbox ；一个用例报错auto_dump_bypass_cache is 1 but flags is 600001
+libvirt:nwfilter_vm_attach          
 libvirt:numa_capabilities 
 libvirt:numa_preferred_undefine
-libvirt:graphics_functional         #注释37个用例
+libvirt:graphics_functional         
 libvirt:domstate_switch_by_groups   #需要多台虚机
 
 #超级耗时的用例
-libvirt:virsh_blockcopy              # ----------注释25个用例---------------
+libvirt:virsh_blockcopy              # xml_checkfailed 传说在进行blockcopy时，会生成一个mirror的域，可惜并没有 注释17个用例
 libvirt:attach_device                # ide不支持，注释91个用例; 
 
 # 需要使用两台机器的libvirt的用例
@@ -183,12 +183,12 @@ libvirt:remote_with_unix
 libvirt:migrate_list 
 
 #暂时跳过的模块，测试环境不满足
-#libvirt:controller_functional       #很多不支持的东西 pcihole  pci-bridge ich9-ehci1等
+#libvirt:controller_functional       #------------很多不支持的东西 pcihole  pci-bridge ich9-ehci1等----------------
 #libvirt:kernel_panic                #发生panic立即重启，时间设置不起作用 bug 330
 #libvirt:startup_policy              #ALL FAIL  ide 和 floppy
 #libvirt:guest_kernel_debugging      #ALL FAIL  # 
 #libvirt:multiqueue                  #ALL FAIL  iperf编译有问题
-#libvirt:io-github-autotest-qemu     #
+#libvirt:io-github-autotest-qemu     #ALL FAIL
 #libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
 #libvirt:virt_what                   #virt-what功能无效  bug298
