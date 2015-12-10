@@ -312,6 +312,10 @@ EOF
 	sed -i -e "s|^    client_ip =.*$|    client_ip = $local_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
         sed -i -e "s|ENTER.YOUR.CLIENT.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
         sed -i -e "s|^    client_pwd =.*$|    client_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
+
+	#为用例graphics_functional指定测试bridge_device和macvtap_device
+	sed -i -e "s|^    macvtap_device =.*$|    macvtap_device = $bridge|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/graphics/graphics_functional.cfg
+	sed -i -e "s|^    bridge_device =.*$|    bridge_device = $bridge|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/graphics/graphics_functional.cfg
 }
 
 #测试用例所需的软件包安装
