@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #init初始化配置 公共config
-remote_ip="192.168.1.4"
+remote_ip="192.168.1.3"
 remote_pwd="123456"
 local_ip="192.168.1.5"
 local_pwd="123456"
@@ -10,7 +10,7 @@ export vms_raw="autotest-raw"
 export main_vms="autotest-qcow2"
 export main_vms_raw="autotest-raw"
 localhost="RedOS-5"
-remotehost="RedOS-4"
+remotehost="RedOS-3"
 bridge="br0"
 image_name="/home/source/templet/redos-le1-1-5"
 export source_vm_image="/home/source/templet/redos-le1-1-5.qcow2"
@@ -215,8 +215,8 @@ specialcfg()
     	#config remote-test ip for teset: virsh_nodesuspend
     	echo "set config for testcases:virsh_nodesuspend!"
     	echo
-    	sed -i -e 's|ENTER.YOUR.REMOTE.EXAMPLE.COM|'$remote_ip'|' $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
-    	sed -i -e "s|EXAMPLE.PWD|$remote_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
+    	sed -i -e 's|^    nodesuspend_remote_ip =.*$|    nodesuspend_remote_ip = '$remote_ip'|' $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
+    	sed -i -e "s|^    nodesuspend_remote_pwd =.*$|    nodesuspend_remote_pwd = $remote_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_nodesuspend.cfg
 
     	#libvirt_scsi_partition = "" 为用例libvirt_scsi指定测试分区
     	echo "set partition for testcases:libvirt_scsi!"
@@ -276,12 +276,12 @@ EOF
     	#为用例virsh.domcapabilities指定远程测试主机
     	echo "set config for testcases:virsh.domcapabilities!"
     	echo
-    	sed -i -e "s|EXAMPLE.COM|$remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_domcapabilities.cfg
+    	sed -i -e "s|^                    target_uri =.*$|                    target_uri = \"qemu+ssh://$remote_ip/system\"|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_domcapabilities.cfg
        
     	#为用例virsh.cpu_models指定远程测试主机
     	echo "set config for testcases:virsh.cpu_models!"
     	echo
-    	sed -i -e "s|EXAMPLE.COM|$remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
+    	sed -i -e "s|^                    target_uri = \"qemu+ssh://.*$|                    target_uri = \"qemu+ssh://$remote_ip/system\"|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
         sed -i -e "s|^    cpu_arch =.*$|    cpu_arch = "ppc64"|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/host/virsh_cpu_models.cfg
 	
 	#为用例remote_access指定测试配置
