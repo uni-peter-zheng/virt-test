@@ -1070,6 +1070,7 @@ class RemoteFile(object):
                     lines[index] = re.sub(pattern, repl, line)
             if no_line_match:
                 lines.append("\n%s" % repl)
+                lines.append("\n")
         self._write_local(lines)
         self._push_file()
 
