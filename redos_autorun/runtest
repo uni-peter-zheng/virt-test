@@ -464,7 +464,7 @@ run_test()
 					virsh destroy $LIBVIRT_VM_NAME
 				fi	
 			fi
-			pre_script $class $module $testcase_name
+			pre_script $class $module $testcase_name </dev/null
 			echo "" > "$TMP_FILE"
 			start_time=$(date +%s)
 			`${run_cmd} </dev/null 2>>"$CURRENT_DETAIL_LOG_FILE" | grep -E "PASSED|FAILED|SKIPPED" > "$TMP_FILE" &`
@@ -543,7 +543,7 @@ run_test()
 				restore_env
 			fi	
 		fi
-		end_script $class $module $testcase_name
+		end_script $class $module $testcase_name </dev/null
 		clean_virttest_logs
 		echo -e "\n\n\n" >> "$CURRENT_DETAIL_LOG_FILE"
 		((index++))
