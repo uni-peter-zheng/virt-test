@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# prepare: func run before testcase
+# restore: func run after testcase
+# 
+prepare:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.normal.live.default.local()
+{
+		#参数设置
+		vm1=$main_vms
+		vm2=$main_vms_raw
+		vm1_local_image_file=$source_vm_image
+		vm_local_image_dir=`dirname $vm1_local_image_file`
+		vm_nfs_share_storage=/home/source/nfs_share/
+
+		#本地nfs迁移环境配置
+		echo "migration_address =  '0.0.0.0'" > /etc/libvirt/qemu.conf
+		mkdir -p  $vm_nfs_share_storage
+		rm -rf "$vm_nfs_share_storage*"
+		mv $vm_local_image_dir/* $vm_nfs_share_storage > /dev/null
+		systemctl restart nfs
+		exportfs -o rw,no_root_squash *:$vm_nfs_share_storage
+		mount $local_ip:$vm_nfs_share_storage $vm_local_image_dir
+		systemctl restart libvirtd
+
+		#远程环境配置
+		ssh root@$remote_ip "virsh undefine $main_vms"                    #把虚机删除掉，以免影响测试
+		ssh root@$remote_ip "virsh undefine $main_vms_raw"
+		ssh root@$remote_ip "echo "migration_address =  \'0.0.0.0\'" > /etc/libvirt/qemu.conf"
+		ssh root@$remote_ip "rm -rf $vm_local_image_dir/*"                #用共享存储取代本地存储           
+		ssh root@$remote_ip "mount $local_ip:$vm_nfs_share_storage $vm_local_image_dir"
+		ssh root@$remote_ip "systemctl restart libvirtd"
+		
+		sed -i "s/^vms.*$/vms = $vms $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+	        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+		sleep 60
+}
+restore:type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.negative_test.invalid_size.large_size()
+{
+		#参数设置
+		vm1=$main_vms
+		vm2=$main_vms_raw
+		vm1_local_image_file=$source_vm_image
+		vm_local_image_dir=`dirname $vm1_local_image_file`
+		vm1_backup_image_file=$backup_vm_image
+		vm_backup_image_dir=`dirname $vm1_backup_image_file`
+		vm_nfs_share_storage=/home/source/nfs_share/
+
+		#本地nfs迁移环境配置
+		umount $vm_local_image_dir
+		cp $vm_backup_image_dir/* $vm_local_image_dir
+		systemctl restart libvirtd
+
+		#远程环境配置
+		ssh root@$remote_ip "umount $vm_local_image_dir"
+		ssh root@$remote_ip "cp $vm_backup_image_dir $vm_local_image_dir"
+		ssh root@$remote_ip "systemctl restart libvirtd"
+		
+		sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+	        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+		sleep 60
+}
+# End of function
+# start in here
+main()
+{
+	if [ "$1" = "" ]; then
+		exit
+			fi
+
+			testcase=$1
+			class=`echo $1 | cut -d ':' -f1`
+			if [ "$class" = "prepare" ]; then
+				echo "Run prepare function($1) in $0" 
+					elif [ "$class" = "restore" ]; then
+					echo "Run restore function($1) in $0" 
+			else
+				echo "Unknow class($1) in $0" 
+					fi
+
+					$testcase 
+
+					if [ "$class" = "prepare" ]; then
+						echo "End of prepare function($1) in $0" 
+							elif [ "$class" = "restore" ]; then
+							echo "End of restore function($1) in $0" 
+					else
+						echo "End of Unknow class($1) in $0" 
+							fi
+							echo ""
+}
+
+main $1 $2
