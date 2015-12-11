@@ -25,7 +25,7 @@ prepare:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simulta
 		#远程环境配置
 		ssh root@$remote_ip "virsh undefine $main_vms"                    #把虚机删除掉，以免影响测试
 		ssh root@$remote_ip "virsh undefine $main_vms_raw"
-		ssh root@$remote_ip "echo "migration_address =  \'0.0.0.0\'" > /etc/libvirt/qemu.conf"
+		ssh root@$remote_ip "echo \"migration_address =  '0.0.0.0'\" > /etc/libvirt/qemu.conf"
 		ssh root@$remote_ip "rm -rf $vm_local_image_dir/*"                #用共享存储取代本地存储           
 		ssh root@$remote_ip "mount $local_ip:$vm_nfs_share_storage $vm_local_image_dir"
 		ssh root@$remote_ip "systemctl restart libvirtd"
