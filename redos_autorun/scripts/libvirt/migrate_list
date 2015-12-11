@@ -16,14 +16,16 @@ prepare:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simulta
 		echo "migration_address =  '0.0.0.0'" > /etc/libvirt/qemu.conf
 		mkdir -p  $vm_nfs_share_storage
 		rm -rf "$vm_nfs_share_storage*"
-		mv $vm_local_image_dir/* $vm_nfs_share_storage > /dev/null
+		mv -f $vm_local_image_dir/* $vm_nfs_share_storage > /dev/null
 		systemctl restart nfs
 		exportfs -o rw,no_root_squash *:$vm_nfs_share_storage
 		mount $local_ip:$vm_nfs_share_storage $vm_local_image_dir
 		systemctl restart libvirtd
 
 		#远程环境配置
-		ssh root@$remote_ip "virsh undefine $main_vms"                    #把虚机删除掉，以免影响测试
+		ssh root@$remote_ip "virsh destroy $main_vms > /dev/null"                    #把虚机删除掉，以免影响测试
+                ssh root@$remote_ip "virsh destroy $main_vms_raw > /dev/null"
+		ssh root@$remote_ip "virsh undefine $main_vms"                    
 		ssh root@$remote_ip "virsh undefine $main_vms_raw"
 		ssh root@$remote_ip "echo \"migration_address =  '0.0.0.0'\" > /etc/libvirt/qemu.conf"
 		ssh root@$remote_ip "rm -rf $vm_local_image_dir/*"                #用共享存储取代本地存储           
@@ -47,12 +49,15 @@ restore:type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_com
 
 		#本地nfs迁移环境配置
 		umount -l $vm_local_image_dir
-		cp $vm_backup_image_dir/* $vm_local_image_dir
+		cp -rf $vm_backup_image_dir/* $vm_local_image_dir
 		systemctl restart libvirtd
 
 		#远程环境配置
 		ssh root@$remote_ip "umount -l $vm_local_image_dir"
-		ssh root@$remote_ip "cp $vm_backup_image_dir $vm_local_image_dir"
+		ssh root@$remote_ip "cp -rf $vm_backup_image_dir/* $vm_local_image_dir"
+		ssh root@$remote_ip "virsh define "$vm_local_image_dir/$main_vms".xml"
+		ssh root@$remote_ip "virsh define "$vm_local_image_dir/$main_vms_raw".xml"
+		ssh root@$remote_ip "cp -rf $vm_backup_image_dir/* $vm_local_image_dir"
 		ssh root@$remote_ip "systemctl restart libvirtd"
 		
 		sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
