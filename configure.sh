@@ -1,9 +1,9 @@
 #!/bin/sh
 
 #init初始化配置 公共config
-remote_ip="192.168.1.3"
+export remote_ip="192.168.1.3"
 remote_pwd="123456"
-local_ip="192.168.1.5"
+export local_ip="192.168.1.5"
 local_pwd="123456"
 export vms="autotest-qcow2"
 export vms_raw="autotest-raw"
@@ -11,8 +11,8 @@ export main_vms="autotest-qcow2"
 export main_vms_raw="autotest-raw"
 localhost="RedOS-5"
 remotehost="RedOS-3"
-bridge="br0"
-image_name="/home/source/templet/redos-le1-1-5"
+export bridge="br0"
+export image_name="/home/source/templet/redos-le1-1-5"
 export source_vm_image="/home/source/templet/redos-le1-1-5.qcow2"
 export source_vm_image_raw="/home/source/templet/redos-le1-1-5.img"
 export backup_vm_image="/home/source/templet-bck/redos-le1-1-5.qcow2"
@@ -94,6 +94,8 @@ fi
 
 export AUTOTEST_PATH=$AUTOTEST_PATH
 export CONFIG_DIR=$CONFIG_DIR
+export remote_ip=$remote_ip
+export local_ip=$local_ip
 export vms=$vms
 export vms_raw=$vms_raw
 export main_vms=$main_vms
