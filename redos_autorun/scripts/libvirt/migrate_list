@@ -46,12 +46,12 @@ restore:type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_com
 		vm_nfs_share_storage=/home/source/nfs_share/
 
 		#本地nfs迁移环境配置
-		umount $vm_local_image_dir
+		umount -l $vm_local_image_dir
 		cp $vm_backup_image_dir/* $vm_local_image_dir
 		systemctl restart libvirtd
 
 		#远程环境配置
-		ssh root@$remote_ip "umount $vm_local_image_dir"
+		ssh root@$remote_ip "umount -l $vm_local_image_dir"
 		ssh root@$remote_ip "cp $vm_backup_image_dir $vm_local_image_dir"
 		ssh root@$remote_ip "systemctl restart libvirtd"
 		
