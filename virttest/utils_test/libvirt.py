@@ -2469,6 +2469,7 @@ def connect_libvirtd(uri, read_only="", virsh_cmd="list", auth_user=None,
 
     try:
         # requires access authentication
+	time.sleep(30)
         match_list = [patterns_yes_no, patterns_auth_name_comm,
                       patterns_auth_name_xen, patterns_auth_pwd,
                       patterns_virsh_cmd]
