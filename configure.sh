@@ -17,7 +17,7 @@ export source_vm_image="/home/source/templet/redos-le1-1-5.qcow2"
 export source_vm_image_raw="/home/source/templet/redos-le1-1-5.img"
 export backup_vm_image="/home/source/templet-bck/redos-le1-1-5.qcow2"
 export backup_vm_image_raw="/home/source/templet-bck/redos-le1-1-5.img"
-BLOCK_DEVICE="/DEV/EXAMPLE" #填写host上可用的空物理盘/dev/sdf
+BLOCK_DEVICE="/dev/sdf" #填写host上可用的空物理盘/dev/sdf
 
 
 export CONFIG_DIR=$(pwd)
@@ -298,6 +298,7 @@ EOF
 	sed -i -e "s|^    server_ip =.*$|    server_ip = $remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tcp.cfg
         sed -i -e "s|ENTER.YOUR.REMOTE.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tcp.cfg
         sed -i -e "s|^    server_pwd =.*$|    server_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tcp.cfg
+	sed -i -e "s|^                    main_vm =.*$|                    main_vm = $main_vms|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tcp.cfg
 	#remote_with_tls
 	sed -i -e "s|^    server_ip =.*$|    server_ip = $remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
         sed -i -e "s|ENTER.YOUR.REMOTE.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
