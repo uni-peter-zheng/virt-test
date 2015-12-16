@@ -293,7 +293,8 @@ EOF
 	sed -i -e "s|^    server_pwd =.*$|    server_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg
 	sed -i -e "s|^    client_ip =.*$|    client_ip = $local_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg
         sed -i -e "s|ENTER.YOUR.CLIENT.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg
-        sed -i -e "s|^    client_pwd =.*$|    client_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg	
+        sed -i -e "s|^    client_pwd =.*$|    client_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg
+    sed -i -e "s|^                    main_vm =.*$|                    main_vm = $main_vms|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_ssh.cfg        
 	#remote_with_tcp
 	sed -i -e "s|^    server_ip =.*$|    server_ip = $remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tcp.cfg
         sed -i -e "s|ENTER.YOUR.REMOTE.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tcp.cfg
@@ -308,6 +309,7 @@ EOF
         sed -i -e "s|^    client_pwd =.*$|    client_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
 	sed -i -e "s|^    server_cn =.*$|    server_cn = $remotehost|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
 	sed -i -e "s|^    client_cn =.*$|    client_cn = $localhost|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
+    sed -i -e "s|^                    main_vm =.*$|                    main_vm = $main_vms|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_tls.cfg
 	#remote_with_unix	
 	sed -i -e "s|^    server_ip =.*$|    server_ip = $remote_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
         sed -i -e "s|ENTER.YOUR.REMOTE.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
@@ -315,6 +317,7 @@ EOF
 	sed -i -e "s|^    client_ip =.*$|    client_ip = $local_ip|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
         sed -i -e "s|ENTER.YOUR.CLIENT.USER|root|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
         sed -i -e "s|^    client_pwd =.*$|    client_pwd = $local_pwd|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg
+        sed -i -e "s|^                    main_vm =.*$|                    main_vm = $main_vms|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/remote_access/remote_with_unix.cfg              
 
 	#为用例graphics_functional指定测试bridge_device和macvtap_device
 	sed -i -e "s|^    macvtap_device =.*$|    macvtap_device = $bridge|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/graphics/graphics_functional.cfg
