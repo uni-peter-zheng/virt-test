@@ -54,7 +54,7 @@ type_specific.io-github-autotest-qemu.live_snapshot_chain.long_chain
 type_specific.io-github-autotest-qemu.live_snapshot_chain.check
 type_specific.io-github-autotest-qemu.live_snapshot_chain.oops
 type_specific.io-github-autotest-qemu.performance.iozone.summary_results_iozone
-type_specific.io-github-autotest-qemu.check_coredump
+#type_specific.io-github-autotest-qemu.check_coredump #bug322
 type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-migrate
 type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-reboot
 type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-shutdown
