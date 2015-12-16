@@ -122,7 +122,7 @@ libvirt:virsh_domfsthaw
 libvirt:virsh_qemu_agent_command_fs
 libvirt:virsh_reset
 libvirt:virsh_shutdown
-libvirt:svirt                       
+libvirt:svirt                       # 14个用例host_selinux全部FAIL unsupported configuration: vmport is not available with this QEMU binary 
 libvirt:virsh_create 
 libvirt:virsh_desc
 libvirt:virsh_migrate_compcache     # 系统页大小为64k，但是支持migrate_compcache设置 >= 4k  TestFail: Expected fail, but succeed 
@@ -137,7 +137,7 @@ libvirt:virsh_domiftune
 libvirt:virsh_define_undefine
 libvirt:virsh_domfstrim
 libvirt:virsh_console         
-libvirt:virsh_event                 
+    libvirt:virsh_event                 
 
 #libvirt:guest_numa                 #注释掉2M，1G的20个用例    bug288
 libvirt:snapshot                    #qed_type不支持；50FAIL ;memory state 注释20个 bug 331
@@ -175,9 +175,9 @@ libvirt:domstate_switch_by_groups   #需要多台虚机
 libvirt:virsh_blockcopy              # xml_checkfailed 传说在进行blockcopy时，会生成一个mirror的域，可惜并没有 注释17个用例
 libvirt:attach_device                # ide不支持，注释91个用例; 
 
-# 需要使用两台机器的libvirt的用例
-libvirt:virsh_remote_with_tcp       
-libvirt:remote_with_tls
+# 需要使用两台机器的libvirt的用例 
+libvirt:virsh_remote_with_tcp     #ipv6 xen 注释掉20个用例     
+libvirt:remote_with_tls                
 libvirt:remote_with_ssh
 libvirt:remote_with_unix 
 libvirt:migrate_list 
