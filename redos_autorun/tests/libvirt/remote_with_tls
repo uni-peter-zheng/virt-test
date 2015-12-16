@@ -7,9 +7,9 @@ type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.allowed_dn_list 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.customized_ipv4_listen_address 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.customized_ipv4_listen_address_with_sasl_auth 
-type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.customized_ipv6_listen_address 
-type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.customized_ipv6_tls_port 
-type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.customized_ipv6_listen_address_with_sasl_auth 
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.customized_ipv6_listen_address 
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.customized_ipv6_tls_port 
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.customized_ipv6_listen_address_with_sasl_auth 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.customized_x509_cert_path 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.only_simpy_connect_libvirtd 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.invalid_tls_port 
@@ -22,5 +22,5 @@ type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.allowed_dn_list_with_invalid_CN 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.verify_certificate 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.incorrect_ipv4_listen_address 
-type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.ipv6_with_readonly 
-type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.ipv6_address_unreachable 
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.ipv6_with_readonly 
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.negative_testing.ipv6_address_unreachable 
