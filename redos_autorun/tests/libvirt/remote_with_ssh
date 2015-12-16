@@ -3,10 +3,10 @@ type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.
 type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.gssapi_auth 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.test_uri_with_default_user 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.test_uri_with_root_user 
-type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.xen_uri_with_default_user 
-type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.xen_uri_with_root_user 
-type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.esx_uri_with_default_user 
-type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.esx_uri_with_root_user 
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.xen_uri_with_default_user 
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.xen_uri_with_root_user 
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.esx_uri_with_default_user 
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.esx_uri_with_root_user 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.negative_testing.libssh2_no_auth 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.negative_testing.ssh_no_uri_path 
 type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.negative_testing.ssh_read_only_mode 
