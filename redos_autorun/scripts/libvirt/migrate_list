@@ -17,7 +17,8 @@ prepare:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simulta
 		mkdir -p  $vm_nfs_share_storage
 		rm -rf "$vm_nfs_share_storage*"
 		mv -f $vm_local_image_dir/* $vm_nfs_share_storage > /dev/null
-		systemctl restart nfs
+		systemctl stop nfs
+		systemctl start nfs
 		exportfs -o rw,no_root_squash *:$vm_nfs_share_storage
 		mount $local_ip:$vm_nfs_share_storage $vm_local_image_dir
 		systemctl restart libvirtd
@@ -34,7 +35,6 @@ prepare:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simulta
 		
 		sed -i "s/^vms.*$/vms = $vms $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
 	        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
-		sleep 60
 }
 restore:type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_compcache.negative_test.invalid_size.large_size()
 {
@@ -57,12 +57,10 @@ restore:type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.set_com
 		ssh root@$remote_ip "cp -rf $vm_backup_image_dir/* $vm_local_image_dir"
 		ssh root@$remote_ip "virsh define "$vm_local_image_dir/$main_vms".xml"
 		ssh root@$remote_ip "virsh define "$vm_local_image_dir/$main_vms_raw".xml"
-		ssh root@$remote_ip "cp -rf $vm_backup_image_dir/* $vm_local_image_dir"
 		ssh root@$remote_ip "systemctl restart libvirtd"
 		
 		sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
 	        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
-		sleep 60
 }
 # End of function
 # start in here
