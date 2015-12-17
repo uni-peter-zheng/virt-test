@@ -364,6 +364,18 @@ if [ \$? == 0 ]; then
 else
     echo "$3 $4" >> /etc/hosts
 fi
+grep "$1" /etc/hosts
+if [ \$? == 0 ]; then
+    grep "$1 $2" /etc/hosts
+    if [ \$? == 0 ]; then
+        echo "local_ip has been set to hosts"
+    else
+        sed -i "s|^$1.*$|$1 $1|" /etc/hosts
+    fi
+else
+    echo "$1 $2" >> /etc/hosts
+fi
+
 #修改migration监听地址
 grep "migration_address" /etc/libvirt/qemu.conf
 if [ \$? == 0 ]; then
