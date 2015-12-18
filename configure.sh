@@ -172,6 +172,7 @@ EOF
 	sed -i "s/^migrate_source_pwd =.*$/migrate_source_pwd = $local_pwd/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
     sed -i "s/^migrate_dest_host =.*$/migrate_dest_host = $remote_ip/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
     sed -i "s/^migrate_dest_pwd =.*$/migrate_dest_pwd = $local_pwd/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+    sed -i "s|^migrate_shared_storage =.*$|migrate_shared_storage = $source_vm_image|" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
 
 	#默认关闭截屏选项
 	sed -i "s/^take_regular_screendumps.*$/take_regular_screendumps = no/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
@@ -364,6 +365,18 @@ if [ \$? == 0 ]; then
 else
     echo "$3 $4" >> /etc/hosts
 fi
+grep "$1" /etc/hosts
+if [ \$? == 0 ]; then
+    grep "$1 $2" /etc/hosts
+    if [ \$? == 0 ]; then
+        echo "local_ip has been set to hosts"
+    else
+        sed -i "s|^$1.*$|$1 $1|" /etc/hosts
+    fi
+else
+    echo "$1 $2" >> /etc/hosts
+fi
+
 #修改migration监听地址
 grep "migration_address" /etc/libvirt/qemu.conf
 if [ \$? == 0 ]; then
