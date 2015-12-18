@@ -51,9 +51,9 @@ libvirt:virsh_nodeinfo              #1 FAIL bug 324
 
 libvirt:virsh_update_device         #device用例 不支持ide floppy设备
 libvirt:virsh_suspend               #   
-#libvirt:virsh-attach-detach-interface #大端热插拔有问题 bug243
+libvirt:virsh-attach-detach-interface 
 libvirt:virsh_qemu_monitor_command    
-#libvirt:virsh_detach_device         #大端热插拔有问题 bug243
+libvirt:virsh_detach_device        
 
 libvirt:virsh_save_image_edit       
 libvirt:virsh_nodedev_dumpxml
@@ -111,7 +111,7 @@ libvirt:virsh_qemu_agent_command    #不支持--aysnc选项,shutdown有问题  �
 libvirt:virsh_screenshot            #55s    注释18个用例  rhel的系统跳过Multiple screen
 libvirt:hugepage                    #75s    注释5个用例 需要测试工具unixbench等 
 libvirt:virsh_setmem                #80s    bug303
-#libvirt:virsh-attach-detach-disk   #大端热插拔有问题 bug243
+libvirt:virsh-attach-detach-disk   
 
 libvirt:virsh_blockjob
 libvirt:virsh_reboot
