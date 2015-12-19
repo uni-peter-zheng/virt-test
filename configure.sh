@@ -121,6 +121,7 @@ EOF
     systemctl stop iptables
     systemctl mask iptables
     systemctl stop NetworkManager
+    systemctl stop cgconfig
     setenforce 0
     
     #打开libvirtd日志
