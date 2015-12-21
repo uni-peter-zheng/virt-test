@@ -5,6 +5,11 @@
 # 
 prepare:type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.normal.live.default.local()
 {
+		CURRENT_DIR=`pwd`
+		cd ../../../
+		$NEW_DIR=$CURRENT_DIR
+		source $NEW_DIR/configure.sh
+		cd $CURRENT_DIR
 		#参数设置
 		vm1=$main_vms
 		vm2=$main_vms_raw
