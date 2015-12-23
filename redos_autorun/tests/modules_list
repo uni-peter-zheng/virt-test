@@ -170,6 +170,7 @@ libvirt:numa_capabilities
 libvirt:numa_preferred_undefine
 libvirt:graphics_functional         
 libvirt:domstate_switch_by_groups   #需要多台虚机
+libvirt:macvtap
 
 #超级耗时的用例
 libvirt:virsh_blockcopy              # xml_checkfailed 传说在进行blockcopy时，会生成一个mirror的域，可惜并没有 注释17个用例
@@ -189,7 +190,6 @@ libvirt:migrate_list
 #libvirt:guest_kernel_debugging      #ALL FAIL  # 
 #libvirt:multiqueue                  #ALL FAIL  iperf编译有问题
 #libvirt:io-github-autotest-qemu     #ALL FAIL
-#libvirt:macvtap                     #网络用例 需要多块网卡同时开启，部分测试导致网络不通,测试环境配置未处理
 #libvirt:unattended_install          #安装用例
 #libvirt:virt_what                   #virt-what功能无效  bug298
 #libvirt:vfio                        #测试用例不支持ppc的vfio测试

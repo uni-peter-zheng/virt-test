@@ -2,5 +2,5 @@
 type_specific.io-github-autotest-libvirt.macvtap.VEPA 
 type_specific.io-github-autotest-libvirt.macvtap.Bridge 
 type_specific.io-github-autotest-libvirt.macvtap.Private 
-type_specific.io-github-autotest-libvirt.macvtap.Passthrough 
+#type_specific.io-github-autotest-libvirt.macvtap.Passthrough 
 
