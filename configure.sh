@@ -12,11 +12,11 @@ export main_vms_raw="autotest-raw"
 localhost="RedOS-5"
 remotehost="RedOS-3"
 export bridge="br0"
-export image_name="/home/source/templet/redos-le1-1-5"
-export source_vm_image="/home/source/templet/redos-le1-1-5.qcow2"
-export source_vm_image_raw="/home/source/templet/redos-le1-1-5.img"
-export backup_vm_image="/home/source/templet-bck/redos-le1-1-5.qcow2"
-export backup_vm_image_raw="/home/source/templet-bck/redos-le1-1-5.img"
+export image_name="/home/source/templet/autotest-qcow2"
+export source_vm_image="/home/source/templet/autotest-qcow2.qcow2"
+export source_vm_image_raw="/home/source/templet/autotest-raw.img"
+export backup_vm_image="/home/source/templet-bck/autoest-qcow2.qcow2"
+export backup_vm_image_raw="/home/source/templet-bck/autotest-raw.img"
 BLOCK_DEVICE="/dev/sdf" #填写host上可用的空物理盘/dev/sdf
 
 
@@ -324,6 +324,11 @@ EOF
 	#为用例graphics_functional指定测试bridge_device和macvtap_device
 	sed -i -e "s|^    macvtap_device =.*$|    macvtap_device = $bridge|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/graphics/graphics_functional.cfg
 	sed -i -e "s|^    bridge_device =.*$|    bridge_device = $bridge|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/graphics/graphics_functional.cfg
+
+	#为用例macvtap指定测试参数
+	sed -i -e "s|^    vms = .*$|    vms = \"$main_vms $main_vms_raw\"|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/macvtap.cfg
+	sed -i -e "s|^    remote_ip = .*$|    remote_ip = \"$remote_ip\"|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/macvtap.cfg
+	sed -i -e "s|^            vms = .*$|            vms = \"$main_vms\"|" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/macvtap.cfg
 }
 
 #测试用例所需的软件包安装
