@@ -1,0 +1,300 @@
+#!/bin/bash
+
+# prepare: func run before testcase
+# virstual_disks用例需要两台虚拟机
+#
+
+prepare:type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_by_groups.shutdown_start_pause_resume()
+{
+        sed -i "s/^vms.*$/vms = $vms $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+restore:type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_in_loop.shutdown_start_pause_resume()
+{
+        sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+# Add function in here
+
+prepare:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_stp()
+{
+    echo "iface_bridge prepare"
+    host_iface=`brctl show | awk '/enP3p9s0f/{print $1}' | sed -n '1p'`
+    host_ip=`ifconfig $host_iface | grep "inet " | awk '{print $2}'`
+    if [ -z $host_ip ]
+    then
+        echo "can not get bridge whose iface is enP3p9s0f*"
+        exit 1
+    fi
+    for ethw in enP3p9s0f0 enP3p9s0f1 enP3p9s0f2 enP3p9s0f3
+    do
+        ifconfig $ethw up
+    done
+    sleep 6
+    virsh iface-list
+    iface=`virsh iface-list | awk '/enP3p9s0f/{print $1}' | sed -n '1p'`
+    if [ -z $iface ]
+    then
+        echo "host have no activate iface(virsh iface-list)"
+        exit 1
+    fi
+   iface_file=`echo -e "/etc/sysconfig/network-scripts/ifcfg-${iface}"`
+    if [ ! -e $iface_file ]
+    then
+        exit 1
+    fi
+    cp $iface_file /etc/sysconfig/network-scripts/autotest_bridge.${iface}.bk
+    #dhcp
+    echo -e "TYPE=Ethernet" > temp_iface
+    echo -e "BOOTPROTO="DHCP"" >> temp_iface
+    echo -e "NAME=$iface" >> temp_iface
+    echo -e "DEVICE=$iface" >> temp_iface
+    echo -e "ONBOOT=yes" >> temp_iface
+    dhclient $iface
+    sleep 2
+    dhc_id=`ps -aux | grep dhclient | sed -n '1p' | awk '{print $2}'`
+    kill $dhc_id
+
+    iface_ip=`ifconfig $iface | grep "inet " | awk '{print $2}'`
+    if [ -z $iface_ip ]
+    then
+        echo "dhcp get ip fail for host extra iface"
+        exit 1
+    fi
+    echo -e "TYPE=Ethernet" > temp_iface
+    echo -e "BOOTPROTO="static"" >> temp_iface
+    echo -e "IPADDR=$iface_ip" >> temp_iface
+    echo -e "GATEWAY=192.168.1.1" >> temp_iface
+    echo -e "NETMASK=255.255.255.0" >> temp_iface
+    echo -e "NAME=$iface" >> temp_iface
+    echo -e "DEVICE=$iface" >> temp_iface
+    echo -e "ONBOOT=yes" >> temp_iface
+    yes | cp temp_iface $iface_file
+    rm -rf temp_iface
+    systemctl restart network
+    sleep 2
+    iface_ip=`ifconfig $iface | grep "inet " | awk '{print $2}'`
+    if [ -z $iface_ip ]
+    then
+        echo "static get ip fail for host extra iface"
+        exit 1
+    fi
+
+    ip route add 0.0.0.0/0 via 192.168.1.1 dev $host_iface table 10
+    ip route add 192.168.1.0/24 dev $host_iface src $host_ip table 10
+    ip rule add from $host_ip table 10
+    ip route add 0.0.0.0/0 via 192.168.1.1 dev $iface table 22
+    ip route add 192.168.1.0/24 dev $iface src $iface_ip table 22
+    ip rule add from $iface_ip table 22
+    ip route flush cache
+    echo 1 > /proc/sys/net/ipv4/conf/all/arp_ignore
+    echo 2 > /proc/sys/net/ipv4/conf/all/arp_announce
+    sleep 6
+    route -n
+    sed -i "/# Caveat/{n; s/iface_name =.*/iface_name = "$iface"/}" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface_bridge.cfg
+}
+restore:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_delay_2()
+{
+    echo "iface_bridge clean"
+    iface_name_bk=`ls /etc/sysconfig/network-scripts/autotest_bridge.*.bk`
+    if [ ! -e ${iface_name_bk} ]
+    then
+        echo -e  "${iface_name_bk} is not exist"
+        exit 1
+    fi
+    iface=`awk -F "=" '/NAME=/{print $2}' ${iface_name_bk}`
+    if [ ! -e /etc/sysconfig/network-scripts/ifcfg-${iface} ]
+    then
+        echo -e "${iface_name_bk} is a wrong file or /etc/sysconfig/network-scripts/ifcfg-${iface} is no exist"
+        exit 1
+    fi
+    yes | cp ${iface_name_bk} /etc/sysconfig/network-scripts/ifcfg-${iface}
+    rm -rf ${iface_name_bk}
+    systemctl restart network
+    sleep 2
+    ip rule del table 22
+    ip rule del table 10
+}
+
+prepare:type_specific.io-github-autotest-libvirt.macvtap.VEPA()
+{
+    for ethw in enP3p9s0f0 enP3p9s0f1 enP3p9s0f2 enP3p9s0f3
+    do
+        ifconfig $ethw up
+    done
+    sleep 2
+    virsh iface-list
+    iface=`virsh iface-list | awk '/enP3p9s0f/{print $1}' | sed -n '1p'`
+    if [ -z $iface ]
+    then
+        echo "host have no activate iface(virsh iface-list)"
+        exit 1
+    fi
+    index=0
+    for ((i = 100; i < 255; i++))
+    do
+        ping 192.168.1.${i} -c 1
+        if (($? != 0));then
+            if ((index == 0));then
+                vms_ip0="192.168.1.${i}"
+                ((index += 1))
+            else
+                vms_ip1="192.168.1.${i}"
+                break;
+            fi
+        fi
+    done
+
+
+    sed -i "s/eth_card_no =.*/eth_card_no = "${iface}"/" /home/autotest/tp-libvirt/libvirt/tests/cfg/macvtap.cfg
+    sed -i "s/vm1_ip =.*/vm1_ip = "${vms_ip0}"/" /home/autotest/tp-libvirt/libvirt/tests/cfg/macvtap.cfg
+    sed -i "s/vm2_ip =.*/vm2_ip = "${vms_ip1}"/" /home/autotest/tp-libvirt/libvirt/tests/cfg/macvtap.cfg
+}
+
+prepare:type_specific.io-github-autotest-libvirt.virsh.migrate.there_and_back()
+{
+                NOW_DIR=`pwd`
+                cd $CONFIG_DIR
+                source configure.sh
+                cd $NOW_DIR
+
+                #参数设置
+                vm1=$main_vms
+                vm2=$main_vms_raw
+                vm1_local_image_file=$source_vm_image
+                vm_local_image_dir=`dirname $vm1_local_image_file`
+                vm_nfs_share_storage=/home/source/nfs_share/
+
+                #本地nfs迁移环境配置
+                echo "migration_address =  '0.0.0.0'" > /etc/libvirt/qemu.conf
+                mkdir -p  $vm_nfs_share_storage
+                rm -rf "$vm_nfs_share_storage*"
+                mv -f $vm_local_image_dir/* $vm_nfs_share_storage > /dev/null
+                systemctl stop nfs
+                systemctl start nfs
+                exportfs -o rw,no_root_squash *:$vm_nfs_share_storage
+                mount $local_ip:$vm_nfs_share_storage $vm_local_image_dir
+                                systemctl restart libvirtd
+
+                #远程环境配置
+                ssh root@$remote_ip "setenforce 0"
+                ssh root@$remote_ip "virsh destroy $main_vms > /dev/null"                    #把虚机删除掉，以免影响测试
+                ssh root@$remote_ip "virsh destroy $main_vms_raw > /dev/null"
+                ssh root@$remote_ip "virsh undefine $main_vms"
+                ssh root@$remote_ip "virsh undefine $main_vms_raw"
+                ssh root@$remote_ip "echo \"migration_address =  '0.0.0.0'\" > /etc/libvirt/qemu.conf"
+                ssh root@$remote_ip "rm -rf $vm_local_image_dir/*"                #用共享存储取代本地存储           
+                ssh root@$remote_ip "mount $local_ip:$vm_nfs_share_storage $vm_local_image_dir"
+                ssh root@$remote_ip "systemctl restart libvirtd"
+
+                sed -i "s/^vms.*$/vms = $vms $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+                rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+restore:type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.migrating_attachment.multiple_disks.1.lun_device.block_source.format_raw()
+{
+                #参数设置
+                vm1=$main_vms
+                vm2=$main_vms_raw
+                vm1_local_image_file=$source_vm_image
+                vm_local_image_dir=`dirname $vm1_local_image_file`
+                vm1_backup_image_file=$backup_vm_image
+                vm_backup_image_dir=`dirname $vm1_backup_image_file`
+                vm_nfs_share_storage=/home/source/nfs_share/
+                #本地nfs迁移环境配置
+                umount -l $vm_local_image_dir
+                cp -rf $vm_backup_image_dir/* $vm_local_image_dir
+                systemctl restart libvirtd
+                virsh destroy $vm1
+                virsh destroy $vm2
+                virsh undefine $vm1
+                virsh undefine $vm2
+                virsh define "$vm_local_image_dir/$main_vms".xml
+                virsh define "$vm_local_image_dir/$main_vms_raw".xml
+
+                #远程环境配置
+                ssh root@$remote_ip "umount -l $vm_local_image_dir"
+                ssh root@$remote_ip "cp -rf $vm_backup_image_dir/* $vm_local_image_dir"
+                ssh root@$remote_ip "virsh define "$vm_local_image_dir/$main_vms".xml"
+                ssh root@$remote_ip "virsh define "$vm_local_image_dir/$main_vms_raw".xml"
+                ssh root@$remote_ip "systemctl restart libvirtd"
+
+                sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+                rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+
+prepare:type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.network()
+{
+      virsh detach-interface --domain $main_vms --type bridge --config
+      virsh attach-interface --domain $main_vms --type network --source default --model virtio --mac $mac_nic1 --config
+      rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+restore:type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.portgroup()
+{
+      virsh detach-interface --domain $main_vms --type network --config
+      virsh attach-interface --domain $main_vms --type bridge --source br0 --model virtio --mac $mac_nic1 --config
+       rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+
+prepare:type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_chain.file_disk.local.no_ga.notimeout.nobase.top_inactive()
+{
+        sed -i "s/^vms.*$/vms = $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+        sed -i "s/^main_vm.*$/main_vm = $main_vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg #设置为raw格式的测试虚机
+        sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image_raw"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+        sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image_raw"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+restore:type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.multiple_chain.file_disk.local.no_ga.notimeout.base_as_middle.top_active.with_pivot()
+{
+        sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+        sed -i "s/^main_vm.*$/main_vm = $main_vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg #切换回qcow2的测试虚机
+        sed -i "s|^backup_vm_image =.*$|backup_vm_image = "$backup_vm_image"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+        sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+
+prepare:type_specific.io-github-autotest-libvirt.virtual_disks.multivms.hotplug.vms_sgio_share_normal_test.scsi_lbpu.filtered_shareable_option5()
+{
+        sed -i "s/^vms.*$/vms = $vms $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+restore:type_specific.io-github-autotest-libvirt.virtual_disks.multivms.coldplug.vms_sharable_test.block_type()
+{
+        sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
+        rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
+}
+
+# Add function in here
+
+
+# End of function
+# start in here
+main()
+{
+        if [ "$1" = "" ]; then
+                exit
+        fi
+
+        testcase=$1
+        class=`echo $1 | cut -d ':' -f1`
+        if [ "$class" = "prepare" ]; then
+                echo "Run prepare function($1) in $0" 
+        elif [ "$class" = "restore" ]; then
+                echo "Run restore function($1) in $0" 
+        else
+                echo "Unknow class($1) in $0" 
+        fi
+
+        $testcase
+
+        if [ "$class" = "prepare" ]; then
+                echo "End of prepare function($1) in $0" 
+        elif [ "$class" = "restore" ]; then
+                echo "End of restore function($1) in $0" 
+        else
+                echo "End of Unknow class($1) in $0" 
+        fi
+        echo ""
+}
+
+main $1 $2
+
