@@ -7,34 +7,34 @@ type_specific.io-github-autotest-libvirt.conf_file.libvirtd_conf.host_uuid.posit
 type_specific.io-github-autotest-libvirt.conf_file.libvirtd_conf.unix_sock.positive_test.change_group			
 #│ ├── qemu_conf				
 #│ │ ├── auto_dump
-type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.auto_dump.enable_bypass_cache				
+#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.auto_dump.enable_bypass_cache				#auto_dump_bypass_cache is 1 but flags is 600001
 #│ │ ├── clear_emulator_capabilities	
 type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.clear_emulator_capabilities.positive_test.default			
 #│ │ ├── seccomp_sandbox	
-type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.positive_test.set_sandbox_on			
+#type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.seccomp_sandbox.positive_test.set_sandbox_on	#缺少sandbox		
 #│ │ └── set_process_name				
 type_specific.io-github-autotest-libvirt.conf_file.qemu_conf.set_process_name.positive_test.set_name
 #│ └── sysconfig_libvirtd				
 #│     └── libvirtd_config	
 type_specific.io-github-autotest-libvirt.conf_file.sysconfig_libvirtd.libvirtd_config.positive_test.set			
 #├── controller				
-#│ └── controller_functional	
-type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.pci_root
-type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.pcie_root
-type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.virtio_serial_0_vectors 
-type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.auto_addr.ich9-uhci1.master_ehci
-type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.manual_addr.ich9-uhci1.master_ehci		
+#│ └── controller_functional	#全部报错
+#type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.pci_root
+#type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.pcie_root
+#type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.virtio_serial_0_vectors 
+#type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.auto_addr.ich9-uhci1.master_ehci
+#type_specific.io-github-autotest-libvirt.controller.functional.positive_tests.usb_controller.manual_addr.ich9-uhci1.master_ehci		
 #├── daemon				
 #│ ├── daemon_functional	
 type_specific.io-github-autotest-libvirt.daemon.functional.opt_timeout_3_live_vm			
 #│ ├── init_scripts	
 type_specific.io-github-autotest-libvirt.daemon.init_scripts			
-#│ ├── kill_qemu	
+#│ ├── kill_qemu	            #部分报错
 type_specific.io-github-autotest-libvirt.daemon.kill_qemu.running.sigkill
 type_specific.io-github-autotest-libvirt.daemon.kill_qemu.paused.sigkill
-type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigkill			
+#type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigkill			
 #│ ├── kill_started	
-type_specific.io-github-autotest-libvirt.daemon.kill_started.sigkill		
+#type_specific.io-github-autotest-libvirt.daemon.kill_started.sigkill		
 #│ ├── kill_starting	
 type_specific.io-github-autotest-libvirt.daemon.kill_starting.qemuStateInitialize			
 #│ └── restart_consist	
@@ -46,12 +46,12 @@ type_specific.io-github-autotest-libvirt.graphics.functional.positive_tests.vnc_
 type_specific.io-github-autotest-libvirt.graphics.functional.positive_tests.spice_vnc.default			
 #├── guest_kernel_debugging				
 #│ └── nmi_test	
-type_specific.io-github-autotest-libvirt.guest_kernel_debugging.nmi_test.positive_testing.send_nmi			
+#type_specific.io-github-autotest-libvirt.guest_kernel_debugging.nmi_test.positive_testing.send_nmi			
 #├── hotplug_serial		
 type_specific.io-github-autotest-libvirt.hotplug_serial.qmp.all_dev.normal_test 
 type_specific.io-github-autotest-libvirt.hotplug_serial.at_dt_device.all_dev.normal_test 	
 #├── kernel_panic	
-type_specific.io-github-autotest-libvirt.kernel_panic			
+#type_specific.io-github-autotest-libvirt.kernel_panic			
 #├── libvirt_bench				
 #│ ├── libvirt_bench_domstate_switch_by_groups		
 type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_by_groups.shutdown_start_pause_resume		
@@ -79,33 +79,33 @@ type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.memory_stres
 type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.cpu_stress.setvcpu_del.setvcpu_add.offline
 type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.cpu_stress.monitor_del.monitor_add.offline			
 #├── libvirtd_start	
-type_specific.io-github-autotest-libvirt.libvirtd_start.with_iptables
-type_specific.io-github-autotest-libvirt.libvirtd_start.with_firewalld
+#type_specific.io-github-autotest-libvirt.libvirtd_start.with_iptables        #iptables is masked 要安装iptables还要给它配置规则
+type_specific.io-github-autotest-libvirt.libvirtd_start.with_firewalld       
 type_specific.io-github-autotest-libvirt.libvirtd_start.stop_iptables			
 #├── libvirt_hugepage
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.with_mb.trans_enable.static_nonzero.mount_hugetlbfs
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.with_mb.trans_disable.static_nonzero.umount_hugetlbfs
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_disable.static_zero.mount_hugetlbfs
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.stress.with_mb.trans_enable.static_nonzero.mount_hugetlbfs
-type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_enable.static_zero.mount_hugetlbfslibvirt:				
-#├── libvirt_mem	
-type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.mem_basic			
-type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.hugepages.with_numatune.hot_plug
-type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.hugepages.no_numatune.cold_plug
+type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_enable.static_zero.mount_hugetlbfs				
+#├── libvirt_mem              #<maxMemory slots="16" unit="KiB">2560000</maxMemory>	
+#type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.mem_basic     #memory hotplug isn't supported by this QEMU binary			
+#type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.hugepages.with_numatune.hot_plug
+#type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.hugepages.no_numatune.cold_plug
 #├── libvirt_network_bandwidth	
 type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.network
 type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.interface
 type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.portgroup			
 #├── libvirt_pci_passthrough		
-type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.NIC.Normal_passthrough
-type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.STORAGE.SRIOVlibvirt:		
+#type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.NIC.Normal_passthrough
+#type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.STORAGE.SRIOVlibvirt:		
 #├── libvirt_qemu_cmdline	
-type_specific.io-github-autotest-libvirt.libvirt_qemu_cmdline.hypervisor_features.pv_eoi.enable
+#type_specific.io-github-autotest-libvirt.libvirt_qemu_cmdline.hypervisor_features.pv_eoi.enable
 type_specific.io-github-autotest-libvirt.libvirt_qemu_cmdline.memory_backing.disable_ksm_lock_page			
 #├── libvirt_scsi	
 type_specific.io-github-autotest-libvirt.libvirt_scsi.multi_disk_type			
 #├── libvirt_usb_hotplug_controller		
-type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_controller.model_nec-xhci.index_normal.guest_on
+#type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_controller.model_nec-xhci.index_normal.guest_on
 type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_controller.model_nec-xhci.index_none.guest_off
 type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_controller.model_nec-xhci.index_conflict.guest_pause
 type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_controller.model_none.index_invalid.guest_on
@@ -115,18 +115,18 @@ lbvirt:type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_device.qemu_
 lbvirt:type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_device.qemu_monitor.maximum_sub_1.mouse
 lbvirt:type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_device.qemu_monitor.maximum.tablet
 lbvirt:type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_device.qemu_monitor.maximum_add_1.storage		
-#├── libvirt_vcpu_plug_unplug
-type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.live.vm_operate.managedsave
-type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.live.vm_operate.suspend_to_disk
-type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.live.vcpu_pin.pin_plug_unplug
-type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.config.vm_operate.save
-type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.guest.vm_operate.suspend_to_mem
-type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.guest.libvirtd_restart			
-#├── macvtap	
-type_specific.io-github-autotest-libvirt.macvtap.VEPA 
-type_specific.io-github-autotest-libvirt.macvtap.Bridge
-type_specific.io-github-autotest-libvirt.macvtap.Private
-type_specific.io-github-autotest-libvirt.macvtap.Passthrough 			
+#├── libvirt_vcpu_plug_unplug   #cpu热插拔不支持
+#type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.live.vm_operate.managedsave
+#type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.live.vm_operate.suspend_to_disk
+#type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.live.vcpu_pin.pin_plug_unplug
+#type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.config.vm_operate.save
+#type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.guest.vm_operate.suspend_to_mem
+#type_specific.io-github-autotest-libvirt.libvirt_vcpu_plug_unplug.positive_test.vcpu_set.guest.libvirtd_restart			
+#├── macvtap	                #需要双网卡
+#type_specific.io-github-autotest-libvirt.macvtap.VEPA 
+#type_specific.io-github-autotest-libvirt.macvtap.Bridge
+#type_specific.io-github-autotest-libvirt.macvtap.Private
+#type_specific.io-github-autotest-libvirt.macvtap.Passthrough 			
 #├── multifunction	
 type_specific.io-github-autotest-libvirt.multifunction.set_type_drive.set_multifunction_on.single_device.function_-1
 type_specific.io-github-autotest-libvirt.multifunction.set_type_pci.set_multifunction_on.single_device.function_0
@@ -134,29 +134,29 @@ type_specific.io-github-autotest-libvirt.multifunction.set_type_pci.set_multifun
 type_specific.io-github-autotest-libvirt.multifunction.set_type_pci.set_multifunction_off.single_device.function_7
 type_specific.io-github-autotest-libvirt.multifunction.set_type_pci.set_multifunction_off.multi_devices.increased_func.from_0x1.with_others
 type_specific.io-github-autotest-libvirt.multifunction.set_type_pci.no_multifunction_set.single_device.function_8			
-#├── multiqueue	
-type_specific.io-github-autotest-libvirt.multiqueue.iperf.vcpu_2.queue_9
-type_specific.io-github-autotest-libvirt.multiqueue.cpu_affinity.vcpu_2.queue_4			
+#├── multiqueue	              #iperf有问题
+#type_specific.io-github-autotest-libvirt.multiqueue.iperf.vcpu_2.queue_9
+#type_specific.io-github-autotest-libvirt.multiqueue.cpu_affinity.vcpu_2.queue_4			
 #├── numa				
-#│ ├── guest_numa
-type_specific.io-github-autotest-libvirt.guest_numa.possitive_test.no_hugepage.no_mem_backend.topology.no_numatune_memnode.numatune_mem
-type_specific.io-github-autotest-libvirt.guest_numa.possitive_test.no_hugepage.mem_backend.no_topo.numatune_memnode.m_interleave.numatune_mem
-type_specific.io-github-autotest-libvirt.guest_numa.possitive_test.hugepage.per_node.16M.no_topo.numatune_memnode.m_strict.numatune_mem
-type_specific.io-github-autotest-libvirt.guest_numa.possitive_test.hugepage.host_total.no_topo.numatune_memnode.m_strict.no_numatune_mem				
+#│ ├── guest_numa               #bug 288                  
+#type_specific.io-github-autotest-libvirt.guest_numa.possitive_test.no_hugepage.no_mem_backend.topology.no_numatune_memnode.numatune_mem
+#type_specific.io-github-autotest-libvirt.guest_numa.possitive_test.no_hugepage.mem_backend.no_topo.numatune_memnode.m_interleave.numatune_mem
+#type_specific.io-github-autotest-libvirt.guest_numa.possitive_test.hugepage.per_node.16M.no_topo.numatune_memnode.m_strict.numatune_mem
+#type_specific.io-github-autotest-libvirt.guest_numa.possitive_test.hugepage.host_total.no_topo.numatune_memnode.m_strict.no_numatune_mem				
 #│ ├── numa_capabilities	
-type_specific.io-github-autotest-libvirt.numa_capabilities			
+#type_specific.io-github-autotest-libvirt.numa_capabilities			
 #│ ├── numad_vcpupin	
-type_specific.io-github-autotest-libvirt.numad_vcpupin			
+#type_specific.io-github-autotest-libvirt.numad_vcpupin			
 #│ ├── numa_memory	
-type_specific.io-github-autotest-libvirt.numa_memory.possitive_test.no_vcpu.mem_auto.strict
-type_specific.io-github-autotest-libvirt.numa_memory.possitive_test.no_vcpu.mem_nodeset.node1.preferred
-type_specific.io-github-autotest-libvirt.numa_memory.possitive_test.vcpu.vcpu_auto.mem_nodeset.node2.interleave
-type_specific.io-github-autotest-libvirt.numa_memory.possitive_test.vcpu.vcpu_static.mem_nodeset.node1.preferred			
+#type_specific.io-github-autotest-libvirt.numa_memory.possitive_test.no_vcpu.mem_auto.strict
+#type_specific.io-github-autotest-libvirt.numa_memory.possitive_test.no_vcpu.mem_nodeset.node1.preferred
+#type_specific.io-github-autotest-libvirt.numa_memory.possitive_test.vcpu.vcpu_auto.mem_nodeset.node2.interleave
+#type_specific.io-github-autotest-libvirt.numa_memory.possitive_test.vcpu.vcpu_static.mem_nodeset.node1.preferred			
 #│ ├── numa_memory_migrate	
-type_specific.io-github-autotest-libvirt.numa_memory_migrate.mem_auto
-type_specific.io-github-autotest-libvirt.numa_memory_migrate.mem_nodeset			
+#type_specific.io-github-autotest-libvirt.numa_memory_migrate.mem_auto
+#type_specific.io-github-autotest-libvirt.numa_memory_migrate.mem_nodeset			
 #│ └── numa_preferred_undefine	
-type_specific.io-github-autotest-libvirt.numa_preferred_undefine			
+#type_specific.io-github-autotest-libvirt.numa_preferred_undefine			
 #├── nwfilter				
 #│ ├── nwfilter_edit_uuid	
 type_specific.io-github-autotest-libvirt.nwfilter_edit_uuid			
