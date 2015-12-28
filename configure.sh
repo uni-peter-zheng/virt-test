@@ -262,8 +262,8 @@ EOF
     	#为用例virsh.cpu_baseline指定测试机
     	echo "set config for testcases:virsh.cpu_baseline!"
     	echo
-	sed -i -e "s/^                    vms*$/                    vms = $vms/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
-	sed -i -e "s/^                    main_vm =*$/                    main_vm = $main_vms/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
+	sed -i -e "s/^                    vms =.*$/                    vms = $vms/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
+	sed -i -e "s/^                    main_vm =.*$/                    main_vm = $main_vms/" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/domain/virsh_cpu_baseline.cfg
  
     	#为用例virsh.domstats指定测试机
     	echo "set config for testcases:virsh.domstats!"
