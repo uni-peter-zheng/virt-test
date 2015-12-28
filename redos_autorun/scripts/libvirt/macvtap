@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# prepare: func run before testcase
+# virt-clone的用例使用raw格式镜像的虚拟机进行测试
+#
+
+prepare:type_specific.io-github-autotest-libvirt.macvtap.VEPA()
+{
+    for ethw in enP3p9s0f0 enP3p9s0f1 enP3p9s0f2 enP3p9s0f3
+    do
+        ifconfig $ethw up
+    done
+    sleep 2
+    virsh iface-list
+    iface=`virsh iface-list | awk '/enP3p9s0f/{print $1}' | sed -n '1p'`
+    if [ -z $iface ]
+    then
+        echo "host have no activate iface(virsh iface-list)"
+        exit 1
+    fi
+    index=0
+    for ((i = 100; i < 255; i++))
+    do
+        ping 192.168.1.${i} -c 1
+        if (($? != 0));then
+            if ((index == 0));then
+                vms_ip0="192.168.1.${i}"
+                ((index += 1))
+            else
+                vms_ip1="192.168.1.${i}"
+                break;
+            fi
+        fi
+    done
+
+
+    sed -i "s/eth_card_no =.*/eth_card_no = "${iface}"/" /home/autotest/tp-libvirt/libvirt/tests/cfg/macvtap.cfg
+    sed -i "s/vm1_ip =.*/vm1_ip = "${vms_ip0}"/" /home/autotest/tp-libvirt/libvirt/tests/cfg/macvtap.cfg
+    sed -i "s/vm2_ip =.*/vm2_ip = "${vms_ip1}"/" /home/autotest/tp-libvirt/libvirt/tests/cfg/macvtap.cfg
+}
+# Add function in here
+
+
+# End of function
+# start in here
+main()
+{
+	if [ "$1" = "" ]; then
+		exit
+	fi
+
+	testcase=$1
+	class=`echo $1 | cut -d ':' -f1`
+	if [ "$class" = "prepare" ]; then
+		echo "Run prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "Run restore function($1) in $0" 
+	else
+		echo "Unknow class($1) in $0" 
+	fi
+
+	$testcase 
+
+	if [ "$class" = "prepare" ]; then
+		echo "End of prepare function($1) in $0" 
+	elif [ "$class" = "restore" ]; then
+		echo "End of restore function($1) in $0" 
+	else
+		echo "End of Unknow class($1) in $0" 
+	fi
+	echo ""
+}
+
+main $1 $2
