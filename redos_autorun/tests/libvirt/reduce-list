@@ -41,7 +41,7 @@ type_specific.io-github-autotest-libvirt.daemon.kill_starting.qemuStateInitializ
 type_specific.io-github-autotest-libvirt.daemon.restart_consist			
 #├── graphics				
 #│ └── graphics_functional	
-type_specific.io-github-autotest-libvirt.graphics.functional.positive_tests.spice_only.default
+#type_specific.io-github-autotest-libvirt.graphics.functional.positive_tests.spice_only.default   
 type_specific.io-github-autotest-libvirt.graphics.functional.positive_tests.vnc_only.default
 type_specific.io-github-autotest-libvirt.graphics.functional.positive_tests.spice_vnc.default			
 #├── guest_kernel_debugging				
@@ -73,11 +73,11 @@ type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.no_bench.qemu
 type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.mouse
 type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.tablet
 type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.attach_device.disklibvirt:				
-#│ └── libvirt_bench_vcpu_hotplug	
-type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.memory_stress.setvcpu_del.setvcpu_add.online
-type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.memory_stress.monitor_del.monitor_add.online
-type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.cpu_stress.setvcpu_del.setvcpu_add.offline
-type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.cpu_stress.monitor_del.monitor_add.offline			
+#│ └── libvirt_bench_vcpu_hotplug	  #cpu不支持hotplug
+#type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.memory_stress.setvcpu_del.setvcpu_add.online
+#type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.memory_stress.monitor_del.monitor_add.online
+#type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.cpu_stress.setvcpu_del.setvcpu_add.offline
+#type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.cpu_stress.monitor_del.monitor_add.offline			
 #├── libvirtd_start	
 #type_specific.io-github-autotest-libvirt.libvirtd_start.with_iptables        #iptables is masked 要安装iptables还要给它配置规则
 type_specific.io-github-autotest-libvirt.libvirtd_start.with_firewalld       
@@ -161,14 +161,14 @@ type_specific.io-github-autotest-libvirt.multifunction.set_type_pci.no_multifunc
 #│ ├── nwfilter_edit_uuid	
 type_specific.io-github-autotest-libvirt.nwfilter_edit_uuid			
 #│ ├── nwfilter_update_lock		
-type_specific.io-github-autotest-libvirt.nwfilter_update_lock		
+#type_specific.io-github-autotest-libvirt.nwfilter_update_lock		
 #│ ├── nwfilter_update_vm_running	
 type_specific.io-github-autotest-libvirt.nwfilter_update_vm_running.update_arp_rule
 #│ ├── nwfilter_vm_attach	
-type_specific.io-github-autotest-libvirt.nwfilter_vm_attach.possitive_test.allow_arp			
+#type_specific.io-github-autotest-libvirt.nwfilter_vm_attach.possitive_test.allow_arp			
 #│ └── nwfilter_vm_start	
-type_specific.io-github-autotest-libvirt.nwfilter_vm_start.possitive_test.new_filter.variable_notation
-type_specific.io-github-autotest-libvirt.nwfilter_vm_start.possitive_test.default_filter.no_other_l2_traffic			
+#type_specific.io-github-autotest-libvirt.nwfilter_vm_start.possitive_test.new_filter.variable_notation
+#type_specific.io-github-autotest-libvirt.nwfilter_vm_start.possitive_test.default_filter.no_other_l2_traffic			
 #├── perf_kvm	              [no cases]			
 #├── remote_access				
 #│ ├── remote_with_ssh        [17 cases]
@@ -264,7 +264,7 @@ type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_lab
 type_specific.io-github-autotest-libvirt.timer_management.no_timer.offset_utc.under_stress.stress_in_vm.memory.test_timers_in_vm.linux_guest
 type_specific.io-github-autotest-libvirt.timer_management.no_timer.offset_utc.under_stress.vm_operations.save_restore.test_timers_in_vm.linux_guest
 type_specific.io-github-autotest-libvirt.timer_management.specific_timer.kvmclock.present_yes.offset_timezone.no_stress.test_specific_timer
-type_specific.io-github-autotest-libvirt.timer_management.specific_timer.hpet.present_yes.offset_localtime.no_stress.test_specific_timer
+#type_specific.io-github-autotest-libvirt.timer_management.specific_timer.hpet.present_yes.offset_localtime.no_stress.test_specific_timer
 type_specific.io-github-autotest-libvirt.timer_management.specific_timer.pit.present_no.offset_variable.no_stress.test_specific_timer
 type_specific.io-github-autotest-libvirt.timer_management.specific_timer.rtc.present_yes.offset_localtime.no_stress.test_specific_timer
 type_specific.io-github-autotest-libvirt.timer_management.specific_timer.multi_timers.pit_rtc.present_no.offset_variable.no_stress.test_specific_timer
