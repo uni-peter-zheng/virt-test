@@ -196,7 +196,7 @@ type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.normal_res
 type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.memory_lack
 type_specific.io-github-autotest-libvirt.resource_abnormal.snapshot_create.cpu_busy
 type_specific.io-github-autotest-libvirt.resource_abnormal.virsh_dump.normal_resource.twice_execute.kill_first
-type_specific.io-github-autotest-libvirt.resource_abnormal.migration.normal_resource.time_out		
+#type_specific.io-github-autotest-libvirt.resource_abnormal.migration.normal_resource.time_out		
 #©À©¤©¤ storage_discard	      [30 cases]
 type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_cmd.ext4_format.discard_ignore.bus_scsi.block_type
 type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_cmd.xfs_format.discard_ignore.bus_scsi.file_type
