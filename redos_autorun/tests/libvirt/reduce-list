@@ -62,17 +62,18 @@ type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_in_loop.s
 #©¦ ©À©¤©¤ libvirt_bench_dump_with_netperf				
 #©¦ ©À©¤©¤ libvirt_bench_dump_with_unixbench				
 #©¦ ©À©¤©¤ libvirt_bench_serial_hotplug		
-type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.file_dev.circle_test.load_memory
-type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.file_dev.multi_test.load_cpu 
-type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.sock_dev.circle_test.load_io
-type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.pty_dev.circle_test.load_memory
-type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.all_dev.circle_test.load_cpu		
+#type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.file_dev.circle_test.load_memory
+#type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.file_dev.multi_test.load_cpu 
+#type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.sock_dev.circle_test.load_io
+#type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.pty_dev.circle_test.load_memory
+#type_specific.io-github-autotest-libvirt.libvirt_bench.serial_hotplug.qmp.all_dev.circle_test.load_cpu		
 #©¦ ©À©¤©¤ libvirt_bench_ttcp_from_guest_to_host				
 #©¦ ©À©¤©¤ libvirt_bench_usb_hotplug
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.no_bench.qemu_monitor.keyboard
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.iozone.qemu_monitor.mouse
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.qemu_monitor.tablet
-type_specific.io-github-autotest-libvirt.libvirt_bench.usb_hotplug.stress.attach_device.disklibvirt:				
+type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_controller.model_nec-xhci.index_normal.guest_on
+type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_device.qemu_monitor.one_count.keyboard
+type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_device.qemu_monitor.one_count.mouse
+type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_device.qemu_monitor.one_count.tablet
+type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_device.qemu_monitor.one_count.storage				
 #©¦ ©¸©¤©¤ libvirt_bench_vcpu_hotplug	  #cpu²»Ö§³Öhotplug
 #type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.memory_stress.setvcpu_del.setvcpu_add.online
 #type_specific.io-github-autotest-libvirt.libvirt_bench.vcpu_hotplug.memory_stress.monitor_del.monitor_add.online
@@ -85,9 +86,10 @@ type_specific.io-github-autotest-libvirt.libvirtd_start.stop_iptables
 #©À©¤©¤ libvirt_hugepage
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.with_mb.trans_enable.static_nonzero.mount_hugetlbfs
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.with_mb.trans_disable.static_nonzero.umount_hugetlbfs
+type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_disable.static_nonzero.mount_hugetlbfs
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.normal.without_mb.trans_disable.static_zero.mount_hugetlbfs
 type_specific.io-github-autotest-libvirt.libvirt_hugepage.stress.with_mb.trans_enable.static_nonzero.mount_hugetlbfs
-type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_enable.static_zero.mount_hugetlbfs				
+#type_specific.io-github-autotest-libvirt.libvirt_hugepage.unixbench.with_mb.trans_enable.static_zero.mount_hugetlbfs				
 #©À©¤©¤ libvirt_mem              #<maxMemory slots="16" unit="KiB">2560000</maxMemory>	
 #type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.mem_basic     #memory hotplug isn't supported by this QEMU binary			
 #type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.hugepages.with_numatune.hot_plug
@@ -186,7 +188,7 @@ type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.
 #©¦ ©¸©¤©¤ remote_with_unix	      [14 cases]		
 type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.default_unix_config
 type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_access_controls
-type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_with_polkit_and_acl_controllibvirt:
+type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_with_polkit_and_acl_controllibvirt
 #©À©¤©¤ remove_guest		      [no cases]		
 #©À©¤©¤ resource_abnormal	      [17 cases]
 type_specific.io-github-autotest-libvirt.resource_abnormal.vol_clone.normal_resource.once_execute
@@ -282,13 +284,13 @@ type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.no
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom_eject_control
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type_lun
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_image_format.qcow2_format
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_writebacklibvirt:				
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_writebacklibvirt				
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_disk_lxc	 [no cases]			
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_interface	 [39]		
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.default_network.domname
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.exist_bridge.domid
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.default_network.domuuid
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domnamelibvirt:	
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domnamelibvirt	
 #©¦ ©¦ ©À©¤©¤ virsh_attach_device			 [1400 cases]
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_positional
@@ -397,7 +399,7 @@ type_specific.io-github-autotest-libvirt.virsh.domcontrol.normal_test.managedsav
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.have_passwd.no_options.positive_readonly.spice_t.with_ssl
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.have_passwd.option_include-passwd.negtive_readonly.spice_t.without_ssl.domain_id
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.no_options.readwrite.vnc_t.domain_uuid
-type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.option_include-passwd.readwrite.spice_t.without_ssl.domain_idlibvirt:
+type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.option_include-passwd.readwrite.spice_t.without_ssl.domain_idlibvirt
 #©¦ ©¦ ©À©¤©¤ virsh_domfsthaw				 [8]
 type_specific.io-github-autotest-libvirt.virsh.domfsthaw.positive_tests.full_freeze
 type_specific.io-github-autotest-libvirt.virsh.domfsthaw.negative_tests.no_start_qemu_guest_agent
