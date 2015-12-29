@@ -117,9 +117,7 @@ EOF
 
     ppc64_cpu --smt=off
     systemctl stop firewalld
-    systemctl mask firewalld
     systemctl stop iptables
-    systemctl mask iptables
     systemctl stop NetworkManager
     systemctl stop cgconfig
     setenforce 0
