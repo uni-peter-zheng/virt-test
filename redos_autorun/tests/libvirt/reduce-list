@@ -288,9 +288,12 @@ type_specific.io-github-autotest-libvirt.timer_management.specific_timer.platfor
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_disk        [70 cases]
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.host_block_vm_id
 #type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom_eject_control #IDE not support
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.image_file_no_option
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type_lun
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_image_format.qcow2_format
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_none
 #type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_writebacklibvirt		#not support		
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.detach_disk.normal_test.attach_disk_image_format.qcow2_format
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_disk_lxc	 [no cases]			
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_interface	 [39]		
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.default_network.domname
@@ -299,9 +302,11 @@ type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_te
 #type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domnamelibvirt	#not support
 #©¦ ©¦ ©À©¤©¤ virsh_attach_device			 [1400 cases]
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional
-#type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_hot_vm.uuid_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.hot_attach_hot_vm_current.name_ref.file_positional.domain_positional
-#type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_pty.normal_test.hot_attach_hot_vm.persistent.name_ref.file_positional.domain_argument
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.hot_attach_hot_vm_current.uuid_ref.file_argument.domain_argument
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_pty.normal_test.hot_attach_hot_vm_current.name_ref.file_positional.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_unix.normal_test.hot_attach_hot_vm.persistent.name_ref.file_positional.domain_positional
 type_specific.io-github-autotest-libvirt.virsh.attach_device.controller.type_scsi.normal_test.hot_attach_hot_vm.persistent.name_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_virtio_file.normal_test.hot_attach_hot_vm.persistent.name_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.normal_test.hot_attach_hot_vm.persistent.name_ref.file_positional.domain_argument
