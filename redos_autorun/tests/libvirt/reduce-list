@@ -233,7 +233,7 @@ type_specific.io-github-autotest-libvirt.dac_start_destroy.positive_test.sec_lab
 #©¦ ©À©¤©¤ dac_vm_per_image_start [25 cases]
 type_specific.io-github-autotest-libvirt.dac_vm_per_image_start.positive_test.model_default.file_disk.local.vm_t_dynamic.per_img_relabel_yes.per_img_qemu
 type_specific.io-github-autotest-libvirt.dac_vm_per_image_start.positive_test.model_default.file_disk.nfs.vm_t_static.s_qemu.per_img_relabel_yes.per_img_qemu
-type_specific.io-github-autotest-libvirt.dac_vm_per_image_start.positive_test.model_default.network_disk.gluster.vm_t_static.s_qemu.per_img_relabel_yes.per_img_qemu_grp
+#type_specific.io-github-autotest-libvirt.dac_vm_per_image_start.positive_test.model_default.network_disk.gluster.vm_t_static.s_qemu.per_img_relabel_yes.per_img_qemu_grp #gluster fs
 type_specific.io-github-autotest-libvirt.dac_vm_per_image_start.positive_test.model_default.block_disk.disk.vm_t_static.s_qemu.per_img_relabel_yes.per_img_qemu				
 #©¦ ©À©¤©¤ svirt_attach_disk	  [13 cases]
 type_specific.io-github-autotest-libvirt.svirt_attach_disk.positive_test.default_vol.img_label_virt_content.sec_relabel_yes.sec_type_dynamic
@@ -274,14 +274,14 @@ type_specific.io-github-autotest-libvirt.timer_management.specific_timer.multi_t
 type_specific.io-github-autotest-libvirt.timer_management.specific_timer.tsc.present_no.offset_localtime.no_stress.test_specific_timer
 type_specific.io-github-autotest-libvirt.timer_management.specific_timer.platform.present_no.offset_localtime.no_stress.test_specific_timer		
 #©À©¤©¤ vfio				      [6 cases]
-type_specific.io-github-autotest-libvirt.vfio.nic_and_fibre_group
-type_specific.io-github-autotest-libvirt.vfio.nic_single_to_iommu_group
-type_specific.io-github-autotest-libvirt.vfio.primary_boot.fibre  
+#type_specific.io-github-autotest-libvirt.vfio.nic_and_fibre_group
+#type_specific.io-github-autotest-libvirt.vfio.nic_single_to_iommu_group
+#type_specific.io-github-autotest-libvirt.vfio.primary_boot.fibre  
 #©À©¤©¤ virsh_cmd	              [7417 cases]			
 #©¦ ©À©¤©¤ domain				
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_disk        [70 cases]
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.host_block_vm_id
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom_eject_control
+#type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom_eject_control #IDE not support
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type_lun
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_image_format.qcow2_format
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_writebacklibvirt				
@@ -319,7 +319,7 @@ type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_ch
 type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_chain.file_disk.local.with_ga.notimeout.base_as_middle.top_active.without_pivot
 type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_chain.file_disk.nfs.with_ga.timeout.base_as_middle.top_active.with_pivot
 type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_chain.network_disk.iscsi.with_ga.timeout.shallow.top_active.with_pivot 
-type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_chain.network_disk.gluster.disk_qcow2.transport_default.with_ga.timeout.shallow.top_active.without_pivot
+#type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_chain.network_disk.gluster.disk_qcow2.transport_default.with_ga.timeout.shallow.top_active.without_pivot #gluster
 type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_chain.block_disk.with_ga.timeout.shallow.top_active.without_pivot
 type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.multiple_chain.file_disk.local.no_ga.notimeout.base_as_middle.top_active.with_pivot
 #©¦ ©¦ ©À©¤©¤ virsh_blockcopy				 [225 cases]
@@ -341,17 +341,17 @@ type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.l
 type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.timeout.nobase.no_async
 type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.nfs.notimeout.base_snap_one.no_bandwidth
 type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.network_disk.iscsi.notimeout.shallow
-type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.network_disk.gluster.disk_qcow2.transport_rdma.notimeout.base_snap_one.no_bandwidth
+#type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.network_disk.gluster.disk_qcow2.transport_rdma.notimeout.base_snap_one.no_bandwidth #gluster fs
 type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.block_disk.notimeout.base_snap_one.no_bandwidth
 #©¦ ©¦ ©À©¤©¤ virsh_blockresize	             [22]	
 type_specific.io-github-autotest-libvirt.virsh.blockresize.normal_test.byte.qcow2_type
 type_specific.io-github-autotest-libvirt.virsh.blockresize.normal_test.kb1000.raw_type
-type_specific.io-github-autotest-libvirt.virsh.blockresize.normal_test.kib.qed_type
+#type_specific.io-github-autotest-libvirt.virsh.blockresize.normal_test.kib.qed_type  #Skip 'qed' cases for libvirt version greater than 1.1.0
 type_specific.io-github-autotest-libvirt.virsh.blockresize.normal_test.gigabyte.qcow2_type		
 #©¦ ©¦ ©À©¤©¤ virsh_change_media				 [148]
-type_specific.io-github-autotest-libvirt.virsh.change_media.cdrom_test.ide_.positive_test.eject.none.running_guest
+#type_specific.io-github-autotest-libvirt.virsh.change_media.cdrom_test.ide_.positive_test.eject.none.running_guest
 type_specific.io-github-autotest-libvirt.virsh.change_media.cdrom_test.scsi_.positive_test.insert.live.running_guest
-type_specific.io-github-autotest-libvirt.virsh.change_media.floppy_test.positive_test.eject.config.running_guest
+#type_specific.io-github-autotest-libvirt.virsh.change_media.floppy_test.positive_test.eject.config.running_guest #IDE not support
 #©¦ ©¦ ©À©¤©¤ virsh_console				     [14]
 type_specific.io-github-autotest-libvirt.virsh.console.normal_test.non_acl.valid_domname
 type_specific.io-github-autotest-libvirt.virsh.console.normal_test.acl_test.valid_domid
@@ -364,7 +364,7 @@ type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.no_cpu_match
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.minimum_cpu_match.empty_xml_file
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.exact_cpu_match.invalid_ref
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.strict_cpu_match.modify_vendor
-type_specific.io-github-autotest-libvirt.virsh.cpu_compare.guest_cpu.extra_option
+#type_specific.io-github-autotest-libvirt.virsh.cpu_compare.guest_cpu.extra_option  #xml need <cpu>element
 #©¦ ©¦ ©À©¤©¤ virsh_cpu_stats				 [11]
 type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option1
 type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.paused_option
@@ -494,8 +494,8 @@ type_specific.io-github-autotest-libvirt.virsh.numatune.positive_testing.get_num
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.running_guest.change_nodeset.options.live.comma_list
 type_specific.io-github-autotest-libvirt.virsh.numatune.negative_testing.set_numa_parameter.running_guest.change_nodeset.options.current.single 
 #©¦ ©¦ ©À©¤©¤ virsh_qemu_agent_command		 [457]
-type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_info.async_option.valid_domname
-type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.string_id.async_option.valid_domuuid
+#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_info.async_option.valid_domname
+#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync.string_id.async_option.valid_domuuid
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_sync.sync_extra.normal_id.timeout_option.valid_domname
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_ping.guest_cpu_busy.non_option.valid_domid
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_ping.guest_cpu_normal.block_option.valid_domid
@@ -503,7 +503,7 @@ type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.gu
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_thaw.pretty_option.valid_domuuid
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_freeze.pretty_option.valid_domname
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.no_arguments.guest_fsfreeze_status.block_option.valid_domid
-type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.null_arguments.guest_shutdown.timeout_option.valid_domid 
+#type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.null_arguments.guest_shutdown.timeout_option.valid_domid 
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.null_arguments.guest_ping.guest_cpu_busy.pretty_option.valid_domuuid
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.null_arguments.guest_fstrim.non_option.valid_domname
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.guest_cmd_valid.null_arguments.guest_fsfreeze_status.non_option.valid_domuuid
@@ -555,7 +555,7 @@ type_specific.io-github-autotest-libvirt.virsh.schedinfo_qemu_posix.normal_test.
 #©¦ ©¦ ©À©¤©¤ virsh_screenshot				 [35]
 type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.non_acl.screen_0.id_option
 type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.paused_option
-type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_1.no_filename_option
+#type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_1.no_filename_option
 #©¦ ©¦ ©À©¤©¤ virsh_sendkey				     [38]
 type_specific.io-github-autotest-libvirt.virsh.sendkey.params_test.non_acl.with_holdtime
 type_specific.io-github-autotest-libvirt.virsh.sendkey.params_test.acl_test.at_set1_keycode
@@ -564,15 +564,15 @@ type_specific.io-github-autotest-libvirt.virsh.sendkey.sysrq.acl_test.show_memor
 type_specific.io-github-autotest-libvirt.virsh.setmaxmem.normal_test.config.running.half_mem.domname.dom_arg_size_arg
 type_specific.io-github-autotest-libvirt.virsh.setmaxmem.normal_test.config.shutoff.same_mem.domname.dom_opt_size_opt
 type_specific.io-github-autotest-libvirt.virsh.setmaxmem.normal_test.current.shutoff.half_mem.domname.dom_arg_size_arg
-type_specific.io-github-autotest-libvirt.virsh.setmaxmem.normal_test.live.same_mem.domuuid.dom_opt_size_opt
-type_specific.io-github-autotest-libvirt.virsh.setmaxmem.normal_test.live_and_config.same_mem.domname.dom_opt_size_opt
+#type_specific.io-github-autotest-libvirt.virsh.setmaxmem.normal_test.live.same_mem.domuuid.dom_opt_size_opt
+#type_specific.io-github-autotest-libvirt.virsh.setmaxmem.normal_test.live_and_config.same_mem.domname.dom_opt_size_opt
 #©¦ ©¦ ©À©¤©¤ virsh_setmem				     [178]
 type_specific.io-github-autotest-libvirt.virsh.setmem.valid_options.inactive.half_mem.domname.dom_arg_size_arg.cmd_flag_current.manipulate_action.none.no_action
 type_specific.io-github-autotest-libvirt.virsh.setmem.valid_options.running.half_mem.domid.dom_arg_size_arg.cmd_flag_live
 type_specific.io-github-autotest-libvirt.virsh.setmem.valid_options.running.half_mem.domuuid.dom_opt_size_opt.no_cmd_flag
 type_specific.io-github-autotest-libvirt.virsh.setmem.memballoon_option.remove_driver
 #©¦ ©¦ ©À©¤©¤ virsh_setvcpus				     [35]
-type_specific.io-github-autotest-libvirt.virsh.setvcpus.normal_test.guest_on.id_option.option_live.add
+#type_specific.io-github-autotest-libvirt.virsh.setvcpus.normal_test.guest_on.id_option.option_live.add
 type_specific.io-github-autotest-libvirt.virsh.setvcpus.normal_test.guest_on.name_option.del
 type_specific.io-github-autotest-libvirt.virsh.setvcpus.normal_test.guest_off.option_maximum_config
 #©¦ ©¦ ©À©¤©¤ virsh_shutdown				     [37]
@@ -605,7 +605,7 @@ type_specific.io-github-autotest-libvirt.virsh.vcpuinfo.normal_test.paused_optio
 #©¦ ©¦ ©À©¤©¤ virsh_vcpupin				     [23]
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.cpu_list.cpu_list_x
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_x-y
-type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.multi_dom
+#type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.multi_dom
 #©¦ ©¦ ©¸©¤©¤ virsh_vncdisplay				 [12]
 type_specific.io-github-autotest-libvirt.virsh.vncdisplay.normal_test.name_option
 #©¦ ©À©¤©¤ filter				        
@@ -727,16 +727,16 @@ type_specific.io-github-autotest-libvirt.virsh.net_update.add-first.ip_dhcp_host
 type_specific.io-github-autotest-libvirt.virsh.net_uuid.name_option
 #©¦ ©À©¤©¤ nodedev				
 #©¦ ©¦ ©À©¤©¤ virsh_nodedev_create_destroy	 [9]
-type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.positive_testing.acl_test.create_destroy_device			
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_create_destroy.positive_testing.acl_test.create_destroy_device			
 #©¦ ©¦ ©À©¤©¤ virsh_nodedev_detach_reattach	 [8]
-type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.positive.acl_test			
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_detach_reattach.positive.acl_test			
 #©¦ ©¦ ©À©¤©¤ virsh_nodedev_dumpxml			 [7]
 type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.positve_test.non_acl.normal_test	
 #©¦ ©¦ ©À©¤©¤ virsh_nodedev_list				 [13]
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.one_cap_option
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.acl_test.tree_option
 #©¦ ©¦ ©¸©¤©¤ virsh_nodedev_reset			 [6]
-type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.positive_test	
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.positive_test	
 #©¦ ©À©¤©¤ pool				
 #©¦ ©¦ ©À©¤©¤ virsh_find_storage_pool_sources_as	  [9]
 type_specific.io-github-autotest-libvirt.virsh.find_storage_pool_sources_as.positive_test.local_source.iscsi_type			
@@ -823,7 +823,7 @@ type_specific.io-github-autotest-libvirt.virsh.vol_resize.positive_test.non_acl.
 type_specific.io-github-autotest-libvirt.virsh.vol_resize.positive_test.acl_test.sparse_capacity.netfs
 type_specific.io-github-autotest-libvirt.virsh.vol_resize.positive_test.acl_test.delta_allocate_capacity.dir_pool
 #©¦     ©À©¤©¤ virsh_volume_application			  [10]
-type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.disk
+#type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.disk
 type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.logical
 #©¦     ©¸©¤©¤ virsh_volume				          [22]
 type_specific.io-github-autotest-libvirt.virsh.volume.dir_pool.vol_encrypt_none.vol_format_qcow2.vol_allocation.zero_size 
@@ -848,7 +848,7 @@ type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.requisite.
 #©¦ ©À©¤©¤ virtual_disks_encryption				  [2]
 type_specific.io-github-autotest-libvirt.virtual_disks.encryption.encryption_test.normal_test
 #©¦ ©À©¤©¤ virtual_disks_gluster				  [7]
-type_specific.io-github-autotest-libvirt.virtual_disks.gluster.disk_qcow2.transport_rdma
+#type_specific.io-github-autotest-libvirt.virtual_disks.gluster.disk_qcow2.transport_rdma
 #©¦ ©À©¤©¤ virtual_disks_iscsi				      [13]
 type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_lun.non_auth.non_save_snapshot.ipv4_test
 type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_test.device_disk.iothread 
