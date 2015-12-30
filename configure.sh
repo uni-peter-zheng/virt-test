@@ -184,7 +184,7 @@ auto_ssh_copy_id () {
     expect -c "set timeout -1;
                spawn ssh-keygen
                expect {
-                   *y/n* {send -- y\r;exp_continue;}
+                   *y/n* {send -- n\r;exp_continue;}
                    */root/.ssh/id_rsa* {send -- \r;exp_continue;}
                    *empty* {send -- \r;exp_continue;}
                    *same* {send -- \r;exp_continue;}
@@ -200,7 +200,7 @@ auto_scp_is_rsa() {
     expect -c "set timeout -1;
                spawn ssh root@$remote_ip "ssh-keygen"
                expect {
-                   *y/n* {send -- y\r;exp_continue;}
+                   *y/n* {send -- n\r;exp_continue;}
                    */root/.ssh/id_rsa* {send -- \r;exp_continue;}
                    *empty* {send -- \r;exp_continue;}
                    *same* {send -- \r;exp_continue;}
