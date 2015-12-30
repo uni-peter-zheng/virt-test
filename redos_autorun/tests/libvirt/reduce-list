@@ -620,7 +620,8 @@ type_specific.io-github-autotest-libvirt.virsh.nwfilter_list.normal_test.non_acl
 type_specific.io-github-autotest-libvirt.virsh.nwfilter_undefine.normal_test.acl_test		
 #©¦ ©À©¤©¤ host				
 #©¦ ©¦ ©À©¤©¤ virsh_capabilities				 [3]
-type_specific.io-github-autotest-libvirt.virsh.capabilities.no_option
+#type_specific.io-github-autotest-libvirt.virsh.capabilities.no_option
+type_specific.io-github-autotest-libvirt.virsh.capabilities.unexpect_option
 #©¦ ©¦ ©À©¤©¤ virsh_cpu_models				 [6]
 type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.local_host.auto_get_arch
 #©¦ ©¦ ©À©¤©¤ virsh_domcapabilities			 [9]
