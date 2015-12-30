@@ -637,18 +637,21 @@ type_specific.io-github-autotest-libvirt.virsh.maxvcpus.connect_to_local.with_op
 type_specific.io-github-autotest-libvirt.virsh.maxvcpus.connect_to_local.with_option.with_kvm1
 type_specific.io-github-autotest-libvirt.virsh.maxvcpus.connect_to_local.with_option.with_kqemu1
 #©¦ ©¦ ©À©¤©¤ virsh_nodecpumap				 [3]
-type_specific.io-github-autotest-libvirt.virsh.nodecpumap.pretty_option
+#type_specific.io-github-autotest-libvirt.virsh.nodecpumap.pretty_option
+type_specific.io-github-autotest-libvirt.virsh.nodecpumap.no_option
 #©¦ ©¦ ©À©¤©¤ virsh_nodecpustats				 [4]
-type_specific.io-github-autotest-libvirt.virsh.nodecpustats.no_option 
+type_specific.io-github-autotest-libvirt.virsh.nodecpustats.unexpect_option.invalid_option
+#type_specific.io-github-autotest-libvirt.virsh.nodecpustats.no_option 
 #©¦ ©¦ ©À©¤©¤ virsh_nodeinfo				     [3]
-type_specific.io-github-autotest-libvirt.virsh.nodeinfo.no_option
+#type_specific.io-github-autotest-libvirt.virsh.nodeinfo.no_option
+type_specific.io-github-autotest-libvirt.virsh.nodeinfo.unexpect_option
 #©¦ ©¦ ©À©¤©¤ virsh_nodememstats				 [7]
 type_specific.io-github-autotest-libvirt.virsh.nodememstats.cell_test.max_plus_one
 #©¦ ©¦ ©À©¤©¤ virsh_node_memtune				 [15]
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.positive_testing.get_node_memory_parameter
 type_specific.io-github-autotest-libvirt.virsh.node_memtune.positive_testing.set_node_memory_parameter.shm_pages_to_scan.normal
 #©¦ ©¦ ©À©¤©¤ virsh_nodesuspend				 [11]
-type_specific.io-github-autotest-libvirt.virsh.nodesuspend.positive_test.double_time.target_disk
+#type_specific.io-github-autotest-libvirt.virsh.nodesuspend.positive_test.double_time.target_disk
 #©¦ ©¦ ©À©¤©¤ virsh_sysinfo				     [4]
 type_specific.io-github-autotest-libvirt.virsh.sysinfo.normal_test.readonly_option
 #©¦ ©¦ ©À©¤©¤ virsh_uri				         [4]
@@ -657,11 +660,13 @@ type_specific.io-github-autotest-libvirt.virsh.uri.no_option.connect_to_local
 type_specific.io-github-autotest-libvirt.virsh.version.daemon_option
 #©¦ ©À©¤©¤ interface				         
 #©¦ ©¦ ©À©¤©¤ virsh_iface_bridge				 [15]
+type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.no_option
 type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_stp
-type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_delay_2
+type_specific.io-github-autotest-libvirt.virsh.iface_bridge.negative_test.unbridge_iface
 #©¦ ©¦ ©À©¤©¤ virsh_iface                     [13]
+type_specific.io-github-autotest-libvirt.virsh.iface.no_acl.iface_attach.exist_iface.bridge_type.no_stp.net_no_restart
 type_specific.io-github-autotest-libvirt.virsh.iface.no_acl.iface_no_attach.no_exist_iface.no_protocol.bridge_type.no_stp.net_no_restart
-type_specific.io-github-autotest-libvirt.virsh.iface.acl_test.positive_test.grant_all.iface_attach.exist_iface.bridge_type.no_stp.net_no_restart
+#type_specific.io-github-autotest-libvirt.virsh.iface.acl_test.positive_test.grant_all.iface_attach.exist_iface.bridge_type.no_stp.net_no_restart
 type_specific.io-github-autotest-libvirt.virsh.iface.acl_test.positive_test.grant_none.iface_no_attach.exist_iface.ethernet_type.net_no_restart 
 #©¦ ©¦ ©À©¤©¤ virsh_iface_edit	             [2]
 type_specific.io-github-autotest-libvirt.virsh.iface_edit.positive_test.loopback_iface		
@@ -723,10 +728,10 @@ type_specific.io-github-autotest-libvirt.virsh.net_name.uuid_option
 #©¦ ©¦ ©À©¤©¤ virsh_net_start				 [10]
 type_specific.io-github-autotest-libvirt.virsh.net_start.normal_test.acl_test.valid_netname
 #©¦ ©¦ ©À©¤©¤ virsh_net_update				 [112]
-type_specific.io-github-autotest-libvirt.virsh.net_update.modify.forward_interface.net_active.options_no
-type_specific.io-github-autotest-libvirt.virsh.net_update.delete.bridge_t.net_inactive.options_no
+#type_specific.io-github-autotest-libvirt.virsh.net_update.modify.forward_interface.net_active.options_no
+#type_specific.io-github-autotest-libvirt.virsh.net_update.delete.bridge_t.net_inactive.options_no
 type_specific.io-github-autotest-libvirt.virsh.net_update.add-last.portgroup.net_active.options_no
-type_specific.io-github-autotest-libvirt.virsh.net_update.add-first.ip.net_active.options_config
+#type_specific.io-github-autotest-libvirt.virsh.net_update.add-first.ip.net_active.options_config
 type_specific.io-github-autotest-libvirt.virsh.net_update.add-first.ip_dhcp_host.net_inactive.options_no
 #©¦ ©¦ ©¸©¤©¤ virsh_net_uuid				     [6]
 type_specific.io-github-autotest-libvirt.virsh.net_uuid.name_option
@@ -739,7 +744,8 @@ type_specific.io-github-autotest-libvirt.virsh.net_uuid.name_option
 type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.positve_test.non_acl.normal_test	
 type_specific.io-github-autotest-libvirt.virsh.nodedev_dumpxml.positve_test.acl_test.normal_test
 #©¦ ©¦ ©À©¤©¤ virsh_nodedev_list				 [13]
-type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.one_cap_option
+type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.no_option
+#type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.non_acl.one_cap_option
 type_specific.io-github-autotest-libvirt.virsh.nodedev_list.valid_option.acl_test.tree_option
 #©¦ ©¦ ©¸©¤©¤ virsh_nodedev_reset			 [6]
 #type_specific.io-github-autotest-libvirt.virsh.nodedev_reset.positive_test	
