@@ -598,7 +598,10 @@ type_specific.io-github-autotest-libvirt.virsh.vcpucount.positive_tests.running_
 type_specific.io-github-autotest-libvirt.virsh.vcpuinfo.normal_test.paused_option
 #©¦ ©¦ ©À©¤©¤ virsh_vcpupin				     [23]
 type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.cpu_list.cpu_list_x
-type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_x-y
+type_specific.io-github-autotest-libvirt.virsh.vcpupin.offline.positive_test.cpu_list.cpu_list_comma
+type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_x
+type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_comma
+#type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.cpu_list.cpu_list_x-y
 #type_specific.io-github-autotest-libvirt.virsh.vcpupin.online.positive_test.multi_dom
 #©¦ ©¦ ©¸©¤©¤ virsh_vncdisplay				 [12]
 type_specific.io-github-autotest-libvirt.virsh.vncdisplay.normal_test.id_option
