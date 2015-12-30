@@ -360,7 +360,7 @@ type_specific.io-github-autotest-libvirt.virsh.cpu_baseline.positive_test.defaul
 type_specific.io-github-autotest-libvirt.virsh.cpu_baseline.positive_test.config_guest
 #©¦ ©¦ ©À©¤©¤ virsh_cpu_compare				 [81]
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.no_cpu_match.default_feature
-type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.no_cpu_match.modify_feature_policy.disable_policy
+#type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.no_cpu_match.modify_feature_policy.disable_policy #0 feature
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.minimum_cpu_match.empty_xml_file
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.exact_cpu_match.invalid_ref
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.strict_cpu_match.modify_vendor
@@ -399,7 +399,7 @@ type_specific.io-github-autotest-libvirt.virsh.domcontrol.normal_test.managedsav
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.have_passwd.no_options.positive_readonly.spice_t.with_ssl
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.have_passwd.option_include-passwd.negtive_readonly.spice_t.without_ssl.domain_id
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.no_options.readwrite.vnc_t.domain_uuid
-type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.option_include-passwd.readwrite.spice_t.without_ssl.domain_idlibvirt
+#type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.option_include-passwd.readwrite.spice_t.without_ssl.domain_idlibvirt #not support
 #©¦ ©¦ ©À©¤©¤ virsh_domfsthaw				 [8]
 type_specific.io-github-autotest-libvirt.virsh.domfsthaw.positive_tests.full_freeze
 type_specific.io-github-autotest-libvirt.virsh.domfsthaw.negative_tests.no_start_qemu_guest_agent
@@ -420,15 +420,18 @@ type_specific.io-github-autotest-libvirt.virsh.domiftune.positive_testing.set_bl
 type_specific.io-github-autotest-libvirt.virsh.domiftune.positive_testing.set_blkio_parameter.running_guest.change_outbound.options.current.inside_boundary
 type_specific.io-github-autotest-libvirt.virsh.domiftune.negative_testing.set_domif_parameter.shutoff_guest.change_inbound.options.live.minimum_boundary
 #©¦ ©¦ ©À©¤©¤ virsh_domjobabort				 [15]
-type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.migrate_option
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.id_option
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.name_option
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.save_option
+#type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.migrate_option
 #©¦ ©¦ ©À©¤©¤ virsh_domjobinfo				 [15]
 type_specific.io-github-autotest-libvirt.virsh.domjobinfo.normal_test.restore_option
 #©¦ ©¦ ©À©¤©¤ virsh_domname				     [26]
 type_specific.io-github-autotest-libvirt.virsh.domname.vm_state.vm_paused.with_invalid_option.none
 type_specific.io-github-autotest-libvirt.virsh.domname.with_libvirtd_stop.with_valid_option.domid
 #©¦ ©¦ ©À©¤©¤ virsh_dompmsuspend				 [16]
-type_specific.io-github-autotest-libvirt.virsh.dompmsuspend.positive_test.non_acl.hybrid
-type_specific.io-github-autotest-libvirt.virsh.dompmsuspend.positive_test.acl_test.disk   
+#type_specific.io-github-autotest-libvirt.virsh.dompmsuspend.positive_test.non_acl.hybrid #setting ACPI S3 not supported
+#type_specific.io-github-autotest-libvirt.virsh.dompmsuspend.positive_test.acl_test.disk   
 #©¦ ©¦ ©À©¤©¤ virsh_domuuid				     [10]
 type_specific.io-github-autotest-libvirt.virsh.domuuid.normal_test.vm_paused.valid_domname
 #©¦ ©¦ ©À©¤©¤ virsh_domxml_from_native	     [6]
@@ -440,25 +443,25 @@ type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.pause_
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.non_acl.memory_dump.kdump-zlib_format
 type_specific.io-github-autotest-libvirt.virsh.dump.positive_test.acl_test.gzip_format_dump
 #©¦ ©¦ ©À©¤©¤ virsh_dumpxml				     [56]
-type_specific.io-github-autotest-libvirt.virsh.dumpxml.normal_test.non_acl.vm_shutoff.with_cpu.exact_match.domuuid
-type_specific.io-github-autotest-libvirt.virsh.dumpxml.normal_test.acl_test.grant_none.vm_shutoff.with_cpu.exact_match.domuuid
+#type_specific.io-github-autotest-libvirt.virsh.dumpxml.normal_test.non_acl.vm_shutoff.with_cpu.exact_match.domuuid
+#type_specific.io-github-autotest-libvirt.virsh.dumpxml.normal_test.acl_test.grant_none.vm_shutoff.with_cpu.exact_match.domuuid
 type_specific.io-github-autotest-libvirt.virsh.dumpxml.normal_test.acl_test.grant_read_secure.vm_shutoff.with_security.domname
 #©¦ ©¦ ©À©¤©¤ virsh_edit				         [20]
 type_specific.io-github-autotest-libvirt.virsh.edit.positive_test.name_option.edit_memory.default_unit
 #©¦ ©¦ ©À©¤©¤ virsh_emulatorpin				 [58]
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.get_emulatorpin_parameter.running_guest.emulatorpin_options.live
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.shutoff_guest.cpulist.emulatorpin_options.config.ranges
-type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.excluding
+#type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.excluding
 #©¦ ©¦ ©À©¤©¤ virsh_event				     [56]
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.tunable_event2.timeout.loop
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.reboot_event.no_timeout.no_loop
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.balloon-change_event.no_timeout.no_loop 
 #©¦ ©¦ ©À©¤©¤ virsh_managedsave				 [48]
 type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.cpu_mode
-type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.autostart_bypass_cache
+#type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.autostart_bypass_cache
 type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.security_driver
 #©¦ ©¦ ©À©¤©¤ virsh_memtune				     [1]
-type_specific.io-github-autotest-libvirt.virsh.memtune
+#type_specific.io-github-autotest-libvirt.virsh.memtune
 #©¦ ©¦ ©À©¤©¤ virsh_metadata				     [9]
 type_specific.io-github-autotest-libvirt.virsh.metadata.positive_test.edit_option
 #©¦ ©¦ ©À©¤©¤ virsh_migrate				     [35]
@@ -511,11 +514,11 @@ type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command.normal_test.gu
 #©¦ ©¦ ©À©¤©¤ virsh_qemu_agent_command_fs	 [1]
 type_specific.io-github-autotest-libvirt.virsh.qemu_agent_command_fs			
 #©¦ ©¦ ©À©¤©¤ virsh_qemu_attach				 [5]
-type_specific.io-github-autotest-libvirt.virsh.qemu_attach.normal_test
+#type_specific.io-github-autotest-libvirt.virsh.qemu_attach.normal_test
 #©¦ ©¦ ©À©¤©¤ virsh_qemu_monitor_blockjob	 [12]	
-type_specific.io-github-autotest-libvirt.virsh.qemu_monitor_blockjob.blockjob_complete.copy_storage_inc.stress_on_memory
-type_specific.io-github-autotest-libvirt.virsh.qemu_monitor_blockjob.blockjob_pause_resume.copy_storage_all.stress_on_cpu
-type_specific.io-github-autotest-libvirt.virsh.qemu_monitor_blockjob.blockjob_cancel.copy_storage_all.stress_on_memory		
+#type_specific.io-github-autotest-libvirt.virsh.qemu_monitor_blockjob.blockjob_complete.copy_storage_inc.stress_on_memory
+#type_specific.io-github-autotest-libvirt.virsh.qemu_monitor_blockjob.blockjob_pause_resume.copy_storage_all.stress_on_cpu
+#type_specific.io-github-autotest-libvirt.virsh.qemu_monitor_blockjob.blockjob_cancel.copy_storage_all.stress_on_memory		
 #©¦ ©¦ ©À©¤©¤ virsh_qemu_monitor_command		 [39]		
 type_specific.io-github-autotest-libvirt.virsh.qemu_monitor_command.normal_test.hmp_option.kvm_info.vm_running.valid_domname
 type_specific.io-github-autotest-libvirt.virsh.qemu_monitor_command.normal_test.hmp_option.cpus_info.vm_paused.valid_domid
