@@ -207,7 +207,7 @@ type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.
 #©¦ ©¸©¤©¤ remote_with_unix	      [14 cases]		
 type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.default_unix_config
 type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_access_controls
-type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_with_polkit_and_acl_controllibvirt
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_unix.positive_testing.socket_with_polkit_and_acl_controllibvirt #not support
 #©À©¤©¤ remove_guest		      [no cases]		
 #©À©¤©¤ resource_abnormal	      [17 cases]
 type_specific.io-github-autotest-libvirt.resource_abnormal.vol_clone.normal_resource.once_execute
