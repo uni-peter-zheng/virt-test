@@ -213,7 +213,7 @@ type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.snapshot_nfs
 #©¦ ©À©¤©¤ dac_nfs_save_restore	  [60 cases]	
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_root.qemu_user.dynamic_ownership_on.no_root_squash
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu.qemu_user.dynamic_ownership_off.root_squash
-type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu_grp.qemu_user.dynamic_ownership_on.root_squash
+#type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_qemu_grp.qemu_user.dynamic_ownership_on.root_squash  #root_squash£¬can't save
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_oth.root_user.dynamic_ownership_on.no_root_squash
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.non_exist_file.root_user.dynamic_ownership_on.no_root_squash		
 #©¦ ©À©¤©¤ dac_per_disk_hotplug	  [13 cases] 		
@@ -265,7 +265,7 @@ type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_lab
 #©À©¤©¤ timer_management         [83 cases]		
 type_specific.io-github-autotest-libvirt.timer_management.no_timer.offset_utc.under_stress.stress_in_vm.memory.test_timers_in_vm.linux_guest
 type_specific.io-github-autotest-libvirt.timer_management.no_timer.offset_utc.under_stress.vm_operations.save_restore.test_timers_in_vm.linux_guest
-type_specific.io-github-autotest-libvirt.timer_management.specific_timer.kvmclock.present_yes.offset_timezone.no_stress.test_specific_timer
+#type_specific.io-github-autotest-libvirt.timer_management.specific_timer.kvmclock.present_yes.offset_timezone.no_stress.test_specific_timer
 #type_specific.io-github-autotest-libvirt.timer_management.specific_timer.hpet.present_yes.offset_localtime.no_stress.test_specific_timer
 type_specific.io-github-autotest-libvirt.timer_management.specific_timer.pit.present_no.offset_variable.no_stress.test_specific_timer
 type_specific.io-github-autotest-libvirt.timer_management.specific_timer.rtc.present_yes.offset_localtime.no_stress.test_specific_timer
@@ -284,17 +284,17 @@ type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.no
 #type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom_eject_control #IDE not support
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type_lun
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_image_format.qcow2_format
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_writebacklibvirt				
+#type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_writebacklibvirt		#not support		
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_disk_lxc	 [no cases]			
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_interface	 [39]		
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.default_network.domname
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.exist_bridge.domid
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.default_network.domuuid
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domnamelibvirt	
+#type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domnamelibvirt	#not support
 #©¦ ©¦ ©À©¤©¤ virsh_attach_device			 [1400 cases]
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional
-type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_positional
-type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_pty.normal_test.hot_attach_hot_vm.persistent.name_ref.file_positional.domain_argument
+#type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_positional
+#type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_pty.normal_test.hot_attach_hot_vm.persistent.name_ref.file_positional.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.controller.type_scsi.normal_test.hot_attach_hot_vm.persistent.name_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_virtio_file.normal_test.hot_attach_hot_vm.persistent.name_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.normal_test.hot_attach_hot_vm.persistent.name_ref.file_positional.domain_argument
