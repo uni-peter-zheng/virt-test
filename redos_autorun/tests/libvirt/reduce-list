@@ -798,7 +798,8 @@ type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.acl_test.file_disk.no_snapshot_attr.live_memspec.compress_format.bzip2	
 #©¦ ©¦ ©À©¤©¤ virsh_snapshot_disk				  [486]
 type_specific.io-github-autotest-libvirt.virsh.snapshot_disk.delete_test.positive_test.no_pool.attach_img_qcow2.snapshot_default.current
-type_specific.io-github-autotest-libvirt.virsh.snapshot_disk.no_delete.positive_test.no_pool.attach_img_qcow2.snapshot_from_xml.disk_internal.memory_internal
+#type_specific.io-github-autotest-libvirt.virsh.snapshot_disk.no_delete.positive_test.no_pool.attach_img_qcow2.snapshot_from_xml.disk_internal.memory_internal
+type_specific.io-github-autotest-libvirt.virsh.snapshot_disk.delete_test.positive_test.pool_vol.dir_pool.attach_img_qcow2.v_qcow2.snapshot_from_xml.disk_internal.memory_internal
 type_specific.io-github-autotest-libvirt.virsh.snapshot_disk.no_delete.positive_test.pool_vol.dir_pool.attach_img_qcow2.v_qcow2.snapshot_from_xml.disk_internal.memory_internal
 type_specific.io-github-autotest-libvirt.virsh.snapshot_disk.no_delete.positive_test.pool_vol.fs_pool.attach_img_raw.snapshot_from_xml.disk_external.sys_checkpoint.default.memory_external
 type_specific.io-github-autotest-libvirt.virsh.snapshot_disk.no_delete.positive_test.pool_vol.netfs_pool.attach_img_raw.snapshot_from_xml.disk_external.sys_checkpoint.default.memory_external
