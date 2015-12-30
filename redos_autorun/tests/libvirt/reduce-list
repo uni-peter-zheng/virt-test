@@ -560,9 +560,9 @@ type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.non_acl.sc
 type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_0.paused_option
 #type_specific.io-github-autotest-libvirt.virsh.screenshot.normal_test.acl_test.screen_1.no_filename_option
 #©¦ ©¦ ©À©¤©¤ virsh_sendkey				     [38]
-type_specific.io-github-autotest-libvirt.virsh.sendkey.params_test.non_acl.with_holdtime
-type_specific.io-github-autotest-libvirt.virsh.sendkey.params_test.acl_test.at_set1_keycode
-type_specific.io-github-autotest-libvirt.virsh.sendkey.sysrq.acl_test.show_memory_usage
+#type_specific.io-github-autotest-libvirt.virsh.sendkey.params_test.non_acl.with_holdtime
+#type_specific.io-github-autotest-libvirt.virsh.sendkey.params_test.acl_test.at_set1_keycode
+#type_specific.io-github-autotest-libvirt.virsh.sendkey.sysrq.acl_test.show_memory_usage
 #©¦ ©¦ ©À©¤©¤ virsh_setmaxmem				 [108]
 type_specific.io-github-autotest-libvirt.virsh.setmaxmem.normal_test.config.running.half_mem.domname.dom_arg_size_arg
 type_specific.io-github-autotest-libvirt.virsh.setmaxmem.normal_test.config.shutoff.same_mem.domname.dom_opt_size_opt
@@ -595,9 +595,9 @@ type_specific.io-github-autotest-libvirt.virsh.ttyconsole.normal_test.vm_paused.
 type_specific.io-github-autotest-libvirt.virsh.undefine.normal_test.vm_shut_off.snapshots
 type_specific.io-github-autotest-libvirt.virsh.undefine.normal_test.acl_test.no_option
 #©¦ ©¦ ©À©¤©¤ virsh_update_device			 [57]
-type_specific.io-github-autotest-libvirt.virsh.update_device.normal_test.id_option.no_option.ide_option
+#type_specific.io-github-autotest-libvirt.virsh.update_device.normal_test.id_option.no_option.ide_option  #IDE controllers are unsupported for this QEMU binary or machine type
 type_specific.io-github-autotest-libvirt.virsh.update_device.normal_test.id_option.force_live_option.scsi_option
-type_specific.io-github-autotest-libvirt.virsh.update_device.normal_test.id_option.live_option.floppy_option
+#type_specific.io-github-autotest-libvirt.virsh.update_device.normal_test.id_option.live_option.floppy_option #floppy not support
 type_specific.io-github-autotest-libvirt.virsh.update_device.normal_test.id_option.diff_iso_option.scsi_option
 type_specific.io-github-autotest-libvirt.virsh.update_device.normal_test.offline_persistent.scsi_option   	
 #©¦ ©¦ ©À©¤©¤ virsh_vcpucount				 [23]
