@@ -69,11 +69,7 @@ type_specific.io-github-autotest-libvirt.hotplug_serial.qmp.all_dev.normal_test
 type_specific.io-github-autotest-libvirt.hotplug_serial.at_dt_device.all_dev.normal_test 	
 #©À©¤©¤ kernel_panic	
 #type_specific.io-github-autotest-libvirt.kernel_panic			
-#©À©¤©¤ libvirt_bench				
-#©¦ ©À©¤©¤ libvirt_bench_domstate_switch_by_groups		
-type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_by_groups.shutdown_start_pause_resume		
-#©¦ ©À©¤©¤ libvirt_bench_domstate_switch_in_loop	
-type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_in_loop.shutdown_start_pause_resume			
+#©À©¤©¤ libvirt_bench						
 #©¦ ©À©¤©¤ libvirt_bench_domstate_switch_with_iozone				
 #©¦ ©À©¤©¤ libvirt_bench_domstate_switch_with_unixbench				
 #©¦ ©À©¤©¤ libvirt_bench_dump_with_netperf				
@@ -111,10 +107,7 @@ type_specific.io-github-autotest-libvirt.libvirt_hugepage.stress.with_mb.trans_e
 #type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.mem_basic     #memory hotplug isn't supported by this QEMU binary			
 #type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.hugepages.with_numatune.hot_plug
 #type_specific.io-github-autotest-libvirt.libvirt_mem.positive_test.hugepages.no_numatune.cold_plug
-#©À©¤©¤ libvirt_network_bandwidth	
-type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.network
-type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.interface
-type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.portgroup			
+		
 #©À©¤©¤ libvirt_pci_passthrough		
 #type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.NIC.Normal_passthrough
 #type_specific.io-github-autotest-libvirt.libvirt_pci_passthrough.STORAGE.SRIOVlibvirt:		
@@ -216,12 +209,6 @@ type_specific.io-github-autotest-libvirt.resource_abnormal.virt_clone.memory_lac
 type_specific.io-github-autotest-libvirt.resource_abnormal.snapshot_create.cpu_busy
 type_specific.io-github-autotest-libvirt.resource_abnormal.virsh_dump.normal_resource.twice_execute.kill_first
 #type_specific.io-github-autotest-libvirt.resource_abnormal.migration.normal_resource.time_out		
-#©À©¤©¤ storage_discard	      [30 cases]
-type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_cmd.ext4_format.discard_ignore.bus_scsi.block_type
-type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_cmd.xfs_format.discard_ignore.bus_scsi.file_type
-type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_mount.ext4_format.discard_unmap.bus_scsi.block_type
-type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_mount.xfs_format.discard_unmap.bus_scsi.file_type
-type_specific.io-github-autotest-libvirt.storage_discard.fstrim_out_vm.xfs_format.discard_unmap.bus_virtio.file_type			
 #©À©¤©¤ svirt				
 #©¦ ©À©¤©¤ dac_nfs_disk		      [49 cases]
 type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_root.qemu_user.dynamic_ownership_on.no_root_squash
@@ -494,33 +481,6 @@ type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.secur
 #©¦ ©¦ ©À©¤©¤ virsh_metadata				     [9]
 type_specific.io-github-autotest-libvirt.virsh.metadata.positive_test.config_option
 type_specific.io-github-autotest-libvirt.virsh.metadata.positive_test.edit_option
-#©¦ ©¦ ©À©¤©¤ virsh_migrate				     [35]
-type_specific.io-github-autotest-libvirt.virsh.migrate.there_and_back
-type_specific.io-github-autotest-libvirt.virsh.migrate.there_with_scsi_disk
-type_specific.io-github-autotest-libvirt.virsh.migrate.there_vm_suspend_live
-#©¦ ©¦ ©À©¤©¤ virsh_migrate_compcache		 [16]
-type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.get_compcache.positive_test.live_vm.min_size		
-#©¦ ©¦ ©À©¤©¤ virsh_migrate_copy_storage		 [12]	
-type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_inc.lvm_image
-type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_all.file_image
-#©¦ ©¦ ©À©¤©¤ virsh_migrate_multi_vms		 [24]
-type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.live.default.local
-type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.abort_job.live.direct.local
-type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.normal.combination_options.p2p.local		
-#©¦ ©¦ ©À©¤©¤ virsh_migrate_set_get_speed	 [23]
-type_specific.io-github-autotest-libvirt.virsh.migrate_set_get_speed.normal_test.int64_max
-type_specific.io-github-autotest-libvirt.virsh.migrate_set_get_speed.verify_speed_with_migration.two_times.stress_tool.stress.memory			
-#©¦ ©¦ ©À©¤©¤ virsh_migrate_setmaxdowntime	 [9]	
-type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.normal_test.valid_name		
-#©¦ ©¦ ©À©¤©¤ virsh_migrate_stress			 [80]
-type_specific.io-github-autotest-libvirt.virsh.migrate_stress.orderly_migration.run_stress_app.stress_tool_in_vms.cpu_stress.set_vcpu_1
-type_specific.io-github-autotest-libvirt.virsh.migrate_stress.orderly_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_memory_2
-type_specific.io-github-autotest-libvirt.virsh.migrate_stress.orderly_migration.run_stress_app.stress_tool_on_host.short_of_memory.memory_stress.set_memory_2
-type_specific.io-github-autotest-libvirt.virsh.migrate_stress.cross_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_vcpu_1
-type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_on_host.short_of_memory.memory_stress.set_memory_2 	
-#©¦ ©¦ ©À©¤©¤ virsh_migrate_virtio_scsi		 [22]	
-type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.attach_before_migration.multiple_disks.1.disk_device.file_source.format_raw 
-type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.migrating_attachment.multiple_disks.1.lun_device.block_source.format_raw	
 #©¦ ©¦ ©À©¤©¤ virsh_numatune				     [56]
 type_specific.io-github-autotest-libvirt.virsh.numatune.positive_testing.set_numa_parameter.shutoff_guest.change_nodeset.options.config.ranges
 type_specific.io-github-autotest-libvirt.virsh.numatune.positive_testing.get_numa_parameter.shutoff_guest.options.current
@@ -927,3 +887,49 @@ type_specific.io-github-autotest-libvirt.virtual_network.iface_options.iface_mac
 #    ©¸©¤©¤ iface_ovs				              [4]
 type_specific.io-github-autotest-libvirt.virtual_network.iface_ovs.net_ovs.default_test
 type_specific.io-github-autotest-libvirt.virtual_network.iface_ovs.net_ovs.ovs_portgroup.portgroup_42
+
+#©À©¤©¤ libvirt_network_bandwidth	
+type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.network
+type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.interface
+type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.portgroup	
+
+#©À©¤©¤ storage_discard	      [30 cases]
+type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_cmd.ext4_format.discard_ignore.bus_scsi.block_type
+type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_cmd.xfs_format.discard_ignore.bus_scsi.file_type
+type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_mount.ext4_format.discard_unmap.bus_scsi.block_type
+type_specific.io-github-autotest-libvirt.storage_discard.fstrim_in_vm.fstrim_mount.xfs_format.discard_unmap.bus_scsi.file_type
+type_specific.io-github-autotest-libvirt.storage_discard.fstrim_out_vm.xfs_format.discard_unmap.bus_virtio.file_type			
+
+#©¦ ©À©¤©¤ libvirt_bench_domstate_switch_by_groups		
+type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_by_groups.shutdown_start_pause_resume		
+#©¦ ©À©¤©¤ libvirt_bench_domstate_switch_in_loop	
+type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_in_loop.shutdown_start_pause_resume	
+
+
+#©¦ ©¦ ©À©¤©¤ virsh_migrate				     [35]
+type_specific.io-github-autotest-libvirt.virsh.migrate.there_and_back
+type_specific.io-github-autotest-libvirt.virsh.migrate.there_with_scsi_disk
+type_specific.io-github-autotest-libvirt.virsh.migrate.there_vm_suspend_live
+#©¦ ©¦ ©À©¤©¤ virsh_migrate_compcache		 [16]
+type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.get_compcache.positive_test.live_vm.min_size		
+#©¦ ©¦ ©À©¤©¤ virsh_migrate_copy_storage		 [12]	
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_inc.lvm_image
+type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_all.file_image
+#©¦ ©¦ ©À©¤©¤ virsh_migrate_multi_vms		 [24]
+type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.live.default.local
+type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.abort_job.live.direct.local
+type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.normal.combination_options.p2p.local		
+#©¦ ©¦ ©À©¤©¤ virsh_migrate_set_get_speed	 [23]
+type_specific.io-github-autotest-libvirt.virsh.migrate_set_get_speed.normal_test.int64_max
+type_specific.io-github-autotest-libvirt.virsh.migrate_set_get_speed.verify_speed_with_migration.two_times.stress_tool.stress.memory			
+#©¦ ©¦ ©À©¤©¤ virsh_migrate_setmaxdowntime	 [9]	
+type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.normal_test.valid_name		
+#©¦ ©¦ ©À©¤©¤ virsh_migrate_stress			 [80]
+type_specific.io-github-autotest-libvirt.virsh.migrate_stress.orderly_migration.run_stress_app.stress_tool_in_vms.cpu_stress.set_vcpu_1
+type_specific.io-github-autotest-libvirt.virsh.migrate_stress.orderly_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_memory_2
+type_specific.io-github-autotest-libvirt.virsh.migrate_stress.orderly_migration.run_stress_app.stress_tool_on_host.short_of_memory.memory_stress.set_memory_2
+type_specific.io-github-autotest-libvirt.virsh.migrate_stress.cross_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_vcpu_1
+type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_on_host.short_of_memory.memory_stress.set_memory_2 	
+#©¦ ©¦ ©À©¤©¤ virsh_migrate_virtio_scsi		 [22]	
+type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.attach_before_migration.multiple_disks.1.disk_device.file_source.format_raw 
+type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.migrating_attachment.multiple_disks.1.lun_device.block_source.format_raw	
