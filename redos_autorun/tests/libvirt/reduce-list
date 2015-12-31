@@ -663,20 +663,7 @@ type_specific.io-github-autotest-libvirt.virsh.sysinfo.normal_test.readonly_opti
 type_specific.io-github-autotest-libvirt.virsh.uri.no_option.connect_to_local
 #©¦ ©¦ ©¸©¤©¤ virsh_version				     [4]
 type_specific.io-github-autotest-libvirt.virsh.version.daemon_option
-#©¦ ©À©¤©¤ interface				         
-#©¦ ©¦ ©À©¤©¤ virsh_iface_bridge				 [15]
-type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.no_option
-type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_stp
-type_specific.io-github-autotest-libvirt.virsh.iface_bridge.negative_test.unbridge_iface
-#©¦ ©¦ ©À©¤©¤ virsh_iface                     [13]
-type_specific.io-github-autotest-libvirt.virsh.iface.no_acl.iface_attach.exist_iface.bridge_type.no_stp.net_no_restart
-type_specific.io-github-autotest-libvirt.virsh.iface.no_acl.iface_no_attach.no_exist_iface.no_protocol.bridge_type.no_stp.net_no_restart
-#type_specific.io-github-autotest-libvirt.virsh.iface.acl_test.positive_test.grant_all.iface_attach.exist_iface.bridge_type.no_stp.net_no_restart
-type_specific.io-github-autotest-libvirt.virsh.iface.acl_test.positive_test.grant_none.iface_no_attach.exist_iface.ethernet_type.net_no_restart 
-#©¦ ©¦ ©À©¤©¤ virsh_iface_edit	             [2]
-type_specific.io-github-autotest-libvirt.virsh.iface_edit.positive_test.loopback_iface		
-#©¦ ©¦ ©¸©¤©¤ virsh_iface_trans				 [6]
-type_specific.io-github-autotest-libvirt.virsh.iface_trans.positive_testing.open_rollback_transaction
+
 #©¦ ©À©¤©¤ monitor				
 #©¦ ©¦ ©À©¤©¤ virsh_domblkinfo				 [14] 
 type_specific.io-github-autotest-libvirt.virsh.domblkinfo.normal_test.id_option
@@ -921,6 +908,20 @@ type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_by_groups
 #©¦ ©À©¤©¤ libvirt_bench_domstate_switch_in_loop	
 type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_in_loop.shutdown_start_pause_resume	
 
+#©¦ ©À©¤©¤ interface				         
+#©¦ ©¦ ©À©¤©¤ virsh_iface                     [13]
+type_specific.io-github-autotest-libvirt.virsh.iface.no_acl.iface_attach.exist_iface.bridge_type.no_stp.net_no_restart
+type_specific.io-github-autotest-libvirt.virsh.iface.no_acl.iface_no_attach.no_exist_iface.no_protocol.bridge_type.no_stp.net_no_restart
+#type_specific.io-github-autotest-libvirt.virsh.iface.acl_test.positive_test.grant_all.iface_attach.exist_iface.bridge_type.no_stp.net_no_restart
+type_specific.io-github-autotest-libvirt.virsh.iface.acl_test.positive_test.grant_none.iface_no_attach.exist_iface.ethernet_type.net_no_restart 
+#©¦ ©¦ ©À©¤©¤ virsh_iface_edit	             [2]
+type_specific.io-github-autotest-libvirt.virsh.iface_edit.positive_test.loopback_iface		
+#©¦ ©¦ ©¸©¤©¤ virsh_iface_trans				 [6]
+type_specific.io-github-autotest-libvirt.virsh.iface_trans.positive_testing.open_rollback_transaction
+#©¦ ©¦ ©À©¤©¤ virsh_iface_bridge				 [15]
+type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.no_option
+type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_stp
+type_specific.io-github-autotest-libvirt.virsh.iface_bridge.negative_test.unbridge_iface
 
 #©¦ ©¦ ©À©¤©¤ virsh_migrate				     [35]
 type_specific.io-github-autotest-libvirt.virsh.migrate.there_and_back
