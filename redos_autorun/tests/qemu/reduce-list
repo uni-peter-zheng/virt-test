@@ -23,7 +23,6 @@ type_specific.io-github-autotest-qemu.performance.iozone.summary_results_iozone
 type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-migrate
 type_specific.io-github-autotest-qemu.balloon_check.balloon_evict.balloon-reboot
 type_specific.io-github-autotest-qemu.qemu_killer_report
-type_specific.io-github-autotest-qemu.cgroup.cpuset_cpus 
 type_specific.io-github-autotest-qemu.cgroup.devices_access 
 type_specific.io-github-autotest-qemu.drive_mirror.simple_test.cancel
 type_specific.io-github-autotest-qemu.drive_mirror.simple_test.query
@@ -43,7 +42,6 @@ type_specific.io-github-autotest-qemu.serial_modprobe
 type_specific.io-github-autotest-qemu.virtio_port_login.virtio_serial
 io-github-autotest-qemu.yum_update
 io-github-autotest-qemu.kdump.one_vm.basic.default
-io-github-autotest-qemu.io-github-autotest-qemu.gluster_boot_snap_boot
 io-github-autotest-qemu.io-github-autotest-qemu.build
 io-github-autotest-qemu.shutdown
 type_specific.io-github-autotest-qemu.virtio_console.spread_linear.specifiable.virtserialport.virtio_console_smoke.open

@@ -827,7 +827,7 @@ type_specific.io-github-autotest-libvirt.virsh.itself.normal_test.readonly.echo_
 #©¦ ©¸©¤©¤ volume				                  
 #©¦     ©À©¤©¤ virsh_vol_clone_wipe				  [151]
 type_specific.io-github-autotest-libvirt.virsh.vol_clone_wipe.positive_test.non_acl.vol_format.raw_f.pool_type.dir
-type_specific.io-github-autotest-libvirt.virsh.vol_clone_wipe.positive_test.acl_test.vol_format.qcow2_f.prealloc.pool_type.fs
+#type_specific.io-github-autotest-libvirt.virsh.vol_clone_wipe.positive_test.acl_test.vol_format.qcow2_f.prealloc.pool_type.fs
 type_specific.io-github-autotest-libvirt.virsh.vol_clone_wipe.positive_test.acl_test.vol_format.vdmk_f.pool_type.logical
 type_specific.io-github-autotest-libvirt.virsh.vol_clone_wipe.negative_test.oversize_vol
 #©¦     ©À©¤©¤ virsh_vol_create				      [106]

@@ -16,7 +16,7 @@ restore:type_specific.io-github-autotest-libvirt.libvirt_bench.domstate_switch_i
 }
 # Add function in here
 
-prepare:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_no_stp()
+prepare:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.no_option()
 {
     echo "iface_bridge prepare"
     host_iface=`brctl show | awk '/enP3p9s0f/{print $1}' | sed -n '1p'`
@@ -93,7 +93,7 @@ prepare:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_tes
     route -n
     sed -i "/# Caveat/{n; s/iface_name =.*/iface_name = "$iface"/}" $CONFIG_DIR/../tp-libvirt/libvirt/tests/cfg/virsh_cmd/interface/virsh_iface_bridge.cfg
 }
-restore:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.positive_test.bridge_delay_2()
+restore:type_specific.io-github-autotest-libvirt.virsh.iface_bridge.negative_test.unbridge_iface()
 {
     echo "iface_bridge clean"
     iface_name_bk=`ls /etc/sysconfig/network-scripts/autotest_bridge.*.bk`
