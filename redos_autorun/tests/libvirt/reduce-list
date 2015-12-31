@@ -45,13 +45,13 @@ type_specific.io-github-autotest-libvirt.daemon.init_scripts
 type_specific.io-github-autotest-libvirt.daemon.kill_qemu.running.sigkill
 type_specific.io-github-autotest-libvirt.daemon.kill_qemu.paused.sigkill
 #type_specific.io-github-autotest-libvirt.daemon.kill_qemu.pmsuspended.sigkill			
+#©¦ ©À©¤©¤ kill_starting	
+type_specific.io-github-autotest-libvirt.daemon.kill_starting.virStateInitialize
+type_specific.io-github-autotest-libvirt.daemon.kill_starting.qemuStateInitialize	
 #©¦ ©À©¤©¤ kill_started	
 #type_specific.io-github-autotest-libvirt.daemon.kill_started.sigkill	
 type_specific.io-github-autotest-libvirt.daemon.kill_started.sigquit
-type_specific.io-github-autotest-libvirt.daemon.kill_started.sigint	
-#©¦ ©À©¤©¤ kill_starting	
-type_specific.io-github-autotest-libvirt.daemon.kill_starting.virStateInitialize
-type_specific.io-github-autotest-libvirt.daemon.kill_starting.qemuStateInitialize			
+type_specific.io-github-autotest-libvirt.daemon.kill_started.sigint			
 #©¦ ©¸©¤©¤ restart_consist	
 type_specific.io-github-autotest-libvirt.daemon.restart_consist			
 #©À©¤©¤ graphics				
@@ -802,7 +802,7 @@ type_specific.io-github-autotest-libvirt.virsh.snapshot_edit.positive_tests.edit
 type_specific.io-github-autotest-libvirt.virsh.snapshot_edit.positive_tests.edit_option_clone.edit_option_snapname.internal_snapshot.mem_snapshot
 type_specific.io-github-autotest-libvirt.virsh.snapshot_edit.positive_tests.edit_option_rename.edit_option_current.mem_snapshot.disk_snapshot 
 #©¦ ©¦ ©¸©¤©¤ virsh_snapshot_par_cur				  [16]
-type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.mode_option.current_and_security_option.positive_tests
+#type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.mode_option.current_and_security_option.positive_tests  #not supoort
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.current_option.readwrite
 #©¦ ©À©¤©¤ virsh_connect				          [13]
 type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.qemu_system_uri
@@ -850,19 +850,20 @@ type_specific.io-github-autotest-libvirt.virt_clone
 #©¦ ©À©¤©¤ virt_top				                  [1]
 type_specific.io-github-autotest-libvirt.virt_top 
 #©¦ ©À©¤©¤ virt_what				              [1]
-type_specific.io-github-autotest-libvirt.virt_what.kvm_fact
+#type_specific.io-github-autotest-libvirt.virt_what.kvm_fact #bug349
 #©¦ ©¸©¤©¤ virt_xml_validate				      [10]
 type_specific.io-github-autotest-libvirt.virt_xml_validate.domain
-type_specific.io-github-autotest-libvirt.virt_xml_validate.capability
+type_specific.io-github-autotest-libvirt.virt_xml_validate.storagepool
+#type_specific.io-github-autotest-libvirt.virt_xml_validate.capability
 #©À©¤©¤ virtual_disks				              
 #©¦ ©À©¤©¤ at_dt_iscsi_disk				          [22]
 type_specific.io-github-autotest-libvirt.virtual_disks.at_dt_iscsi_disk.positive_test.hot_plug.network_disk.usb_bus
 type_specific.io-github-autotest-libvirt.virtual_disks.at_dt_iscsi_disk.positive_test.cold_plug.volume_disk.ipv4_host_source_mode
 #©¦ ©À©¤©¤ startup_policy				          [6]
-type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.mandatory.device_type.cdrom
-type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.requisite.device_type.floppy
+#type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.mandatory.device_type.cdrom  #not support IDE controller
+#type_specific.io-github-autotest-libvirt.startup_policy.startupPolicy.requisite.device_type.floppy
 #©¦ ©À©¤©¤ virtual_disks_encryption				  [2]
-type_specific.io-github-autotest-libvirt.virtual_disks.encryption.encryption_test.normal_test
+#type_specific.io-github-autotest-libvirt.virtual_disks.encryption.encryption_test.normal_test  #not support IDE controller
 #©¦ ©À©¤©¤ virtual_disks_gluster				  [7]
 #type_specific.io-github-autotest-libvirt.virtual_disks.gluster.disk_qcow2.transport_rdma
 #©¦ ©À©¤©¤ virtual_disks_iscsi				      [13]
@@ -872,7 +873,7 @@ type_specific.io-github-autotest-libvirt.virtual_disks.iscsi.iscsi_test.normal_t
 type_specific.io-github-autotest-libvirt.virtual_disks.multidisks.hotplug.multi_disks_test.virtio_disks_format
 type_specific.io-github-autotest-libvirt.virtual_disks.multidisks.coldplug.single_disk_test.disk_scsi_block_size.block_size_512
 type_specific.io-github-autotest-libvirt.virtual_disks.multidisks.coldplug.single_disk_test.disk_option_bootdisk.disk_virtio_snapshot.disk_snapshot_external.normal_test
-type_specific.io-github-autotest-libvirt.virtual_disks.multidisks.coldplug.single_disk_test.disk_bus_device_option.disk_bus_sata
+#type_specific.io-github-autotest-libvirt.virtual_disks.multidisks.coldplug.single_disk_test.disk_bus_device_option.disk_bus_sata
 #©¦ ©¸©¤©¤ virtual_disks_multivms				  [37]
 type_specific.io-github-autotest-libvirt.virtual_disks.multivms.hotplug.vms_sgio_share_normal_test.scsi_lbpu.filtered_shareable_option5
 type_specific.io-github-autotest-libvirt.virtual_disks.multivms.coldplug.vms_sgio_share_normal_test.scsi_lbpws.filtered_shareable_option6
@@ -888,8 +889,8 @@ type_specific.io-github-autotest-libvirt.virtual_network.iface_network.net_forwa
 type_specific.io-github-autotest-libvirt.virtual_network.iface_options.iface_driver.driver_txmode_timer
 type_specific.io-github-autotest-libvirt.virtual_network.iface_options.iface_macvtap.driver_qemu.mode_bridge
 #    ©¸©¤©¤ iface_ovs				              [4]
-type_specific.io-github-autotest-libvirt.virtual_network.iface_ovs.net_ovs.default_test
-type_specific.io-github-autotest-libvirt.virtual_network.iface_ovs.net_ovs.ovs_portgroup.portgroup_42
+#type_specific.io-github-autotest-libvirt.virtual_network.iface_ovs.net_ovs.default_test
+#type_specific.io-github-autotest-libvirt.virtual_network.iface_ovs.net_ovs.ovs_portgroup.portgroup_42
 
 #©À©¤©¤ libvirt_network_bandwidth	
 type_specific.io-github-autotest-libvirt.libvirt_network_bandwidth.network
