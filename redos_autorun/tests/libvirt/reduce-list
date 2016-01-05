@@ -191,7 +191,7 @@ type_specific.io-github-autotest-libvirt.virsh.remote_with_ssh.positive_testing.
 #©¦ ©À©¤©¤ remote_with_tcp        [11 cases]	
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.positive_testing.allow_sasl_users
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.positive_testing.customized_ipv4_listen_address_with_sasl_auth
-type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.negative_testing.ipv4_with_allowed_sasl_user_readonly			
+#type_specific.io-github-autotest-libvirt.virsh.remote_with_tcp.negative_testing.ipv4_with_allowed_sasl_user_readonly			
 #©¦ ©À©¤©¤ remote_with_tls		  [26 cases]		
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.default_tls_port_and_auth_tls
 type_specific.io-github-autotest-libvirt.virsh.remote_with_tls.positive_testing.allow_sasl_users
@@ -1127,7 +1127,7 @@ type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.normal_tes
 type_specific.io-github-autotest-libvirt.virsh.migrate_stress.orderly_migration.run_stress_app.stress_tool_in_vms.cpu_stress.set_vcpu_1
 #type_specific.io-github-autotest-libvirt.virsh.migrate_stress.orderly_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_memory_2
 type_specific.io-github-autotest-libvirt.virsh.migrate_stress.orderly_migration.run_stress_app.stress_tool_on_host.short_of_memory.memory_stress.set_memory_2
-type_specific.io-github-autotest-libvirt.virsh.migrate_stress.cross_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_vcpu_1
+type_specific.io-github-autotest-libvirt.virsh.migrate_stress.cross_migration.run_stress_app.stress_tool_in_vms.memory_stress.set_vcpu_2 
 type_specific.io-github-autotest-libvirt.virsh.migrate_stress.simultaneous_migration.run_stress_app.stress_tool_on_host.short_of_memory.memory_stress.set_memory_2 	
 #©¦ ©¦ ©À©¤©¤ virsh_migrate_virtio_scsi		 [22]	
 type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.attach_before_migration.single_disk.disk_device.file_source.format_raw
