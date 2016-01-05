@@ -827,11 +827,14 @@ type_specific.io-github-autotest-libvirt.virsh.net_name.uuid_option
 #©¦ ©¦ ©À©¤©¤ virsh_net_start				 [10]
 type_specific.io-github-autotest-libvirt.virsh.net_start.normal_test.acl_test.valid_netname
 #©¦ ©¦ ©À©¤©¤ virsh_net_update				 [112]
-#type_specific.io-github-autotest-libvirt.virsh.net_update.modify.forward_interface.net_active.options_no
-#type_specific.io-github-autotest-libvirt.virsh.net_update.delete.bridge_t.net_inactive.options_no
+type_specific.io-github-autotest-libvirt.virsh.net_update.modify.portgroup.net_active.options_no
+type_specific.io-github-autotest-libvirt.virsh.net_update.modify.ip_dhcp_host.net_active.options_no
+type_specific.io-github-autotest-libvirt.virsh.net_update.delete.portgroup.net_active.options_no
+type_specific.io-github-autotest-libvirt.virsh.net_update.delete.ip_dhcp_range.net_active.options_no
 type_specific.io-github-autotest-libvirt.virsh.net_update.add-last.portgroup.net_active.options_no
-#type_specific.io-github-autotest-libvirt.virsh.net_update.add-first.ip.net_active.options_config
+type_specific.io-github-autotest-libvirt.virsh.net_update.add-last.ip_dhcp_host.net_active.options_no
 type_specific.io-github-autotest-libvirt.virsh.net_update.add-first.ip_dhcp_host.net_inactive.options_no
+type_specific.io-github-autotest-libvirt.virsh.net_update.add-first.ip_dhcp_host.net_inactive.options_config
 #©¦ ©¦ ©¸©¤©¤ virsh_net_uuid				     [6]
 type_specific.io-github-autotest-libvirt.virsh.net_uuid.name_option
 #©¦ ©À©¤©¤ nodedev				
@@ -884,6 +887,8 @@ type_specific.io-github-autotest-libvirt.virsh.secret_set_get.positive_testing.p
 #©¦ ©À©¤©¤ snapshot				    
 #©¦ ©¦ ©À©¤©¤ virsh_snapshot			              [3]
 type_specific.io-github-autotest-libvirt.virsh.snapshot.live.halt	
+type_specific.io-github-autotest-libvirt.virsh.snapshot.live.no_halt
+type_specific.io-github-autotest-libvirt.virsh.snapshot.offline
 #©¦ ©¦ ©À©¤©¤ virsh_snapshot_create_as			  [86]
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.disk_only_spec
 type_specific.io-github-autotest-libvirt.virsh.snapshot_create_as.positive_tests.non_acl.file_disk.no_snapshot_attr.live_memspec.compress_format.xz
@@ -913,13 +918,19 @@ type_specific.io-github-autotest-libvirt.virsh.snapshot_edit.positive_tests.edit
 type_specific.io-github-autotest-libvirt.virsh.snapshot_edit.positive_tests.edit_option_rename.edit_option_current_and_snapname.mem_snapshot.mem_snapshot
 #©¦ ©¦ ©¸©¤©¤ virsh_snapshot_par_cur				  [16]
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.mode_option.current_and_security_option.positive_tests  #not supoort
+type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.negative_tests_parent.both_current_and_snapname\
+type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.mode_option.current_and_security_option.negtive_tests_readonly
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.current_option.readwrite
+type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.current_option.name_option
 #©¦ ©À©¤©¤ virsh_connect				          [13]
 type_specific.io-github-autotest-libvirt.virsh.connect.local_connect.normal_test.qemu_system_uri
 type_specific.io-github-autotest-libvirt.virsh.connect.transport_connect.unix_transport
 #©¦ ©À©¤©¤ virsh_help				              [5]
+type_specific.io-github-autotest-libvirt.virsh.help.normal_test.no_option
 type_specific.io-github-autotest-libvirt.virsh.help.normal_test.all_command_option
 #©¦ ©À©¤©¤ virsh_itself				              [16]
+type_specific.io-github-autotest-libvirt.virsh.itself.normal_test.default_option
+type_specific.io-github-autotest-libvirt.virsh.itself.normal_test.echo_shell_option
 type_specific.io-github-autotest-libvirt.virsh.itself.normal_test.readonly.echo_xml_option
 #©¦ ©¸©¤©¤ volume				                  
 #©¦     ©À©¤©¤ virsh_vol_clone_wipe				  [151]
@@ -954,22 +965,36 @@ type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_
 type_specific.io-github-autotest-libvirt.virsh.vol_create.positive_test.fs_like_pool.vol_format.v_none.src_pool_type.netfs
 #©¦     ©À©¤©¤ virsh_vol_download_upload		  [83]
 type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.dir_pool.download.non_acl.0-1024 
+type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.dir_pool.download.non_acl.1024-4096
+type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.dir_pool.download.acl_test.no_options
+type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.fs_pool.download.acl_test.0-1024
 type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.fs_pool.download.non_acl.0-end
+type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.disk_pool.download.acl_test.1024-4096
 type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.disk_pool.upload.non_acl.1024-end
+type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.netfs_pool.download.non_acl.0-1024
 type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.logical_pool.download.non_acl.no_options
 type_specific.io-github-autotest-libvirt.virsh.vol_download_upload.download_upload.netfs_pool.upload.non_acl.no_options	
 #©¦     ©À©¤©¤ virsh_vol_resize				      [27]
+type_specific.io-github-autotest-libvirt.virsh.vol_resize.positive_test.non_acl.sparse_capacity.dir_pool
 type_specific.io-github-autotest-libvirt.virsh.vol_resize.positive_test.non_acl.sparse_capacity.fs_pool
+type_specific.io-github-autotest-libvirt.virsh.vol_resize.positive_test.non_acl.allocate_capacity.fs_pool
 type_specific.io-github-autotest-libvirt.virsh.vol_resize.positive_test.acl_test.sparse_capacity.netfs
 type_specific.io-github-autotest-libvirt.virsh.vol_resize.positive_test.acl_test.delta_allocate_capacity.dir_pool
 type_specific.io-github-autotest-libvirt.virsh.vol_resize.positive_test.acl_test.delta_allocate_capacity.netfs
 #©¦     ©À©¤©¤ virsh_volume_application			  [10]
 #type_specific.io-github-autotest-libvirt.virsh.volume_application.unattended_install.cdrom.disk
+type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.dir
+type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.disk
+type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.fs
 type_specific.io-github-autotest-libvirt.virsh.volume_application.disk_attach.logical
 #©¦     ©¸©¤©¤ virsh_volume				          [22]
+type_specific.io-github-autotest-libvirt.virsh.volume.dir_pool.vol_encrypt_none.vol_format_raw.vol_allocation.zero_size
+type_specific.io-github-autotest-libvirt.virsh.volume.dir_pool.vol_encrypt_none.vol_format_qcow.vol_allocation.normal_size
 type_specific.io-github-autotest-libvirt.virsh.volume.dir_pool.vol_encrypt_none.vol_format_qcow2.vol_allocation.zero_size 
 type_specific.io-github-autotest-libvirt.virsh.volume.dir_pool.vol_encrypt_none.vol_format_vmdk.vol_allocation.normal_size
 type_specific.io-github-autotest-libvirt.virsh.volume.logical_pool.vol_allocation.zero_size
+type_specific.io-github-autotest-libvirt.virsh.volume.netfs_pool.nfs_format.vol_allocation.normal_size
+type_specific.io-github-autotest-libvirt.virsh.volume.netfs_pool.nfs_format.vol_allocation.zero_size
 #©À©¤©¤ virt_cmd				
 #©¦ ©À©¤©¤ virt_clone			                  [1]
 type_specific.io-github-autotest-libvirt.virt_clone	
@@ -1001,7 +1026,9 @@ type_specific.io-github-autotest-libvirt.virtual_disks.multidisks.coldplug.singl
 type_specific.io-github-autotest-libvirt.virtual_disks.multidisks.coldplug.single_disk_test.disk_option_bootdisk.disk_virtio_snapshot.disk_snapshot_external.normal_test
 #type_specific.io-github-autotest-libvirt.virtual_disks.multidisks.coldplug.single_disk_test.disk_bus_device_option.disk_bus_sata
 #©¦ ©¸©¤©¤ virtual_disks_multivms				  [37]
+type_specific.io-github-autotest-libvirt.virtual_disks.multivms.hotplug.vms_sgio_share_normal_test.scsi_lbpu.filtered_shareable_option1
 type_specific.io-github-autotest-libvirt.virtual_disks.multivms.hotplug.vms_sgio_share_normal_test.scsi_lbpu.filtered_shareable_option5
+type_specific.io-github-autotest-libvirt.virtual_disks.multivms.hotplug.vms_sgio_share_normal_test.scsi_lbpws.filtered_shareable_option1
 type_specific.io-github-autotest-libvirt.virtual_disks.multivms.coldplug.vms_sgio_share_normal_test.scsi_lbpws.filtered_shareable_option6
 type_specific.io-github-autotest-libvirt.virtual_disks.multivms.coldplug.vms_sharable_test.block_type
 #©¸©¤©¤ virtual_network				
@@ -1057,15 +1084,15 @@ type_specific.io-github-autotest-libvirt.virsh.migrate.there_vm_suspend_live
 #©¦ ©¦ ©À©¤©¤ virsh_migrate_compcache		 [16]
 type_specific.io-github-autotest-libvirt.virsh.migrate_compcache.get_compcache.positive_test.live_vm.min_size		
 #©¦ ©¦ ©À©¤©¤ virsh_migrate_copy_storage		 [12]	
-type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_inc.lvm_image
-type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_all.file_image
+#type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_inc.lvm_image
+#type_specific.io-github-autotest-libvirt.virsh.migrate_copy_storage.normal_test.multi_disks.copy_storage_all.file_image
 #©¦ ©¦ ©À©¤©¤ virsh_migrate_multi_vms		 [24]
 type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.orderly.live.default.local
 type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.abort_job.live.direct.local
 type_specific.io-github-autotest-libvirt.virsh.migrate_multi_vms.simultaneous.normal.combination_options.p2p.local		
 #©¦ ©¦ ©À©¤©¤ virsh_migrate_set_get_speed	 [23]
 type_specific.io-github-autotest-libvirt.virsh.migrate_set_get_speed.normal_test.int64_max
-type_specific.io-github-autotest-libvirt.virsh.migrate_set_get_speed.verify_speed_with_migration.two_times.stress_tool.stress.memory			
+#type_specific.io-github-autotest-libvirt.virsh.migrate_set_get_speed.verify_speed_with_migration.two_times.stress_tool.stress.memory			
 #©¦ ©¦ ©À©¤©¤ virsh_migrate_setmaxdowntime	 [9]	
 type_specific.io-github-autotest-libvirt.virsh.migrate_setmaxdowntime.normal_test.valid_name		
 #©¦ ©¦ ©À©¤©¤ virsh_migrate_stress			 [80]
