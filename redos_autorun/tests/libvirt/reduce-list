@@ -613,6 +613,7 @@ type_specific.io-github-autotest-libvirt.virsh.save.normal_test.acl_test.running
 #©¦ ©¦ ©À©¤©¤ virsh_save_image_define		 [2]
 type_specific.io-github-autotest-libvirt.virsh.save_image_define.running		
 #©¦ ©¦ ©À©¤©¤ virsh_save_image_edit			 [2]
+type_specific.io-github-autotest-libvirt.virsh.save_image_edit.running
 type_specific.io-github-autotest-libvirt.virsh.save_image_edit.paused	
 #©¦ ©¦ ©À©¤©¤ virsh_schedinfo_qemu_posix		 [99]	
 type_specific.io-github-autotest-libvirt.virsh.schedinfo_qemu_posix.normal_test.set_cpu_param.set_cpu_shares.value_negative.set_by_cmd.current.valid_domuuid
