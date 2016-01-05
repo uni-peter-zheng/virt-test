@@ -183,14 +183,15 @@ prepare:type_specific.io-github-autotest-libvirt.virsh.migrate.there_and_back()
                 ssh root@$remote_ip "virsh undefine $main_vms"
                 ssh root@$remote_ip "virsh undefine $main_vms_raw"
                 ssh root@$remote_ip "echo \"migration_address =  '0.0.0.0'\" > /etc/libvirt/qemu.conf"
-                ssh root@$remote_ip "rm -rf $vm_local_image_dir/*"                #用共享存储取代本地存储           
+                #ssh root@$remote_ip "rm -rf $vm_local_image_dir/*"                #用共享存储取代本地存储      
+                ssh root@$remote_ip "[ ! -x $vm_local_image_dir ] && mkdir -p $vm_local_image_dir"      
                 ssh root@$remote_ip "mount $local_ip:$vm_nfs_share_storage $vm_local_image_dir"
                 ssh root@$remote_ip "systemctl restart libvirtd"
 
                 sed -i "s/^vms.*$/vms = $vms $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
                 rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
 }
-restore:type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.migrating_attachment.multiple_disks.1.lun_device.block_source.format_raw()
+restore:type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.migrating_attachment.multiple_disks.1.lun_device.file_source.format_qcow2()
 {
                 #参数设置
                 vm1=$main_vms
@@ -202,7 +203,8 @@ restore:type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.migra
                 vm_nfs_share_storage=/home/source/nfs_share/
                 #本地nfs迁移环境配置
                 umount -l $vm_local_image_dir
-                cp -rf $vm_backup_image_dir/* $vm_local_image_dir
+                #cp -rf $vm_backup_image_dir/* $vm_local_image_dir
+                mv $vm_nfs_share_storage/* $vm_local_image_dir
                 systemctl restart libvirtd
                 virsh destroy $vm1
                 virsh destroy $vm2
@@ -213,7 +215,7 @@ restore:type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.migra
 
                 #远程环境配置
                 ssh root@$remote_ip "umount -l $vm_local_image_dir"
-                ssh root@$remote_ip "cp -rf $vm_backup_image_dir/* $vm_local_image_dir"
+                #ssh root@$remote_ip "cp -rf $vm_backup_image_dir/* $vm_local_image_dir"
                 ssh root@$remote_ip "virsh define "$vm_local_image_dir/$main_vms".xml"
                 ssh root@$remote_ip "virsh define "$vm_local_image_dir/$main_vms_raw".xml"
                 ssh root@$remote_ip "systemctl restart libvirtd"
