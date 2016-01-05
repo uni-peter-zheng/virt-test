@@ -307,16 +307,24 @@ type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.t
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.hot_attach_hot_vm_current.uuid_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_pty.normal_test.hot_attach_hot_vm_current.name_ref.file_positional.domain_positional
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_unix.normal_test.hot_attach_hot_vm.persistent.name_ref.file_positional.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_unix.normal_test.hot_attach_hot_vm.live_config.name_ref.file_positional.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_unix.normal_test.hot_attach_hot_vm_current.uuid_ref.file_positional.domain_argument
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_unix.normal_test.cold_attach_hot_vm.uuid_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.controller.type_scsi.normal_test.hot_attach_hot_vm.persistent.name_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.controller.type_scsi.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.controller.type_scsi.normal_test.cold_attach_cold_vm.config.name_ref.file_argument.domain_argument
+type_specific.io-github-autotest-libvirt.virsh.attach_device.controller.type_scsi.normal_test.cold_attach_hot_vm.uuid_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_virtio_file.normal_test.hot_attach_hot_vm.persistent.name_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.normal_test.hot_attach_hot_vm.persistent.name_ref.file_positional.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.normal_test.cold_attach_cold_vm.config.name_ref.file_argument.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_usb_file.normal_test.cold_attach_hot_vm.uuid_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.single_scsi_file.normal_test.hot_attach_hot_vm.persistent.id_ref.file_argument.domain_positional
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.multi_virtio_file.normal_test.cold_attach_cold_vm.config.uuid_ref.file_positional.domain_positional
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.multi_virtio_file.normal_test.hot_attach_hot_vm.persistent.uuid_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.multiple.VirtualDiskBasic_SerialFile_SerialPipe.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional
-type_specific.io-github-autotest-libvirt.virsh.attach_device.multiple.VirtualDiskBasic_SerialFile_SerialPipe.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_argument	
+type_specific.io-github-autotest-libvirt.virsh.attach_device.multiple.VirtualDiskBasic_SerialFile_SerialPipe.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_argument
+type_specific.io-github-autotest-libvirt.virsh.attach_device.multiple.VirtualDiskBasic_SerialFile_SerialPipe.normal_test.cold_attach_hot_vm.uuid_ref.file_argument.domain_argument 
 #©¦ ©¦ ©À©¤©¤ virsh_autostart				 [7 cases]
 type_specific.io-github-autotest-libvirt.virsh.autostart.positive_test.set_autostart
 type_specific.io-github-autotest-libvirt.virsh.autostart.positive_test.set_disable
@@ -330,6 +338,7 @@ type_specific.io-github-autotest-libvirt.virsh.blkdeviotune.positive_testing.set
 type_specific.io-github-autotest-libvirt.virsh.blkdeviotune.positive_testing.set_blkdevio_parameter.shutoff_guest.change_total_iops_sec.options.current.inside_boundary
 type_specific.io-github-autotest-libvirt.virsh.blkdeviotune.positive_testing.set_blkdevio_parameter.running_guest.change_total_bytes_sec.options.config.minimum_boundary
 type_specific.io-github-autotest-libvirt.virsh.blkdeviotune.positive_testing.set_blkdevio_parameter.running_guest.change_read_bytes_sec.options.config.minimum_boundary
+type_specific.io-github-autotest-libvirt.virsh.blkdeviotune.positive_testing.set_blkdevio_parameter.running_guest.change_total_read_write_bytes_iops_sec.options.config.combination1
 type_specific.io-github-autotest-libvirt.virsh.blkdeviotune.positive_testing.set_blkdevio_parameter.running_guest.change_total_read_write_bytes_iops_sec.options.current.combination2
 #©¦ ©¦ ©À©¤©¤ virsh_blockcommit				 [144 cases]
 type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_chain.file_disk.local.no_ga.notimeout.nobase.top_inactive
@@ -356,6 +365,7 @@ type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.non_acl.b
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.non_acl.block_disk.disk_t.block_type.no_blockdev.shallow.no_option
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.non_acl.block_disk.disk_t.network_type.blockdev.shallow.no_option
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.non_acl.block_disk.disk_t.volume_type.blockdev.shallow.no_option
+type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.non_acl.block_disk.disk_t.volume_type.no_blockdev.shallow.finish_async_option
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.acl_test.local_disk.blockdev.no_shallow.reuse_external 
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.acl_test.local_disk.blockdev.no_shallow.no_option
 #©¦ ©¦ ©À©¤©¤ virsh_blockjob				     [11 cases]
@@ -407,6 +417,7 @@ type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.minimum_cpu_
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.exact_cpu_match.invalid_ref
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.strict_cpu_match.modify_vendor
 #type_specific.io-github-autotest-libvirt.virsh.cpu_compare.guest_cpu.extra_option  #xml need <cpu>element
+type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.strict_cpu_match.default_feature
 #©¦ ©¦ ©À©¤©¤ virsh_cpu_stats				 [11]
 type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option1
 type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option3
@@ -416,18 +427,23 @@ type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.paused_op
 type_specific.io-github-autotest-libvirt.virsh.create.console
 type_specific.io-github-autotest-libvirt.virsh.create.console_paused
 type_specific.io-github-autotest-libvirt.virsh.create.autodestroy_paused
+type_specific.io-github-autotest-libvirt.virsh.create.paused
+type_specific.io-github-autotest-libvirt.virsh.create.negtive_readonly
 #©¦ ©¦ ©À©¤©¤ virsh_create_lxc				 [3]
 #©¦ ©¦ ©À©¤©¤ virsh_define				     [3]
+type_specific.io-github-autotest-libvirt.virsh.define.number
 type_specific.io-github-autotest-libvirt.virsh.define.symbol_letter_number
 type_specific.io-github-autotest-libvirt.virsh.define.symbol
 #©¦ ©¦ ©À©¤©¤ virsh_desc				         [14]
 type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.title_option
 type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.live_config_desc
+type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.live_title
 type_specific.io-github-autotest-libvirt.virsh.desc.positive_test.transient_live
 #©¦ ©¦ ©À©¤©¤ virsh_destroy				     [21]
 type_specific.io-github-autotest-libvirt.virsh.destroy.normal_test.non_acl.name_option
 type_specific.io-github-autotest-libvirt.virsh.destroy.normal_test.non_acl.remote
 type_specific.io-github-autotest-libvirt.virsh.destroy.normal_test.acl_test.paused_option
+type_specific.io-github-autotest-libvirt.virsh.destroy.normal_test.acl_test.uuid_option
 type_specific.io-github-autotest-libvirt.virsh.destroy.normal_test.acl_test.graceful
 #©¦ ©¦ ©À©¤©¤ virsh_detach_device			 [76]
 type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.host_vm_id.disk_test.block_type
@@ -436,6 +452,7 @@ type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.vm_susp
 type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.image_file_no_option.disk_test.block_type
 type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.vm_running_config.disk_test.block_type
 type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.vm_running_persistent.disk_test.file_type
+type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.vm_running_persistent.iface_test
 #©¦ ©¦ ©À©¤©¤ virsh_domblkerror				 [2]
 type_specific.io-github-autotest-libvirt.virsh.domblkerror.undefinded_error
 type_specific.io-github-autotest-libvirt.virsh.domblkerror.nospace_error
@@ -443,8 +460,10 @@ type_specific.io-github-autotest-libvirt.virsh.domblkerror.nospace_error
 type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.uuid_option
 type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.details_option
 type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.inactive_with_shutoff_option
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.no_option
 #©¦ ©¦ ©À©¤©¤ virsh_domcontrol				 [16]
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.normal_test.id_option
+type_specific.io-github-autotest-libvirt.virsh.domcontrol.normal_test.name_option
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.normal_test.paused_option
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.normal_test.managedsave_option
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.normal_test.readonly_option
@@ -453,6 +472,7 @@ type_specific.io-github-autotest-libvirt.virsh.domdisplay.have_passwd.no_options
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.have_passwd.option_include-passwd.negtive_readonly.spice_t.without_ssl.domain_id
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.no_options.readwrite.vnc_t.domain_uuid
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.no_options.readwrite.spice_t.with_ssl
+type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.option_include-passwd.negtive_readonly.vnc_t.domain_uuid
 type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.option_include-passwd.readwrite.vnc_t.domain_uuid
 #type_specific.io-github-autotest-libvirt.virsh.domdisplay.no_passwd.option_include-passwd.readwrite.spice_t.without_ssl.domain_idlibvirt #not support
 #©¦ ©¦ ©À©¤©¤ virsh_domfsthaw				 [8]
