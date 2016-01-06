@@ -1181,11 +1181,11 @@ type_specific.io-github-autotest-libvirt.virtual_disks.multivms.coldplug.vms_sha
 type_specific.io-github-autotest-libvirt.virtual_network.iface_hotplug.at_device.iface_attach.model_e1000.test_libvirtd
 type_specific.io-github-autotest-libvirt.virtual_network.iface_hotplug.at_iface.iface_attach.model_rtl8139.duplicate_mac
 #    ©À©¤©¤ iface_network				          [14]
-type_specific.io-github-autotest-libvirt.virtual_network.iface_network.dnsmasq_test.net_dns_host
-type_specific.io-github-autotest-libvirt.virtual_network.iface_network.net_forward.net_isolated 
+#type_specific.io-github-autotest-libvirt.virtual_network.iface_network.dnsmasq_test.net_dns_host
+#type_specific.io-github-autotest-libvirt.virtual_network.iface_network.net_forward.net_isolated 
 #    ©À©¤©¤ iface_options				          [23]
 type_specific.io-github-autotest-libvirt.virtual_network.iface_options.iface_driver.driver_txmode_timer
-type_specific.io-github-autotest-libvirt.virtual_network.iface_options.iface_macvtap.driver_qemu.mode_bridge
+#type_specific.io-github-autotest-libvirt.virtual_network.iface_options.iface_macvtap.driver_qemu.mode_bridge
 #    ©¸©¤©¤ iface_ovs				              [4]
 #type_specific.io-github-autotest-libvirt.virtual_network.iface_ovs.net_ovs.default_test
 #type_specific.io-github-autotest-libvirt.virtual_network.iface_ovs.net_ovs.ovs_portgroup.portgroup_42
