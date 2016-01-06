@@ -749,7 +749,6 @@ type_specific.io-github-autotest-libvirt.virsh.capabilities.unexpect_option
 #©¦ ©¦ ©À©¤©¤ virsh_cpu_models				 [6]
 type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.local_host.auto_get_arch
 type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.remote_host.auto_get_arch
-type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.remote_host.auto_get_arch
 #©¦ ©¦ ©À©¤©¤ virsh_domcapabilities			 [9]
 type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.local_host.auto_option_values
 type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.local_host.default_option_values	
@@ -963,7 +962,7 @@ type_specific.io-github-autotest-libvirt.virsh.snapshot_edit.positive_tests.edit
 type_specific.io-github-autotest-libvirt.virsh.snapshot_edit.positive_tests.edit_option_rename.edit_option_current_and_snapname.mem_snapshot.mem_snapshot
 #©¦ ©¦ ©¸©¤©¤ virsh_snapshot_par_cur				  [16]
 #type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.mode_option.current_and_security_option.positive_tests  #not supoort
-type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.negative_tests_parent.both_current_and_snapname\
+type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.negative_tests_parent.both_current_and_snapname
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.mode_option.current_and_security_option.negtive_tests_readonly
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.current_option.readwrite
 type_specific.io-github-autotest-libvirt.virsh.snapshot_par_cur.current_option.name_option

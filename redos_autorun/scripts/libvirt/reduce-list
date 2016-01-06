@@ -254,7 +254,7 @@ restore:type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.m
         rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
 }
 
-prepare:type_specific.io-github-autotest-libvirt.virtual_disks.multivms.hotplug.vms_sgio_share_normal_test.scsi_lbpu.filtered_shareable_option5()
+prepare:type_specific.io-github-autotest-libvirt.virtual_disks.multivms.hotplug.vms_sgio_share_normal_test.scsi_lbpu.filtered_shareable_option1()
 {
         sed -i "s/^vms.*$/vms = $vms $vms_raw/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
         rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
