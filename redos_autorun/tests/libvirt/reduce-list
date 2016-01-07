@@ -789,7 +789,6 @@ type_specific.io-github-autotest-libvirt.virsh.ttyconsole.normal_test.vm_paused.
 #©¦ ©¦ ©À©¤©¤ virsh_undefine				     [18]
 type_specific.io-github-autotest-libvirt.virsh.undefine.normal_test.vm_shut_off.no_option 
 type_specific.io-github-autotest-libvirt.virsh.undefine.normal_test.vm_shut_off.snapshots 
-type_specific.io-github-autotest-libvirt.virsh.undefine.normal_test.vm_shut_off.remove_storage.wipe_data
 type_specific.io-github-autotest-libvirt.virsh.undefine.normal_test.vm_shut_off.remove_storage.no_wipe_date 
 type_specific.io-github-autotest-libvirt.virsh.undefine.normal_test.undefine_twice.no_option 
 type_specific.io-github-autotest-libvirt.virsh.undefine.normal_test.vm_running.no_option 
