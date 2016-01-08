@@ -396,6 +396,7 @@ type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.single_ch
 type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.multiple_chain.file_disk.local.no_ga.notimeout.nobase.top_inactive
 type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.multiple_chain.file_disk.local.no_ga.notimeout.shallow.top_active.with_pivot
 type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.multiple_chain.file_disk.local.no_ga.notimeout.base_as_middle.top_active.with_pivot
+type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.multiple_chain.file_disk.local.no_ga.notimeout.base_as_middle.top_active.without_pivot
 #©¦ ©¦ ©À©¤©¤ virsh_blockcopy				 [225 cases]
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.non_acl.local_disk.blockdev.shallow.reuse_external
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.non_acl.local_disk.blockdev.no_shallow.raw_format
@@ -412,6 +413,8 @@ type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.non_acl.b
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.non_acl.block_disk.disk_t.volume_type.no_blockdev.shallow.finish_async_option
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.acl_test.local_disk.blockdev.no_shallow.reuse_external 
 type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.acl_test.local_disk.blockdev.no_shallow.no_option
+type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.acl_test.local_disk.blockdev.no_shallow.pivot_option
+type_specific.io-github-autotest-libvirt.virsh.blockcopy.positive_test.acl_test.local_disk.no_blockdev.no_shallow.finish_async_option
 #©¦ ©¦ ©À©¤©¤ virsh_blockjob				     [11 cases]
 type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.no_option
 type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.min_bandwidth
@@ -637,17 +640,42 @@ type_specific.io-github-autotest-libvirt.virsh.edit.positive_test.uuid_option.ed
 #©¦ ©¦ ©À©¤©¤ virsh_emulatorpin				 [58]
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.get_emulatorpin_parameter.running_guest.emulatorpin_options.none
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.get_emulatorpin_parameter.running_guest.emulatorpin_options.live
+type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.get_emulatorpin_parameter.shutoff_guest.emulatorpin_options.current
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.shutoff_guest.cpulist.emulatorpin_options.config.ranges
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.live.comma_list
 type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.single
 #type_specific.io-github-autotest-libvirt.virsh.emulatorpin.positive_testing.set_emulatorpin_parameter.running_guest.cpulist.emulatorpin_options.current.excluding
 #©¦ ©¦ ©À©¤©¤ virsh_event				     [56]
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.list_events.other_option.no_timeout.no_loop 
-type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.reboot_event.no_timeout.no_loop
-type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.tunable_event2.timeout.loop
-type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.reboot_event.no_timeout.no_loop
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.all_events.no_timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.all_events.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.lifecycle_events.no_timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.lifecycle_events.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.reboot_event.no_timeout.no_loop  
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.reboot_event.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.tunable_event1.no_timeout.no_loop  
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.tunable_event2.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.balloon-change_event.no_timeout.no_loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.virsh_event.test_events.device-removed_event.no_timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.all_events.no_timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.all_events.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.lifecycle_events.no_timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.lifecycle_events.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.reboot_event.no_timeout.no_loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.reboot_event.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.tunable_event1.no_timeout.no_loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.tunable_event1.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.tunable_event2.no_timeout.no_loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.tunable_event2.timeout.loop 
 type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.balloon-change_event.no_timeout.no_loop 
-type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.regex_option.lifecycle_events.no_timeout.loop
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.balloon-change_event.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.device-removed_event.no_timeout.no_loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.pretty_option.device-removed_event.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.regex_option.lifecycle_events.no_timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.positive_test.qemu_monitor_event.no-case_option.lifecycle_events.timeout.loop 
+type_specific.io-github-autotest-libvirt.virsh.event.negative_test.virsh_event.invalid_event 
+type_specific.io-github-autotest-libvirt.virsh.event.negative_test.virsh_event.invalid_timeout 
+type_specific.io-github-autotest-libvirt.virsh.event.negative_test.qemu_monitor_event.invalid_timeout 
 #©¦ ©¦ ©À©¤©¤ virsh_managedsave				 [48]
 type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.cpu_mode
 #type_specific.io-github-autotest-libvirt.virsh.managedsave.functional_test.autostart_bypass_cache
