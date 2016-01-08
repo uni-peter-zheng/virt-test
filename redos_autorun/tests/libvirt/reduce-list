@@ -326,11 +326,28 @@ type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_te
 type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.default_network.domuuid
 #type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domnamelibvirt	#not support
 #©¦ ©¦ ©À©¤©¤ virsh_attach_device			 [1400 cases]
-type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional
-type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_hot_vm.uuid_ref.file_argument.domain_argument
-type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.hot_attach_hot_vm_current.name_ref.file_positional.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_cold_vm.persistent.name_ref.file_argument.domain_argument 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_cold_vm.persistent.uuid_ref.file_positional.domain_positional 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_cold_vm.config.name_ref.file_argument.domain_argument 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_cold_vm.config.uuid_ref.file_positional.domain_positional 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_positional 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_argument 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_hot_vm.uuid_ref.file_argument.domain_argument 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_serial.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_serial.normal_test.cold_attach_cold_vm.persistent.uuid_ref.file_argument.domain_argument 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_serial.normal_test.cold_attach_cold_vm.config.name_ref.file_positional.domain_positional 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_serial.normal_test.cold_attach_cold_vm.config.uuid_ref.file_argument.domain_argument 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_serial.normal_test.cold_attach_hot_vm.name_ref.file_positional.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_cold_vm.persistent.uuid_ref.file_argument.domain_argument 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_cold_vm.config.name_ref.file_positional.domain_positional 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_argument 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.multi_type.normal_test.cold_attach_hot_vm.id_ref.file_positional.domain_positional 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.hot_attach_hot_vm_current.name_ref.file_positional.domain_positional 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.console.type_pty.normal_test.hot_attach_hot_vm_current.uuid_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_pty.normal_test.hot_attach_hot_vm_current.name_ref.file_positional.domain_positional
+type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_pty.normal_test.hot_attach_hot_vm_current.uuid_ref.file_argument.domain_argument 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_unix.normal_test.hot_attach_hot_vm.persistent.name_ref.file_positional.domain_positional
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_unix.normal_test.hot_attach_hot_vm.live_config.name_ref.file_positional.domain_positional
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.channel.type_unix.normal_test.hot_attach_hot_vm_current.uuid_ref.file_positional.domain_argument
@@ -349,7 +366,8 @@ type_specific.io-github-autotest-libvirt.virsh.attach_device.block.multi_virtio_
 type_specific.io-github-autotest-libvirt.virsh.attach_device.block.multi_virtio_file.normal_test.hot_attach_hot_vm.persistent.uuid_ref.file_argument.domain_argument
 type_specific.io-github-autotest-libvirt.virsh.attach_device.multiple.VirtualDiskBasic_SerialFile_SerialPipe.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional
 type_specific.io-github-autotest-libvirt.virsh.attach_device.multiple.VirtualDiskBasic_SerialFile_SerialPipe.normal_test.cold_attach_hot_vm.name_ref.file_argument.domain_argument
-type_specific.io-github-autotest-libvirt.virsh.attach_device.multiple.VirtualDiskBasic_SerialFile_SerialPipe.normal_test.cold_attach_hot_vm.uuid_ref.file_argument.domain_argument 
+type_specific.io-github-autotest-libvirt.virsh.attach_device.multiple.VirtualDiskBasic_SerialFile_SerialPipe.normal_test.cold_attach_hot_vm.uuid_ref.file_argument.domain_argument
+
 #©¦ ©¦ ©À©¤©¤ virsh_autostart				 [7 cases]
 type_specific.io-github-autotest-libvirt.virsh.autostart.positive_test.set_autostart
 type_specific.io-github-autotest-libvirt.virsh.autostart.positive_test.set_disable
@@ -875,7 +893,7 @@ type_specific.io-github-autotest-libvirt.virsh.nwfilter_undefine.normal_test.acl
 type_specific.io-github-autotest-libvirt.virsh.capabilities.unexpect_option
 #©¦ ©¦ ©À©¤©¤ virsh_cpu_models				 [6]
 type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.local_host.auto_get_arch
-type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.remote_host.auto_get_arch
+type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.local_host.specific_arch
 #©¦ ©¦ ©À©¤©¤ virsh_domcapabilities			 [9]
 type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.local_host.auto_option_values
 type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.local_host.default_option_values	
