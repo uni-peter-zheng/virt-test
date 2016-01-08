@@ -245,7 +245,7 @@ prepare:type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.s
         sed -i "s|^source_vm_image =.*$|source_vm_image = "$source_vm_image_raw"|g" $CONFIG_DIR/redos_autorun/cfg/base.cfg
         rm -rf $CONFIG_DIR/backends/libvirt/env  #清理一下环境
 }
-restore:type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.multiple_chain.file_disk.local.no_ga.notimeout.base_as_middle.top_active.with_pivot()
+restore:type_specific.io-github-autotest-libvirt.virsh.blockcommit.normal_test.multiple_chain.file_disk.local.no_ga.notimeout.base_as_middle.top_active.without_pivot()
 {
         sed -i "s/^vms.*$/vms = $vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg
         sed -i "s/^main_vm.*$/main_vm = $main_vms/" $CONFIG_DIR/backends/libvirt/cfg/base.cfg #切换回qcow2的测试虚机
