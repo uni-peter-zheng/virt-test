@@ -212,11 +212,31 @@ type_specific.io-github-autotest-libvirt.resource_abnormal.virsh_dump.normal_res
 #type_specific.io-github-autotest-libvirt.resource_abnormal.migration.normal_resource.time_out		
 #©À©¤©¤ svirt				
 #©¦ ©À©¤©¤ dac_nfs_disk		      [49 cases]
-type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_root.qemu_user.dynamic_ownership_on.no_root_squash
-type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu.qemu_user.dynamic_ownership_off.root_squash
-type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu_grp.qemu_user.dynamic_ownership_on.no_root_squash
-type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_oth.root_user.dynamic_ownership_off.no_root_squash
-type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.snapshot_nfs_backing.qemu_user.dynamic_ownership_on.no_root_squash		
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_root.qemu_user.dynamic_ownership_on.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_root.root_user.dynamic_ownership_on.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_root.root_user.dynamic_ownership_off.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu.qemu_user.dynamic_ownership_on.root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu.qemu_user.dynamic_ownership_on.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu.qemu_user.dynamic_ownership_off.root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu.qemu_user.dynamic_ownership_off.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu.root_user.dynamic_ownership_on.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu.root_user.dynamic_ownership_off.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu_grp.qemu_user.dynamic_ownership_on.root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu_grp.qemu_user.dynamic_ownership_on.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu_grp.qemu_user.dynamic_ownership_off.root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu_grp.qemu_user.dynamic_ownership_off.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu_grp.root_user.dynamic_ownership_on.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_qemu_grp.root_user.dynamic_ownership_off.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_oth.qemu_user.dynamic_ownership_on.root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_oth.qemu_user.dynamic_ownership_on.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_oth.qemu_user.dynamic_ownership_off.root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_oth.qemu_user.dynamic_ownership_off.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_oth.root_user.dynamic_ownership_on.root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_oth.root_user.dynamic_ownership_on.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_oth.root_user.dynamic_ownership_off.root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.nfs_img_oth.root_user.dynamic_ownership_off.no_root_squash 
+type_specific.io-github-autotest-libvirt.dac_nfs_disk.positive_test.snapshot_nfs_backing.qemu_user.dynamic_ownership_on.no_root_squash 
+
 #©¦ ©À©¤©¤ dac_nfs_save_restore	  [60 cases]	
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_root.qemu_user.dynamic_ownership_on.no_root_squash 
 type_specific.io-github-autotest-libvirt.dac_nfs_save_restore.positive_test.exist_file.nfs_file_root.root_user.dynamic_ownership_off.no_root_squash 
@@ -269,7 +289,10 @@ type_specific.io-github-autotest-libvirt.svirt_install.positive_test.guest_img_l
 type_specific.io-github-autotest-libvirt.svirt_install.positive_test.guest_img_label_virt_content.sec_relabel_yes.sec_type_dynamic.host_selinux_enforcing	
 #©¦ ©À©¤©¤ svirt_save_restore	  [6 cases]
 type_specific.io-github-autotest-libvirt.svirt_save_restore.disk_label_svirt_image_s0.sec_relabel_yes.sec_type_dynamic
-type_specific.io-github-autotest-libvirt.svirt_save_restore.disk_label_svirt_image_MCS1.sec_relabel_yes.sec_type_static			
+type_specific.io-github-autotest-libvirt.svirt_save_restore.disk_label_svirt_image_s0.sec_relabel_yes.sec_type_static
+type_specific.io-github-autotest-libvirt.svirt_save_restore.disk_label_svirt_image_MCS1.sec_relabel_no.sec_type_static
+type_specific.io-github-autotest-libvirt.svirt_save_restore.disk_label_svirt_image_MCS1.sec_relabel_yes.sec_type_dynamic
+type_specific.io-github-autotest-libvirt.svirt_save_restore.disk_label_svirt_image_MCS1.sec_relabel_yes.sec_type_static
 #©¦ ©À©¤©¤ svirt_start_destroy	  [44 cases]
 type_specific.io-github-autotest-libvirt.svirt_start_destroy.positive_test.off_destroy.d_virt_content.relabel_yes.st_dynamic.default_model.without_qemu_conf 
 type_specific.io-github-autotest-libvirt.svirt_start_destroy.positive_test.off_destroy.d_virt_content.relabel_yes.st_static.default_model.without_qemu_conf 
@@ -286,12 +309,22 @@ type_specific.io-github-autotest-libvirt.svirt_start_destroy.positive_test.off_s
 type_specific.io-github-autotest-libvirt.svirt_start_destroy.positive_test.off_shutdown.d_svirt_img_MCS.relabel_yes.st_dynamic.default_model.without_qemu_conf 
 type_specific.io-github-autotest-libvirt.svirt_start_destroy.positive_test.off_shutdown.d_svirt_img_MCS.relabel_yes.st_static.default_model.without_qemu_conf 		
 #©¦ ©À©¤©¤ svirt_undefine_define  [9 cases]		
-type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_virt_content.sec_relabel_yes.sec_type_dynamic
-type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_svirt_image_s0.sec_relabel_no.sec_type_static
-type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_svirt_image_MCS1.sec_relabel_yes.sec_type_dynamic		
+type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_virt_content.sec_relabel_yes.sec_type_dynamic 
+type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_virt_content.sec_relabel_yes.sec_type_static 
+type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_svirt_image_s0.sec_relabel_no.sec_type_static 
+type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_svirt_image_s0.sec_relabel_yes.sec_type_dynamic 
+type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_svirt_image_s0.sec_relabel_yes.sec_type_static 
+type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_svirt_image_MCS1.sec_relabel_no.sec_type_static 
+type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_svirt_image_MCS1.sec_relabel_yes.sec_type_dynamic 
+type_specific.io-github-autotest-libvirt.svirt_undefine_define.positive_test.disk_label_svirt_image_MCS1.sec_relabel_yes.sec_type_static 
 #©¦ ©¸©¤©¤ svirt_virt_clone		  [9 cases]		
-type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_virt_content.sec_relabel_yes.sec_type_dynamic
-type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_svirt_image_s0.sec_relabel_yes.sec_type_dynamic
+type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_virt_content.sec_relabel_yes.sec_type_dynamic 
+type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_virt_content.sec_relabel_yes.sec_type_static 
+type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_svirt_image_s0.sec_relabel_no.sec_type_static 
+type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_svirt_image_s0.sec_relabel_yes.sec_type_dynamic 
+type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_svirt_image_s0.sec_relabel_yes.sec_type_static 
+type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_svirt_image_MCS1.sec_relabel_no.sec_type_static 
+type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_svirt_image_MCS1.sec_relabel_yes.sec_type_dynamic 
 type_specific.io-github-autotest-libvirt.svirt_virt_clone.positive_test.disk_label_svirt_image_MCS1.sec_relabel_yes.sec_type_static
 #©À©¤©¤ timer_management         [83 cases]		
 type_specific.io-github-autotest-libvirt.timer_management.no_timer.offset_utc.under_stress.stress_in_vm.memory.test_timers_in_vm.linux_guest
@@ -469,10 +502,13 @@ type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.strict_cpu_m
 #type_specific.io-github-autotest-libvirt.virsh.cpu_compare.guest_cpu.extra_option  #xml need <cpu>element
 type_specific.io-github-autotest-libvirt.virsh.cpu_compare.host_cpu.strict_cpu_match.default_feature
 #©¦ ©¦ ©À©¤©¤ virsh_cpu_stats				 [11]
-type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option1
-type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option3
-type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option4
-type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.paused_option
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option1 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option2 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option3 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option4 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option5 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.option6 
+type_specific.io-github-autotest-libvirt.virsh.cpu_stats.positive_test.paused_option 
 #©¦ ©¦ ©À©¤©¤ virsh_create				     [14]
 type_specific.io-github-autotest-libvirt.virsh.create.console
 type_specific.io-github-autotest-libvirt.virsh.create.console_paused
@@ -507,10 +543,15 @@ type_specific.io-github-autotest-libvirt.virsh.detach_device.normal_test.vm_runn
 type_specific.io-github-autotest-libvirt.virsh.domblkerror.undefinded_error
 type_specific.io-github-autotest-libvirt.virsh.domblkerror.nospace_error
 #©¦ ©¦ ©À©¤©¤ virsh_domblklist				 [13]
-type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.uuid_option
-type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.details_option
-type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.inactive_with_shutoff_option
-type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.no_option
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.id_option 
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.name_option 
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.uuid_option 
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.shutoff_option 
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.details_option 
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.inactive_option 
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.inactive_with_shutoff_option 
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.inactive_with_details_option 
+type_specific.io-github-autotest-libvirt.virsh.domblklist.normal_test.no_option 
 #©¦ ©¦ ©À©¤©¤ virsh_domcontrol				 [16]
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.normal_test.id_option
 type_specific.io-github-autotest-libvirt.virsh.domcontrol.normal_test.name_option
@@ -542,9 +583,14 @@ type_specific.io-github-autotest-libvirt.virsh.domiflist.with_valid_option.domid
 type_specific.io-github-autotest-libvirt.virsh.domiflist.with_valid_option.iface_model.virtio_iface 
 type_specific.io-github-autotest-libvirt.virsh.domiflist.with_valid_option.iface_model.rtl8139_iface
 #©¦ ©¦ ©À©¤©¤ virsh_domif_setlink_getlink	 [12]
-type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_net.no_config.running_guest.domif_setlink.setlink_up
-type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.with_config.running_guest.domif_setlink.setlink_down	
-type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.multi_functional_test.check_options_config		
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_net.no_config.running_guest.domif_setlink.setlink_up 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_net.no_config.running_guest.domif_setlink.setlink_down 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.no_config.running_guest.domif_setlink.setlink_up 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.no_config.running_guest.domif_setlink.setlink_down 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.no_config.shutoff_guest.domif_setlink.setlink_up 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.no_config.shutoff_guest.domif_setlink.setlink_down 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.with_config.running_guest.domif_setlink.setlink_up 
+type_specific.io-github-autotest-libvirt.virsh.domif_setlink_getlink.positive_test.interface_mac.with_config.running_guest.domif_setlink.setlink_down 
 #©¦ ©¦ ©À©¤©¤ virsh_domiftune				 [42]
 type_specific.io-github-autotest-libvirt.virsh.domiftune.positive_testing.get_domif_parameter.running_guest.options.none
 type_specific.io-github-autotest-libvirt.virsh.domiftune.positive_testing.get_domif_parameter.running_guest.options.live
