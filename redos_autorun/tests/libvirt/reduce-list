@@ -344,20 +344,65 @@ type_specific.io-github-autotest-libvirt.timer_management.specific_timer.platfor
 #©À©¤©¤ virsh_cmd	              [7417 cases]			
 #©¦ ©À©¤©¤ domain				
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_disk        [70 cases]
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.host_block_vm_id
-#type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.cdrom_eject_control #IDE not support
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.image_file_no_option
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type_lun
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_image_format.qcow2_format
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_none
-#type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_writebacklibvirt		#not support		
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.detach_disk.normal_test.attach_disk_image_format.qcow2_format
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.no_vm_name 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.hex_vm_id 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.invalid_vm_id 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.invalid_vm_uuid 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.vm_shutdown 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.invalid_target 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.invalid_option_1 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.invalid_option_2 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.only_attach_disk.invalid_source 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.only_attach_disk.twice_diff_source 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.only_attach_disk.invalid_driver 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.only_attach_disk.invalid_mode 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.only_attach_disk.non_exist_source 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.only_attach_disk.ide_bus 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.error_test.only_attach_disk.invalid_cache 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.host_block_vm_id 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.host_block_vm_name 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.vm_suspend 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.host_block_vm_uuid 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.image_file_no_option 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.vm_shutdown_config 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.vm_shutdown_serial_config 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.vm_running_config 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.vm_shutdown_persistent 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.vm_running_persistent 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.twice_diff_target 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.twice_multifunction 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.file_disk_type 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type_lun 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_type.block_disk_type_logical 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.audit_check 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_image_format.raw_format 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.attach_disk_image_format.qcow2_format 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.image_file_no_mode 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.no_mode 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_sourcetype 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_none 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_default 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_writethrough 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_writeback 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_unsafe 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.attach_disk.normal_test.only_attach_disk.option_cache.cache_directsync 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.detach_disk.normal_test.attach_disk_image_format.raw_format 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_disk.detach_disk.normal_test.attach_disk_image_format.qcow2_format 
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_disk_lxc	 [no cases]			
 #©¦ ©¦ ©À©¤©¤ virsh_attach_detach_interface	 [39]		
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.default_network.domname
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.exist_bridge.domid
-type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.default_network.domuuid
-#type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domnamelibvirt	#not support
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.default_network.domname 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.default_network.domid 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.default_network.domuuid 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.exist_bridge.domname 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.exist_bridge.domid 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_running.exist_bridge.domuuid 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.default_network.domname 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.default_network.domid 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.default_network.domuuid 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domname 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domid 
+type_specific.io-github-autotest-libvirt.virsh.attach_detach_interface.normal_test.vm_paused.exist_bridge.domuuid 
 #©¦ ©¦ ©À©¤©¤ virsh_attach_device			 [1400 cases]
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_cold_vm.persistent.name_ref.file_positional.domain_positional 
 type_specific.io-github-autotest-libvirt.virsh.attach_device.character.serial.single_serial.normal_test.cold_attach_cold_vm.persistent.name_ref.file_argument.domain_argument 
@@ -456,13 +501,23 @@ type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.pivot_opti
 type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.max_bandwidth
 type_specific.io-github-autotest-libvirt.virsh.blockjob.positive_test.info_option
 #©¦ ©¦ ©À©¤©¤ virsh_blockpull				 [40]
-type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.notimeout.nobase.async
-type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.timeout.nobase.no_async
-type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.nfs.notimeout.base_snap_one.no_bandwidth
-type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.network_disk.iscsi.notimeout.shallow
-type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.block_disk.notimeout.shallow
-#type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.network_disk.gluster.disk_qcow2.transport_rdma.notimeout.base_snap_one.no_bandwidth #gluster fs
-type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.block_disk.notimeout.base_snap_one.no_bandwidth
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.notimeout.nobase.async 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.notimeout.nobase.no_async 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.notimeout.shallow 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.notimeout.base_snap_one.with_bandwidth 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.notimeout.base_snap_one.no_bandwidth 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.timeout.shallow 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.timeout.base_snap_one.with_bandwidth 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.local.timeout.base_snap_one.no_bandwidth 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.nfs.notimeout.nobase.async 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.nfs.notimeout.shallow 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.file_disk.nfs.notimeout.base_snap_one.no_bandwidth 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.network_disk.iscsi.notimeout.nobase.async 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.network_disk.iscsi.notimeout.shallow 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.network_disk.iscsi.notimeout.base_snap_one.no_bandwidth 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.block_disk.notimeout.nobase.async 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.block_disk.notimeout.shallow 
+type_specific.io-github-autotest-libvirt.virsh.blockpull.normal_test.block_disk.notimeout.base_snap_one.no_bandwidth 
 #©¦ ©¦ ©À©¤©¤ virsh_blockresize	             [22]	
 type_specific.io-github-autotest-libvirt.virsh.blockresize.normal_test.byte.qcow2_type
 type_specific.io-github-autotest-libvirt.virsh.blockresize.normal_test.byte.raw_type
@@ -599,10 +654,12 @@ type_specific.io-github-autotest-libvirt.virsh.domiftune.positive_testing.set_bl
 type_specific.io-github-autotest-libvirt.virsh.domiftune.positive_testing.set_blkio_parameter.running_guest.clear_outbound 
 type_specific.io-github-autotest-libvirt.virsh.domiftune.negative_testing.set_domif_parameter.shutoff_guest.change_inbound.options.live.minimum_boundary
 #©¦ ©¦ ©À©¤©¤ virsh_domjobabort				 [15]
-type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.id_option
-type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.name_option
-type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.save_option
-#type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.migrate_option
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.id_option 
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.name_option 
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.paused_option 
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.uuid_option 
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.save_option 
+type_specific.io-github-autotest-libvirt.virsh.domjobabort.normal_test.managedsave_option
 #©¦ ©¦ ©À©¤©¤ virsh_domjobinfo				 [15]
 type_specific.io-github-autotest-libvirt.virsh.domjobinfo.normal_test.id_option
 type_specific.io-github-autotest-libvirt.virsh.domjobinfo.normal_test.name_option
