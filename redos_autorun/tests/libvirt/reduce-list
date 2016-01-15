@@ -1027,7 +1027,7 @@ type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.local_ho
 type_specific.io-github-autotest-libvirt.virsh.cpu_models.positive_test.local_host.specific_arch
 #©¦ ©¦ ©À©¤©¤ virsh_domcapabilities			 [9]
 type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.local_host.auto_option_values
-type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.local_host.default_option_values	
+#type_specific.io-github-autotest-libvirt.virsh.domcapabilities.positive_test.local_host.default_option_values	
 #©¦ ©¦ ©À©¤©¤ virsh_freecell				     [12]
 type_specific.io-github-autotest-libvirt.virsh.freecell.libvirton.expected_options.expected_option_all
 type_specific.io-github-autotest-libvirt.virsh.freecell.libvirtoff.expected_options.expected_args_0
