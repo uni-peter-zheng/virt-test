@@ -202,16 +202,12 @@ restore:type_specific.io-github-autotest-libvirt.virsh.migrate_virtio_scsi.migra
                 vm_backup_image_dir=`dirname $vm1_backup_image_file`
                 vm_nfs_share_storage=/home/source/nfs_share/
                 #本地nfs迁移环境配置
-                umount -l $vm_local_image_dir
-                #cp -rf $vm_backup_image_dir/* $vm_local_image_dir
-                mv $vm_nfs_share_storage/* $vm_local_image_dir
-                systemctl restart libvirtd
                 virsh destroy $vm1
                 virsh destroy $vm2
-                virsh undefine $vm1
-                virsh undefine $vm2
-                virsh define "$vm_local_image_dir/$main_vms".xml
-                virsh define "$vm_local_image_dir/$main_vms_raw".xml
+                systemctl restart libvirtd
+                umount -l $vm_local_image_dir
+                rm -rf "$vm_nfs_share_storage*"
+                cp -rf $vm_backup_image_dir/* $vm_local_image_dir
 
                 #远程环境配置
                 ssh root@$remote_ip "umount -l $vm_local_image_dir"
