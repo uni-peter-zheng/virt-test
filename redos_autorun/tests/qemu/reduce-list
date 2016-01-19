@@ -44,7 +44,8 @@ io-github-autotest-qemu.yum_update
 io-github-autotest-qemu.kdump.one_vm.basic.default
 io-github-autotest-qemu.io-github-autotest-qemu.build
 io-github-autotest-qemu.shutdown
-type_specific.io-github-autotest-qemu.virtio_console.spread_linear.specifiable.virtserialport.virtio_console_smoke.open
+type_specific.io-github-autotest-qemu.virtio_console.spread_linear.specifiable.virtserialport.virtio_console_smoke.lseek
+type_specific.io-github-autotest-qemu.virtio_console.spread_linear.specifiable.virtserialport.with_vm.rmmod
 type_specific.io-github-autotest-qemu.virtio_console.spread_linear.specifiable.virtconsole.virtio_console_smoke.check_zero_sym
 type_specific.io-github-autotest-qemu.virtio_console.spread_2.specifiable.virtserialport.virtio_console_smoke.open
 type_specific.io-github-autotest-qemu.virtio_console.spread_2.specifiable.virtconsole.virtio_console_smoke.multi_open
