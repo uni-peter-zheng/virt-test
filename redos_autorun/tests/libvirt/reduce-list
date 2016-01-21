@@ -66,7 +66,7 @@ type_specific.io-github-autotest-libvirt.graphics.functional.positive_tests.spic
 #type_specific.io-github-autotest-libvirt.guest_kernel_debugging.nmi_test.positive_testing.send_nmi			
 #©À©¤©¤ hotplug_serial		
 type_specific.io-github-autotest-libvirt.hotplug_serial.qmp.all_dev.normal_test 
-type_specific.io-github-autotest-libvirt.hotplug_serial.at_dt_device.all_dev.normal_test 	
+type_specific.io-github-autotest-libvirt.hotplug_serial.at_dt_device.pty_dev.normal_test	
 #©À©¤©¤ kernel_panic	
 #type_specific.io-github-autotest-libvirt.kernel_panic			
 #©À©¤©¤ libvirt_bench						
