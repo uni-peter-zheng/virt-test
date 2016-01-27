@@ -139,7 +139,7 @@ type_specific.io-github-autotest-libvirt.libvirt_usb_hotplug_device.qemu_monitor
 #©À©¤©¤ macvtap	                #ÐèÒªË«Íø¿¨
 type_specific.io-github-autotest-libvirt.macvtap.VEPA 
 type_specific.io-github-autotest-libvirt.macvtap.Bridge
-type_specific.io-github-autotest-libvirt.macvtap.Private
+#type_specific.io-github-autotest-libvirt.macvtap.Private
 #type_specific.io-github-autotest-libvirt.macvtap.Passthrough 			
 #©À©¤©¤ multifunction	
 type_specific.io-github-autotest-libvirt.multifunction.set_type_drive.set_multifunction_on.single_device.function_-1
